@@ -1,0 +1,14 @@
+{{#location}}
+<li data-markerid="{{markerid}}">
+  <div class="list-label">{{marker}}</div>
+  <div class="list-details">
+    <div class="list-content">
+      <div class="loc-name">{{name}}</div>
+      <div class="loc-addr">{{street_number}} {{street_address}}</div> 
+      <div class="loc-addr3">{{city}}{{#if city}},{{/if}} {{state}} {{postcode}}</div>
+      <div class="loc-phone">{{ country}}</div>
+      <div class="loc-web"><a href="{{web}}" target="_blank">{{niceURL web}}</a></div>    
+    </div>
+  </div>
+</li>
+{{/location}}

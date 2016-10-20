@@ -1,0 +1,20 @@
+.footer {
+  text-align:center;
+  margin:20px auto;  
+}
+
+.footer-badge {
+  color:#888;
+  letter-spacing:0.07rem;
+  font-weight:200;
+
+  p {
+    padding-top:5px;
+    font-size:($font-size-xs - 0.07);
+  }
+
+  &:hover {
+    color:#999;
+    text-decoration:none;
+  }
+}

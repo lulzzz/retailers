@@ -1,0 +1,88 @@
+.current-template {
+  text-align:center;
+  padding:40px;
+}
+
+.bg-gray {
+  background-color:#f9f9f9;
+}
+.iframe-wrapper {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+.iframe{    
+  pointer-events: none;
+  width: 1159px;
+  height: 694px;
+  border: none;
+  overflow: hidden;
+  margin-left: 27px;
+  top: 60px;
+  position: relative;
+  background-color: white;
+  -webkit-transform: scale(0.59);
+  transform: scale(0.59);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.macbook {
+  background-image: url('//cdn.shopify.com/s/assets/admin/themes/macbook_retina-2ef9582a865851200cef92858e2a8ff5dc2b85e06a4570ebd4287e83c15a6519.png');
+  background-size: 100%;
+  width: 736px;
+  height: 469px;
+  position: relative;
+  margin: 0px auto;
+  background-position: 0px 1px;
+  background-repeat: no-repeat;
+}
+
+.iphone {
+    width: 183px;
+    height: 274px;
+    position: absolute;
+    right: -21px;
+    bottom: 0px;
+    background-image: url('//cdn.shopify.com/s/assets/admin/themes/iphone_retina-eb3b509e81b09ccc4bd098dcba1e2773cdced564d67ffe6f9675b2c9dfa31859.png');
+    background-repeat: no-repeat;
+    background-position: 0px 1px;
+    background-size:100%;
+
+   .iframe {
+    width: 320px;
+    height: 456px;
+    margin-left: 15px;
+    top: 54px;
+    -webkit-transform: scale(0.484);
+    transform: scale(0.484);
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    box-sizing: border-box;
+
+
+    }
+}
+
+.proxy-preview-mask {
+  display: block;
+  width: 685px;
+  height: 435px;
+  position: absolute;
+  left: 26px;
+  top: 34px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  box-sizing: border-box;
+  background-color: rgba(255,255,255,0.9);
+  padding-top: 202px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+}

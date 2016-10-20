@@ -1,0 +1,50 @@
+.card {
+  .list-group {
+    .list-group-item {
+      border-left:none;
+      border-right:none;
+
+      .custom-checkbox {
+        text-transform:uppercase;
+        font-size: 90%;
+        font-weight:600;
+      }
+
+      .info {
+        font-size:($font-size-xs + 0.10);
+        float:right;
+        color:$gray-light;
+      }
+    }
+  }
+}
+
+.card-text {
+  font-size: $font-size-sm;
+}
+
+
+.input-group-btn {
+  .btn-secondary {
+    color:$brand-primary !important;
+  } 
+}
+
+/*
+tables
+*/
+.retailers-list {
+  th {
+    font-weight: normal;
+  }
+
+  tr {
+    line-height:32px;
+    vertical-align:middle;
+    height:62px;
+  }
+
+  .check-td {
+    width:15px !important;
+  }
+}

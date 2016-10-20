@@ -1,0 +1,1 @@
+//=include ../vendors/dropzone.min.js

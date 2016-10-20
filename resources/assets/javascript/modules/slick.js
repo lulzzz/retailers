@@ -1,0 +1,1 @@
+//=include ../vendors/slick.min.js
