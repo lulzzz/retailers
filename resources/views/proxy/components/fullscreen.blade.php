@@ -9,7 +9,7 @@
       </button>
       <div class="dropdown-menu">
         @foreach ($retailers as $key => $value)
-        <a class="dropdown-item" href="{{ env('APP_URL') }}{{ $value->country_slug}}">{{ $value->country}}</a>
+        <a class="dropdown-item" href="{{ env('APP_URL') }}app/{{ $value->country_slug}}">{{ $value->country}}</a>
         @endforeach
       </div>
     </div>

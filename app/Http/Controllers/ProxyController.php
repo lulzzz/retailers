@@ -88,8 +88,10 @@ class ProxyController extends Controller
 
   public function country(Request $request, $country)
   {
-    $shop      =  Input::get('shop');
-    $retailers =  $this->retailer->proxy($shop, 'country_slug', $country);
+    $shop       =  Input::get('shop');
+    $resource   =  $this->retailer->proxy($shop, 'country_slug', $country);
+
+    $collection =  collect($resource)
 
     return response()
     ->view('proxy.show', compact('retailers', 'country'))

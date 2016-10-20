@@ -30,7 +30,7 @@ Route::get('app', 'ProxyController@index');
 //Route::get('/show/{country}', 'ProxyController@show');
 
 // Geo-graphical Listings
-//Route::get('app/{country}', 'ProxyController@country');
+Route::get('app/{country}', 'ProxyController@country');
 
 //Route::get('/search/retailers', 'ProxyController@search');
 

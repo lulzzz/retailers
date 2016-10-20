@@ -17,8 +17,8 @@
   loadjs([
     '//maps.google.com/maps/api/js?key=AIzaSyB5HPEKmq2MDh5JKp-Zmys0SjV2-UNNGNQ',
     '//cdn.shopify.com/s/files/1/0638/4637/t/2/assets/gmaps.min.js',
-    '/a/retailers/js/plugins/list.min.js',
-    '/a/retailers/js/plugins/dropdown.min.js'],
+    '{{ env('APP_URL') }}js/plugins/list.min.js',
+    '{{ env('APP_URL') }}js/plugins/dropdown.min.js'],
     { success: function() {  
      skriptz.maps();
      skriptz.search();
