@@ -23,6 +23,8 @@ interface RetailerInterface {
   public function first($resource, $slug); 
   public function find($resource, $query);
   public function pages($domain, $param, $number); 
+  public function exists($resource, $query); 
+
 
 
 

@@ -15,11 +15,11 @@
 @section('js')
 <script>
   loadjs([
-    '//maps.google.com/maps/api/js?key=AIzaSyB5HPEKmq2MDh5JKp-Zmys0SjV2-UNNGNQ',
-    '//cdn.shopify.com/s/files/1/0638/4637/t/2/assets/gmaps.min.js',
-    '{{ env('APP_URL') }}js/plugins/list.min.js',
-    '{{ env('APP_URL') }}js/plugins/dropdown.min.js'],
-    { success: function() {  
+   'https://maps.google.com/maps/api/js?key=AIzaSyCTlnXnQV55QOGl22nw627SDxo6yXynJYs',
+   'https://cdn.shopify.com/s/files/1/0638/4637/t/2/assets/gmaps.min.js',
+   '{{ env('APP_URL') }}js/plugins/list.min.js',
+   '{{ env('APP_URL') }}js/plugins/dropdown.min.js'],
+   { success: function() {  
      skriptz.maps();
      skriptz.search();
    }
@@ -43,7 +43,7 @@
 
    var locations = [
    @foreach ($retailers as $key => $value)
-   ['<a href="/a/retailers/{{$value->country}}/{{$value->city}}/{{$value->slug}}"><div class="mp-storefront"><img src="/a/retailers{{ Storage::url($value->storefront_lg) }}"></div></a>', 
+   ['<a href="{{ env('APP_URL') }}{{$value->country}}/{{$value->city}}/{{$value->slug}}"><div class="mp-storefront"><img src="{{ env('APP_URL') }}{{ Storage::url($value->storefront_lg) }}"></div></a>', 
    {{$value->latitude}},{{$value->longitude}}, 
    {{$value->id}}, 
    $marker_url2],

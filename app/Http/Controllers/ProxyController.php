@@ -36,23 +36,45 @@ class ProxyController extends Controller
 
   public function index()
   {
-
-    // GeoIP via proxy forward
-    // 
+    /**
+    * GeoIP via proxy forward
+    */
     $forwarded  =  Request::server('HTTP_X_FORWARDED_FOR');
     $addresses  =  explode(',',$forwarded);
     $ip_address =  collect($addresses)->first();
     $locate     =  GeoIP::getLocation($ip_address);
 
+    $country    =  str_slug($locate['country']);
+    $iso        =  strtolower($locate['isoCode']);
+    $exists     =  $this->retailer->exists('country_slug', $country);
+
+    if ($exists) {
+     return Redirect::route('proxy_country', $country);
+   } 
+
+    /**
+    * Working Data
+    */ 
+    $shop       =  Input::get('shop');
+    $locations  =  $this->retailer->find('domain',$shop);
+    $retailers  =  $this->retailer->pages('domain', $shop, 100);
+
+    /**
+    * Collect Locations
+    */
+    $collection =  collect($locations);
+
+    /**
+    * Unqiue Country
+    */
+    $countries  =  $collection->unique('country_slug');
+    $countries->values()->all();
 
     $lat = $locate['lat'];
     $lon = $locate['lon'];
-    $country = $locate['country'];
-
 
     // Query User and Find Retailers
     // 
-    $shop       =  Input::get('shop');
 
    // return $locate;
 
@@ -65,7 +87,7 @@ class ProxyController extends Controller
     $retailers  = $this->retailer->pages('domain', $shop, 100);
 
     return response()
-    ->view('proxy.index', compact('retailers','country','shop','lat','lon'))
+    ->view('proxy.index', compact('retailers','exists','country','countries','cities','shop','lat','lon','iso'))
     ->header('Content-Type', env('PROXY_HEADER'));
     
   }
@@ -88,13 +110,41 @@ class ProxyController extends Controller
 
   public function country(Request $request, $country)
   {
-    $shop       =  Input::get('shop');
-    $resource   =  $this->retailer->proxy($shop, 'country_slug', $country);
 
-    $collection =  collect($resource)
+    /**
+    * Working Data
+    */ 
+    $shop       =  Input::get('shop');
+    $locations  =  $this->retailer->find('domain',$shop);
+    $retailers  =  $this->retailer->proxy($shop, 'country_slug', $country);
+
+    /**
+    * Collect Locations
+    */
+    $collection =  collect($locations);
+
+    /**
+    * Unqiue Country
+    */
+    $countries  =  $collection->unique('country_slug');
+    $countries->values()->all();
+
+
+    /**
+    * Get Cities
+    */
+    $collection =  collect($retailers);
+
+    /**
+    * Unqiue Country
+    */
+    $cities  =  $collection->unique('city');
+    $cities->values()->all();
+
+    $exists = $country;
 
     return response()
-    ->view('proxy.show', compact('retailers', 'country'))
+    ->view('proxy.show', compact('retailers', 'exists','country','countries','cities'))
     ->header('Content-Type', env('PROXY_HEADER'));
   }
 

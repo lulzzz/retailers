@@ -30,7 +30,9 @@ Route::get('app', 'ProxyController@index');
 //Route::get('/show/{country}', 'ProxyController@show');
 
 // Geo-graphical Listings
-Route::get('app/{country}', 'ProxyController@country');
+Route::get('app/{country}', [
+  'as' => 'proxy_country', 
+  'uses' => 'ProxyController@country']);
 
 //Route::get('/search/retailers', 'ProxyController@search');
 
@@ -59,7 +61,7 @@ Route::resource('merchants', 'MerchantsController');
 Route::resource('dashboard', 'DashboardController');
 
 
-Route::post('dashboard/delete','DashboardController@delete');
+//Route::post('dashboard/delete','DashboardController@delete');
 
 
 

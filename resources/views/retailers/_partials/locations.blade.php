@@ -4,7 +4,7 @@
      @if ($errors->any())
      <div id="location_error" class="alert alert-danger" role="alert">
       <strong>Submission Error!</strong>
-      <ul class="p-y-2">
+      <ul class="py-2">
         <li class="error">
           {{ implode('', $errors->all(':message')) }}
         </li>
@@ -93,7 +93,7 @@
   </div>
 </div>
 <div class="col-sm-4">
-  <div class="left-card p-a-0">
+  <div class="left-card p-0">
     <div class="map_canvas">
     </div>
   </div>
@@ -104,7 +104,7 @@
 <div class="row" id="pjax-container">
   @foreach ($location as $key => $value)
   <div class="col-sm-3">
-    <div class="card-box p-a-0">
+    <div class="card-box p-0">
       <div class="delete-location">
       <a class="location_delete" href="{{ route('locations.destroy',array($value->id)) }}" data-method="delete" data-remote="true">
           <svg id="i-close" viewBox="0 0 32 32" width="12" height="12" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
@@ -112,7 +112,7 @@
           </svg>
         </a>
       </div>
-      <div class="p-y-3 p-x-2">
+      <div class="py-3 px-2">
         <a href="#pjax-container" onclick="addressModal('{{ route('address_edit',array($value->id)) }}')" > 
           <small>
             {{ $value->street_number }} {{ $value->street_address }}<br>
@@ -122,9 +122,9 @@
         </a>
       </div>
       @if(is_null($value->storefront_lg))
-      <div class="p-x-2 p-b-2 text-xs-center">
+      <div class="px-2 pb-2 text-xs-center">
         <a href="#pjax-container" onclick="storefrontModal('{{ route('locations.edit',array($value->id)) }}')" class="btn btn-block btn-secondary">
-         Location Options
+         Upload Storefront
        </a>
      </div>
      @else

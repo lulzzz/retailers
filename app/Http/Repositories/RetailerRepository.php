@@ -56,6 +56,7 @@ class RetailerRepository implements RetailerInterface {
 
     return $data;
   }
+
   public function find($resource, $query) {
 
     $data = DB::table('users')
@@ -73,6 +74,24 @@ class RetailerRepository implements RetailerInterface {
     return $data;
   }
 
+
+  public function exists($resource, $query) {
+
+    $data = DB::table('users')
+    ->join('brands',      'users.id',     '=', 'brands.user_id')
+    ->join('merchants',   'brands.id',    '=', 'merchants.brand_id')
+    ->join('retailers',   'brands.id',    '=', 'retailers.brand_id')
+    ->join('locations',   'retailers.id', '=', 'locations.retailer_id')
+    ->select(
+      'users.domain', 
+      'retailers.*', 
+      'locations.*')
+    ->where($resource, $query)
+    ->exists();
+
+    return $data;
+  }
+
   public function pages($resource, $query, $number) {
 
     $data = DB::table('users')
@@ -85,7 +104,7 @@ class RetailerRepository implements RetailerInterface {
       'retailers.*', 
       'locations.*')
     ->where($resource, $query)
-    ->paginate(100);
+    ->paginate($number);
 
     return $data;
   }

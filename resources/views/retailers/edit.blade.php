@@ -9,7 +9,7 @@
     <div class="col-xs-12">
       <div class="alert alert-danger" role="alert">
         <strong>Submission Error!</strong>
-        <ul class="p-t-2">
+        <ul class="pt-2">
           <li class="error">
             {{ implode('', $errors->all(':message')) }}
           </li>
@@ -46,17 +46,19 @@
         <div id="logo_container" class="logo-upload">
           <script>loadjs.ready();</Script>
             <fieldset class="form-group">
-             @if(is_null($retailer->logo_lg))
+             @if($retailer->logo_lg == null)
              <div class="dropzone dz-clickable" id="logo_upload">
               <div class="dz-default dz-message">
-               <span class="pull-xs-left">
-                 <h3>Logo</h3>
-               </span>
-               <span class="pull-xs-right">
-                 <span class="upload-href">Add Logo</span>
-               </span>
+              <div class="row">
+                  <div class="col-xs text-xs-left">
+                   <h3>Logo</h3>
+                 </div>
+                 <div class="col-xs text-xs-right">
+                   <span class="upload-href">Add Logo</span>
+                 </div>
+               </div>
                <img class="img-fluid" data-dz-thumbnail>
-               <div class="image-placeholder">
+               <div class="image-placeholder mt-0">
                  <svg id="i-photo" viewBox="0 0 32 32" width="42" height="42" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.25%">
                   <path d="M20 24 L12 16 2 26 2 2 30 2 30 24 M16 20 L22 14 30 22 30 30 2 30 2 24" />
                   <circle cx="10" cy="9" r="3" />
@@ -68,14 +70,14 @@
           @else
           <div class="dropzone dz-clickable" id="logo_upload">
             <div class="dz-default dz-message">
-              <div class="logo-header">
-               <span class="pull-xs-left">
-                 <h3>Logo</h3>
-               </span>
-               <span class="pull-xs-right">
-                 <span class="upload-href">Replace Logo</span>
-               </span>
-             </div>
+            <div class="row">
+                  <div class="col-xs text-xs-left">
+                   <h3>Logo</h3>
+                 </div>
+                 <div class="col-xs text-xs-right">
+                   <span class="upload-href">Replace Logo</span>
+                 </div>
+               </div>
              <div class="logo-preview">
                <img src="{{ Storage::url($retailer->logo_lg) }}" class="img-fluid">
 
@@ -91,12 +93,12 @@
     </div>
     <!-- End Dropzone Preview Template -->
   </div>
-  <div class="left-card p-a-0">
-    <div class="p-a-2">
+  <div class="left-card p-0">
+    <div class="p-2">
       @include('retailers._partials.feature')
     </div>
     <hr>
-    <div class="p-a-2">
+    <div class="p-2">
       @include('retailers._partials.visibility')
     </div>
   </div>
@@ -347,8 +349,8 @@
       ShopifyApp.redirect("https://{{Auth::user()->domain}}/admin/apps/{{env('SHOPIFY_KEY')}}/retailers");
     } else {
      return console.log('Return');
-    }
-  });
+   }
+ });
 }
 
 

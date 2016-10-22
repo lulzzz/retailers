@@ -1,5 +1,5 @@
 <h3>Featured:</h3>
-<fieldset class="form-group p-t-1">
+<fieldset class="form-group pt-1">
   <div class="form-check-inline">
     <label class="form-check-label">
       <input type="radio" class="form-check-input form-control-lg" name="featured" value="yes" @if ($retailer->featured == 'yes') checked @endif>&nbsp;&nbsp; Yes
