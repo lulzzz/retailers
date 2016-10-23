@@ -6,18 +6,32 @@
 
   <!-- jQuery – Framework (CDN) -->
   <script src="{{ env('APP_URL') }}proxy/js/core.min.js"></script>
-
 </head>
 <body id="retailers-container">
 
   <div class="container-fluid">
-    @yield('content')
+    <div data-pjax="container">
+      @yield('content')
+
+      <script>
+        jQuery(function($) {
+          if ($.support.pjax) {
+            var pjaxOptions = {
+              timeout: 1800,
+              fragment: 'div[data-pjax="container"]',
+              scrollTo: false
+            };
+            $(document).pjax('a', 'div[data-pjax="container"]', pjaxOptions);
+          };
+        });
+      </script>  
+      <!-- jQuery – Components -->
+      @yield('js')
+    </div>
   </div>
 
-  <!-- jQuery – Framework (CDN) -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="{{ env('APP_URL') }}js/plugins/pjax.min.js"></script>
 
-  <!-- jQuery – Components -->
-  @yield('js')
 </body>
 </html>

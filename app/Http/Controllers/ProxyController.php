@@ -23,9 +23,11 @@ class ProxyController extends Controller
 {
 
   private $retailer;
+  private $shop;
 
   public function __construct(RetailerInterface $retailer) {
     $this->retailer = $retailer;
+    $this->domain   = Input::get('shop');
   }
 
   /**
@@ -36,71 +38,37 @@ class ProxyController extends Controller
 
   public function index()
   {
+
     /**
     * GeoIP via proxy forward
     */
-    $forwarded  =  Request::server('HTTP_X_FORWARDED_FOR');
-    $addresses  =  explode(',',$forwarded);
-    $ip_address =  collect($addresses)->first();
-    $locate     =  GeoIP::getLocation($ip_address);
+    $geo = $this->retailer->geoip('HTTP_X_FORWARDED_FOR');
 
-    $country    =  str_slug($locate['country']);
-    $iso        =  strtolower($locate['isoCode']);
-    $exists     =  $this->retailer->exists('country_slug', $country);
+    /**
+    * Redirect if Retailer in user Country
+    */
+    $exists = $this->retailer->exists('country_slug', str_slug($geo['country']));
 
     if ($exists) {
-     return Redirect::route('proxy_country', $country);
-   } 
+      return Redirect::route('proxy_country', str_slug($geo['country']));
+    }
 
     /**
     * Working Data
     */ 
-    $shop       =  Input::get('shop');
-    $locations  =  $this->retailer->find('domain',$shop);
-    $retailers  =  $this->retailer->pages('domain', $shop, 100);
+    $countries  =  $this->retailer->countries($this->domain);
+    $retailers  =  $this->retailer->retailers($this->domain);
 
     /**
-    * Collect Locations
-    */
-    $collection =  collect($locations);
-
-    /**
-    * Unqiue Country
-    */
-    $countries  =  $collection->unique('country_slug');
-    $countries->values()->all();
-
-    $lat = $locate['lat'];
-    $lon = $locate['lon'];
-
-    // Query User and Find Retailers
-    // 
-
-   // return $locate;
-
-
-   // return $locations;
-   // 
-    //$country  = $this->retailer->proxy($shop, 'country', $locate['country']);
-
-    //return $retailers;
-    $retailers  = $this->retailer->pages('domain', $shop, 100);
-
-    return response()
-    ->view('proxy.index', compact('retailers','exists','country','countries','cities','shop','lat','lon','iso'))
+    * Return Response
+    */ 
+    return response()->view('proxy.index', compact(
+      'geo',
+      'exists',
+      'countries',
+      'retailers'))
     ->header('Content-Type', env('PROXY_HEADER'));
-    
   }
-    //return  Redirect::route('proxy-country', $data->country);
-    //
-  public function search(Request $request)
-  {
-    $shop      =  Input::get('shop');
-    $retailers =  $this->retailer->find('domain',$shop);
-
-    return json_decode($retailers);
-  }
-
 
   /**
   * Retailers By Country
@@ -112,41 +80,54 @@ class ProxyController extends Controller
   {
 
     /**
-    * Working Data
+    * GeoIP via proxy forward
+    */
+    $geo = $this->retailer->geoip('HTTP_X_FORWARDED_FOR');
+
+    /**
+    * Compact
     */ 
-    $shop       =  Input::get('shop');
-    $locations  =  $this->retailer->find('domain',$shop);
-    $retailers  =  $this->retailer->proxy($shop, 'country_slug', $country);
+    $countries  =  $this->retailer->countries($this->domain);
+    $exists     =  $country;
 
     /**
-    * Collect Locations
+    * Get Retailers as "Collection"
     */
-    $collection =  collect($locations);
+    $collection = collect($this->retailer->retailers($this->domain));
 
     /**
-    * Unqiue Country
+    * Get Retailers where Country equals that of visitor
     */
-    $countries  =  $collection->unique('country_slug');
-    $countries->values()->all();
+    $retailers  = $collection->where('country_slug', $country);
+    $retailers->all();
+
+    /**
+    * Get Cities relevant to that Country
+    */
+    $iso  = $retailers->pluck(['country_code'])->first();
 
 
     /**
-    * Get Cities
+    * Get Cities relevant to that Country
     */
-    $collection =  collect($retailers);
-
-    /**
-    * Unqiue Country
-    */
-    $cities  =  $collection->unique('city');
+    $cities  = $collection->unique('city');
     $cities->values()->all();
 
-    $exists = $country;
-
-    return response()
-    ->view('proxy.show', compact('retailers', 'exists','country','countries','cities'))
+    /**
+    * Return Response
+    */
+    return response()->view('proxy.index', compact(
+      'geo',
+      'iso',
+      'retailers', 
+      'exists',
+      'country',
+      'countries',
+      'cities'))
     ->header('Content-Type', env('PROXY_HEADER'));
   }
+
+
 
   /**
   * Retailers By City
@@ -156,11 +137,52 @@ class ProxyController extends Controller
 
   public function city(Request $request, $country, $city)
   {
-    $shop      =  Input::get('shop');
-    $retailers =  $this->retailer->proxy($shop, 'city_slug', $city);
+    /**
+    * GeoIP via proxy forward
+    */
+    $geo = $this->retailer->geoip('HTTP_X_FORWARDED_FOR');
 
-    return response()
-    ->view('proxy.show', compact('retailers'))
+    /**
+    * Compact
+    */ 
+    $countries  =  $this->retailer->countries($this->domain);
+    $exists     =  $country;
+
+    /**
+    * Get Retailers as "Collection"
+    */
+    $collection = collect($this->retailer->retailers($this->domain));
+
+    /**
+    * Get Retailers where Country equals that of visitor
+    */
+    $retailers  = $collection->where('city_slug', $city);
+    $retailers->all();
+
+
+    /**
+    * Get Cities relevant to that Country
+    */
+    $iso  = $retailers->pluck(['city'])->first();
+
+
+    /**
+    * Get Cities relevant to that Country
+    */
+    $cities  = $collection->unique('country');
+    $cities->values()->all();
+
+    /**
+    * Return Response
+    */
+    return response()->view('proxy.index', compact(
+      'geo',
+      'iso',
+      'retailers', 
+      'exists',
+      'country',
+      'countries',
+      'cities'))
     ->header('Content-Type', env('PROXY_HEADER'));
   }
 
@@ -170,6 +192,14 @@ class ProxyController extends Controller
   * @return \Illuminate\Http\Response
   */
 
+
+  public function search(Request $request)
+  {
+    $shop      =  Input::get('shop');
+    $retailers =  $this->retailer->find('domain',$shop);
+
+    return json_decode($retailers);
+  }
 
  /**
   * Display the specified Retailer.

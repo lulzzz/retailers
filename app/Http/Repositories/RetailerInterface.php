@@ -19,7 +19,9 @@ interface RetailerInterface {
   * @return connection
   */
 
-  public function proxy($domain, $param, $value); 
+  public function geoip($header);
+  public function countries($domain);
+  public function retailers($domain); 
   public function first($resource, $slug); 
   public function find($resource, $query);
   public function pages($domain, $param, $number); 

@@ -34,6 +34,10 @@ Route::get('app/{country}', [
   'as' => 'proxy_country', 
   'uses' => 'ProxyController@country']);
 
+Route::get('app/{country}/{city}', [
+  'as' => 'proxy_city', 
+  'uses' => 'ProxyController@city']);
+
 //Route::get('/search/retailers', 'ProxyController@search');
 
 

@@ -19,6 +19,7 @@ gulp.task('js-core', require('./gulp_tasks/js-core.js')(gulp, plugins));
 gulp.task('js-modules', require('./gulp_tasks/js-modules.js')(gulp, plugins));
 gulp.task('js-views', require('./gulp_tasks/js-views.js')(gulp, plugins));
 gulp.task('js-proxy', require('./gulp_tasks/js-proxy.js')(gulp, plugins));
+gulp.task('js-blade', require('./gulp_tasks/js-blade.js')(gulp, plugins));
 
 //=====================================================//
 //## BOWER / Import Bower Components / Minify / Vendors
@@ -50,7 +51,15 @@ gulp.task('watch', function () {
 		'!resources/assets/javascript/modules/*', 
 		'!resources/assets/javascript/templates/*'], ['js-core']);
 
-	gulp.watch(['resources/assets/javascript/proxy/**/*.js'], ['js-proxy']);
+	gulp.watch([
+		'resources/assets/javascript/proxy/**/*.js',
+		'!resources/assets/javascript/proxy/blade/*.js'], ['js-proxy']);
+	
+	gulp.watch([
+		'resources/assets/javascript/proxy/blade/**/*.js',
+		'resources/assets/javascript/proxy/views/*.js',
+		], ['js-blade']);
+
 
 
 	// Watch JAVASCRIPT Files and Directories

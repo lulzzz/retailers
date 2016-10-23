@@ -42,13 +42,13 @@ return array(
 
 	'default_location' => array (
 		"ip"           => "127.0.0.0",
-		"isoCode"      => "US",
+		"isoCode"      => "NL",
 		"country"      => "United States",
 		"city"         => "New Haven",
 		"state"        => "CT",
 		"postal_code"  => "06510",
 		"lat"          => 52.1326,
-		"lon"          => -5.2913,
+		"lon"          => 5.2913,
 		"timezone"     => "America/New_York",
 		"continent"    => "NA",
 	),

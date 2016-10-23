@@ -1,11 +1,15 @@
 @import "proxy/dropdown";
 
-$component-height:  500px !default;
+$component-height:  100vh !default;
 
 
 
 * {
   outline:none !important;
+}
+
+body {
+  margin:0;
 }
 
 .map-popup {
@@ -23,6 +27,23 @@ $component-height:  500px !default;
 
 .gm-style {
 
+}
+
+.locations-overlay {
+  position: absolute;
+  top:0;
+  left:0;
+}
+
+.map-overlay {
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  height:100vh;
+  width:100%;
+  display:block;
 }
 
 
@@ -112,8 +133,13 @@ $component-height:  500px !default;
   height:  $component-height;
   max-height: $component-height;
   border:1px solid #cdcdcd;
+  background-color:rgba(255,255,255,0.8);
 
-  scrollbar-base-color: #C0C0C0;
+  h2 {
+    text-transform:uppercase;
+  }
+
+ /* scrollbar-base-color: #C0C0C0;
   scrollbar-base-color: #C0C0C0;
   scrollbar-3dlight-color: #C0C0C0;
   scrollbar-highlight-color: #C0C0C0;
@@ -121,6 +147,7 @@ $component-height:  500px !default;
   scrollbar-arrow-color: black;
   scrollbar-shadow-color: #C0C0C0;
   scrollbar-dark-shadow-color: #C0C0C0;
+  */
 
 }
 
@@ -138,7 +165,7 @@ $component-height:  500px !default;
       position: relative;
       font-size:11px;
       //text-transform:uppercase;
-      width:120px;
+      width:150px;
       height:25px;
       margin:0;
       padding:0;
@@ -165,7 +192,7 @@ $component-height:  500px !default;
     .dropdown-item {
       position: relative;
       font-size:12px;
-      padding:0 0 0 33px;
+      padding:0 0 0 50px;
       line-height:25px;
      //text-transform:uppercase;
    }
@@ -199,7 +226,7 @@ $component-height:  500px !default;
     margin: 0;
     padding:0;
     //padding-right:8px;
-    max-height:420px;
+    max-height:90vh;
     overflow-x:auto;
     white-space: nowrap;
 
@@ -311,7 +338,7 @@ $component-height:  500px !default;
 
   .storefront-feature {
    position: relative;
-   max-width: 200px;
+   max-width: 225px;
    z-index: 8888;
    box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
 
