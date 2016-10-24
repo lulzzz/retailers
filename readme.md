@@ -7,5 +7,5 @@ Shopify Application built on Laravel 5.3. Uses the embeddded app SDK.
 URL     | Endpoint
 -------- | ---
 `/shopify/signup` | Install Application
-`/app`    | Storefront Proxy
+`/app`    | Storefront Proxy 
 
