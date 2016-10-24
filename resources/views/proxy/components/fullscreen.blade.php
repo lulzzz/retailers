@@ -11,21 +11,21 @@
             @if($exists)
             {{-- If country has retailers show active selection --}}
             <button class="btn btn-secondary btn-sm dropdown-toggle b1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             <span class="flag-nation flag-icon" style="background-image: url('storage/flags/{{strtolower($geo['isoCode'])}}.svg');"></span> 
+             <span class="flag-nation flag-icon" style="background-image: url('{{ env('APP_URL') }}storage/flags/{{strtolower($geo['isoCode'])}}.svg');"></span> 
              <span class="pl-1">{{ucfirst($geo['country'])}}</span>
            </button>
            @else 
            {{-- If country has no retailers show only flag  --}}
            <button class="btn btn-secondary btn-sm dropdown-toggle b1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             <span class="flag-nation flag-icon" style="background-image: url('storage/flags/{{strtolower($geo['isoCode'])}}.svg');"></span> 
+             <span class="flag-nation flag-icon" style="background-image: url('{{ env('APP_URL') }}storage/flags/{{strtolower($geo['isoCode'])}}.svg');"></span> 
              <span class="pl-1">Country</span>
            </button>
            @endif
 
            <div class="dropdown-menu">
             @foreach ($countries as $key => $value)
-            <a class="dropdown-item location-country" href="app/{{ $value->country_slug}}?shop=nah-bro.myshopify.com" data-country-code="{{ $value->country_code}}">
-              <span class="flag-nation flag-icon" style="background-image: url('storage/flags/{{strtolower($value->country_code)}}.svg');"></span>
+            <a class="dropdown-item location-country" href="{{ env('APP_URL') }}app/{{ $value->country_slug}}?shop=nah-bro.myshopify.com" data-country-code="{{ $value->country_code}}">
+              <span class="flag-nation flag-icon" style="background-image: url('{{ env('APP_URL') }}storage/flags/{{strtolower($value->country_code)}}.svg');"></span>
               {{ $value->country}}
             </a>
             @endforeach
@@ -38,7 +38,7 @@
           <div class="dropdown-menu">
             @if(Route::current()->getName() == 'proxy_country')
             @foreach ($cities as $key => $value)
-            <a class="dropdown-item location-city" href="app/{{ $value->city_slug}}?shop=nah-bro.myshopify.com" >{{ $value->city}}</a>
+            <a class="dropdown-item location-city" href="{{ env('APP_URL') }}app/{{ $value->city_slug}}?shop=nah-bro.myshopify.com" >{{ $value->city}}</a>
             @endforeach
             @endif
           </div>
@@ -49,7 +49,7 @@
       <ul class="list">
         @foreach ($retailers as $key => $value)
         <li>  
-          <button type="button" class="list-btn location" data-location="{{ $value->latitude}},{{ $value->longitude}}" data-logo="{{ Storage::url($value->logo_lg) }}" data-storefront="{{ Storage::url($value->storefront_lg) }}" data-iso="storage/flags/{{strtolower($value->country_code)}}.svg">
+          <button type="button" class="list-btn location" data-location="{{ $value->latitude}},{{ $value->longitude}}" data-logo="{{ env('APP_URL') }}{{ Storage::url($value->logo_lg) }}" data-storefront="{{ env('APP_URL') }}{{ Storage::url($value->storefront_lg) }}" data-iso="{{ env('APP_URL') }}storage/flags/{{strtolower($value->country_code)}}.svg">
             <div class="row pt-0">
               <div class="col-xs-8">
                 <div class="name">{{$value->name}}</div>
@@ -58,7 +58,7 @@
               </div>
               <div class="col-xs-4">
                 <div class="logo">
-                  <img src="{{ Storage::url($value->logo_lg) }}" class="img-fluid">
+                  <img src="{{ env('APP_URL') }}{{ Storage::url($value->logo_lg) }}" class="img-fluid">
                 </div>
               </div>
             </div>
