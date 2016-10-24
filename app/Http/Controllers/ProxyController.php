@@ -50,7 +50,7 @@ class ProxyController extends Controller
     $exists = $this->retailer->exists('country_slug', str_slug($geo['country']));
 
     if ($exists) {
-      return Redirect::route('proxy_country', str_slug($geo['country']));
+      return Redirect::route('proxy_country', str_slug($geo['country']))->header('Content-Type', env('PROXY_HEADER'));;
     }
 
     /**

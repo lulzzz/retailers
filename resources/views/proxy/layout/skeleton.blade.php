@@ -2,10 +2,10 @@
 <head>
 
   <!-- Stylesheet :: Retailers -->
-  <link rel="stylesheet" type="text/css" href="{{ env('APP_URL') }}proxy/css/proxy.min.css">
+  <link rel="stylesheet" type="text/css" href="/proxy/css/proxy.min.css">
 
   <!-- jQuery – Framework (CDN) -->
-  <script src="{{ env('APP_URL') }}proxy/js/core.min.js"></script>
+  <script src="/proxy/js/core.min.js"></script>
 </head>
 <body id="retailers-container">
 
@@ -31,7 +31,7 @@
   </div>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="{{ env('APP_URL') }}js/plugins/pjax.min.js"></script>
+  <script src="/js/plugins/pjax.min.js"></script>
 
 </body>
 </html>

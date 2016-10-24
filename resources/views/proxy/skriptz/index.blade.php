@@ -1,9 +1,9 @@
 <script>
 loadjs([
  'https://maps.google.com/maps/api/js?key=AIzaSyCTlnXnQV55QOGl22nw627SDxo6yXynJYs',
- '{{ env('APP_URL') }}js/plugins/list.min.js',
- '{{ env('APP_URL') }}js/plugins/dropdown.min.js',
- '{{ env('APP_URL') }}js/plugins/map_styles.min.js'],
+ '/js/plugins/list.min.js',
+ '/js/plugins/dropdown.min.js',
+ '/js/plugins/map_styles.min.js'],
  { success: function() { 
    skriptz.init();
  }
@@ -28,7 +28,7 @@ skriptz.maps = function () {
     
     var $marker_url2 = ( is_internetExplorer11 ) ? '//cdn.shopify.com/s/files/1/0638/4637/t/2/assets/favicon-32x32.png?8466146662870439663' : '//cdn.shopify.com/s/files/1/0638/4637/t/2/assets/favicon-32x32.png?8466146662870439663';
     
-    var locations = [@foreach($retailers as $key => $value)['<a href="{{ env('APP_URL') }}{{$value->country}}/{{$value->city}}/{{$value->slug}}"><img src="{{ env('APP_URL') }}{{ Storage::url($value->storefront_lg) }}"></a>',{{$value->latitude}},{{$value->longitude}},{{$value->id}},$marker_url2],@endforeach];
+    var locations = [@foreach($retailers as $key => $value)['<a href="/{{$value->country}}/{{$value->city}}/{{$value->slug}}"><img src="/{{ Storage::url($value->storefront_lg) }}"></a>',{{$value->latitude}},{{$value->longitude}},{{$value->id}},$marker_url2],@endforeach];
     var marker, i, loc;
     var markers = new Array();
     var infowindow = new google.maps.InfoWindow();

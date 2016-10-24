@@ -1,91 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+    <title>Laravel</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #111;
-                font-family: 'Raleway';
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+    <!-- Stylesheet :: Retailers -->
+    <link rel="stylesheet" type="text/css" href="/proxy/css/proxy.min.css">
 
-            .full-height {
-                height: 100vh;
-            }
+    <!-- jQuery – Framework (CDN) -->
+    <script src="/proxy/js/core.min.js"></script>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+    <!-- Styles -->
+    <style>
+        html, body {
+            background-color: #fff;
+            color: #111;
+            font-family: 'Raleway';
+            font-weight: 100;
+            height: 100vh;
+            margin: 0;
+        }
 
-            .position-ref {
-                position: relative;
-            }
+        .full-height {
+            height: 100vh;
+        }
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+        .flex-center {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
 
-            .content {
-                text-align: center;
-            }
+        .position-ref {
+            position: relative;
+        }
 
-            .title {
-                font-size: 94px;
-            }
+        .top-right {
+            position: absolute;
+            right: 10px;
+            top: 18px;
+        }
 
-            .links > a {
-                color: #111;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+        .content {
+            text-align: center;
+            width:500px;
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    <a href="{{ url('/login') }}">Login</a>
-                    <a href="{{ url('/register') }}">Register</a>
-                </div>
-            @endif
+        }
 
-            <div class="content">
-                <div class="title m-b-md">
-                    <img src="images/logo.png" width="200">
-                </div>
+        .title {
+            font-size: 94px;
+        }
 
-                <div class="links">
-                   <h1>RETAILERS</h1>
-                </div>
-                <p>Retailers is web application that acts as alternative sales channel to consumers. The application will intrinsically increase the revenue of company wholesale and their retialers retail  contributing to offline conversion at wholesale to retail level. </p>
+        .links > a {
+            color: #111;
+            padding: 0 25px;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: .2rem;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
 
-       <p> Retailers indexes retailer locations selling your products. By geographically listing retail locations you accomodate to consumers seeking a brick and mortal shopping experience.
-                Retailers is a web application that increases wholesale revenue. The platform allows fashion brands to geographically list their retailers and provide a brick 
-            </div>
+        .m-b-md {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex-center position-ref full-height">
+        @if (Route::has('login'))
+        <div class="top-right links">
+            <a href="{{ url('/login') }}">Login</a>
+            <a href="{{ url('/register') }}">Register</a>
         </div>
-    </body>
+        @endif
+
+        <div class="content">
+            <div class="title m-b-md">
+                <img src="images/logo.png" width="200">
+            </div>
+
+            <div class="links">
+               <h1>RETAILERS</h1>
+           </div>
+
+           <div class="row">
+               <div class="col-sm-6">
+                   <h3><a href="#">Install Application</a></h3>
+               </div>
+               <div class="col-sm-6">
+                   <h3><a href="#">Documentation</a></h3>
+               </div> 
+           </div>
+       </div>
+
+   </div>
+</div>
+</body>
 </html>
