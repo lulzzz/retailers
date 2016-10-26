@@ -43,8 +43,8 @@ return array(
 	'default_location' => array (
 		"ip"           => "127.0.0.0",
 		"isoCode"      => "NL",
-		"country"      => "United States",
-		"city"         => "New Haven",
+		"country"      => "Netherlands",
+		"city"         => "Zaandam",
 		"state"        => "CT",
 		"postal_code"  => "06510",
 		"lat"          => 52.1326,

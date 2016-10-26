@@ -1,29 +1,20 @@
-<html>
-<head>
 
-  <!-- Stylesheet :: Retailers -->
-  <link rel="stylesheet" type="text/css" href="{{ env('APP_URL') }}proxy/css/proxy.min.css">
 
-  <!-- jQuery – Framework (CDN) -->
-  <script src="{{ env('APP_URL') }}proxy/js/core.min.js"></script>
-</head>
-<body id="retailers-container">
+<!-- Stylesheet :: Retailers -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyCTlnXnQV55QOGl22nw627SDxo6yXynJYs"></script>
 
-  <div class="container-fluid">
-    <div data-pjax="container">
-      @yield('content')
+<!-- jQuery – Framework (CDN) -->
+<script src="{{ env('APP_URL') }}proxy/js/core.min.js"></script>
 
-    </div>
-  </div>
-
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="{{ env('APP_URL') }}js/plugins/pjax.min.js"></script>
+<div data-pjax="container">
+  @yield('content')
 
   <script>
     jQuery(function($) {
       if ($.support.pjax) {
         var pjaxOptions = {
-          timeout: 1800,
+          timeout: 1200,
           fragment: 'div[data-pjax="container"]',
           scrollTo: false
         };
@@ -31,7 +22,8 @@
       };
     });
   </script>  
-  <!-- jQuery – Components -->
+
   @yield('js')
-</body>
-</html>
+</div>
+<link rel="stylesheet" type="text/css" href="{{ env('APP_URL') }}proxy/css/proxy.min.css">
+

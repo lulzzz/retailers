@@ -14,7 +14,8 @@
         "cviebrock/eloquent-sluggable": "^4.1",
         "torann/geoip": "^0.2.3",
         "geoip2/geoip2": "~2.1",
-        "nickywoolf/carter": "^2.0"
+        "nickywoolf/carter": "^2.0",
+        "alexpechkarev/google-maps": "1.0.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

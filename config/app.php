@@ -189,6 +189,12 @@ return [
         Torann\GeoIP\GeoIPServiceProvider::class,
 
 
+        /*
+         * Google Maps Client...
+         */
+        GoogleMaps\ServiceProvider\GoogleMapsServiceProvider::class,
+
+
 
         /*
          * Application Service Providers...
@@ -253,6 +259,8 @@ return [
     'Image'     => Intervention\Image\Facades\Image::class,
 
     'GeoIP' => Torann\GeoIP\GeoIPFacade::class,
+
+    'GoogleMaps' => GoogleMaps\Facade\GoogleMapsFacade::class,
 
     ],
 

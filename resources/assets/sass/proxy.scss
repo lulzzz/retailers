@@ -1,6 +1,7 @@
+@import "proxy/layout";
 @import "proxy/dropdown";
+@import "proxy/search";
 
-$component-height:  100vh !default;
 
 
 
@@ -218,15 +219,17 @@ body {
 .retailers-menu--map {
   position: relative;
   width: 100%;
+  max-height: 80%;
   overflow-x: auto;
 
 
 
   .list {
+    position: relative;
     margin: 0;
     padding:0;
     //padding-right:8px;
-    max-height:90vh;
+    max-height:80%;
     overflow-x:auto;
     white-space: nowrap;
 
@@ -338,7 +341,7 @@ body {
 
   .storefront-feature {
    position: relative;
-   max-width: 225px;
+   width: 100%;
    z-index: 8888;
    box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
 

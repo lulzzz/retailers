@@ -5,6 +5,7 @@ namespace App\Http\Repositories;
 use App\Http\Repositories\RetailerInterface;
 
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Collection;
 
 use App\Retailer;
 use App\Location;
@@ -71,6 +72,44 @@ class RetailerRepository implements RetailerInterface {
     ->get();
 
     return $data;
+  }
+
+  public function matrix($domain, $country) {
+
+    $data = DB::table('users')
+    ->join('brands',      'users.id',     '=', 'brands.user_id')
+    ->join('retailers',   'brands.id',    '=', 'retailers.brand_id')
+    ->join('locations',   'retailers.id', '=', 'locations.retailer_id')
+    ->select('locations.*')
+    ->where('domain', $domain)
+    ->get();
+
+    $collection = collect($data);
+    $locate = $collection->unique('city');
+    $locate->values()->toArray();
+
+
+    $matrix = \GoogleMaps::load('distancematrix')
+    ->setParam(['origins' => $city])      
+    ->setParam(['destinations' => $locate])   
+    ->get('rows.elements.distance');
+
+    return $matrix;
+  }
+
+
+  public function combine($collections) {
+    $merged = new Collection();
+    $max = count($collections[key($collections)]);
+    for($i = 0; $i < $max; $i++)
+    {
+      $item = new \stdClass();
+      foreach($collections as $key => $collection) {
+        $item->{$key} = $collection[$i];
+      }
+      $merged->add($item);
+    }
+    return $merged;
   }
 
 

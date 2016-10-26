@@ -1,2 +1,5 @@
 // LOADJS
-//=include ../vendors/loadjs.min.js
+//=include ../modules/load.js
+//=include ../modules/list.js
+//=include ../modules/dropdown.js
+//=include ../modules/pjax.js 

@@ -24,17 +24,17 @@ Route::get('/', function () {
 |--------------------------------------------------------------------------
 |
 */
-Route::get('app', 'ProxyController@index');
+Route::get('app/', 'ProxyController@index');
 
 // Merchant Page
 //Route::get('/show/{country}', 'ProxyController@show');
 
 // Geo-graphical Listings
-Route::get('app/{country}', [
+Route::get('app/{country}/', [
   'as' => 'proxy_country', 
   'uses' => 'ProxyController@country']);
 
-Route::get('app/{country}/{city}', [
+Route::get('app/{country}/{city}/', [
   'as' => 'proxy_city', 
   'uses' => 'ProxyController@city']);
 

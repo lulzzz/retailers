@@ -1,0 +1,88 @@
+.retailers-search {
+  height: 20%;
+  border:1px solid #cdcdcd;
+  background-color:rgba(255,255,255,0.8);
+
+  input {
+    font-size:$font-size-sm;
+    padding:7px;
+    line-height:25px;
+    width: 100%;
+    border-left:0;
+    border-right:0;
+    border-top:0;
+    border-bottom:1px solid #cdcdcd;
+  }
+
+  h2 {
+    text-transform:uppercase;
+  }
+
+ /* scrollbar-base-color: #C0C0C0;
+  scrollbar-base-color: #C0C0C0;
+  scrollbar-3dlight-color: #C0C0C0;
+  scrollbar-highlight-color: #C0C0C0;
+  scrollbar-track-color: #EBEBEB;
+  scrollbar-arrow-color: black;
+  scrollbar-shadow-color: #C0C0C0;
+  scrollbar-dark-shadow-color: #C0C0C0;
+  */
+
+}
+
+.filter-locations {
+  padding:0;
+  width:100%;
+  border-bottom:1px solid #cdcdcd;
+  height: 26px;
+
+
+  .btn-group {
+    height: 19px;
+    vertical-align:top;
+    .btn {
+      position: relative;
+      font-size:11px;
+      //text-transform:uppercase;
+      width:150px;
+      height:25px;
+      margin:0;
+      padding:0;
+
+    }
+    .b1 {
+      border:none;
+      border-right:1px solid #cdcdcd;
+    }
+    .b2 {
+      margin-left:-4px;
+      border-top:none;
+      border-bottom:none;
+      border-left:none;
+      border-right:1px solid #cdcdcd;
+    }
+
+    .dropdown-menu {
+      padding:0;
+      width:241px;
+      margin-top:5px;
+      background-color:rgba(255, 255, 255, 0.95);
+    }
+    .dropdown-item {
+      position: relative;
+      font-size:12px;
+      padding:0 0 0 50px;
+      line-height:25px;
+     //text-transform:uppercase;
+   }
+
+   .flag-nation {
+    position: absolute;
+    top:5px;
+    left:3px;
+    bottom:0;
+    height: 15px;
+    width:25px;
+  }
+}
+}

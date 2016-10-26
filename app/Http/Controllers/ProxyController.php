@@ -50,7 +50,7 @@ class ProxyController extends Controller
     $exists = $this->retailer->exists('country_slug', str_slug($geo['country']));
 
     if ($exists) {
-      return Redirect::route('proxy_country', str_slug($geo['country']))->header('Content-Type', env('PROXY_HEADER'));
+      return Redirect::route('proxy_country', str_slug($geo['country']));
     }
 
     /**
@@ -98,14 +98,65 @@ class ProxyController extends Controller
     /**
     * Get Retailers where Country equals that of visitor
     */
-    $retailers  = $collection->where('country_slug', $country);
-    $retailers->all();
+    $retailerz  = $collection->where('country_slug', $country);
+    $retailerz->toArray();
 
     /**
     * Get Cities relevant to that Country
     */
-    $iso  = $retailers->pluck(['country_code'])->first();
+    $iso = $retailerz->pluck('country_code');
+    $address_plucked  = $retailerz->pluck('street_address');
 
+    $matrix = \GoogleMaps::load('distancematrix')
+    ->setParam(['origins' => $geo['city']])      
+    ->setParam(['destinations' => $address_plucked->toArray()])   
+    ->get('rows.elements.distance.text');
+
+    $collection = collect($matrix);
+    $distances = $collection->flatten();
+    $distances->toArray();
+
+    $distance = [];
+
+    foreach ($distances as $key => $value) {
+      $distance[] = '{"distance" : "'+$value+'"}';
+    }
+
+    $combined = collect($distance);
+    $combined->flatten();
+    $combination = array_combine($combined->toArray(), $retailerz->toArray());
+
+    $stores = [];
+
+    foreach ($combination as $key => $value) {
+     $stores[] = [
+     'id' => $value->id,
+     'retailer_id' => $value->retailer_id,
+     'distance' => $key,
+     'name' => $value->name,
+     'slug' => $value->slug,
+     'street_number' => $value->street_number,
+     'street_address' => $value->street_address,
+     'city' => $value->city,
+     'city_slug' => $value->city_slug,
+     'state' => $value->state,
+     'state_slug' => $value->state_slug,
+     'country' => $value->country,
+     'country_slug' => $value->country_slug,
+     'country_code' => $value->country_code,
+     'postcode' => $value->postcode,
+     'storefront_lg' => $value->storefront_lg,
+     'logo_lg' => $value->logo_lg,
+     'latitude' => $value->latitude,
+     'longitude' => $value->longitude
+     ];
+   } 
+
+   //return  dd($retailers);
+   
+   $sorted = collect($stores);
+   $retailers = $sorted->sortBy('distance');
+   $retailers->values()->all();
 
     /**
     * Get Cities relevant to that Country
@@ -118,6 +169,7 @@ class ProxyController extends Controller
     */
     return response()->view('proxy.index', compact(
       'geo',
+      'flat',
       'iso',
       'retailers', 
       'exists',
@@ -127,6 +179,20 @@ class ProxyController extends Controller
     ->header('Content-Type', env('PROXY_HEADER'));
   }
 
+
+  public function combine($collections) {
+    $merged = new Collection();
+    $max = count($collections[key($collections)]);
+    for($i = 0; $i < $max; $i++)
+    {
+      $item = new \stdClass();
+      foreach($collections as $key => $collection) {
+        $item->{$key} = $collection[$i];
+      }
+      $merged->add($item);
+    }
+    return $merged;
+  }
 
 
   /**
