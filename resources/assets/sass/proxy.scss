@@ -261,8 +261,17 @@ body {
       cursor: pointer;
     }
 
-    img {
-      max-width:50px;
+    .logo{
+      display:flex;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+
+      img {
+        max-width:50px;
+        height: auto;
+        width:100%;
+      }
     }
   }
 
@@ -286,21 +295,6 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background-color: rgba(0, 0, 0, 0.3);
-}
-
-#menu a.loc_link {
-  background: #0f89cf;
-  color: #fff;
-  margin-right: 10px;
-  display: inline-block;
-  margin-bottom:10px;
-  padding: 5px;
-  border-radius: 3px;
-  text-decoration: none;
-}
-#menu span#tool_tip {
-  display: inline-block;
-  margin-top: 10px;
 }
 
 

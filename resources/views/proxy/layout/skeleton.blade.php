@@ -1,13 +1,15 @@
 
 
 <!-- Stylesheet :: Retailers -->
+<link rel="stylesheet" type="text/css" href="{{ env('APP_URL') }}proxy/css/proxy.min.css">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyCTlnXnQV55QOGl22nw627SDxo6yXynJYs"></script>
-
 <!-- jQuery – Framework (CDN) -->
 <script src="{{ env('APP_URL') }}proxy/js/core.min.js"></script>
 
-<div data-pjax="container">
+<div class="container-fluid" data-pjax="container">
+
   @yield('content')
 
   <script>
@@ -25,5 +27,3 @@
 
   @yield('js')
 </div>
-<link rel="stylesheet" type="text/css" href="{{ env('APP_URL') }}proxy/css/proxy.min.css">
-

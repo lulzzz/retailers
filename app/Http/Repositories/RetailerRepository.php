@@ -38,9 +38,33 @@ class RetailerRepository implements RetailerInterface {
 
 
   /**
-  * Locations
+  * Exists 
   *
-  * Get Retailer Locations for Specific Shopify Store
+  * Check if Retailers "Exist" in Stores Database
+  * 
+  */
+  public function exists($resource, $query) {
+
+    $data = DB::table('users')
+    ->join('brands',      'users.id',     '=', 'brands.user_id')
+    ->join('merchants',   'brands.id',    '=', 'merchants.brand_id')
+    ->join('retailers',   'brands.id',    '=', 'retailers.brand_id')
+    ->join('locations',   'retailers.id', '=', 'locations.retailer_id')
+    ->select(
+      'users.domain', 
+      'retailers.*', 
+      'locations.*')
+    ->where($resource, $query)
+    ->exists();
+
+    return $data;
+  }
+
+
+  /**
+  * Countries
+  *
+  * Get Retailer Countries of Specific Shopify Store
   * 
   */
   public function countries($domain) {
@@ -60,6 +84,13 @@ class RetailerRepository implements RetailerInterface {
     return $locate;
   }
 
+
+  /**
+  * Retailers
+  *
+  * Get Retailers of Specific Shopify Store
+  * 
+  */
   public function retailers($domain) {
 
     $data = DB::table('users')
@@ -74,113 +105,33 @@ class RetailerRepository implements RetailerInterface {
     return $data;
   }
 
-  public function matrix($domain, $country) {
 
-    $data = DB::table('users')
-    ->join('brands',      'users.id',     '=', 'brands.user_id')
-    ->join('retailers',   'brands.id',    '=', 'retailers.brand_id')
-    ->join('locations',   'retailers.id', '=', 'locations.retailer_id')
-    ->select('locations.*')
-    ->where('domain', $domain)
-    ->get();
-
-    $collection = collect($data);
-    $locate = $collection->unique('city');
-    $locate->values()->toArray();
-
+  /**
+  * Distance
+  *
+  * Get Distance Matrix from Google Maps API
+  * 
+  */
+  public function matrix($origin, $destinations, $retailers) {
 
     $matrix = \GoogleMaps::load('distancematrix')
-    ->setParam(['origins' => $city])      
-    ->setParam(['destinations' => $locate])   
-    ->get('rows.elements.distance');
+    ->setParam(['origins' => $origin])      
+    ->setParam(['destinations' => $destinations])
+    ->get('rows.elements.distance.text');
 
-    return $matrix;
-  }
+    $collection = collect($matrix);
+    $distances = $collection->flatten();
+    $distances->toArray();
 
+    $distance = [];
 
-  public function combine($collections) {
-    $merged = new Collection();
-    $max = count($collections[key($collections)]);
-    for($i = 0; $i < $max; $i++)
-    {
-      $item = new \stdClass();
-      foreach($collections as $key => $collection) {
-        $item->{$key} = $collection[$i];
-      }
-      $merged->add($item);
+    foreach ($distances as $key => $value) {
+      $distance[] = '{"distance" : "'+$value+'"}';
     }
-    return $merged;
-  }
 
+    $combination = array_combine($distances->toArray(), $retailers->toArray());
 
-  public function first($resource, $slug) {
-
-    $data = DB::table('users')
-    ->join('brands',      'users.id',     '=', 'brands.user_id')
-    ->join('merchants',   'brands.id',    '=', 'merchants.brand_id')
-    ->join('retailers',   'brands.id',    '=', 'retailers.brand_id')
-    ->join('locations',   'retailers.id', '=', 'locations.retailer_id')
-    ->select(
-      'users.name',
-      'users.domain',       
-      'retailers.*', 
-      'locations.*')
-    ->where('slug', $slug)
-    ->first();
-
-    return $data;
-  }
-
-  public function find($resource, $query) {
-
-    $data = DB::table('users')
-    ->join('brands',      'users.id',     '=', 'brands.user_id')
-    ->join('merchants',   'brands.id',    '=', 'merchants.brand_id')
-    ->join('retailers',   'brands.id',    '=', 'retailers.brand_id')
-    ->join('locations',   'retailers.id', '=', 'locations.retailer_id')
-    ->select(
-      'users.domain', 
-      'retailers.*', 
-      'locations.*')
-    ->where($resource, $query)
-    ->get();
-
-    return $data;
-  }
-
-
-  public function exists($resource, $query) {
-
-    $data = DB::table('users')
-    ->join('brands',      'users.id',     '=', 'brands.user_id')
-    ->join('merchants',   'brands.id',    '=', 'merchants.brand_id')
-    ->join('retailers',   'brands.id',    '=', 'retailers.brand_id')
-    ->join('locations',   'retailers.id', '=', 'locations.retailer_id')
-    ->select(
-      'users.domain', 
-      'retailers.*', 
-      'locations.*')
-    ->where($resource, $query)
-    ->exists();
-
-    return $data;
-  }
-
-  public function pages($resource, $query, $number) {
-
-    $data = DB::table('users')
-    ->join('brands',      'users.id',     '=', 'brands.user_id')
-    ->join('merchants',   'brands.id',    '=', 'merchants.brand_id')
-    ->join('retailers',   'brands.id',    '=', 'retailers.brand_id')
-    ->join('locations',   'retailers.id', '=', 'locations.retailer_id')
-    ->select(
-      'users.domain', 
-      'retailers.*', 
-      'locations.*')
-    ->where($resource, $query)
-    ->paginate($number);
-
-    return $data;
+    return $combination;
   }
 
 }

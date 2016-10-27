@@ -79,94 +79,74 @@ class ProxyController extends Controller
   public function country(Request $request, $country)
   {
 
-    /**
-    * GeoIP via proxy forward
-    */
+    // GeoIP via proxy forward
+    // 
     $geo = $this->retailer->geoip('HTTP_X_FORWARDED_FOR');
 
-    /**
-    * Compact
-    */ 
-    $countries  =  $this->retailer->countries($this->domain);
-    $exists     =  $country;
-
-    /**
-    * Get Retailers as "Collection"
-    */
+    // Get Retailers WHERE "Country" is equal to the "Request"
+    // 
     $collection = collect($this->retailer->retailers($this->domain));
-
-    /**
-    * Get Retailers where Country equals that of visitor
-    */
     $retailerz  = $collection->where('country_slug', $country);
-    $retailerz->toArray();
+    $retailerz->all();
 
-    /**
-    * Get Cities relevant to that Country
-    */
-    $iso = $retailerz->pluck('country_code');
-    $address_plucked  = $retailerz->pluck('street_address');
+    // Calculate Distances from users GeoIP Location 
+    // 
+    $latlng = [];
 
-    $matrix = \GoogleMaps::load('distancematrix')
-    ->setParam(['origins' => $geo['city']])      
-    ->setParam(['destinations' => $address_plucked->toArray()])   
-    ->get('rows.elements.distance.text');
-
-    $collection = collect($matrix);
-    $distances = $collection->flatten();
-    $distances->toArray();
-
-    $distance = [];
-
-    foreach ($distances as $key => $value) {
-      $distance[] = '{"distance" : "'+$value+'"}';
+    foreach ($retailerz as $key => $value) {
+      $latlng[] = "$value->latitude,$value->longitude";
     }
 
-    $combined = collect($distance);
-    $combined->flatten();
-    $combination = array_combine($combined->toArray(), $retailerz->toArray());
+    $str = implode(',',$latlng);
+    $res_str = array_chunk(explode(",",$str),2);
 
+    foreach($res_str as &$value){
+      $value  = implode(",",$value);
+    }
+
+    $distance = implode("|",$res_str);
+    $matrix = $this->retailer->matrix($geo['city'], $distance, $retailerz);
+
+
+    // Create New Array() of Retailers
+    // 
     $stores = [];
 
-    foreach ($combination as $key => $value) {
-     $stores[] = [
-     'id' => $value->id,
-     'retailer_id' => $value->retailer_id,
-     'distance' => $key,
-     'name' => $value->name,
-     'slug' => $value->slug,
-     'street_number' => $value->street_number,
-     'street_address' => $value->street_address,
-     'city' => $value->city,
-     'city_slug' => $value->city_slug,
-     'state' => $value->state,
-     'state_slug' => $value->state_slug,
-     'country' => $value->country,
-     'country_slug' => $value->country_slug,
-     'country_code' => $value->country_code,
-     'postcode' => $value->postcode,
-     'storefront_lg' => $value->storefront_lg,
-     'logo_lg' => $value->logo_lg,
-     'latitude' => $value->latitude,
-     'longitude' => $value->longitude
-     ];
-   } 
+    foreach ($matrix as $key => $value) {
+      $stores[] = [
+      'id' => $value->id,
+      'retailer_id' => $value->retailer_id,
+      'distance' => $key,
+      'name' => $value->name,
+      'slug' => $value->slug,
+      'street_number' => $value->street_number,
+      'street_address' => $value->street_address,
+      'city' => $value->city,
+      'city_slug' => $value->city_slug,
+      'state' => $value->state,
+      'state_slug' => $value->state_slug,
+      'country' => $value->country,
+      'country_slug' => $value->country_slug,
+      'country_code' => $value->country_code,
+      'postcode' => $value->postcode,
+      'storefront_lg' => $value->storefront_lg,
+      'logo_lg' => $value->logo_lg,
+      'latitude' => $value->latitude,
+      'longitude' => $value->longitude ];
+    } 
 
-   //return  dd($retailers);
-   
-   $sorted = collect($stores);
-   $retailers = $sorted->sortBy('distance');
-   $retailers->values()->all();
+    $sorted = collect($stores);
+    $retailers = $sorted->sortBy('distance');
+    $retailers->values()->all();
 
-    /**
-    * Get Cities relevant to that Country
-    */
-    $cities  = $collection->unique('city');
-    $cities->values()->all();
+    // Compact Variables
+    // 
+    $countries  =  $this->retailer->countries($this->domain);
+    $iso  = $retailers->pluck(['city'])->first();
+    $exists     =  $country;
 
-    /**
-    * Return Response
-    */
+    // Return Response
+    // 
     return response()->view('proxy.index', compact(
       'geo',
       'flat',
