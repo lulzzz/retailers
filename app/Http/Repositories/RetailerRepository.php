@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Repositories;
 
@@ -21,10 +21,10 @@ class RetailerRepository implements RetailerInterface {
 
 
   /**
-  * GeoIP 
+  * GeoIP
   *
   * Get Visitors Geographical Location
-  * 
+  *
   */
   public function geoip($header) {
 
@@ -38,10 +38,10 @@ class RetailerRepository implements RetailerInterface {
 
 
   /**
-  * Exists 
+  * Exists
   *
   * Check if Retailers "Exist" in Stores Database
-  * 
+  *
   */
   public function exists($resource, $query) {
 
@@ -51,8 +51,8 @@ class RetailerRepository implements RetailerInterface {
     ->join('retailers',   'brands.id',    '=', 'retailers.brand_id')
     ->join('locations',   'retailers.id', '=', 'locations.retailer_id')
     ->select(
-      'users.domain', 
-      'retailers.*', 
+      'users.domain',
+      'retailers.*',
       'locations.*')
     ->where($resource, $query)
     ->exists();
@@ -65,7 +65,7 @@ class RetailerRepository implements RetailerInterface {
   * Countries
   *
   * Get Retailer Countries of Specific Shopify Store
-  * 
+  *
   */
   public function countries($domain) {
 
@@ -89,7 +89,7 @@ class RetailerRepository implements RetailerInterface {
   * Retailers
   *
   * Get Retailers of Specific Shopify Store
-  * 
+  *
   */
   public function retailers($domain) {
 
@@ -106,32 +106,38 @@ class RetailerRepository implements RetailerInterface {
   }
 
 
-  /**
-  * Distance
-  *
-  * Get Distance Matrix from Google Maps API
-  * 
-  */
-  public function matrix($origin, $destinations, $retailers) {
+/**
+* Distance
+*
+* Get Distance Matrix from Google Maps API
+*
+*/
 
-    $matrix = \GoogleMaps::load('distancematrix')
-    ->setParam(['origins' => $origin])      
-    ->setParam(['destinations' => $destinations])
-    ->get('rows.elements.distance.text');
+static function distance(array $origin, array $destination, $unit = "metric")
+{
+  // dd($origin, $destination);
+  $theta = $origin[1] - $destination[1];
+  $dist = sin(deg2rad($origin[0])) * sin(deg2rad($destination[0])) + cos(deg2rad($origin[0])) * cos(deg2rad($destination[0])) * cos(deg2rad($theta));
+  $dist = acos($dist);
+  $dist = rad2deg($dist);
+  $miles = $dist * 60 * 1.1515;
+  $unit = strtolower($unit);
 
-    $collection = collect($matrix);
-    $distances = $collection->flatten();
-    $distances->toArray();
+  if ($unit == "metric") {
+    return $miles * 1.609344;
+  } elseif ($unit == "imperial") {
+    return $miles;
+  } else {
+    throw new \ArgumentError("Unknown unit system given $unit");
+  }
+}
 
-    $distance = [];
-
-    foreach ($distances as $key => $value) {
-      $distance[] = '{"distance" : "'+$value+'"}';
-    }
-
-    $combination = array_combine($distances->toArray(), $retailers->toArray());
-
-    return $combination;
+  public function matrix($origin, $retailers) {
+    return $retailers->map(function ($retailer) use ($origin) {
+      $retailer = (array) $retailer;
+      $retailer["distance"] = round(self::distance([(float) $retailer["latitude"], (float) $retailer["longitude"]], $origin), 1) . " km";
+      return $retailer;
+    });
   }
 
 }

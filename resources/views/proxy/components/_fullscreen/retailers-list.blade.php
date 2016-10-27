@@ -10,8 +10,10 @@
           <span class="country"> {{ $value['country']}}</span> {{$value['postcode']}}
         </div>
         <div class="pull-left pl-3">
-        <br>
+          <br>
+          @if(Route::current()->getName() == 'proxy_country')
           <span class="distance pl-3">{{$value['distance']}} Away</span><br>
+          @endif
         </div>
         <div class="pull-right">
           <div class="logo">

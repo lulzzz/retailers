@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Collection;
+
 
 use App\Http\Repositories\RetailerInterface;
 
@@ -16,7 +18,7 @@ use App\Location;
 
 use GeoIP;
 
-use View; 
+use View;
 use DB;
 
 class ProxyController extends Controller
@@ -49,26 +51,35 @@ class ProxyController extends Controller
     */
     $exists = $this->retailer->exists('country_slug', str_slug($geo['country']));
 
+    //return dd($exists);
+
     if ($exists) {
       return Redirect::route('proxy_country', str_slug($geo['country']));
-    }
+    } else {
 
-    /**
-    * Working Data
-    */ 
-    $countries  =  $this->retailer->countries($this->domain);
-    $retailers  =  $this->retailer->retailers($this->domain);
+    // Variable Compacts
+    //
+      $countries  =  $this->retailer->countries($this->domain);
+      $retailerz  =  $this->retailer->retailers($this->domain);
+      $retailerz->toArray();
+
+      $retailers = json_decode($retailerz, true);
+
+    //return $retailers;
 
     /**
     * Return Response
-    */ 
+    */
     return response()->view('proxy.index', compact(
       'geo',
       'exists',
       'countries',
       'retailers'))
     ->header('Content-Type', env('PROXY_HEADER'));
+
   }
+
+}
 
   /**
   * Retailers By Country
@@ -80,78 +91,33 @@ class ProxyController extends Controller
   {
 
     // GeoIP via proxy forward
-    // 
+    //
     $geo = $this->retailer->geoip('HTTP_X_FORWARDED_FOR');
 
     // Get Retailers WHERE "Country" is equal to the "Request"
-    // 
+    //
     $collection = collect($this->retailer->retailers($this->domain));
-    $retailerz  = $collection->where('country_slug', $country);
-    $retailerz->all();
-
-    // Calculate Distances from users GeoIP Location 
-    // 
-    $latlng = [];
-
-    foreach ($retailerz as $key => $value) {
-      $latlng[] = "$value->latitude,$value->longitude";
-    }
-
-    $str = implode(',',$latlng);
-    $res_str = array_chunk(explode(",",$str),2);
-
-    foreach($res_str as &$value){
-      $value  = implode(",",$value);
-    }
-
-    $distance = implode("|",$res_str);
-    $matrix = $this->retailer->matrix($geo['city'], $distance, $retailerz);
+    $retailers  = $collection->where('country_slug', $country);
+    
+    $matrix = $this->retailer->matrix([(float) $geo['lat'], (float) $geo['lon']], $retailers);
 
 
-    // Create New Array() of Retailers
-    // 
-    $stores = [];
-
-    foreach ($matrix as $key => $value) {
-      $stores[] = [
-      'id' => $value->id,
-      'retailer_id' => $value->retailer_id,
-      'distance' => $key,
-      'name' => $value->name,
-      'slug' => $value->slug,
-      'street_number' => $value->street_number,
-      'street_address' => $value->street_address,
-      'city' => $value->city,
-      'city_slug' => $value->city_slug,
-      'state' => $value->state,
-      'state_slug' => $value->state_slug,
-      'country' => $value->country,
-      'country_slug' => $value->country_slug,
-      'country_code' => $value->country_code,
-      'postcode' => $value->postcode,
-      'storefront_lg' => $value->storefront_lg,
-      'logo_lg' => $value->logo_lg,
-      'latitude' => $value->latitude,
-      'longitude' => $value->longitude ];
-    } 
-
-    $sorted = collect($stores);
+    $sorted = collect($matrix);
     $retailers = $sorted->sortBy('distance');
     $retailers->values()->all();
 
     // Compact Variables
-    // 
+    //
     $countries  =  $this->retailer->countries($this->domain);
-    $iso  = $retailers->pluck(['city'])->first();
+    $iso  = $retailers->pluck(['country_code'])->first();
     $exists     =  $country;
 
     // Return Response
-    // 
+    //
     return response()->view('proxy.index', compact(
       'geo',
-      'flat',
       'iso',
-      'retailers', 
+      'retailers',
       'exists',
       'country',
       'countries',
@@ -190,7 +156,7 @@ class ProxyController extends Controller
 
     /**
     * Compact
-    */ 
+    */
     $countries  =  $this->retailer->countries($this->domain);
     $exists     =  $country;
 
@@ -224,7 +190,7 @@ class ProxyController extends Controller
     return response()->view('proxy.index', compact(
       'geo',
       'iso',
-      'retailers', 
+      'retailers',
       'exists',
       'country',
       'countries',
@@ -253,7 +219,7 @@ class ProxyController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
- 
+
  public function retailer(Request $request, $country, $city, $slug)
  {
   $shop      =  Input::get('shop');
@@ -274,7 +240,7 @@ class ProxyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, $slug)
-    { 
+    {
       $country = $slug;
       $retailers =  $this->retailer->find('slug', $slug);
 
@@ -283,7 +249,7 @@ class ProxyController extends Controller
     }
 
 
-    public function getCity($city) 
+    public function getCity($city)
     {
 
       $region = $city;
@@ -302,13 +268,13 @@ class ProxyController extends Controller
 
       return response()
       ->view('proxy.country', compact(
-        'listings', 
+        'listings',
         'navigation',
         'region'))
       ->header('Content-Type', env('PROXY_HEADER'));
     }
 
-    public function getCountry($country) 
+    public function getCountry($country)
     {
       $region = $country;
 
@@ -330,7 +296,7 @@ class ProxyController extends Controller
       return response()
       ->view('proxy.country', compact(
         'region',
-        'listings', 
+        'listings',
         'navigation'))
       ->header('Content-Type', env('PROXY_HEADER'));
 
@@ -339,7 +305,7 @@ class ProxyController extends Controller
 
 
 
-    public function getCountryJson($country) 
+    public function getCountryJson($country)
     {
 
       $data = DB::table('locations')

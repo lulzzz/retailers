@@ -4,7 +4,7 @@ namespace App\Http\Repositories;
 
 
 /**
-* API Connections 
+* API Connections
 *
 * Calls API connections for SILK and
 * Shopify in Controllers.
@@ -14,18 +14,16 @@ namespace App\Http\Repositories;
 interface RetailerInterface {
 
   /**
-  * Shopify Api Connection
+  * Retailer Proxy Storefront Logics
   *
   * @return connection
   */
 
   public function geoip($header);
   public function countries($domain);
-  public function matrix($origin, $destinations, $retailers);
-  public function retailers($domain); 
-  public function exists($resource, $query); 
-
-
+  public function matrix($origin, $retailers);
+  public function retailers($domain);
+  public function exists($resource, $query);
 
 
 }

@@ -12,7 +12,7 @@
     @else 
     <button class="btn btn-secondary btn-sm dropdown-toggle b1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <span class="flag-nation flag-icon" style="background-image: url('{{ env('APP_URL') }}storage/flags/{{strtolower($geo['isoCode'])}}.svg');"></span> 
-      <span class="pl-1">Country</span>
+      <span class="pl-1">Pick Country</span>
     </button>
     @endif
 
