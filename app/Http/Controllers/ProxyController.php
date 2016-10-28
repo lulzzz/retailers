@@ -98,7 +98,7 @@ class ProxyController extends Controller
     //
     $collection = collect($this->retailer->retailers($this->domain));
     $retailers  = $collection->where('country_slug', $country);
-    
+
     $matrix = $this->retailer->matrix([(float) $geo['lat'], (float) $geo['lon']], $retailers);
 
 
@@ -124,22 +124,6 @@ class ProxyController extends Controller
       'cities'))
     ->header('Content-Type', env('PROXY_HEADER'));
   }
-
-
-  public function combine($collections) {
-    $merged = new Collection();
-    $max = count($collections[key($collections)]);
-    for($i = 0; $i < $max; $i++)
-    {
-      $item = new \stdClass();
-      foreach($collections as $key => $collection) {
-        $item->{$key} = $collection[$i];
-      }
-      $merged->add($item);
-    }
-    return $merged;
-  }
-
 
   /**
   * Retailers By City

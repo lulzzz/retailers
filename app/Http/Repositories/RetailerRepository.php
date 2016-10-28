@@ -106,30 +106,29 @@ class RetailerRepository implements RetailerInterface {
   }
 
 
-/**
-* Distance
-*
-* Get Distance Matrix from Google Maps API
-*
-*/
+  /**
+  * Distance
+  *
+  * Get Distance Matrix from Google Maps API
+  *
+  */
 
-static function distance(array $origin, array $destination, $unit = "metric")
-{
-  // dd($origin, $destination);
-  $theta = $origin[1] - $destination[1];
-  $dist = sin(deg2rad($origin[0])) * sin(deg2rad($destination[0])) + cos(deg2rad($origin[0])) * cos(deg2rad($destination[0])) * cos(deg2rad($theta));
-  $dist = acos($dist);
-  $dist = rad2deg($dist);
-  $miles = $dist * 60 * 1.1515;
-  $unit = strtolower($unit);
+  static function distance(array $origin, array $destination, $unit = "metric")
+  {
+    $theta = $origin[1] - $destination[1];
+    $dist = sin(deg2rad($origin[0])) * sin(deg2rad($destination[0])) + cos(deg2rad($origin[0])) * cos(deg2rad($destination[0])) * cos(deg2rad($theta));
+    $dist = acos($dist);
+    $dist = rad2deg($dist);
+    $miles = $dist * 60 * 1.1515;
+    $unit = strtolower($unit);
 
-  if ($unit == "metric") {
-    return $miles * 1.609344;
-  } elseif ($unit == "imperial") {
-    return $miles;
-  } else {
-    throw new \ArgumentError("Unknown unit system given $unit");
-  }
+    if ($unit == "metric") {
+      return $miles * 1.609344;
+    } elseif ($unit == "imperial") {
+      return $miles;
+    } else {
+      throw new \ArgumentError("Unknown unit system given $unit");
+    }
 }
 
   public function matrix($origin, $retailers) {
