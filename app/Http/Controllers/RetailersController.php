@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-// Illuminates 
+// Illuminates
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -56,6 +56,7 @@ class RetailersController extends Controller
     ->with('locations')
     ->get();
 
+
     return View::make('retailers.index', compact('retailer', 'navigation'));
   }
 
@@ -66,7 +67,7 @@ class RetailersController extends Controller
    * @return \Illuminate\Http\Response
   */
   public function show($type)
-  {   
+  {
 
     $brand = Brand::where('user_id', Auth::user()->id)
     ->first();
@@ -84,7 +85,7 @@ class RetailersController extends Controller
 
 
   /**
-   * Create New Retailer 
+   * Create New Retailer
    *
    * @return Redirect to appropriate merchant edit.
    */
@@ -117,7 +118,7 @@ class RetailersController extends Controller
   public function store(Request $request)
   {
     $retailer_input = $request->except([
-      'brand_name', 
+      'brand_name',
       'user_id',
       'city',
       'state',
@@ -137,7 +138,7 @@ class RetailersController extends Controller
     {
      Retailer::create($retailer_input);
      return Redirect::route('retailers.index')
-     ->with('message', 'Retailer Added!');   
+     ->with('message', 'Retailer Added!');
    }
 
    return Redirect::route('retailers.create')
@@ -186,7 +187,7 @@ class RetailersController extends Controller
         'location',
         'storefront',
         'id',
-        'prev', 
+        'prev',
         'next'));
     }
   }

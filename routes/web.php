@@ -66,7 +66,7 @@ Route::resource('merchants', 'MerchantsController');
 |--------------------------------------------------------------------------
 |
 */
-Route::resource('dashboard', 'DashboardController');
+//Route::resource('dashboard', 'DashboardController');
 
 
 //Route::post('dashboard/delete','DashboardController@delete');

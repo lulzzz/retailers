@@ -16,7 +16,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('embedded/login', 'ShopifyUserController@login')->name('carter.login');
 
-    //Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    Route::get('dashboard', '\App\Http\Controllers\DashboardController@index')->name('carter.dashboard');
 
     Route::get('embedded/expired', 'ShopifyUserController@expired')->name('carter.expired');
 

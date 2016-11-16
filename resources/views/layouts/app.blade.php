@@ -7,7 +7,7 @@
 
  <!-- Laravel – CSRF Token -->
  <meta name="csrf-param" content="_token">
- <meta name="csrf-token" content="{{ csrf_token() }}">   
+ <meta name="csrf-token" content="{{ csrf_token() }}">
  <title>{{ config('app.name', 'Retailers') }}</title>
 
  <!-- CSS – Application Stylesheet -->
@@ -19,11 +19,17 @@
  <!-- Javascript – Shopify Scripts -->
  <script src="https://cdn.shopify.com/s/assets/external/app.js"></script>
  <script type="text/javascript">
-  ShopifyApp.init({
-    apiKey: "{{ Config::get('carter.shopify.client_id') }}",
-    shopOrigin: "https://{{ Auth::user()->domain }}",
-    debug: false
-  });
+ ShopifyApp.init({
+     apiKey: '{{ Config::get('carter.shopify.client_id') }}',
+     shopOrigin: 'https://{{ Auth::user()->domain }}',
+     debug: {{ app()->environment() !== 'production' ? 'true' : 'false' }}
+ });
+</script>
+<!-- Shopify Embedded Settings -->
+<script type="text/javascript">
+ ShopifyApp.ready(function(){
+   ShopifyApp.Bar.loadingOff()
+ });
 </script>
 </head>
 <body>
@@ -47,12 +53,7 @@
  <footer>
    @include('layouts.footer')
  </footer>
- <!-- Shopify Embedded Settings -->
- <script type="text/javascript">
-  ShopifyApp.ready(function(){
-    ShopifyApp.Bar.loadingOff()
-  });
-</script>
+
 <!-- jQuery – Framework (CDN) -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
