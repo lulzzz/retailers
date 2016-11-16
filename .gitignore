@@ -6,3 +6,6 @@ Homestead.json
 Homestead.yaml
 .DS_Store
 .env
+.vagrant
+Icon
+Vagrantfile
