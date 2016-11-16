@@ -45,6 +45,7 @@ if (navigator.geolocation) {
         );
       });
 
+      retailers.box($(this).data('iso'), $(this).data('storefront'));
     });
 
 

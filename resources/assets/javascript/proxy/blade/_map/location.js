@@ -1,9 +1,9 @@
 
 /**
-* Retailers
+* Retailers Javascript Controller
 *
 * jQuery interface for the "Retailers" Store Locator.
-* This logic controls the proccess within the map.
+* This logic controls the proccess within the map and is using:
 *
 */
 
@@ -14,28 +14,40 @@ var geocoding  = new google.maps.Geocoder;
 var infowindow = new google.maps.InfoWindow();
 
 
+/**
+* Map Markers
+*
+*/
 retailers.markers = function (latlng, map) {
-
   marker = new google.maps.Marker({
     position: latlng,
     map: map
   });
-
 };
 
-retailers.pan = function(latlng, zoom) {
 
+/**
+* Map Pan
+*
+*/
+retailers.pan = function(latlng, zoom) {
   map.panTo(latlng);
   map.setCenter(latlng);
   map.setZoom(zoom);
-
 };
 
+
+/**
+* Retailers Shop
+*
+* Geocoder used within "qwest" and is initated if
+* user allows browser to acquire their location or
+* mapping to a selection Retailer within the list.
+*
+*/
 retailers.shop = function (latitude, longitude, iso, storefront) {
 
   var newlatlng  = new google.maps.LatLng(latitude, longitude);
-
-  retailers.box(iso, storefront);
 
   if (marker && marker.setMap) {
     marker.setMap(null);
@@ -55,12 +67,14 @@ retailers.shop = function (latitude, longitude, iso, storefront) {
       window.alert('Geocoder failed due to: ' + status);
     }
   });
-
 };
 
 
-
 retailers.box = function (iso, storefront) {
+
+  if(sticker) {
+    sticker.remove();
+  };
 
   var feature_width, logo_width;
 
