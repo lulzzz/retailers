@@ -19,4 +19,3 @@
 @section('js')
   @include('proxy.skriptz.index')
 @stop
-

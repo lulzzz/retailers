@@ -1,46 +1,64 @@
 @extends('carter::stand_alone')
 
-@section('head')
-    <link rel="stylesheet" media="screen"
-          href="//cdn.shopify.com/s/assets/dialog-047a27dad0275f7f8b1dec198cce61c721ae435d9fc526f742cd9af5eedbc89f.css"
-          crossorigin="anonymous"
-          integrity="sha256-BHon2tAnX3+LHewZjM5hxyGuQ12fxSb3Qs2a9e7byJ8=" />
-@stop
-
 @section('content')
-    <div id="container">
-        <div class="login-form">
-            <h1 class="dialog-heading">Sign up form</h1>
-            <h2 class="dialog-subheading">Enter your shop domain to install app.</h2>
+    <section class="hero is-primary is-bold is-fullheight">
+        <div class="hero-body">
+            <div class="container">
 
-            <form action="{{ route('shopify.install') }}" method="post">
+                <div class="columns">
+                    <div class="column is-4 is-offset-4">
 
-                {{ csrf_field() }}
+                        <div class="panel">
+                            <div class="panel-heading">
 
-                <div class="clearfix">
-                    <div class="login-container">
+                                @if (count($errors) > 0)
+                                    @foreach ($errors->all() as $error)
+                                        <div class="notification is-danger">
+                                            <p class="title">
+                                                Oh, No!
+                                            </p>
+                                            <p class="subtitle">
+                                                {{ $error }}
+                                            </p>
+                                        </div>
+                                    @endforeach
+                                @endif
 
-                        @if (count($errors) > 0)
-                            <div id="system_error" class="status system-error dialog-status">
-                                @foreach ($errors->all() as $error)
-                                    <p>{{ $error }}</p>
-                                @endforeach
-                            </div>
-                        @endif
+                                <form action="{{ route('carter.install') }}" method="post">
 
-                        <div id="sign-in-form" class="lform dialog-form">
-                            <div id="login">
-                                <div class="dialog-input-container clearfix">
-                                    <input type="text" name="shop" class="dialog-input" placeholder="your-shop-domain.myshopify.com" style="padding-left: 24px !important;">
-                                </div>
-                                <input type="submit" value="Sign Up" class="dialog-btn">
+                                    {{ csrf_field() }}
+
+                                    @if ($plans)
+                                    <p class="control">
+                                        <span class="select is-fullwidth">
+                                            <select name="plan">
+                                                @foreach ($plans as $key => $plan)
+                                                    <option value="{{ $key }}">{{ format_carter_plan($plan) }}</option>
+                                                @endforeach
+                                            </select>
+                                        </span>
+                                    </p>
+                                    @endif
+
+                                    <p class="control">
+                                        <input type="text" class="input is-large" name="shop" placeholder="Shop Domain"/>
+                                    </p>
+
+                                    <p class="control">
+                                        <input type="password" class="input is-large" name="password" placeholder="Password"/>
+                                    </p>
+
+                                    <p class="control">
+                                        <button class="button is-primary is-fullwidth">Sign Up</button>
+                                    </p>
+
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
 
-            </form>
+            </div>
         </div>
-    </div>
-
+    </section>
 @stop

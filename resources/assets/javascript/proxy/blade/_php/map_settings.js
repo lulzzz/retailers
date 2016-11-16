@@ -9,6 +9,8 @@ var map = new google.maps.Map(document.getElementById('map-container'), {
   mapTypeControl: false,
   streetViewControl: true,
   center: new google.maps.LatLng({{$geo['lat']}}, {{$geo['lon']}}),
+  mapTypeControl: false,
+  streetViewControl: true,
   scrollwheel: false,
   mapTypeControl: true,
   scaleControl: true,

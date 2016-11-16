@@ -19,7 +19,6 @@ use DB;
 
 class RetailerRepository implements RetailerInterface {
 
-
   /**
   * GeoIP
   *
@@ -35,7 +34,6 @@ class RetailerRepository implements RetailerInterface {
 
     return $locate;
   }
-
 
   /**
   * Exists
@@ -73,13 +71,11 @@ class RetailerRepository implements RetailerInterface {
     ->join('brands',      'users.id',     '=', 'brands.user_id')
     ->join('retailers',   'brands.id',    '=', 'retailers.brand_id')
     ->join('locations',   'retailers.id', '=', 'locations.retailer_id')
-    ->select('locations.*')
+    ->select('locations.country','locations.country_code','locations.country_slug')
     ->where('domain', $domain)
     ->get();
 
-    $collection = collect($data);
-    $locate = $collection->unique('country_slug');
-    $locate->values()->all();
+    $locate = collect($data)->unique('country_slug');
 
     return $locate;
   }
@@ -105,7 +101,6 @@ class RetailerRepository implements RetailerInterface {
     return $data;
   }
 
-
   /**
   * Distance
   *
@@ -113,8 +108,7 @@ class RetailerRepository implements RetailerInterface {
   *
   */
 
-  static function distance(array $origin, array $destination, $unit = "metric")
-  {
+  static function distance(array $origin, array $destination, $unit = "metric") {
     $theta = $origin[1] - $destination[1];
     $dist = sin(deg2rad($origin[0])) * sin(deg2rad($destination[0])) + cos(deg2rad($origin[0])) * cos(deg2rad($destination[0])) * cos(deg2rad($theta));
     $dist = acos($dist);
@@ -129,12 +123,12 @@ class RetailerRepository implements RetailerInterface {
     } else {
       throw new \ArgumentError("Unknown unit system given $unit");
     }
-}
+  }
 
   public function matrix($origin, $retailers) {
     return $retailers->map(function ($retailer) use ($origin) {
       $retailer = (array) $retailer;
-      $retailer["distance"] = round(self::distance([(float) $retailer["latitude"], (float) $retailer["longitude"]], $origin), 1) . " km";
+      $retailer["distance"] = round(self::distance([(float) $retailer["latitude"], (float) $retailer["longitude"]], $origin), 2);
       return $retailer;
     });
   }

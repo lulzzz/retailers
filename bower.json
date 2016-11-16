@@ -41,7 +41,9 @@
     "list.js": "^1.2.0",
     "fuse.js": "^2.5.0",
     "lite-uploader": "^5.0.0",
-    "jquery-storelocator-plugin": "^2.7.1"
+    "jquery-storelocator-plugin": "^2.7.1",
+    "oboe": "^2.1.2",
+    "cash": "^1.3.5"
   },
   "overrides": {
     "jquery": {

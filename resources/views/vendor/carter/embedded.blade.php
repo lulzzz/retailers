@@ -1,12 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
+    @yield('head')
     <script src="https://cdn.shopify.com/s/assets/external/app.js"></script>
     <script type="text/javascript">
         ShopifyApp.init({
             apiKey: '{{ Config::get('carter.shopify.client_id') }}',
             shopOrigin: 'https://{{ Auth::user()->domain }}',
-            debug: true
+            debug: {{ app()->environment() !== 'production' ? 'true' : 'false' }}
         });
     </script>
     <meta charset="UTF-8">
@@ -16,7 +17,7 @@
 
 @yield('content')
 
-@yield('shopify_script')
+@yield('script')
 <script type="text/javascript">
     ShopifyApp.ready(function(){
         ShopifyApp.Bar.loadingOff()

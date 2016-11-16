@@ -9,20 +9,20 @@
         "laravel/framework": "5.3.*",
         "laravelcollective/html": "5.3.*",
         "intervention/image": "^2.3",
-        "donutdan4114/shopify":"dev-master",
         "guzzlehttp/guzzle": "^6.2",
         "cviebrock/eloquent-sluggable": "^4.1",
         "torann/geoip": "^0.2.3",
-        "geoip2/geoip2": "~2.1",
         "nickywoolf/carter": "^2.0",
         "alexpechkarev/google-maps": "1.0.5"
     },
     "require-dev": {
+        "donutdan4114/shopify":"dev-master",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~5.0",
         "symfony/css-selector": "3.1.*",
-        "symfony/dom-crawler": "3.1.*"
+        "symfony/dom-crawler": "3.1.*",
+        "laravel/homestead": "^3.0"
     },
     "autoload": {
         "classmap": [

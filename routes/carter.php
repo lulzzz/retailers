@@ -1,34 +1,29 @@
 <?php
 
 Route::group(['middleware' => 'web'], function () {
-    Route::get('shopify/signup', 'NickyWoolf\Carter\Laravel\ShopifyController@signupForm')
-    ->name('shopify.signup');
 
-    Route::match(['get', 'post'], 'shopify/install', 'NickyWoolf\Carter\Laravel\ShopifyController@install')
-    ->middleware(['carter.guest', 'carter.domain'])
-    ->name('shopify.install');
+    Route::get('signup', 'ShopifyAppController@showSignupForm')->name('carter.signup');
 
-    Route::get('shopify/register', 'NickyWoolf\Carter\Laravel\ShopifyController@register')
-    ->middleware(['carter.guest', 'carter.domain', 'carter.install', 'carter.nonce'])
-    ->name('shopify.register');
+    Route::match(['get', 'post'], 'install', 'ShopifyAppController@install')->name('carter.install');
 
-    Route::get('shopify/activate', 'NickyWoolf\Carter\Laravel\ShopifyController@activate')
-    ->middleware(['carter.charged'])
-    ->name('shopify.activate');
+    Route::get('register', 'ShopifyUserController@register')->name('carter.register');
 
-    Route::get('shopify/login', 'NickyWoolf\Carter\Laravel\ShopifyController@login')
-    ->middleware(['carter.guest', 'carter.domain', 'carter.signed'])
-    ->name('shopify.login');
+    Route::get('embedded/plans', 'RecurringChargeController@index')->name('carter.plans');
 
-    Route::get('shopify/login/redirect', 'NickyWoolf\Carter\Laravel\ShopifyController@login')
-    ->middleware(['carter.guest', 'carter.domain', 'carter.signed', 'carter.sign'])
-    ->name('shopify.login.redirect');
+    Route::match(['get', 'post'], 'embedded/plans/create', 'RecurringChargeController@create')->name('carter.plan.create');
 
-    Route::get('retailers', 'App\Http\Controllers\RetailersController@index')
-    ->middleware(['carter.signed', 'carter.auth', 'carter.paying'])
-    ->name('shopify.dashboard');
+    Route::get('activate', 'RecurringChargeController@update')->name('carter.activate');
+
+    Route::get('embedded/login', 'ShopifyUserController@login')->name('carter.login');
+
+    //Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+
+    Route::get('embedded/expired', 'ShopifyUserController@expired')->name('carter.expired');
+
 });
 
-Route::post('shopify/uninstall', 'NickyWoolf\Carter\Laravel\ShopifyController@uninstall')
-->middleware(['carter.webhook'])
-->name('shopify.uninstall');
+Route::group(['prefix' => 'webhook/shopify'], function () {
+
+    Route::post('uninstall', 'WebhookController@uninstall')->name('carter.uninstall');
+
+});

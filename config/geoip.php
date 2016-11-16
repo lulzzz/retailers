@@ -42,13 +42,13 @@ return array(
 
 	'default_location' => array (
 		"ip"           => "127.0.0.0",
-		"isoCode"      => "SE",
+		"isoCode"      => "NL",
 		"country"      => "Netherlands",
-		"city"         => "Zaandam",
+		"city"         => "Kampen",
 		"state"        => "CT",
 		"postal_code"  => "06510",
-		"lat"          => 52.4420,
-		"lon"          => 4.8292,
+		"lat"          => 52.5581,
+		"lon"          => 5.8978,
 		"timezone"     => "America/New_York",
 		"continent"    => "NA",
 	),

@@ -1,4 +1,6 @@
-for (i = 0; i < locations.length; i++) {  
+// Try HTML5 geolocation.
+
+for (i = 0; i < locations.length; i++) {
 
 
   var destination = [444, 333];
@@ -18,10 +20,8 @@ for (i = 0; i < locations.length; i++) {
       infowindow.setContent(locations[i][4]);
     }
   })(marker, i));
- 
 
 
- 
   function calculateDistance(origin, destination) {
     var service = new google.maps.DistanceMatrixService();
     service.getDistanceMatrix(
@@ -42,7 +42,7 @@ for (i = 0; i < locations.length; i++) {
       var origin = response.originAddresses[0];
       var destination = response.destinationAddresses[0];
       if (response.rows[0].elements[0].status === "ZERO_RESULTS") {
-        $('#result').html("Better get on a plane. There are no roads between " 
+        $('#result').html("Better get on a plane. There are no roads between "
           + origin + " and " + destination);
       } else {
         var distance = response.rows[0].elements[0].distance;

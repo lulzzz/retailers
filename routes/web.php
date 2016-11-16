@@ -15,7 +15,7 @@ Route::get('/', function () {
   return view('welcome');
 });
 
-//Auth::routes();
+Auth::routes();
 //Route::get('/home', 'HomeController@index');
 
 
@@ -24,18 +24,22 @@ Route::get('/', function () {
 |--------------------------------------------------------------------------
 |
 */
-Route::get('app/',[
+Route::get('app',[
   'as' => 'proxy_index',
   'uses' => 'ProxyController@index']);
 
 // Geo-graphical Listings
 Route::get('app/{country}/', [
-  'as' => 'proxy_country', 
+  'as' => 'proxy_country',
   'uses' => 'ProxyController@country']);
 
+ // Geo-graphical Listings
+ Route::get('app/{lat}/{lon}/', [
+   'as' => 'proxy_origin',
+   'uses' => 'ProxyController@origin']);
 
 Route::get('app/{country}/{city}/', [
-  'as' => 'proxy_city', 
+  'as' => 'proxy_city',
   'uses' => 'ProxyController@city']);
 
 //Route::get('/search/retailers', 'ProxyController@search');
@@ -89,11 +93,11 @@ Route::resource('locations', 'LocationsController');
 |
 */
 Route::get('address/{id}/edit',[
-  'as' => 'address_edit', 
+  'as' => 'address_edit',
   'uses' => 'LocationsController@addressView']);
 
 Route::put('address/{id}',[
-  'as' => 'address_save', 
+  'as' => 'address_save',
   'uses' => 'LocationsController@addressSave']);
 
 /*
@@ -102,11 +106,11 @@ Route::put('address/{id}',[
 |
 */
 Route::post('upload/image/{id}',[
-  'as' => 'upload_image', 
+  'as' => 'upload_image',
   'uses' => 'ImagesController@upload']);
 
 Route::delete('upload/{type}/delete/{id}',[
-  'as' => 'delete-logo', 
+  'as' => 'delete-logo',
   'uses' => 'ImagesController@deleteLogo']);
 
 /*
@@ -115,4 +119,3 @@ Route::delete('upload/{type}/delete/{id}',[
 |
 */
 Route::resource('templates', 'TemplatesController');
-
