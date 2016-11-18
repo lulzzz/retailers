@@ -21,7 +21,7 @@ class ImagesController extends Controller
 {
 
   public function index($id)
-  { 
+  {
 
     $brand = Brand::where('user_id', Auth::user()->id)
     ->first();
@@ -45,20 +45,20 @@ class ImagesController extends Controller
 
     if ($logo) {
 
-      $input = $logo->store('public/logos/'.$retailer->slug);
+      $input = $logo->store('logos/'.Auth::user()->id.'/'.$retailer->slug);
 
       // Get Retailers Table Input
       $retailers = Retailer::find($id);
-      $retailers->logo_lg = $input;
+      $retailers->logo_lg = Storage::url($input);
       $retailers->update();
 
     } else if ($storefront) {
 
-      $input = $storefront->store('public/storefronts/'.$retailer->slug);
+      $input = $storefront->store('storefronts/'.Auth::user()->id.'/'.$retailer->slug);
 
      // Get Retailers Table Input
       $retailers = Location::find($id);
-      $retailers->storefront_lg = $input;
+      $retailers->storefront_lg = Storage::url($input);
       $retailers->update();
 
     }

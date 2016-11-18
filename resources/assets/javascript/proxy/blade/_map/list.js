@@ -10,6 +10,7 @@ var listings = new List('retailers-list', {
     'distance',
     { name: 'location', data: ['latitude','longitude']},
     { name: 'country_code', data: ['country_code'] },
-    { name: 'logo', data: ['logo']},
+    { name: 'logo_lg', data: ['logo_lg']},
+    { name: 'storefront_lg', data: ['storefront_lg']}
 ]
 });

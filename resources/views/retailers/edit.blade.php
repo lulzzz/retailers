@@ -20,16 +20,16 @@
 
   @endif
 
-  {{ Form::model($retailer, 
+  {{ Form::model($retailer,
     array(
       'id' => 'retailer-data',
-      'data-shopify-app-submit' => 'save_retailer', 
+      'data-shopify-app-submit' => 'save_retailer',
       'method' => 'PATCH',
       'route' => array(
         'retailers.update', $retailer->id
         )
       )
-    ) 
+    )
   }}
 
   <div class="row">
@@ -79,7 +79,7 @@
                  </div>
                </div>
              <div class="logo-preview">
-               <img src="{{ Storage::url($retailer->logo_lg) }}" class="img-fluid">
+               <img src="retailer->logo_lg" class="img-fluid">
 
              </div>
            </div>
@@ -108,7 +108,7 @@
 </div>
 {{ Form::close() }}
 
-{{ Form::model($location, 
+{{ Form::model($location,
   array(
     'method' => 'PATCH',
     'data-remote' => 'true',
@@ -118,7 +118,7 @@
       'locations.update', $id
       )
     )
-  ) 
+  )
 }}
 
 @include('retailers._partials.locations')
@@ -150,7 +150,7 @@
         loading: false,
         callback: function(message){
           dirtyConfirm();
-        } 
+        }
       },
       @else
       pagination: {
@@ -231,7 +231,7 @@
     'https://retailers.dev/js/plugins/geocomplete.min.js',
     'https://retailers.dev/js/plugins/dropzone.min.js',
     'https://retailers.dev/js/plugins/areyousure.min.js'],
-    { success: function() {  
+    { success: function() {
       $(skriptz.init);
     }
   });
@@ -331,7 +331,7 @@
       loading: false,
       callback: function(message){
         dirtyConfirm();
-      }  
+      }
     }
   });
  };
@@ -361,7 +361,7 @@ skriptz.dropzone = function () {
 };
 
 skriptz.logo = function () {
-  var logoDropzone = new Dropzone('#logo_upload', { 
+  var logoDropzone = new Dropzone('#logo_upload', {
     url: "https://retailers.dev/upload/image/{{$id}}",
     paramName: "logo",
     thumbnailWidth: 300,

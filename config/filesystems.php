@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => 'local',
+    'default' => 's3',
 
     /*
     |--------------------------------------------------------------------------
@@ -56,10 +56,10 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => 'your-key',
-            'secret' => 'your-secret',
-            'region' => 'your-region',
-            'bucket' => 'your-bucket',
+            'key' => 'AKIAJXYWRLUM2HGXXN4Q',
+            'secret' => 'GpqZQxsSJdWf1f7nPUX2CmnU6r8pagHjUtinetoK',
+            'region' => 'eu-west-1',
+            'bucket' => 'retailers-images',
         ],
 
     ],

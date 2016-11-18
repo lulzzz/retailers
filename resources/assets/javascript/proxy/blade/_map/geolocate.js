@@ -1,66 +1,27 @@
+if(store.get('latitude')) {
 
-if (navigator.geolocation) {
+  // Returning visitor.
+  retailers.json('/a/retailers/'+store.get('latitude')+'/'+store.get('longitude')+'?shop={{$domain}}');
 
-  geocoding.geocode({'address': '{{$iso}}'}, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-      var latlng = new google.maps.LatLng(
-        results[0].geometry.location.lat(),
-        results[0].geometry.location.lng()
-      );
-      retailers.pan(latlng, 9);
-    } else {
-      window.alert("Something got wrong " + status);
-    }
-  });
-
-  navigator.geolocation.getCurrentPosition(function(position) {
-
-
-    qwest.get('/app/'+position.coords.latitude+'/'+position.coords.longitude+'?shop={{$domain}}')
-
-    .then(function(xhr, response) {
-
-      $('#locating').hide();
-
-      listings.clear();
-      listings.add(response);
-      listings.sort('distance');
-
-      retailers.shop(
-        $('.location').closest('li').first().data('latitude'),
-        $('.location').closest('li').first().data('longitude'),
-        $('.location').closest('li').first().data('iso'),
-        $('.location').closest('li').first().data('storefront')
-      );
-    })
-
-    .complete(function() {
-
-      $('.location').on('click', function() {
-        retailers.shop(
-          $(this).data('latitude'),
-          $(this).data('longitude'),
-          $(this).data('iso'),
-          $(this).data('storefront')
-        );
-      });
-
-      retailers.box($(this).data('iso'), $(this).data('storefront'));
-    });
-
-
-  }, function() {
-    handleLocationError(true, infoWindow, map.getCenter());
-  });
 } else {
-  // Browser doesn't support Geolocation
-  handleLocationError(false, infoWindow, map.getCenter());
-}
+  // check if user browser has geolocation
+  if (navigator.geolocation) {
 
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(latlng);
-  infoWindow.setContent(browserHasGeolocation ?
-    'Error: The Geolocation service failed.' :
-    'Error: Your browser doesn\'t support geolocation.'
-  );
+    //Get users location
+    navigator.geolocation.getCurrentPosition(function(position) {
+
+      // Stores latitude and longitude of visitor address
+      store.set('latitude', position.coords.latitude);
+      store.set('longitude', position.coords.longitude);
+
+      // New visitor
+      retailers.json('/a/retailers/'+position.coords.latitude+'/'+position.coords.longitude+'?shop={{$domain}}');
+
+    }, function() {
+      retailers.json('/a/retailers/{{$geo['lat']}}/{{$geo['lon']}}?shop={{$domain}}');
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    retailers.json('/a/retailers/{{$geo['lat']}}/{{$geo['lon']}}?shop={{$domain}}');
+  }
 }

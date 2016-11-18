@@ -11,6 +11,8 @@
         "intervention/image": "^2.3",
         "guzzlehttp/guzzle": "^6.2",
         "cviebrock/eloquent-sluggable": "^4.1",
+        "aws/aws-sdk-php-laravel": "~3.0",
+        "league/flysystem-aws-s3-v3": "~1.0",
         "torann/geoip": "^0.2.3",
         "nickywoolf/carter": "^2.0",
         "alexpechkarev/google-maps": "1.0.5"

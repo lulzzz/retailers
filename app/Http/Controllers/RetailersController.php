@@ -24,7 +24,6 @@ use View;
 use DB;
 use Auth;
 
-
 class RetailersController extends Controller
 {
 

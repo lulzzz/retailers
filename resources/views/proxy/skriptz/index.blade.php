@@ -32,6 +32,8 @@ skriptz.maps = function () {
     var geocoding  = new google.maps.Geocoder;
     var infowindow = new google.maps.InfoWindow();
     
+    //var $('.location') = $('.location');
+    
     
     /**
     * Map Markers
@@ -64,7 +66,7 @@ skriptz.maps = function () {
     * mapping to a selection Retailer within the list.
     *
     */
-    retailers.shop = function (latitude, longitude, iso, storefront) {
+    retailers.shop = function (latitude, longitude, iso, storefront, logo) {
     
       var newlatlng  = new google.maps.LatLng(latitude, longitude);
     
@@ -81,36 +83,74 @@ skriptz.maps = function () {
           infowindow.setContent('<address><b>'+ results[0].address_components[0].long_name+'&nbsp;' + results[0].address_components[1].long_name +'<br>'+results[0].address_components[5].long_name+'<br>'+ results[0].address_components[6].long_name +',&nbsp;'+ results[0].address_components[4].long_name +'</b></address>');
     
           infowindow.open(map, marker);
+          $('.list').show();
     
         } else {
           window.alert('Geocoder failed due to: ' + status);
         }
       });
+    
+      if ($('.container-fluid').width() < 1000) {
+      var  feature_width = '170px';
+      var  logo_width    = '80px';
+      } else {
+      var  feature_width = '250px';
+      var  logo_width    = '120px';
+      }
+    
+      var sticker = $('<div class="storefront-sticker" style="max-width:'+feature_width+';"><div class="storefront-feature" data-sticker><div class="inner"><span class="flag-icon" style="background-image: url('+iso+');"></span><div class="logo"><img src="'+logo+'"></div></div><div class="tint"><img src="'+storefront+'" class="bg"></div></div><div class="row pt-1"><div class="col-xs-12 col-sm-12 col-md-6 pr-0"><button class="btn btn-secondary btn-sm pull-left" type="button">Find Directions</button></div><div class="col-xs-12 col-sm-12 col-md-6"><a class="btn btn-secondary btn-sm pull-right" href="#">View Retailer</button></div></div></div>');
+    
+      $('div[data-sticker]').remove();
+      sticker.appendTo('div[data-map]');
+    
     };
     
     
-    retailers.box = function (iso, storefront) {
     
-      if(sticker) {
-        sticker.remove();
-      };
+    /**
+    * Retailers Json
+    *
+    * Using qwest.js, and list.jswe re-populate the
+    * retailers list with new results based on geoip location.
+    *
+    */
+    retailers.json = function(url) {
     
-      var feature_width, logo_width;
+      qwest.get(url)
+      .then(function(xhr, response) {
+        $('#locating').hide();
     
-      if ($('.container-fluid').width() < 1000) {
-        feature_width = '180px';
-        logo_width    = '90px';
-      } else {
-        feature_width = '250px';
-        logo_width    = '120px';
-      }
+        // Re-structure the listed retailers
+        listings.clear();
+        listings.add(response);
+        listings.sort('distance');
     
-      var sticker_src = $('<div class="storefront-sticker" style="max-width:'+feature_width+';"><div class="storefront-feature" data-sticker><div class="inner"><span class="flag-icon" style="background-image: url('+iso+');"></span><div class="logo"></div></div><div class="tint"><img src="'+storefront+'" class="bg"></div></div><div class="row pt-1"><div class="col-xs-12 col-sm-12 col-md-6 pr-0"><button class="btn btn-secondary btn-sm pull-left" type="button">Find Directions</button></div><div class="col-xs-12 col-sm-12 col-md-6"><a class="btn btn-secondary btn-sm pull-right" href="#">View Retailer</button></div></div></div>');
+        // Select first result based on distance.
     
-      var sticker = $('div[data-sticker]');
-      sticker.remove();
-      sticker_src.appendTo('div[data-map]');
-    }
+        retailers.shop(
+          $('.location').closest('li').first().data('latitude'),
+          $('.location').closest('li').first().data('longitude'),
+          $('.location').closest('li').first().data('country_code'),
+          $('.location').closest('li').first().data('storefront_lg'),
+          $('.location').closest('li').first().data('logo_lg')
+        );
+      })
+    
+      .complete(function() {
+    
+        // Select via data attribute value (injected inline)
+    
+        $('.location').on('click', function() {
+          retailers.shop(
+            $(this).data('latitude'),
+            $(this).data('longitude'),
+            $(this).data('country_code'),
+            $(this).data('storefront_lg'),
+            $(this).data('logo_lg')
+          );
+        });
+      });
+    };
     
     var is_internetExplorer11= navigator.userAgent.toLowerCase().indexOf('trident') > -1;
     
@@ -118,7 +158,7 @@ skriptz.maps = function () {
     
     var $marker_url2 = ( is_internetExplorer11 ) ? '//cdn.shopify.com/s/files/1/0638/4637/t/2/assets/favicon-32x32.png?8466146662870439663' : '//cdn.shopify.com/s/files/1/0638/4637/t/2/assets/favicon-32x32.png?8466146662870439663';
     
-    var locations = [@foreach($retailers as $key => $value)['<a href="{{ env('APP_URL') }}/{{$value['country']}}/{{$value['city']}}/{{$value['slug']}}"><img src="{{ env('APP_URL') }}/{{ Storage::url($value['storefront_lg']) }}"></a>',{{$value['latitude']}},{{$value['longitude']}},{{$value['id']}},$marker_url2],@endforeach];
+    var locations = [@foreach($retailers as $key => $value)[{{$value['latitude']}},{{$value['longitude']}},'{{$value['country_code']}}','{{$value['storefront_lg']}}','{{$value['logo_lg']}}',$marker_url2],@endforeach];
     
     
     var marker, i, loc;
@@ -126,10 +166,10 @@ skriptz.maps = function () {
     
     var map = new google.maps.Map(document.getElementById('map-container'), {
       styles: styles,
-      zoom: 12,
+      zoom: 7,
       mapTypeControl: false,
       streetViewControl: true,
-      center: new google.maps.LatLng({{$geo['lat']}}, {{$geo['lon']}}),
+      //center: new google.maps.LatLng({{$geo['lat']}}, {{$geo['lon']}}),
       mapTypeControl: false,
       streetViewControl: true,
       scrollwheel: false,
@@ -149,86 +189,53 @@ skriptz.maps = function () {
       }
     });
     
+    if(store.get('latitude')) {
     
-    if (navigator.geolocation) {
+      // Returning visitor.
+      retailers.json('/a/retailers/'+store.get('latitude')+'/'+store.get('longitude')+'?shop={{$domain}}');
     
-      geocoding.geocode({'address': '{{$iso}}'}, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-          var latlng = new google.maps.LatLng(
-            results[0].geometry.location.lat(),
-            results[0].geometry.location.lng()
-          );
-          retailers.pan(latlng, 9);
-        } else {
-          window.alert("Something got wrong " + status);
-        }
-      });
-    
-      navigator.geolocation.getCurrentPosition(function(position) {
-    
-    
-        qwest.get('/app/'+position.coords.latitude+'/'+position.coords.longitude+'?shop={{$domain}}')
-    
-        .then(function(xhr, response) {
-    
-          $('#locating').hide();
-    
-          listings.clear();
-          listings.add(response);
-          listings.sort('distance');
-    
-          retailers.shop(
-            $('.location').closest('li').first().data('latitude'),
-            $('.location').closest('li').first().data('longitude'),
-            $('.location').closest('li').first().data('iso'),
-            $('.location').closest('li').first().data('storefront')
-          );
-        })
-    
-        .complete(function() {
-    
-          $('.location').on('click', function() {
-            retailers.shop(
-              $(this).data('latitude'),
-              $(this).data('longitude'),
-              $(this).data('iso'),
-              $(this).data('storefront')
-            );
-          });
-    
-          retailers.box($(this).data('iso'), $(this).data('storefront'));
-        });
-    
-    
-      }, function() {
-        handleLocationError(true, infoWindow, map.getCenter());
-      });
     } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
-    }
+      // check if user browser has geolocation
+      if (navigator.geolocation) {
     
-    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-      infoWindow.setPosition(latlng);
-      infoWindow.setContent(browserHasGeolocation ?
-        'Error: The Geolocation service failed.' :
-        'Error: Your browser doesn\'t support geolocation.'
-      );
+        //Get users location
+        navigator.geolocation.getCurrentPosition(function(position) {
+    
+          // Stores latitude and longitude of visitor address
+          store.set('latitude', position.coords.latitude);
+          store.set('longitude', position.coords.longitude);
+    
+          // New visitor
+          retailers.json('/a/retailers/'+position.coords.latitude+'/'+position.coords.longitude+'?shop={{$domain}}');
+    
+        }, function() {
+          retailers.json('/a/retailers/{{$geo['lat']}}/{{$geo['lon']}}?shop={{$domain}}');
+        });
+      } else {
+        // Browser doesn't support Geolocation
+        retailers.json('/a/retailers/{{$geo['lat']}}/{{$geo['lon']}}?shop={{$domain}}');
+      }
     }
     
     for (i = 0; i < locations.length; i++) {
     
       marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        position: new google.maps.LatLng(locations[i][0], locations[i][1]),
         map: map,
-        icon: locations[i][4],
+        icon: locations[i][5],
       });
     
       markers.push(marker);
     
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent(locations[i][4]);
+          retailers.shop(
+            locations[i][0], //latitude
+            locations[i][1], //longitude
+            locations[i][2], //iso
+            locations[i][3], //storefront_lg
+            locations[i][4]  //logo_lg
+          );
         }
       })(marker, i));
     
@@ -246,7 +253,8 @@ skriptz.maps = function () {
         'distance',
         { name: 'location', data: ['latitude','longitude']},
         { name: 'country_code', data: ['country_code'] },
-        { name: 'logo', data: ['logo']},
+        { name: 'logo_lg', data: ['logo_lg']},
+        { name: 'storefront_lg', data: ['storefront_lg']}
     ]
     });
     

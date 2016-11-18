@@ -195,6 +195,12 @@ return [
         GoogleMaps\ServiceProvider\GoogleMapsServiceProvider::class,
 
 
+        /*
+         * Amazon S3 Web Services...
+         */
+        Aws\Laravel\AwsServiceProvider::class,
+
+
 
         /*
          * Application Service Providers...
@@ -261,6 +267,9 @@ return [
     'GeoIP' => Torann\GeoIP\GeoIPFacade::class,
 
     'GoogleMaps' => GoogleMaps\Facade\GoogleMapsFacade::class,
+
+    'AWS' => Aws\Laravel\AwsFacade::class,
+
 
     ],
 

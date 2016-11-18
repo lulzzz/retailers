@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')    
+@section('content')
 
 @if($retailer->isEmpty())
 
@@ -88,7 +88,7 @@
     @foreach ($retailer as $key => $value)
     <tr>
       <td class="check-td">
-        <input type="checkbox" data-id="{{$value->id}}" class="id" /> 
+        <input type="checkbox" data-id="{{$value->id}}" class="id" />
       </td>
       <td>
         @if(is_null($value->logo_lg))
@@ -97,7 +97,7 @@
         <div class="row flex-items-xs-middle">
           <div class="col-xs">
             <a href="#" style="">
-              <img src="{{ Storage::url($value->logo_lg) }}" class="img-fluid" style="max-width: 30px;">
+              <img src="{{$value->logo_lg}}" class="img-fluid" style="max-width: 30px;">
               @endif
             </a>
           </div>
@@ -108,7 +108,7 @@
       @if(is_null($value->name))
       {{ link_to_route('retailers.edit', 'Example Retailer', array($value->id)) }}
       @else
-      <span class="name"> 
+      <span class="name">
         {{ link_to_route('retailers.edit', $value->name, array($value->id)) }}
       </span>
       @endif
@@ -141,7 +141,7 @@
 
  loadjs([
   '/js/plugins/list.min.js'],
-  { success: function() {  
+  { success: function() {
     skriptz.search();
   }
 });
@@ -156,48 +156,48 @@
 
 
 jQuery('#checkAll').on('click', function(e) {
-  if($(this).is(':checked',true))  
+  if($(this).is(':checked',true))
   {
-    $(".id").prop('checked', true); 
-  }  
-  else  
-  {  
-    $(".id").prop('checked',false);  
-  }  
+    $(".id").prop('checked', true);
+  }
+  else
+  {
+    $(".id").prop('checked',false);
+  }
 });
 
-jQuery('.delete_all').on('click', function(e) { 
-  var allVals = [];  
-  $(".id:checked").each(function() {  
+jQuery('.delete_all').on('click', function(e) {
+  var allVals = [];
+  $(".id:checked").each(function() {
     allVals.push($(this).attr('data-id'));
-  });  
-        //alert(allVals.length); return false;  
-        if(allVals.length <=0)  
-        {  
-          alert("Please select row.");  
-        }  
-        else {  
-            //$("#loading").show(); 
-            WRN_PROFILE_DELETE = "Are you sure you want to delete this row?";  
-            var check = confirm(WRN_PROFILE_DELETE);  
-            if(check == true){  
+  });
+        //alert(allVals.length); return false;
+        if(allVals.length <=0)
+        {
+          alert("Please select row.");
+        }
+        else {
+            //$("#loading").show();
+            WRN_PROFILE_DELETE = "Are you sure you want to delete this row?";
+            var check = confirm(WRN_PROFILE_DELETE);
+            if(check == true){
                 //for server side
-                
-                var join_selected_values = allVals.join(","); 
-                
-                        //alert(join_selected_values); return false;  
 
-                        $.ajax({   
+                var join_selected_values = allVals.join(",");
 
-                          type: "POST",  
-                          url: '/dashboard/delete?ids='+join_selected_values,  
-                          cache:false,  
-                          success: function(response)  
-                          {   
+                        //alert(join_selected_values); return false;
+
+                        $.ajax({
+
+                          type: "POST",
+                          url: '/dashboard/delete?ids='+join_selected_values,
+                          cache:false,
+                          success: function(response)
+                          {
                            alert(response);
                    // $("#retailers-list").html(response);
                         //referesh table
-                      }   
+                      }
                     });
 
                         $.each(allVals, function( index, value ) {
@@ -205,19 +205,19 @@ jQuery('.delete_all').on('click', function(e) {
                         });
 
 
-                      }  
-                    }  
+                      }
+                    }
                   });
 
 ShopifyApp.Bar.initialize({
   buttons: {
     primary: [
-    { 
+    {
       label: "Create Retailer",
       loading: false,
       callback: function(messege){
         createModal("/merchants/create");
-      }  
+      }
     }
     ],
     secondary: {

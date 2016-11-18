@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        
+
     }
 
     /**
@@ -24,8 +24,10 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            'App\Http\Repositories\RetailerInterface', 
-            'App\Http\Repositories\RetailerRepository'
+            'App\Http\Repositories\RetailerInterface',
+            'App\Http\Repositories\RetailerRepository',
+            'App\Http\Repositories\ShopifyInterface',
+            'App\Http\Repositories\ShopifyRepository'
             );
     }
 }

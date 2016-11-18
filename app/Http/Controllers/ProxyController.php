@@ -39,8 +39,9 @@ public function __construct(RetailerInterface $retailer) {
 public function index()
 {
 
+
   $geo = $this->retailer->geoip('HTTP_X_FORWARDED_FOR');
-  $exists = $this->retailer->exists('country_slug', str_slug($geo['country']));
+  $exists = $this->retailer->exists('country_slug', str_slug('canada'));
   $stores = $this->retailer->retailers($this->domain);
 
   $retailer = $this->retailer->matrix([(float) $geo['lat'], (float) $geo['lon']], $stores);
@@ -55,14 +56,18 @@ public function index()
   if ($exists) {
     $iso = collect($retailers)->pluck(['country_code'])->first();
     $nation = collect($retailers)->where('country', $geo['country'])->pluck(['country'])->first();
+    $err = false;
   } else {
     $iso = $geo['isoCode'];
     $nation = "Select Country";
+    $err = true;
   }
+
 
   return response()->view('proxy.show', compact(
     'iso',
     'nation',
+    'err',
     'domain',
     'exists',
     'geo',
@@ -78,12 +83,9 @@ public function index()
 * @return \Illuminate\Http\Response
 */
 
-public function country(Request $request, $city)
+public function country(Request $request, $country)
 {
   $country = Input::get('country');
-  // GeoIP via proxy forward
-  //
-  $geo = $this->retailer->geoip('HTTP_X_FORWARDED_FOR');
 
   // Get Retailers WHERE "Country" is equal to the "Request"
   //

@@ -113,7 +113,7 @@
         </a>
       </div>
       <div class="py-3 px-2">
-        <a href="#pjax-container" onclick="addressModal('{{ route('address_edit',array($value->id)) }}')" > 
+        <a href="#pjax-container" onclick="addressModal('{{ route('address_edit',array($value->id)) }}')" >
           <small>
             {{ $value->street_number }} {{ $value->street_address }}<br>
             {{ $value->city }}, {{ $value->state }}, {{ $value->postcode }}<br>
@@ -128,13 +128,11 @@
        </a>
      </div>
      @else
-     <a href="#pjax-container" onclick="storefrontModal('{{ route('locations.edit',array($value->id)) }}')"> 
-      <img src="{{ Storage::url($value->storefront_lg) }}" class="img-fluid">
+     <a href="#pjax-container" onclick="storefrontModal('{{ route('locations.edit',array($value->id)) }}')">
+      <img src="{{ $value->storefront_lg }}" class="img-fluid">
     </a>
     @endif
   </div>
 </div>
 @endforeach
 </div>
-
-
