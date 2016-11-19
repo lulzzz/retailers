@@ -4,116 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "16e04cc2b0b10fd6fd2dabbde72e405c",
-    "content-hash": "72e9da4f7b06d5bf9317719502d0a64b",
+    "hash": "bb897e38af241ba8aa29e708d7f5f0b9",
+    "content-hash": "7e0ee52a97d3da54e9ce96a6fb5f91b8",
     "packages": [
-        {
-            "name": "alexpechkarev/geometry-library",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/alexpechkarev/geometry-library.git",
-                "reference": "ebbf02c3e907e0bd19c9474fd5eb77b9ca1ce414"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/alexpechkarev/geometry-library/zipball/ebbf02c3e907e0bd19c9474fd5eb77b9ca1ce414",
-                "reference": "ebbf02c3e907e0bd19c9474fd5eb77b9ca1ce414",
-                "shasum": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GeometryLibrary\\": "/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Alexander Pechkarev",
-                    "email": "alexpechkarev@gmail.com"
-                }
-            ],
-            "description": "PHP Geometry library provides utility functions for the computation of geometric data on the surface of the Earth.",
-            "homepage": "https://alexpechkarev.github.io/geometry-library/",
-            "keywords": [
-                "computations polygons and polylines",
-                "encoding and decoding polyline paths utilities",
-                "google maps geometry library",
-                "php geometry library",
-                "spherical geometry utilities"
-            ],
-            "time": "2015-09-11 15:40:41"
-        },
-        {
-            "name": "alexpechkarev/google-maps",
-            "version": "1.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/alexpechkarev/google-maps.git",
-                "reference": "8861a0f1b41bfe9a4e71653208659bcd6964fe26"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/alexpechkarev/google-maps/zipball/8861a0f1b41bfe9a4e71653208659bcd6964fe26",
-                "reference": "8861a0f1b41bfe9a4e71653208659bcd6964fe26",
-                "shasum": ""
-            },
-            "require": {
-                "alexpechkarev/geometry-library": "1.0.0",
-                "laravel/framework": "5.*"
-            },
-            "require-dev": {
-                "laravel/framework": "5.*",
-                "phpunit/phpunit": "4.7.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GoogleMaps\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Alexander Pechkarev",
-                    "email": "alexpechkarev@gmail.com"
-                }
-            ],
-            "description": "Collection of Google Maps API Web Services for Laravel",
-            "homepage": "https://alexpechkarev.github.io/google-maps/",
-            "keywords": [
-                "Google Maps API",
-                "directions api",
-                "distance matrix api",
-                "elevation api",
-                "geocoding api",
-                "geolocation api",
-                "google maps api for laravel",
-                "google maps web service for laravel",
-                "laravel google maps api",
-                "places api web service",
-                "roads api",
-                "time zone api"
-            ],
-            "time": "2016-04-15 11:28:43"
-        },
         {
             "name": "aws/aws-sdk-php",
             "version": "3.19.30",
@@ -3851,23 +3744,23 @@
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "3.4.0",
+            "version": "3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "238d7a2723bce689c79eeac9c7d5e1d623bb9dc2"
+                "reference": "45026c8383187ad1dcb14fbfec77dced265b9cfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/238d7a2723bce689c79eeac9c7d5e1d623bb9dc2",
-                "reference": "238d7a2723bce689c79eeac9c7d5e1d623bb9dc2",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/45026c8383187ad1dcb14fbfec77dced265b9cfc",
+                "reference": "45026c8383187ad1dcb14fbfec77dced265b9cfc",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.0.2",
                 "php": "^5.6 || ^7.0",
                 "phpunit/php-text-template": "^1.2",
-                "sebastian/exporter": "^1.2"
+                "sebastian/exporter": "^1.2 || ^2.0"
             },
             "conflict": {
                 "phpunit/phpunit": "<5.4.0"
@@ -3906,7 +3799,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2016-10-09 07:01:45"
+            "time": "2016-11-19 09:07:46"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -3955,22 +3848,22 @@
         },
         {
             "name": "sebastian/comparator",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "ce2bda23a56456f19e35d98241446b581f648c14"
+                "reference": "6a1ed12e8b2409076ab22e3897126211ff8b1f7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/ce2bda23a56456f19e35d98241446b581f648c14",
-                "reference": "ce2bda23a56456f19e35d98241446b581f648c14",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/6a1ed12e8b2409076ab22e3897126211ff8b1f7f",
+                "reference": "6a1ed12e8b2409076ab22e3897126211ff8b1f7f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
                 "sebastian/diff": "~1.2",
-                "sebastian/exporter": "~1.2"
+                "sebastian/exporter": "~1.2 || ~2.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.4"
@@ -4015,7 +3908,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2016-11-17 14:39:37"
+            "time": "2016-11-19 09:18:40"
         },
         {
             "name": "sebastian/diff",

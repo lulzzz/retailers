@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-//use App\Http\Repositories\AdminInterface;
-
-// Illuminates 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
@@ -41,7 +38,7 @@ class DashboardController extends Controller
         $brand = Brand::where('user_id', Auth::user()->id)->exists();
 
         // Globals
-        // 
+        //
         if (!$brand) {
             return Redirect::route('brand.index');
         } else {

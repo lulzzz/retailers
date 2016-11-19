@@ -8,19 +8,14 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
-// Interfaces \ Repositories
-//use App\Http\Repositories\AdminInterface;
-
 // Modals
 use App\Location;
 use App\Retailer;
 use App\Merchant;
 use App\Brand;
 
-
 // Laravel
 use View;
-//use Image;
 use DB;
 use Auth;
 
@@ -28,12 +23,9 @@ class RetailersController extends Controller
 {
 
 
-  //private $name;
-
   public function __construct()
   {
     $this->middleware('auth');
-        //$this->name = $name;
   }
 
   /**

@@ -8,14 +8,9 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Contracts\Queue\QueueableCollection;
 
-//use App\Http\Repositories\AdminInterface;
-
 use App\User;
 use App\Brand;
 use App\Merchant;
-
-//use App\Retailer;
-//use App\Location;
 
 use View;
 use Auth;
@@ -71,11 +66,11 @@ class MerchantsController extends Controller
 
         if (Merchant::where('brand_id', $id)->exists()) {
             return Redirect::route('retailers.index', $id);
-        } 
+        }
 
         return View::make('merchants.show', compact('brand'));
-        
-    } 
+
+    }
 
 
     /**
@@ -94,7 +89,7 @@ class MerchantsController extends Controller
        if ($validation->passes()) {
            $input = [];
 
-           foreach ($merchants as $key) 
+           foreach ($merchants as $key)
            {
             $input[] = $key;
         }

@@ -29,18 +29,6 @@ class ImagesController extends Controller
   }
 
 
-  public function index($id)
-  {
-
-    $brand = Brand::where('user_id', Auth::user()->id)
-    ->first();
-
-    $logo = Retailer::where('brand_id', $brand->id)->first();
-
-    return View::make('upload.logos', compact('logo', 'retailer', 'id'));
-  }
-
-
   public function upload(Request $request, $id)
   {
     $logo = Input::file('logo');
@@ -76,7 +64,7 @@ class ImagesController extends Controller
 
 
 
-  public function deleteLogo($type, $id)
+  public function delete($type, $id)
   {
 
 

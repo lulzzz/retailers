@@ -1,4 +1,4 @@
-@if($err)
+@if($error)
    <div class="alert">
       <h3>No Retailers in your loction!</h3>
    </div>

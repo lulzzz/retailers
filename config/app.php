@@ -190,12 +190,6 @@ return [
 
 
         /*
-        * Google Maps Client...
-        */
-        GoogleMaps\ServiceProvider\GoogleMapsServiceProvider::class,
-
-
-        /*
         * Amazon S3 Web Services...
         */
         Aws\Laravel\AwsServiceProvider::class,
@@ -264,8 +258,6 @@ return [
 
         'Image'     => Intervention\Image\Facades\Image::class,
         'GeoIP' => Torann\GeoIP\GeoIPFacade::class,
-
-        'GoogleMaps' => GoogleMaps\Facade\GoogleMapsFacade::class,
 
         'AWS' => Aws\Laravel\AwsFacade::class,
 
