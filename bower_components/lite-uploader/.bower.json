@@ -1,7 +1,7 @@
 {
   "name": "lite-uploader",
   "description": "Lightweight nodeJS/jQuery File Uploader",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "keywords": [
     "lightweight",
     "html5",
@@ -27,14 +27,13 @@
     "test",
     ".gitignore"
   ],
-  "_release": "5.0.0",
+  "_release": "5.0.1",
   "_resolution": {
     "type": "version",
-    "tag": "v5.0.0",
-    "commit": "275f9f9e3ed1342ea50a019b575751414925c069"
+    "tag": "v5.0.1",
+    "commit": "bbeb7828fe1f65bec0c48ffc8a6bc1830308574b"
   },
   "_source": "https://github.com/burt202/lite-uploader.git",
   "_target": "^5.0.0",
-  "_originalSource": "lite-uploader",
-  "_direct": true
+  "_originalSource": "lite-uploader"
 }

@@ -131,8 +131,8 @@ skriptz.maps = function () {
           $('.location').closest('li').first().data('latitude'),
           $('.location').closest('li').first().data('longitude'),
           $('.location').closest('li').first().data('country_code'),
-          $('.location').closest('li').first().data('storefront_lg'),
-          $('.location').closest('li').first().data('logo_lg')
+          $('.location').closest('li').first().data('storefront_md'),
+          $('.location').closest('li').first().data('logo_md')
         );
       })
     
@@ -145,8 +145,8 @@ skriptz.maps = function () {
             $(this).data('latitude'),
             $(this).data('longitude'),
             $(this).data('country_code'),
-            $(this).data('storefront_lg'),
-            $(this).data('logo_lg')
+            $(this).data('storefront_md'),
+            $(this).data('logo_md')
           );
         });
       });
@@ -158,7 +158,7 @@ skriptz.maps = function () {
     
     var $marker_url2 = ( is_internetExplorer11 ) ? '//cdn.shopify.com/s/files/1/0638/4637/t/2/assets/favicon-32x32.png?8466146662870439663' : '//cdn.shopify.com/s/files/1/0638/4637/t/2/assets/favicon-32x32.png?8466146662870439663';
     
-    var locations = [@foreach($retailers as $key => $value)[{{$value['latitude']}},{{$value['longitude']}},'{{$value['country_code']}}','{{$value['storefront_lg']}}','{{$value['logo_lg']}}',$marker_url2],@endforeach];
+    var locations = [@foreach($retailers as $key => $value)[{{$value['latitude']}},{{$value['longitude']}},'{{$value['country_code']}}','{{$value['storefront_md']}}','{{$value['logo_md']}}',$marker_url2],@endforeach];
     
     
     var marker, i, loc;
@@ -253,8 +253,8 @@ skriptz.maps = function () {
         'distance',
         { name: 'location', data: ['latitude','longitude']},
         { name: 'country_code', data: ['country_code'] },
-        { name: 'logo_lg', data: ['logo_lg']},
-        { name: 'storefront_lg', data: ['storefront_lg']}
+        { name: 'logo_md', data: ['logo_md']},
+        { name: 'storefront_md', data: ['storefront_md']}
     ]
     });
     

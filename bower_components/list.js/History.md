@@ -1,6 +1,5 @@
-# Changelog
+# TODO
 
-### TODO
 - Add tests for custom event handlers. 27e2d6fdeee7090eb1342a108013db898fc29b96
 - Regex in search https://github.com/javve/list.js/issues/371
 - Keep original order?
@@ -12,8 +11,43 @@
   - https://github.com/javve/list.js/issues/316
   - https://github.com/javve/list.js/pull/301
 - Improve testability by decoupling things and make it possible to use require('') in tests
+- Add .remove() method to remove all listeners etc.
+- Example of more advanced filtering
+- Fix test suite
+- Example with multiple lists
+- Test simple natural sort: https://github.com/litejs/natural-compare-lite
 
-### 2016-02-27: 1.2.0
+# Changelog
+
+### 2016-10-23 v1.3.0
+- **[Bugfix]** Make mkdir in build script OS agnostic
+  [See commit →](https://github.com/javve/list.js/commit/ba387125efddd7f5f4f8360bce516ae740cb5ae5)
+- **[Bugfix]** Make it possible to reset search columns
+  [See commit →](https://github.com/javve/list.js/commit/293b185e7b6277fba98bfd0a7b3bc7da04c708e7)
+- **[Bugfix]** Allow empty list without template.
+  [See commit →](https://github.com/javve/list.js/commit/f84f0dd1fc5bb12e0f8abad49139a40cbf69a5c2)
+  - **[Bugfix]** Make it possible to use <tr> as string template
+  [See commit →](https://github.com/javve/list.js/commit/38583e097cb75e369779b46c6129e1b8b8324f24)
+- **[Misc]** Update NaturalSort to 0.8.1
+  [See commit →](https://github.com/javve/list.js/commit/42d3db491801677c63238d5db3e0e9257087999a)
+- **[Misc]** Use local Browserify
+  [See commit →](https://github.com/javve/list.js/commit/83f6502dcea428fa2de2513d19ac71f82905ecb8)
+- **[Misc]** Add version to start of minified file
+  [See commit →](https://github.com/javve/list.js/commit/9cc48f6b2f429b591ee5eb82e2b2b48a00444638)
+
+### 2016-02-27: v1.2.0
+It's been two years since the last update of List.js. That is absolutely not ok
+and I'm very sorry that it has taken so long. I promise I'll do better in the future!
+
+Anyways, this release introduces a bunch of bug fixes and improvements, but most
+importantly: List.js now has support for data attributes PLUS all other attributes.
+[See an example]() and [read the docs](http://www.listjs.com/docs#example-6).
+
+Another noteworthy update is that I've left Component and moved back all utils
+to the core lib. Instead I'm using Browserify as module handler.
+
+I hope you'll like this update!
+
 - **[Misc]** Move form Component to Browserify
   [See commit →](https://github.com/javve/list.js/commit/58695c93849b78787d9cf78cbf9be20b01cdcc8a)
 - **[Misc]** Add tests to make sure List.js works with require.js

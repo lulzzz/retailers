@@ -11,10 +11,7 @@
         <div class="pull-right">
           <div class="logos">
             @if($value['logo_lg'])
-              {{-- If Retailer Logo Exisits--}}
-              <img src="{{$value['logo_lg']}}" class="img-fluid" style="max-width:50px;">
-            @else
-              {{-- If Retailer Logo Exisits--}}
+              <img src="{{$value['logo_md']}}" class="img-fluid" style="max-width:50px;">
             @endif
           </div>
         </div>

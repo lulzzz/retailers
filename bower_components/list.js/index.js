@@ -1,7 +1,3 @@
-/*
-List.js 1.1.1
-By Jonny Strömberg (www.jonnystromberg.com, www.listjs.com)
-*/
 (function( window, undefined ) {
 "use strict";
 

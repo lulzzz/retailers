@@ -112,8 +112,8 @@ retailers.json = function(url) {
       $('.location').closest('li').first().data('latitude'),
       $('.location').closest('li').first().data('longitude'),
       $('.location').closest('li').first().data('country_code'),
-      $('.location').closest('li').first().data('storefront_lg'),
-      $('.location').closest('li').first().data('logo_lg')
+      $('.location').closest('li').first().data('storefront_md'),
+      $('.location').closest('li').first().data('logo_md')
     );
   })
 
@@ -126,8 +126,8 @@ retailers.json = function(url) {
         $(this).data('latitude'),
         $(this).data('longitude'),
         $(this).data('country_code'),
-        $(this).data('storefront_lg'),
-        $(this).data('logo_lg')
+        $(this).data('storefront_md'),
+        $(this).data('logo_md')
       );
     });
   });

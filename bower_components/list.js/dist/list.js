@@ -1,8 +1,5 @@
+// List.js v1.3.0 (http://www.listjs.com) by Jonny Strömberg (http://javve.com)
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-/*
-List.js 1.1.1
-By Jonny Strömberg (www.jonnystromberg.com, www.listjs.com)
-*/
 (function( window, undefined ) {
 "use strict";
 
@@ -450,10 +447,13 @@ module.exports = function(list) {
       if (args.length == 2 && args[1] instanceof Array) {
         columns = args[1];
       } else if (args.length == 2 && typeof(args[1]) == "function") {
+        columns = undefined;
         customSearch = args[1];
       } else if (args.length == 3) {
         columns = args[1];
         customSearch = args[2];
+      } else {
+        columns = undefined;
       }
     },
     setColumns: function() {
@@ -650,7 +650,9 @@ var Templater = function(list) {
 
   var init = function() {
     itemSource = templater.getItemSource(list.item);
-    itemSource = templater.clearSourceItem(itemSource, list.valueNames);
+    if (itemSource) {
+      itemSource = templater.clearSourceItem(itemSource, list.valueNames);
+    }
   };
 
   this.clearSourceItem = function(el, valueNames) {
@@ -687,10 +689,10 @@ var Templater = function(list) {
           return nodes[i].cloneNode(true);
         }
       }
-    } else if (/^tr[\s>]/.exec(item)) {
-      var table = document.createElement('table');
-      table.innerHTML = item;
-      return table.firstChild;
+    } else if (/<tr[\s>]/g.exec(item)) {
+      var tbody = document.createElement('tbody');
+      tbody.innerHTML = item;
+      return tbody.firstChild;
     } else if (item.indexOf("<") !== -1) {
       var div = document.createElement('div');
       div.innerHTML = item;
@@ -701,7 +703,7 @@ var Templater = function(list) {
         return source;
       }
     }
-    throw new Error("The list need to have at list one item on init otherwise you'll have to add a template.");
+    return undefined;
   };
 
   this.get = function(item, valueNames) {
@@ -774,6 +776,9 @@ var Templater = function(list) {
   this.create = function(item) {
     if (item.elm !== undefined) {
       return false;
+    }
+    if (itemSource === undefined) {
+      throw new Error("The list need to have at list one item on init otherwise you'll have to add a template.");
     }
     /* If item source does not exists, use the first item in list as
     source for new items */
@@ -1160,21 +1165,23 @@ module.exports = function(arr, obj){
 
 },{}],15:[function(require,module,exports){
 /*
- * Natural Sort algorithm for Javascript - Version 0.8 - Released under MIT license
+ * Natural Sort algorithm for Javascript - Version 0.8.1 - Released under MIT license
  * Author: Jim Palmer (based on chunking idea from Dave Koelle)
  */
 module.exports = function(a, b, opts) {
-    var re = /(^([+\-]?(?:\d*)(?:\.\d*)?(?:[eE][+\-]?\d+)?)?$|^0x[\da-fA-F]+$|\d+)/g,
+    var re = /(^([+\-]?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?(?=\D|\s|$))|^0x[\da-fA-F]+$|\d+)/g,
         sre = /^\s+|\s+$/g,   // trim pre-post whitespace
         snre = /\s+/g,        // normalize all whitespace to single ' ' character
         dre = /(^([\w ]+,?[\w ]+)?[\w ]+,?[\w ]+\d+:\d+(:\d+)?[\w ]?|^\d{1,4}[\/\-]\d{1,4}[\/\-]\d{1,4}|^\w+, \w+ \d+, \d{4})/,
         hre = /^0x[0-9a-f]+$/i,
         ore = /^0/,
         options = opts || {},
-        i = function(s) { return options.insensitive && (''+s).toLowerCase() || ''+s; },
+        i = function(s) {
+            return (options.insensitive && ('' + s).toLowerCase() || '' + s).replace(sre, '');
+        },
         // convert all to strings strip whitespace
-        x = i(a) || '',
-        y = i(b) || '',
+        x = i(a),
+        y = i(b),
         // chunk/tokenize
         xN = x.replace(re, '\0$1\0').replace(/\0$/,'').replace(/^\0/,'').split('\0'),
         yN = y.replace(re, '\0$1\0').replace(/\0$/,'').replace(/^\0/,'').split('\0'),
@@ -1182,29 +1189,31 @@ module.exports = function(a, b, opts) {
         xD = parseInt(x.match(hre), 16) || (xN.length !== 1 && Date.parse(x)),
         yD = parseInt(y.match(hre), 16) || xD && y.match(dre) && Date.parse(y) || null,
         normChunk = function(s, l) {
-            // normalize spaces; find floats not starting with '0', string or 0 if not defined (Clint Priest)
-            return (!s.match(ore) || l == 1) && parseFloat(s) || s.replace(snre, ' ').replace(sre, '') || 0;
+           // normalize spaces; find floats not starting with '0', string or 0 if not defined (Clint Priest)
+           return (!s.match(ore) || l == 1) && parseFloat(s) || s.replace(snre, ' ').replace(sre, '') || 0;
         },
         oFxNcL, oFyNcL;
-    // first try and sort Hex codes or Dates
-    if (yD) {
-        if ( xD < yD ) { return -1; }
-        else if ( xD > yD ) { return 1; }
-    }
-    // natural sorting through split numeric strings and default strings
-    for(var cLoc=0, xNl = xN.length, yNl = yN.length, numS=Math.max(xNl, yNl); cLoc < numS; cLoc++) {
-        oFxNcL = normChunk(xN[cLoc], xNl);
-        oFyNcL = normChunk(yN[cLoc], yNl);
-        // handle numeric vs string comparison - number < string - (Kyle Adams)
-        if (isNaN(oFxNcL) !== isNaN(oFyNcL)) { return (isNaN(oFxNcL)) ? 1 : -1; }
-        // rely on string comparison if different types - i.e. '02' < 2 != '02' < '2'
-        else if (typeof oFxNcL !== typeof oFyNcL) {
-            oFxNcL += '';
-            oFyNcL += '';
-        }
-        if (oFxNcL < oFyNcL) { return -1; }
-        if (oFxNcL > oFyNcL) { return 1; }
-    }
+   // first try and sort Hex codes or Dates
+   if (yD) {
+       if (xD < yD) { return -1; }
+       else if (xD > yD) { return 1; }
+   }
+   // natural sorting through split numeric strings and default strings
+   for(var cLoc = 0, xNl = xN.length, yNl = yN.length, numS = Math.max(xNl, yNl); cLoc < numS; cLoc++) {
+       oFxNcL = normChunk(xN[cLoc] || '', xNl);
+       oFyNcL = normChunk(yN[cLoc] || '', yNl);
+       // handle numeric vs string comparison - number < string - (Kyle Adams)
+       if (isNaN(oFxNcL) !== isNaN(oFyNcL)) {
+           return isNaN(oFxNcL) ? 1 : -1;
+       }
+       // if unicode use locale comparison
+       if (/[^\x00-\x80]/.test(oFxNcL + oFyNcL) && oFxNcL.localeCompare) {
+           var comp = oFxNcL.localeCompare(oFyNcL);
+           return comp / Math.abs(comp);
+       }
+       if (oFxNcL < oFyNcL) { return -1; }
+       else if (oFxNcL > oFyNcL) { return 1; }
+   }
     return 0;
 };
 

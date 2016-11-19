@@ -27,17 +27,13 @@ Really simple and easy to use!
 ```
 bower install list.js
 ```
-##### Via Component
-```
-component install javve/list.js
-```
 ##### Via CDNJS
-```
-<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
+```html
+<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.2.0/list.min.js"></script>
 ```
 ##### Via Direct Download
-- [Compressed list.js](https://raw.githubusercontent.com/javve/list.js/v1.1.1/dist/list.min.js)
-- [Uncompressed list.js](https://raw.githubusercontent.com/javve/list.js/v1.1.1/dist/list.js)
+- [Compressed list.js](https://raw.githubusercontent.com/javve/list.js/v1.2.0/dist/list.min.js)
+- [Uncompressed list.js](https://raw.githubusercontent.com/javve/list.js/v1.2.0/dist/list.js)
 
 ### Demo / Examples
 - [Existing list](http://listjs.com/examples/existing-list)
@@ -89,18 +85,16 @@ component install javve/list.js
 * [Page-](https://github.com/Page-)
 * [urkle](https://github.com/urkle) / Edward Rudd
 
-Built with [Component](https://github.com/component/component) which is created by [TJ Holowaychuk](https://github.com/visionmedia).
-
 ### Want to contribute?
 - Read more at [listjs.com/overview/contribute](http://listjs.com/overview/contribute)
 
 ### Creator
 |               | Jonny Strömberg [@javve](http://twitter.com/javve)            |
 | ------------- | ------------- |
-| ![Image of Jonny](http://listjs.com/images/graphics/javve.jpg) | I hope you like the lib. I’ve put a lot of hours into it! Feel free to follow me on [Twitter](http://twitter.com/javve) for news and [donate a coffee](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=M7ZGHV75VSD2E) for good karma ;)  
+| ![Image of Jonny](http://listjs.com/assets/images/graphics/javve.jpg) | I hope you like the lib. I’ve put a lot of hours into it! Feel free to follow me on [Twitter](http://twitter.com/javve) for news and [donate a coffee](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=M7ZGHV75VSD2E) for good karma ;)  
 
 
 ## License (MIT)
 
-Copyright (c) 2012 Jonny Strömberg <[jonny.stromberg@gmail.com](mailto:jonny.stromberg@gmail.com)>
+Copyright (c) 2012-2016 Jonny Strömberg <[jonny.stromberg@gmail.com](mailto:jonny.stromberg@gmail.com)>
 [http://jonnystromberg.com](http://jonnystromberg.com)

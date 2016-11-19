@@ -24,6 +24,6 @@ interface RetailerInterface {
   public function matrix($origin, $retailers);
   public function retailers($domain);
   public function exists($resource, $query);
-
+  public function image($type, $id, $input, $file, $width);  
 
 }

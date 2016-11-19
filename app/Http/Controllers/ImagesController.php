@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Repositories\ImageRepository;
+use App\Http\Repositories\RetailerInterface;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 use App\Brand;
 use App\Retailer;
@@ -15,10 +15,19 @@ use App\Location;
 use View;
 use Auth;
 use Redirect;
+use Image;
+//use Request;
 
 
 class ImagesController extends Controller
 {
+
+  private $retailer;
+
+  public function __construct(RetailerInterface $retailer) {
+    $this->retailer = $retailer;
+  }
+
 
   public function index($id)
   {
@@ -32,33 +41,33 @@ class ImagesController extends Controller
   }
 
 
-  public function upload($id)
+  public function upload(Request $request, $id)
   {
     $logo = Input::file('logo');
     $storefront = Input::file('storefront');
 
-    $brand = Brand::where('user_id', Auth::user()->id)
-    ->first();
-
-    $retailer = Retailer::where('brand_id', $brand->id)
-    ->first();
-
     if ($logo) {
 
-      $input = $logo->store('logos/'.Auth::user()->id.'/'.$retailer->slug);
+      $lg = $this->retailer->image('logo', $id, $logo, '.png', 600);
+      $md = $this->retailer->image('logo', $id, $logo, '.png', 300);
+      $sm = $this->retailer->image('logo', $id, $logo, '.png', 150);
 
-      // Get Retailers Table Input
       $retailers = Retailer::find($id);
-      $retailers->logo_lg = Storage::url($input);
+      $retailers->logo_lg = Storage::url($lg);
+      $retailers->logo_md = Storage::url($md);
+      $retailers->logo_sm = Storage::url($sm);
       $retailers->update();
 
     } else if ($storefront) {
 
-      $input = $storefront->store('storefronts/'.Auth::user()->id.'/'.$retailer->slug);
+      $lg = $this->retailer->image('storefront', $id, $storefront, '.jpg', 1024);
+      $md = $this->retailer->image('storefront', $id, $storefront, '.jpg', 768);
+      $sm = $this->retailer->image('storefront', $id, $storefront, '.jpg', 480);
 
-     // Get Retailers Table Input
       $retailers = Location::find($id);
-      $retailers->storefront_lg = Storage::url($input);
+      $retailers->storefront_lg = Storage::url($lg);
+      $retailers->storefront_md = Storage::url($md);
+      $retailers->storefront_sm = Storage::url($sm);
       $retailers->update();
 
     }
@@ -75,48 +84,48 @@ class ImagesController extends Controller
       // Find Logo
       $image = Retailer::find($id);
 
-        // Images path to delete from Storage
+      // Images path to delete from Storage
       $logos = array(
         'logo_sm' => $image->logo_sm,
         'logo_md' => $image->logo_md,
         'logo_lg' => $image->logo_lg
-        );
+      );
 
-       // Delete
+      // Delete
       Storage::delete($logos);
 
-     // Make record in database NULL
+      // Make record in database NULL
       $nullable = array(
         'logo_sm' => null,
         'logo_md' => null,
         'logo_lg' => null
-        );
+      );
 
-    // Perform action!
+      // Perform action!
       $image->update($nullable);
 
     } else if ($type == 'storefront') {
-     // Find Logo
+      // Find Logo
       $image = Location::find($id);
 
-        // Images path to delete from Storage
+      // Images path to delete from Storage
       $storefronts = array(
         'storefront_sm' => $image->storefront_sm,
         'storefront_md' => $image->storefront_md,
         'storefront_lg' => $image->storefront_lg
-        );
+      );
 
-       // Delete
+      // Delete
       Storage::delete($storefronts);
 
-     // Make record in database NULL
+      // Make record in database NULL
       $nullable = array(
         'storefront_sm' => null,
         'storefront_md' => null,
         'storefront_lg' => null
-        );
+      );
 
-    // Perform action!
+      // Perform action!
       $image->update($nullable);
     }
 

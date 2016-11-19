@@ -79,7 +79,7 @@
                  </div>
                </div>
              <div class="logo-preview">
-               <img src="retailer->logo_lg" class="img-fluid">
+               <img src="{{$retailer->logo_lg}}" class="img-fluid">
 
              </div>
            </div>

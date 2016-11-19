@@ -41,7 +41,7 @@ public function index()
 
 
   $geo = $this->retailer->geoip('HTTP_X_FORWARDED_FOR');
-  $exists = $this->retailer->exists('country_slug', str_slug('canada'));
+  $exists = $this->retailer->exists('country_slug', str_slug($geo['country']));
   $stores = $this->retailer->retailers($this->domain);
 
   $retailer = $this->retailer->matrix([(float) $geo['lat'], (float) $geo['lon']], $stores);

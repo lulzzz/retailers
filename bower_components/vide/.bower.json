@@ -36,12 +36,12 @@
     "jquery": "jquery#^1.11.3",
     "jquery2": "jquery#^2.1.4"
   },
-  "version": "0.5.0",
-  "_release": "0.5.0",
+  "version": "0.5.1",
+  "_release": "0.5.1",
   "_resolution": {
     "type": "version",
-    "tag": "0.5.0",
-    "commit": "4ebda1e8cac9d954565d87994617d62d2d20f8c2"
+    "tag": "0.5.1",
+    "commit": "d3a2cbc04bf44fbc49d23761aa77a77425bf4e20"
   },
   "_source": "https://github.com/VodkaBears/Vide.git",
   "_target": "^0.5.0",

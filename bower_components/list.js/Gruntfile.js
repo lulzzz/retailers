@@ -13,11 +13,8 @@ module.exports = function(grunt) {
     },
   },
   shell: {
-    mkdir: {
-      command: 'mkdir -p dist'
-    },
     build: {
-      command: 'browserify index.js > dist/list.js',
+      command: 'node_modules/browserify/bin/cmd.js index.js > dist/list.js',
       options: {
         stderr: true
       }
@@ -56,18 +53,30 @@ module.exports = function(grunt) {
       }
     }
   },
-  mocha: {
-    cool: {
-    src: [ 'test/index.html' ],
-    options: {
-      run: true,
-      timeout: 10000,
-      bail: false,
-      log: true,
-      reporter: 'Nyan',
-      mocha: {
-        ignoreLeaks: false
+  file_append: {
+    default_options: {
+      files: [
+        {
+          prepend: "// List.js v<%= pkg.version %> (<%= pkg.homepage %>) by <%= pkg.author.name %> (<%= pkg.author.url %>)\n",
+          input: 'dist/list.min.js'
+        },
+        {
+          prepend: "// List.js v<%= pkg.version %> (<%= pkg.homepage %>) by <%= pkg.author.name %> (<%= pkg.author.url %>)\n",
+          input: 'dist/list.js'
         }
+      ]
+    }
+  },
+  mocha: {
+    test: {
+      src: [ 'test/index.html' ],
+      options: {
+        run: true,
+        timeout: 10000,
+        bail: false,
+        log: true,
+        logErrors: true,
+        reporter: 'Nyan'
       }
     }
   }
@@ -78,9 +87,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-mocha');
+  grunt.loadNpmTasks('grunt-file-append');
 
-  grunt.registerTask('default', ['jshint:code', 'jshint:tests', 'shell:mkdir', 'shell:build']);
-  grunt.registerTask('dist', ['default', 'shell:mkdir', 'shell:build', 'uglify']);
+  grunt.registerTask('mkdir', function() { grunt.file.mkdir("dist"); });
+  grunt.registerTask('default', ['jshint:code', 'jshint:tests', 'mkdir', 'shell:build']);
+  grunt.registerTask('dist', ['default', 'mkdir', 'shell:build', 'uglify', 'file_append']);
   grunt.registerTask('clean', ['shell:remove']);
   grunt.registerTask('test', ['dist', 'mocha']);
 

@@ -1,3 +1,9 @@
+@if($err)
+   <div class="alert">
+      <h3>No Retailers in your loction!</h3>
+   </div>
+@endif
+
 <div class="retailers-container">
   <div class="row">
     <div class="col-xs-4 p-0">
