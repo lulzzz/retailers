@@ -105,6 +105,8 @@ class RetailerRepository implements RetailerInterface {
     }
 
 
+
+
     /**
     * Distance
     *

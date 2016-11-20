@@ -55,16 +55,14 @@ retailers.shop = function (latitude, longitude, iso, storefront, logo) {
   });
 
   if ($('.container-fluid').width() < 1000) {
-    map.panBy(200,0)
-
-    var  feature_width = '175px';
-    var  logo_width    = '80px';
+  var  feature_width = '170px';
+  var  logo_width    = '80px';
   } else {
-    var  feature_width = '225px';
-    var  logo_width    = '120px';
+  var  feature_width = '250px';
+  var  logo_width    = '120px';
   }
 
-  var sticker = $('<div class="storefront-sticker" style="max-width:'+feature_width+';"><div class="storefront-feature" data-sticker><div class="inner"><span class="flag-icon" style="background-image: url('+iso+');"></span><div class="logo"><img src="'+logo+'"></div></div><div class="tint"><img src="'+storefront+'" class="bg"></div></div><div class="row pt-1"><div class="col-xs-12 col-sm-12 col-md-6 pr-0">Now Open!</div><div class="col-xs-12 col-sm-12 col-md-6"><a class="btn btn-secondary btn-sm pull-right" href="#">View Retailer</button></div></div></div>');
+  var sticker = $('<div class="storefront-sticker" style="max-width:'+feature_width+';"><div class="storefront-feature" data-sticker><div class="inner"><span class="flag-icon" style="background-image: url('+iso+');"></span><div class="logo"><img src="'+logo+'"></div></div><div class="tint"><img src="'+storefront+'" class="bg"></div></div><div class="row pt-1"><div class="col-xs-12 col-sm-12 col-md-6 pr-0"><button class="btn btn-secondary btn-sm pull-left" type="button">Find Directions</button></div><div class="col-xs-12 col-sm-12 col-md-6"><a class="btn btn-secondary btn-sm pull-right" href="#">View Retailer</button></div></div></div>');
 
   $('div[data-sticker]').remove();
   sticker.appendTo('div[data-map]');
@@ -85,8 +83,6 @@ retailers.json = function(url) {
   qwest.get(url)
   .then(function(xhr, response) {
     $('#locating').hide();
-    $('.list').removeClass('list-disabled');
-
 
     // Re-structure the listed retailers
     listings.clear();
@@ -102,9 +98,6 @@ retailers.json = function(url) {
       $('.location').closest('li').first().data('storefront_md'),
       $('.location').closest('li').first().data('logo_md')
     );
-
-    $('.location').closest('li').first().addClass('active');
-
   })
 
   .complete(function() {
@@ -112,13 +105,6 @@ retailers.json = function(url) {
     // Select via data attribute value (injected inline)
 
     $('.location').on('click', function() {
-      $('.list > li').removeClass('active');
-      $(this).toggleClass('active');
-
-      store.set('retailer_latitude', $(this).data('latitude'));
-      store.set('retailer_longitude', $(this).data('longitude'));
-      directionsDisplay.setMap(null);
-
       retailers.shop(
         $(this).data('latitude'),
         $(this).data('longitude'),
@@ -131,55 +117,26 @@ retailers.json = function(url) {
 };
 
 
+for (i = 0; i < locations.length; i++) {
 
+  marker = new google.maps.Marker({
+    position: new google.maps.LatLng(locations[i][0], locations[i][1]),
+    map: map,
+    icon: locations[i][5],
+  });
 
-$('.route').on('click', function() {
-  function initMap() {
-      var pointA = new google.maps.LatLng(store.get('latitude'), store.get('longitude')),
-          pointB = new google.maps.LatLng(store.get('retailer_latitude'), store.get('retailer_longitude'));
-          map.panTo(pointA);
-          map.setCenter(pointA);
-          map.setZoom(7);
-          // Instantiate a directions service.
-          directionsService = new google.maps.DirectionsService,
-          directionsDisplay = new google.maps.DirectionsRenderer({
-              map: map
-          }),
-          markerA = new google.maps.Marker({
-              position: pointA,
-              title: "Your Location",
-              label: "A",
-              map: map
-          }),
-          markerB = new google.maps.Marker({
-              position: pointB,
-              title: "Retailer",
-              label: "B",
-              map: map
-          });
+  markers.push(marker);
 
-      // get route from A to B
-      calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB);
+  google.maps.event.addListener(marker, 'click', (function(marker, i) {
+    return function() {
+      retailers.shop(
+        locations[i][0], //latitude
+        locations[i][1], //longitude
+        locations[i][2], //iso
+        locations[i][3], //storefront_lg
+        locations[i][4]  //logo_lg
+      );
+    }
+  })(marker, i));
 
-  }
-
-
-
-  function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB) {
-      directionsService.route({
-          origin: pointA,
-          destination: pointB,
-          avoidTolls: true,
-          avoidHighways: false,
-          travelMode: google.maps.TravelMode.DRIVING
-      }, function (response, status) {
-          if (status == google.maps.DirectionsStatus.OK) {
-              directionsDisplay.setDirections(response);
-          } else {
-              window.alert('Directions request failed due to ' + status);
-          }
-      });
-  }
-
-  initMap();
-});
+}

@@ -8,12 +8,10 @@ loadjs(['{{ env('APP_URL') }}/js/plugins/map_styles.min.js',
 
 window.skriptz = window.skriptz || {};
 
-
 skriptz.init = function () {
  skriptz.maps();
 
 };
-
 
 skriptz.maps = function () {
   if (document.getElementById('map-container')){

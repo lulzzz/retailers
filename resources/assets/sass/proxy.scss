@@ -75,7 +75,6 @@ body {
 
 
 .retailer-item {
-  padding:15px;
   height:120px;
   background-color:transparent;
 
@@ -107,16 +106,21 @@ body {
 }
 
 
-.stroked {
- padding:0;
- display: inline-block;
- border-bottom: 1px solid #ddd;
- margin-left: -1px;
- margin-bottom: -1px;
+.route {
+  position: absolute;
+  top:10px;
+  z-index: 8888;
+  left:50px;
+  font-size: 10.5px;
+  padding: 7px 12px;
 }
-
-
-
+.stroked {
+  padding:0;
+  display: inline-block;
+  border-bottom: 1px solid #ddd;
+  margin-left: -1px;
+  margin-bottom: -1px;
+}
 
 
 .search--map {
@@ -135,12 +139,14 @@ body {
   max-height: $component-height;
   border:1px solid #cdcdcd;
   background-color:rgba(255,255,255,0.8);
+    -webkit-overflow-scrolling: touch;
+
 
   h2 {
     text-transform:uppercase;
   }
 
- /* scrollbar-base-color: #C0C0C0;
+  /* scrollbar-base-color: #C0C0C0;
   scrollbar-base-color: #C0C0C0;
   scrollbar-3dlight-color: #C0C0C0;
   scrollbar-highlight-color: #C0C0C0;
@@ -156,20 +162,23 @@ body {
   padding:0;
   width:100%;
   border-bottom:1px solid #cdcdcd;
-  height: 26px;
-
+  height: 21px;
 
   .btn-group {
+    width: 50%;
     height: 19px;
     vertical-align:top;
+
     .btn {
       position: relative;
-      font-size:11px;
-      //text-transform:uppercase;
-      width:150px;
-      height:25px;
+      width:100%;
+      height:20px;
       margin:0;
       padding:0;
+      font-family: Roboto,Arial,sans-serif;
+      font-size: 12.3px;
+      font-weight: 400;
+      border-radius: 0!important;
 
     }
     .b1 {
@@ -186,27 +195,28 @@ body {
 
     .dropdown-menu {
       padding:0;
-      width:241px;
-      margin-top:5px;
+      width:100%;
+      margin-top:0;
       background-color:rgba(255, 255, 255, 0.95);
     }
     .dropdown-item {
       position: relative;
       font-size:12px;
-      padding:0 0 0 50px;
+      padding:0 0 0 42px;
       line-height:25px;
-     //text-transform:uppercase;
-   }
+      text-align: left;
+      //text-transform:uppercase;
+    }
 
-   .flag-nation {
-    position: absolute;
-    top:5px;
-    left:3px;
-    bottom:0;
-    height: 15px;
-    width:25px;
+    .flag-nation {
+      position: absolute;
+      top:0;
+      left:-2px;
+      bottom:0;
+      height: 20px;
+      width:30px;
+    }
   }
-}
 }
 
 
@@ -219,8 +229,9 @@ body {
 .retailers-menu--map {
   position: relative;
   width: 100%;
-  max-height: 80%;
+  max-height: 535px;
   overflow-x: auto;
+
 
 
 
@@ -229,21 +240,23 @@ body {
     margin: 0;
     padding:0;
     //padding-right:8px;
-    max-height:80%;
+    height:100%;
     overflow-x:auto;
     white-space: nowrap;
 
+
     li{
       list-style: none;
-      padding:0;
+      padding:15px;
       margin:0;
       border-bottom:1px solid #cdcdcd;
     }
   }
 
-
-  .active {
-    background-color:#cdcdcd;
+  .list-disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 
   .list-btn {
@@ -255,10 +268,6 @@ body {
     width:100%;
     text-align:left;
     position: relative;
-
-    .active {
-      background-color:#f9f9f9;
-   }
 
     &:hover {
       background-color:#f9f9f9;
@@ -283,6 +292,10 @@ body {
     font-weight:bold;
   }
 
+}
+
+.active {
+  background-color:#efefef !important;
 }
 
 
@@ -343,72 +356,72 @@ body {
     line-height:17px;
   }
 
-
-
   .storefront-feature {
-   position: relative;
-   width: 100%;
-   z-index: 8888;
-   box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
-
-   .flag-icon {
-    display:none;
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 9999;
-    font-size: 20px;
-  }
-  .bg {
+    position: relative;
     width: 100%;
-    height: auto;
-  }
-  .inner {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    text-align: center;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    width: -100%;
-    @include prefixer(box-align, center, webkit moz ms spec);
-    -ms-flex-align: center;
-    @include prefixer(align-items, center, webkit spec);
-    @include prefixer(box-pack, center, webkit moz);
-    -ms-flex-pack: center;
-    @include prefixer(justify-content, center, webkit spec);
-  }
-}
+    z-index: 8888;
 
-.logo {
-  z-index: 9999;
-  margin: 0;
-  img {
-    max-width: 120px;
-    filter: invert(100%);
-    -webkit-filter: invert(100%);
+    .flag-icon {
+      display:none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 9999;
+      font-size: 20px;
+    }
+    .bg {
+      width: 100%;
+      height: auto;
+    }
+    .inner {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      text-align: center;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      width: -100%;
+      @include prefixer(box-align, center, webkit moz ms spec);
+      -ms-flex-align: center;
+      @include prefixer(align-items, center, webkit spec);
+      @include prefixer(box-pack, center, webkit moz);
+      -ms-flex-pack: center;
+      @include prefixer(justify-content, center, webkit spec);
+    }
   }
-}
 
-.tint {
-  position: relative;
-  padding: 0;
-  margin: 0;
-  &:before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.375);
+  .logo {
+    z-index: 9999;
+    margin: 0;
+    img {
+      max-width: 125px;
+      filter: invert(100%);
+      -webkit-filter: invert(100%);
+    }
   }
-}
+
+  .tint {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    &:before {
+      overflow: hidden;
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 5px;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.375);
+      box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
+
+    }
+  }
 
 }

@@ -3,7 +3,6 @@
 
     {{-- If country has retailers show active selection --}}
     <button class="btn btn-secondary btn-sm dropdown-toggle b1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <span class="flag-nation flag-icon" style="background-image: url('https://5c452b52.ngrok.io/Retailers/public/images/flags/{{strtolower($iso)}}.svg');"></span>
       <span class="pl-1">{{$nation}}</span>
     </button>
 

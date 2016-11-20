@@ -28,29 +28,24 @@ Route::get('app',[
   'as' => 'proxy_index',
   'uses' => 'ProxyController@index']);
 
+  // Geo-graphical Listings
+
+
+    // Geo-graphical Listings
+    Route::get('app/{r}', [
+      'as' => 'proxy_retailer',
+      'uses' => 'ProxyController@retailer']);
+
 // Geo-graphical Listings
-Route::get('app/{country}/', [
-  'as' => 'proxy_country',
-  'uses' => 'ProxyController@country']);
+
 
  // Geo-graphical Listings
  Route::get('app/{lat}/{lon}/', [
    'as' => 'proxy_origin',
    'uses' => 'ProxyController@origin']);
 
-Route::get('app/{country}/{city}/', [
-  'as' => 'proxy_city',
-  'uses' => 'ProxyController@city']);
 
-//Route::get('/search/retailers', 'ProxyController@search');
-
-
-//Route::get('/proxy/{country}/{state}', 'ProxyController@state');
-//
-// Retailer Page
-//Route::post('/proxy/{country}/{city}/{id}', 'ProxyController@getRetailer');
-//Route::get('/{country}/{city}/{slug}', 'ProxyController@retailer');
-
+Route::get('dashboard', 'DashboardController@index')->name('carter.dashboard');
 
 
 /*

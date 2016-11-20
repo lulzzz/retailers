@@ -45,7 +45,7 @@ class ProxyController extends Controller
   *
   * Function accessed via /a/retailers from Shopify and is the
   * landing page for the storefront side of the app. Most the internal
-  * logic is in the Retailers Repository. 
+  * logic is in the Retailers Repository.
   *
   * @return \Illuminate\Http\Response
   */
@@ -84,6 +84,16 @@ class ProxyController extends Controller
       'stores',
       'retailers',
       'countries'))
+      ->header('Content-Type', env('PROXY_HEADER')
+    );
+  }
+
+  public function retailer(Request $request, $r) {
+
+    $stores   = $this->retailer->retailers($this->domain);
+    $retailer = collect($stores)->where('slug', $r)->first();
+
+    return response()->view('proxy.retailer', compact('retailer'))
       ->header('Content-Type', env('PROXY_HEADER')
     );
   }
