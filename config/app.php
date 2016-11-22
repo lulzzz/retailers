@@ -166,7 +166,7 @@ return [
         /*
         * Shopify Jumpstart by Nicky Woolf...
         */
-        \NickyWoolf\Carter\Laravel\CarterServiceProvider::class,
+        \NickyWoolf\Carter\CarterServiceProvider::class,
 
         /*
         * Image Intervention...
@@ -195,6 +195,11 @@ return [
         Aws\Laravel\AwsServiceProvider::class,
 
 
+
+        /*
+        * CSV Excel Laravel...
+        */
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
         /*
         * Application Service Providers...
@@ -261,7 +266,10 @@ return [
 
         'AWS' => Aws\Laravel\AwsFacade::class,
 
-
+        /*
+        * CSV Excel Laravel...
+        */
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

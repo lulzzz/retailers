@@ -33,19 +33,20 @@
                                         <span class="select is-fullwidth">
                                             <select name="plan">
                                                 @foreach ($plans as $key => $plan)
-                                                    <option value="{{ $key }}">{{ format_carter_plan($plan) }}</option>
+                                                    <option value="{{ $key }}">{{ trim(sprintf('%s: $%.02f %s', $plan['name'], $plan['price'], $plan['test'] ? '(TEST)' : '')) }}</option>
                                                 @endforeach
                                             </select>
                                         </span>
                                     </p>
                                     @endif
 
-                                    <p class="control">
-                                        <input type="text" class="input is-large" name="shop" placeholder="Shop Domain"/>
+                                    <p class="control has-addons">
+                                        <input type="text" class="input is-expanded" name="shop" placeholder="Shop Domain"/>
+                                        <input type="text" class="input" value=".myshopify.com" disabled/>
                                     </p>
 
                                     <p class="control">
-                                        <input type="password" class="input is-large" name="password" placeholder="Password"/>
+                                        <input type="password" class="input" name="password" placeholder="Password"/>
                                     </p>
 
                                     <p class="control">

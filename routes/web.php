@@ -45,7 +45,7 @@ Route::get('app',[
    'uses' => 'ProxyController@origin']);
 
 
-Route::get('dashboard', 'DashboardController@index')->name('carter.dashboard');
+//Route::get('dashboard', 'DashboardController@index')->name('carter.dashboard');
 
 
 /*
@@ -114,3 +114,8 @@ Route::delete('upload/{type}/delete/{id}',[
 |
 */
 Route::resource('templates', 'TemplatesController');
+
+
+Route::get('export/',[
+  'as' => 'export_retailers',
+  'uses' => 'ExportController@export']);

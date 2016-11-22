@@ -81,7 +81,7 @@ skriptz.maps = function () {
         var  logo_width    = '120px';
       }
     
-      var sticker = $('<div class="storefront-sticker" style="max-width:'+feature_width+';"><div class="storefront-feature" data-sticker><div class="inner"><span class="flag-icon" style="background-image: url('+iso+');"></span><div class="logo"><img src="'+logo+'"></div></div><div class="tint"><img src="'+storefront+'" class="bg"></div></div><div class="row pt-1"><div class="col-xs-12 col-sm-12 col-md-6 pr-0">Now Open!</div><div class="col-xs-12 col-sm-12 col-md-6"><a class="btn btn-secondary btn-sm pull-right" href="#">View Retailer</button></div></div></div>');
+      var sticker = $('<div class="storefront-sticker" style="max-width:'+feature_width+';"><div class="storefront-feature" data-sticker><div class="inner"><span class="flag-icon" style="background-image: url('+iso+');"></span><div class="logo"><img src="'+logo+'"></div></div><div class="tint"><img src="'+storefront+'" class="bg"></div></div><div class="row pt-1"><div class="col-xs-12 col-sm-12 col-md-6 pr-0"></div><div class="col-xs-12 col-sm-12 col-md-6"><a class="btn btn-secondary btn-sm pull-right" href="#">View Retailer</button></div></div></div>');
     
       $('div[data-sticker]').remove();
       sticker.appendTo('div[data-map]');
@@ -134,7 +134,6 @@ skriptz.maps = function () {
     
           store.set('retailer_latitude', $(this).data('latitude'));
           store.set('retailer_longitude', $(this).data('longitude'));
-          directionsDisplay.setMap(null);
     
           retailers.shop(
             $(this).data('latitude'),
@@ -157,8 +156,9 @@ skriptz.maps = function () {
               map.panTo(pointA);
               map.setCenter(pointA);
               map.setZoom(7);
+    
               // Instantiate a directions service.
-              directionsService = new google.maps.DirectionsService,
+            var   directionsService = new google.maps.DirectionsService,
               directionsDisplay = new google.maps.DirectionsRenderer({
                   map: map
               }),

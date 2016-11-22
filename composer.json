@@ -14,7 +14,10 @@
         "aws/aws-sdk-php-laravel": "~3.0",
         "league/flysystem-aws-s3-v3": "~1.0",
         "torann/geoip": "^0.2.3",
-        "nickywoolf/carter": "^2.0"
+        "nickywoolf/carter": "^3.0",
+        "maatwebsite/excel": "~2.1.0",
+        "league/csv": "^8.1",
+        "nesbot/carbon": "^1.21"
     },
     "require-dev": {
         "donutdan4114/shopify":"dev-master",

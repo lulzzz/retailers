@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use League\Csv\Writer;
 
 // Modals
 use App\Location;
@@ -29,9 +30,9 @@ class RetailersController extends Controller
   }
 
   /**
-   * Display a listing of the resource.
-   *
-   * @return \Illuminate\Http\Response
+  * Display a listing of the resource.
+  *
+  * @return \Illuminate\Http\Response
   */
   public function index()
   {
@@ -52,10 +53,10 @@ class RetailersController extends Controller
   }
 
   /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
+  * Display the specified resource.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
   */
   public function show($type)
   {
@@ -76,10 +77,10 @@ class RetailersController extends Controller
 
 
   /**
-   * Create New Retailer
-   *
-   * @return Redirect to appropriate merchant edit.
-   */
+  * Create New Retailer
+  *
+  * @return Redirect to appropriate merchant edit.
+  */
   public function create(Request $request)
   {
 
@@ -101,11 +102,11 @@ class RetailersController extends Controller
   }
 
   /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\Response
-   */
+  * Store a newly created resource in storage.
+  *
+  * @param  \Illuminate\Http\Request  $request
+  * @return \Illuminate\Http\Response
+  */
   public function store(Request $request)
   {
     $retailer_input = $request->except([
@@ -123,109 +124,111 @@ class RetailersController extends Controller
       'instore']);
 
 
-    $validation = Validator::make($retailer_input, Retailer::$rules);
+      $validation = Validator::make($retailer_input, Retailer::$rules);
 
-    if ($validation->passes())
+      if ($validation->passes())
+      {
+        Retailer::create($retailer_input);
+        return Redirect::route('retailers.index')
+        ->with('message', 'Retailer Added!');
+      }
+
+      return Redirect::route('retailers.create')
+      ->withInput()
+      ->withErrors($validation)
+      ->with('message', 'There were validation errors.');
+    }
+
+
+    /**
+    * Show the seller for editing the specified resource.
+    *
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
+    public function edit($id)
     {
-     Retailer::create($retailer_input);
-     return Redirect::route('retailers.index')
-     ->with('message', 'Retailer Added!');
-   }
 
-   return Redirect::route('retailers.create')
-   ->withInput()
-   ->withErrors($validation)
-   ->with('message', 'There were validation errors.');
- }
+      $brand = Brand::where('user_id', Auth::user()->id)
+      ->first();
 
+      $navigation = Merchant::select('merchants')
+      ->where('brand_id', $brand->id)
+      ->get();
 
-  /**
-   * Show the seller for editing the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function edit($id)
-  {
+      // Get Retailer Information
+      $retailer = Retailer::where('id', $id)->first();
 
-    $brand = Brand::where('user_id', Auth::user()->id)
-    ->first();
+      // Paginate
+      $prev = Retailer::where('id', '<', $retailer->id)->max('id');
+      $next = Retailer::where('id', '>', $retailer->id)->min('id');
 
-    $navigation = Merchant::select('merchants')
-    ->where('brand_id', $brand->id)
-    ->get();
-
-    // Get Retailer Information
-    $retailer = Retailer::where('id', $id)->first();
-
-    // Paginate
-    $prev = Retailer::where('id', '<', $retailer->id)->max('id');
-    $next = Retailer::where('id', '>', $retailer->id)->min('id');
-
-    // Locatios
-    $location = Location::where('retailer_id', $retailer->id)
-    ->orderBy('created_at', 'desc')
-    ->get();
+      // Locatios
+      $location = Location::where('retailer_id', $retailer->id)
+      ->orderBy('created_at', 'desc')
+      ->get();
 
       // Redirect if no Seller found.
-    if (is_null($retailer))
-    {
-      return Redirect::route('retailers.index');
-    } else {
-      return View::make('retailers.edit', compact(
-        'navigation',
-        'retailer',
-        'location',
-        'storefront',
-        'id',
-        'prev',
-        'next'));
-    }
-  }
+      if (is_null($retailer))
+      {
+        return Redirect::route('retailers.index');
+      } else {
+        return View::make('retailers.edit', compact(
+          'navigation',
+          'retailer',
+          'location',
+          'storefront',
+          'id',
+          'prev',
+          'next'));
+        }
+      }
 
 
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function update(Request $request, $id)
-  {
-      // Get Retailers Table Input
-    $retailers_input = $request->only([
-      'name',
-      'description',
-      'featured',
-      'visibility',
-      'email',
-      'website',
-      'instagram']);
+      /**
+      * Update the specified resource in storage.
+      *
+      * @param  \Illuminate\Http\Request  $request
+      * @param  int  $id
+      * @return \Illuminate\Http\Response
+      */
+      public function update(Request $request, $id)
+      {
+        // Get Retailers Table Input
+        $retailers_input = $request->only([
+          'name',
+          'description',
+          'featured',
+          'visibility',
+          'email',
+          'website',
+          'instagram']);
 
-      // Get Retailers Table Input
-    $retailers = Retailer::find($id);
-    $retailers->update($retailers_input);
+          // Get Retailers Table Input
+          $retailers = Retailer::find($id);
+          $retailers->update($retailers_input);
 
-    return Redirect::route('retailers.edit', $id)
-    ->withInput()
-    ->with('message', 'There were validation errors.');
-  }
+          return Redirect::route('retailers.edit', $id)
+          ->withInput()
+          ->with('message', 'There were validation errors.');
+        }
 
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function destroy($id)
-  {
-      //
-    $retailer = Retailer::find($id);
-    $retailer->delete();
+        /**
+        * Remove the specified resource from storage.
+        *
+        * @param  int  $id
+        * @return \Illuminate\Http\Response
+        */
+        public function destroy($id)
+        {
+          //
+          $retailer = Retailer::find($id);
+          $retailer->delete();
 
-      // redirect
-    return Redirect::route('retailers.index');
-  }
+          // redirect
+          return Redirect::route('retailers.index');
+        }
 
-}
+
+        
+      }
