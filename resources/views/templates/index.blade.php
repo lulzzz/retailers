@@ -2,8 +2,8 @@
 
 @section('content')
 
-  <div class="container bg-transparent m-b-0">
-    <div class="card-box p-b-0 m-b-0">
+  <div class="container bg-transparent mb-0">
+    <div class="card-box pb-0 m-b-0">
       <div class="row">
         <div class="col-md-12 p-b-0">
           <div class="iframe-wrapper">
@@ -27,12 +27,12 @@
           <hr>
           <div class="row p-x-1">
             <div class="col-xs-6">
-              <a href="#" class="btn btn-secondary"> 
+              <a href="#" class="btn btn-secondary">
                 Customize
               </a>
             </div>
             <div class="col-xs-6">
-              <a href="#" class="btn btn-primary"> 
+              <a href="#" class="btn btn-primary">
                 Publish Template
               </a>
             </div>
@@ -46,12 +46,12 @@
           <hr>
           <div class="row p-x-1">
             <div class="col-xs-6">
-              <a href="#" class="btn btn-secondary"> 
+              <a href="#" class="btn btn-secondary">
                 Customize
               </a>
             </div>
             <div class="col-xs-6">
-              <a href="#" class="btn btn-primary"> 
+              <a href="#" class="btn btn-primary">
                 Publish Template
               </a>
             </div>
@@ -65,12 +65,12 @@
           <hr>
           <div class="row p-x-1">
             <div class="col-xs-6">
-              <a href="#" class="btn btn-secondary"> 
+              <a href="#" class="btn btn-secondary">
                 Customize
               </a>
             </div>
             <div class="col-xs-6">
-              <a href="#" class="btn btn-primary"> 
+              <a href="#" class="btn btn-primary">
                 Publish Template
               </a>
             </div>
@@ -85,12 +85,12 @@
           <hr>
           <div class="row p-x-1">
             <div class="col-xs-6">
-              <a href="#" class="btn btn-secondary"> 
+              <a href="#" class="btn btn-secondary">
                 Customize
               </a>
             </div>
             <div class="col-xs-6">
-              <a href="#" class="btn btn-primary"> 
+              <a href="#" class="btn btn-primary">
                 Publish Template
               </a>
             </div>
@@ -104,12 +104,12 @@
           <hr>
           <div class="row p-x-1">
             <div class="col-xs-6">
-              <a href="#" class="btn btn-secondary"> 
+              <a href="#" class="btn btn-secondary">
                 Customize
               </a>
             </div>
             <div class="col-xs-6">
-              <a href="#" class="btn btn-primary"> 
+              <a href="#" class="btn btn-primary">
                 Publish Template
               </a>
             </div>
@@ -123,12 +123,12 @@
           <hr>
           <div class="row p-x-1">
             <div class="col-xs-6">
-              <a href="#" class="btn btn-secondary"> 
+              <a href="#" class="btn btn-secondary">
                 Customize
               </a>
             </div>
             <div class="col-xs-6">
-              <a href="#" class="btn btn-primary"> 
+              <a href="#" class="btn btn-primary">
                 Publish Template
               </a>
             </div>
@@ -209,7 +209,7 @@
   <script>
    loadjs([
     '/js/plugins/iframe.min.js'],
-    { success: function() {  
+    { success: function() {
       skriptz.iframed();
     }
   });

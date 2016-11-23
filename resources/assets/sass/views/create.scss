@@ -1,3 +1,17 @@
+.import-csv {
+  margin: 0 auto;
+   .image-placeholder {
+      margin-top: 0;
+   }
+
+   .info-box {
+     padding-top: 30px;
+     //text-align: center;
+     color: #bbb;
+     font-size: ($font-size-xs + 0.03);
+   }
+}
+
 .image-placeholder {
   color: #c3cfd8;
   margin-top:60px;

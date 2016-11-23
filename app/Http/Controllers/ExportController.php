@@ -16,15 +16,19 @@ use App\Location;
 use App\Retailer;
 use App\Merchant;
 use App\Brand;
+use App\Export;
 
 // Laravel
 use View;
 use DB;
 use Auth;
+use Excel;
+use Storage;
 
 // Packages
 use Carbon\Carbon;
 use League\Csv\Writer;
+use League\Csv\Reader;
 
 
 class ExportController extends Controller
@@ -36,6 +40,75 @@ class ExportController extends Controller
       $this->middleware('auth');
       $this->retailer = $retailer;
    }
+
+   /**
+   * Export Retailers of current user to CSV file.
+   *
+   * @return \League\Csv\Writer
+   */
+
+   public function index() {
+
+      return View::make('retailers.csv_import.index', compact('keys', 'values'));
+
+   }
+
+
+
+   public function import(Request $request) {
+      // Get Retailers Table Input
+
+      // Get uploaded CSV file
+      $file = Input::file('csv_file');
+      $csv= file_get_contents($file);
+      $array = array_map("str_getcsv", explode("\n", $csv   ));
+      //$json = json_encode($array);
+
+      $collection = collect($array);
+      $values = $collection->first();
+      $keys = ['name',
+               'type',
+               'description',
+               'street_number',
+               'street_address',
+               'city',
+               'state',
+               'country',
+               'country_code',
+               'postcode',
+               'latitude',
+               'longitude',
+               'email',
+               'phone',
+               'website',
+               'instagram',
+               'facebook',
+               'created_at',
+               'updated_at'];
+
+
+      return View::make('retailers.csv_import.import', compact('keys', 'values'));
+   }
+
+
+   public function update(Request $request, $id)
+   {
+      $input = $request->all();
+
+
+      DB::table('stocks')->truncate();
+      Stock::insert($data);
+      // Get Retailers Table Input
+      $retailers = Export::find($id);
+      $retailers->update($retailers_input);
+
+      return Redirect::route('retailers.edit', $id)
+      ->withInput()
+      ->with('message', 'There were validation errors.');
+     }
+
+
+
 
    /**
    * Export Retailers of current user to CSV file.

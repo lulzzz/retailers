@@ -115,6 +115,13 @@ Route::delete('upload/{type}/delete/{id}',[
 */
 Route::resource('templates', 'TemplatesController');
 
+Route::post('/import-csv',[
+  'as' => 'import_csv',
+  'uses' => 'ExportController@import']);
+
+Route::get('/import',[
+  'as' => 'import_retailers',
+  'uses' => 'ExportController@index']);
 
 Route::get('export/',[
   'as' => 'export_retailers',
