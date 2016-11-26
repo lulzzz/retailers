@@ -48,91 +48,55 @@ class ExportController extends Controller
    */
 
    public function index() {
-
-      return View::make('retailers.csv_import.index', compact('keys', 'values'));
+      return View::make('retailers.csv_import.export');
 
    }
 
+   public function retailers(Request $request) {
 
-
-   public function import(Request $request) {
-      // Get Retailers Table Input
-
-      // Get uploaded CSV file
-      $file = Input::file('csv_file');
-      $csv= file_get_contents($file);
-      $array = array_map("str_getcsv", explode("\n", $csv   ));
-      //$json = json_encode($array);
-
-      $collection = collect($array);
-      $values = $collection->first();
-      $keys = ['name',
-               'type',
-               'description',
-               'street_number',
-               'street_address',
-               'city',
-               'state',
-               'country',
-               'country_code',
-               'postcode',
-               'latitude',
-               'longitude',
-               'email',
-               'phone',
-               'website',
-               'instagram',
-               'facebook',
-               'created_at',
-               'updated_at'];
-
-
-      return View::make('retailers.csv_import.import', compact('keys', 'values'));
-   }
-
-
-   public function update(Request $request, $id)
-   {
-      $input = $request->all();
-
-
-      DB::table('stocks')->truncate();
-      Stock::insert($data);
-      // Get Retailers Table Input
-      $retailers = Export::find($id);
-      $retailers->update($retailers_input);
-
-      return Redirect::route('retailers.edit', $id)
-      ->withInput()
-      ->with('message', 'There were validation errors.');
-     }
-
-
-
-
-   /**
-   * Export Retailers of current user to CSV file.
-   *
-   * @return \League\Csv\Writer
-   */
-
-   public function export() {
-
-      $brand = Brand::where('user_id', Auth::user()->id)
-      ->first();
-
-      $navigation = Merchant::select('merchants')
-      ->where('brand_id', $brand->id)
-      ->get();
-
-      $retailer = $this->retailer->retailers(Auth::user()->domain);
-      $retailers = array('retailers' => $retailer);
-
+      $retailer = Retailer::where('user_id', Auth::user()->id)->get();
       $csv = Writer::createFromFileObject(new \SplTempFileObject());
       $csv->insertOne([
+         'user_id',
+         'brand_id',
          'name',
          'type',
          'description',
+         'phone',
+         'website',
+         'email',
+         'instagram',
+         'facebook',
+         'created_at',
+         'updated_at'
+      ]);
+
+      foreach ($retailer as $key => $value) {
+         $csv->insertOne([
+            'user_id' => Auth::user()->id,
+            'brand_id' => Auth::user()->id,
+            'name' => $value->name,
+            'type' => $value->type,
+            'description' => $value->description,
+            'phone' => $value->phone,
+            'email' => $value->email,
+            'website' => $value->website,
+            'instagram' => $value->instagram,
+            'facebook' => $value->facebook,
+            'created_at' => $value->created_at,
+            'updated_at' => $value->updated_at
+         ]);
+      }
+
+      $csv->output('retailers_'.str_slug(Carbon::now()).'.csv');
+   }
+
+   public function locations(Request $request) {
+
+      $locations = $this->retailer->retailers(Auth::user()->domain);
+      $csv = Writer::createFromFileObject(new \SplTempFileObject());
+      $csv->insertOne([
+         'retailer_id',
          'street_number',
          'street_address',
          'city',
@@ -142,41 +106,26 @@ class ExportController extends Controller
          'postcode',
          'latitude',
          'longitude',
-         'email',
-         'phone',
-         'website',
-         'instagram',
-         'facebook',
          'created_at',
-         'updated_at',
-         'exported_at'
-      ]);
+         'updated_at']);
 
-      foreach ($retailer as $key => $value) {
-         $csv->insertOne([
-            'name' => $value->name,
-            'type' => $value->type,
-            'description' => $value->description,
-            'street_number' => $value->street_number,
-            'street_address' => $value->street_address,
-            'city' => $value->city,
-            'state' => $value->state,
-            'country' => $value->country,
-            'country_code' => $value->country,
-            'postcode' => $value->postcode,
-            'latitude' => $value->latitude,
-            'longitude' => $value->longitude,
-            'email' => $value->email,
-            'phone' => $value->phone,
-            'website' => $value->website,
-            'instagram' => $value->instagram,
-            'facebook' => $value->facebook,
-            'created_at' => $value->created_at,
-            'updated_at' => $value->updated_at,
-            'exported_at' => Carbon::now()
-         ]);
+         foreach ($locations as $key => $value) {
+            $csv->insertOne([
+               'retailer_id' => $value->retailer_id,
+               'street_number' => $value->street_number,
+               'street_address' => $value->street_address,
+               'city' => $value->city,
+               'state' => $value->state,
+               'country' => $value->country,
+               'country_code' => $value->country,
+               'postcode' => $value->postcode,
+               'latitude' => $value->latitude,
+               'longitude' => $value->longitude,
+               'created_at' => $value->created_at,
+               'updated_at' => $value->updated_at
+            ]);
+         }
+
+         $csv->output('locations_'.str_slug(Carbon::now()).'.csv');
       }
-
-      $csv->output('retailers_'.str_slug(Carbon::now()).'.csv');
    }
-}

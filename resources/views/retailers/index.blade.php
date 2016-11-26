@@ -109,7 +109,7 @@
                   </span>
                 @endif
               </td>
-              <td>{{$value->type}}</td>
+              <td>{{ ucfirst($value->type)}}</td>
               <td>@foreach ($value->locations as $location)
                 <span class="country" style="display:none;">{{$location->country}}</span>
                 {{$location->country_code}}
@@ -220,30 +220,32 @@
         label: "Import / Export",
         type: "dropdown",
         links: [
-          { label: "Import CSV file",
+          { label: "Import Retailers",
           callback: function(messege){
-            importModal("/import");
+            importModal('Import Retailers from CSV', "/import", 540);
           }
         },
-        { label: "Export Retailers to CSV",
-        href: "/export",
-        target: "app" }
+        { label: "Export Retailers",
+        callback: function(messege){
+          importModal('CSV Exports', "/export", 140);
+        }
+      }
 
-      ]
-    },{
-      label: "Preview",
-      target: "new",
-      href: "//{{Auth::user()->domain}}/a/retailers"
-    }]
-  }
+    ]
+  },{
+    label: "Preview",
+    target: "new",
+    href: "//{{Auth::user()->domain}}/a/retailers"
+  }]
+}
 });
 
-window.importModal = function(path){
+window.importModal = function(header, path, height){
   ShopifyApp.Modal.open({
     src: path,
-    title: 'Import Retailers from CSV',
-    height: 590,
-    width: 920
+    title: header,
+    height: height,
+    width: 'small'
   });
 }
 

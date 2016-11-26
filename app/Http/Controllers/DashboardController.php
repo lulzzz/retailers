@@ -22,94 +22,95 @@ use Redirect;
 class DashboardController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+   public function __construct()
+   {
+      $this->middleware(['carter.login', 'carter.paying']);
+
+   }
 
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $brand = Brand::where('user_id', Auth::user()->id)->exists();
+   /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+   public function index()
+   {
+      $brand = Brand::where('user_id', Auth::user()->id)->exists();
 
-        // Globals
-        //
-        if (!$brand) {
-            return Redirect::route('brand.index');
-        } else {
-            return Redirect::route('merchants.index');
-        }
+      // Globals
+      //
+      if (!$brand) {
+         return Redirect::route('brand.index');
+      } else {
+         return Redirect::route('merchants.index');
+      }
 
-    }
+   }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
+   /**
+   * Show the form for creating a new resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+   public function show($id)
+   {
 
-     $navigation = Merchant::select('merchants')
-     ->where('brand_id', $id)
-     ->get();
+      $navigation = Merchant::select('merchants')
+      ->where('brand_id', $id)
+      ->get();
 
-     return View::make('dashboard', compact('navigation'));
- }
+      return View::make('dashboard', compact('navigation'));
+   }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-       //
-    }
-
-
-    /**
-     * Show the seller for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+   /**
+   * Store a newly created resource in storage.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @return \Illuminate\Http\Response
+   */
+   public function store(Request $request)
+   {
+      //
+   }
 
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
+   /**
+   * Show the seller for editing the specified resource.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+   public function edit($id)
+   {
+      //
+   }
 
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function delete(Request $request)
-    {
-        $ids = $request->only('ids');
+   /**
+   * Update the specified resource in storage.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+   public function update(Request $request, $id)
+   {
 
-        Retailer::destroy($ids);
-        return Redirect::back();
-    }
+      //
+   }
+
+   /**
+   * Remove the specified resource from storage.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+   public function delete(Request $request)
+   {
+      $ids = $request->only('ids');
+
+      Retailer::destroy($ids);
+      return Redirect::back();
+   }
 }

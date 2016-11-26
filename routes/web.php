@@ -61,7 +61,10 @@ Route::resource('merchants', 'MerchantsController');
 |--------------------------------------------------------------------------
 |
 */
-//Route::resource('dashboard', 'DashboardController');
+Route::get(
+    '/dashboard',
+    'DashboardController@index'
+)->name('carter.dashboard');
 
 
 //Route::post('dashboard/delete','DashboardController@delete');
@@ -115,14 +118,38 @@ Route::delete('upload/{type}/delete/{id}',[
 */
 Route::resource('templates', 'TemplatesController');
 
-Route::post('/import-csv',[
-  'as' => 'import_csv',
-  'uses' => 'ExportController@import']);
 
+/*
+| CSV Import
+|--------------------------------------------------------------------------
+|
+*/
 Route::get('/import',[
+  'as' => 'import',
+  'uses' => 'ImportController@index']);
+Route::post('/import-retailers',[
   'as' => 'import_retailers',
+  'uses' => 'ImportController@retailers']);
+
+Route::post('/import-locations',[
+  'as' => 'import_locations',
+  'uses' => 'ImportController@locations']);
+
+
+
+/*
+| CSV Export
+|--------------------------------------------------------------------------
+|
+*/
+Route::get('/export',[
+  'as' => 'export',
   'uses' => 'ExportController@index']);
 
-Route::get('export/',[
+Route::get('/export-retailers',[
   'as' => 'export_retailers',
-  'uses' => 'ExportController@export']);
+  'uses' => 'ExportController@retailers']);
+
+Route::get('/export-locations',[
+  'as' => 'export_locations',
+  'uses' => 'ExportController@locations']);

@@ -6,7 +6,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyCTlnXnQV55QOGl22nw627SDxo6yXynJYs"></script>
 <!-- jQuery – Framework (CDN) -->
-<script src="https://5c452b52.ngrok.io/Retailers/public/proxy/js/core.min.js"></script>
+<script src="https://baeb0c7c.ngrok.io/Retailers/public/proxy/js/core.min.js"></script>
 <div class="container-fluid"  data-pjax="container">
 
   @yield('content')

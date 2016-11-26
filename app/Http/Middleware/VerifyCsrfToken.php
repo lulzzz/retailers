@@ -14,6 +14,7 @@ class VerifyCsrfToken extends BaseVerifier
     protected $except = [
         //
         '/upload/*',
-        '/import-csv'
+        '/import-csv',
+        '/update-csv'
     ];
 }

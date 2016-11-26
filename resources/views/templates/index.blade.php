@@ -2,8 +2,8 @@
 
 @section('content')
 
-  <div class="container bg-transparent mb-0">
-    <div class="card-box pb-0 m-b-0">
+  <div class="container b-0">
+    <div class="card-box pb-0 mb-0">
       <div class="row">
         <div class="col-md-12 p-b-0">
           <div class="iframe-wrapper">
@@ -23,102 +23,7 @@
     <div class="row  p-t-0">
       <div class="col-sm-4">
         <div class="card-box">
-          <img src="/images/default-template-placeholder.png" class="img-fluid">
-          <hr>
-          <div class="row p-x-1">
-            <div class="col-xs-6">
-              <a href="#" class="btn btn-secondary">
-                Customize
-              </a>
-            </div>
-            <div class="col-xs-6">
-              <a href="#" class="btn btn-primary">
-                Publish Template
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="card-box">
           <img src="/images/mapper-template-placeholder.png" class="img-fluid">
-
-          <hr>
-          <div class="row p-x-1">
-            <div class="col-xs-6">
-              <a href="#" class="btn btn-secondary">
-                Customize
-              </a>
-            </div>
-            <div class="col-xs-6">
-              <a href="#" class="btn btn-primary">
-                Publish Template
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="card-box">
-          <img src="/images/default-template-placeholder.png" class="img-fluid">
-
-          <hr>
-          <div class="row p-x-1">
-            <div class="col-xs-6">
-              <a href="#" class="btn btn-secondary">
-                Customize
-              </a>
-            </div>
-            <div class="col-xs-6">
-              <a href="#" class="btn btn-primary">
-                Publish Template
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
- <div class="row">
-      <div class="col-sm-4">
-        <div class="card-box">
-          <img src="/images/default-template-placeholder.png" class="img-fluid">
-          <hr>
-          <div class="row p-x-1">
-            <div class="col-xs-6">
-              <a href="#" class="btn btn-secondary">
-                Customize
-              </a>
-            </div>
-            <div class="col-xs-6">
-              <a href="#" class="btn btn-primary">
-                Publish Template
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="card-box">
-          <img src="/images/default-template-placeholder.png" class="img-fluid">
-
-          <hr>
-          <div class="row p-x-1">
-            <div class="col-xs-6">
-              <a href="#" class="btn btn-secondary">
-                Customize
-              </a>
-            </div>
-            <div class="col-xs-6">
-              <a href="#" class="btn btn-primary">
-                Publish Template
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="card-box">
-          <img src="/images/default-template-placeholder.png" class="img-fluid">
 
           <hr>
           <div class="row p-x-1">

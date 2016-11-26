@@ -22,144 +22,161 @@ use DB;
 
 class RetailerRepository implements RetailerInterface {
 
-  /**
-  * GeoIP
-  *
-  * Get Visitors Geographical Location
-  *
-  */
-  public function geoip($header) {
+   /**
+   * GeoIP
+   *
+   * Get Visitors Geographical Location
+   *
+   */
+   public function geoip($header) {
 
-    $forwarded  =  Request::server($header);
-    $addresses  =  explode(',',$forwarded);
-    $ip_address =  collect($addresses)->first();
-    $locate     =  GeoIP::getLocation($ip_address);
-
-    return $locate;
-  }
-
-  /**
-  * Exists
-  *
-  * Check if Retailers "Exist" in Stores Database
-  *
-  */
-  public function exists($resource, $query) {
-
-    $data = DB::table('users')
-    ->join('brands',      'users.id',     '=', 'brands.user_id')
-    ->join('merchants',   'brands.id',    '=', 'merchants.brand_id')
-    ->join('retailers',   'brands.id',    '=', 'retailers.brand_id')
-    ->join('locations',   'retailers.id', '=', 'locations.retailer_id')
-    ->select(
-      'users.domain',
-      'retailers.*',
-      'locations.*')
-      ->where($resource, $query)
-      ->exists();
-
-      return $data;
-    }
-
-
-    /**
-    * Countries
-    *
-    * Get Retailer Countries of Specific Shopify Store
-    *
-    */
-    public function countries($domain) {
-
-      $data = DB::table('users')
-      ->join('brands',      'users.id',     '=', 'brands.user_id')
-      ->join('retailers',   'brands.id',    '=', 'retailers.brand_id')
-      ->join('locations',   'retailers.id', '=', 'locations.retailer_id')
-      ->select('locations.country','locations.country_code','locations.country_slug')
-      ->where('domain', $domain)
-      ->get();
-
-      $locate = collect($data)->unique('country_slug');
+      $forwarded  =  Request::server($header);
+      $addresses  =  explode(',',$forwarded);
+      $ip_address =  collect($addresses)->first();
+      $locate     =  GeoIP::getLocation($ip_address);
 
       return $locate;
-    }
+   }
 
-
-    /**
-    * Retailers
-    *
-    * Get Retailers of Specific Shopify Store
-    *
-    */
-    public function retailers($domain) {
+   /**
+   * Exists
+   *
+   * Check if Retailers "Exist" in Stores Database
+   *
+   */
+   public function exists($resource, $query) {
 
       $data = DB::table('users')
       ->join('brands',      'users.id',     '=', 'brands.user_id')
       ->join('merchants',   'brands.id',    '=', 'merchants.brand_id')
       ->join('retailers',   'brands.id',    '=', 'retailers.brand_id')
       ->join('locations',   'retailers.id', '=', 'locations.retailer_id')
-      ->select('retailers.*', 'locations.*')
-      ->where('domain', $domain)
-      ->get();
+      ->select(
+         'users.domain',
+         'retailers.*',
+         'locations.*')
+         ->where($resource, $query)
+         ->exists();
 
-      return $data;
-    }
-
-
-
-
-    /**
-    * Distance
-    *
-    * Get Distance Matrix from Google Maps API
-    *
-    */
-    static function distance(array $origin, array $destination, $unit = "metric") {
-      $theta = $origin[1] - $destination[1];
-      $dist = sin(deg2rad($origin[0])) * sin(deg2rad($destination[0])) + cos(deg2rad($origin[0])) * cos(deg2rad($destination[0])) * cos(deg2rad($theta));
-      $dist = acos($dist);
-      $dist = rad2deg($dist);
-      $miles = $dist * 60 * 1.1515;
-      $unit = strtolower($unit);
-
-      if ($unit == "metric") {
-        return $miles * 1.609344;
-      } elseif ($unit == "imperial") {
-        return $miles;
-      } else {
-        throw new \ArgumentError("Unknown unit system given $unit");
+         return $data;
       }
-    }
-
-    public function matrix($origin, $retailers) {
-      return $retailers->map(function ($retailer) use ($origin) {
-        $retailer = (array) $retailer;
-        $retailer["distance"] = round(self::distance([(float) $retailer["latitude"], (float) $retailer["longitude"]], $origin), 2);
-        return $retailer;
-      });
-    }
 
 
-    /**
-    * Image Upload
-    *
-    * Upload responsive image files to AWS
-    *
-    */
-    public function image($type, $id, $input, $file, $width) {
+      /**
+      * Countries
+      *
+      * Get Retailer Countries of Specific Shopify Store
+      *
+      */
+      public function countries($domain) {
 
-      $manager = new ImageManager();
+         $data = DB::table('users')
+         ->join('brands',      'users.id',     '=', 'brands.user_id')
+         ->join('retailers',   'brands.id',    '=', 'retailers.brand_id')
+         ->join('locations',   'retailers.id', '=', 'locations.retailer_id')
+         ->select('locations.country','locations.country_code','locations.country_slug')
+         ->where('domain', $domain)
+         ->get();
 
-      $filename = str_random() . $file;
+         $locate = collect($data)->unique('country_slug');
 
-      $image = $manager->make($input)->resize($width, null, function ($constraint) {
-        $constraint->aspectRatio();
-      })->stream();
+         return $locate;
+      }
 
-      $path = $id.'/'.$type.'/'.$width.'--'.$filename;
 
-      $s3 = Storage::disk('s3');
-      $s3->put($path, (string)$image, 'public');
+      /**
+      * Retailers
+      *
+      * Get Retailers of Specific Shopify Store
+      *
+      */
+      public function retailers($domain) {
 
-      return $path;
-    }
-  }
+         $data = DB::table('users')
+         ->join('brands',      'users.id',     '=', 'brands.user_id')
+         ->join('merchants',   'brands.id',    '=', 'merchants.brand_id')
+         ->join('retailers',   'brands.id',    '=', 'retailers.brand_id')
+         ->join('locations',   'retailers.id', '=', 'locations.retailer_id')
+         ->select('retailers.*', 'locations.*')
+         ->where('domain', $domain)
+         ->get();
+
+         return $data;
+      }
+
+
+
+
+      /**
+      * Distance
+      *
+      * Get Distance Matrix from Google Maps API
+      *
+      */
+      static function distance(array $origin, array $destination, $unit = "metric") {
+         $theta = $origin[1] - $destination[1];
+         $dist = sin(deg2rad($origin[0])) * sin(deg2rad($destination[0])) + cos(deg2rad($origin[0])) * cos(deg2rad($destination[0])) * cos(deg2rad($theta));
+         $dist = acos($dist);
+         $dist = rad2deg($dist);
+         $miles = $dist * 60 * 1.1515;
+         $unit = strtolower($unit);
+
+         if ($unit == "metric") {
+            return $miles * 1.609344;
+         } elseif ($unit == "imperial") {
+            return $miles;
+         } else {
+            throw new \ArgumentError("Unknown unit system given $unit");
+         }
+      }
+
+      public function matrix($origin, $retailers) {
+         return $retailers->map(function ($retailer) use ($origin) {
+            $retailer = (array) $retailer;
+            $retailer["distance"] = round(self::distance([(float) $retailer["latitude"], (float) $retailer["longitude"]], $origin), 2);
+            return $retailer;
+         });
+      }
+
+
+      /**
+      * Image Upload
+      *
+      * Upload responsive image files to AWS
+      *
+      */
+      public function image($type, $id, $input, $file, $width) {
+
+         $manager = new ImageManager();
+
+         $filename = str_random() . $file;
+
+         $image = $manager->make($input)->resize($width, null, function ($constraint) {
+            $constraint->aspectRatio();
+         })->stream();
+
+         $path = $id.'/'.$type.'/'.$width.'--'.$filename;
+
+         $s3 = Storage::disk('s3');
+         $s3->put($path, (string)$image, 'public');
+
+         return $path;
+      }
+
+
+      public  function processCsv($file)
+      {
+         $csv = array_map('str_getcsv', file($file));
+         $headers = $csv[0];
+         unset($csv[0]);
+         $rowsWithKeys = [];
+         foreach ($csv as $row) {
+            $newRow = [];
+            foreach ($headers as $k => $key) {
+               $newRow[$key] = $row[$k];
+            }
+            $rowsWithKeys[] = $newRow;
+         }
+         return $rowsWithKeys;
+      }
+   }

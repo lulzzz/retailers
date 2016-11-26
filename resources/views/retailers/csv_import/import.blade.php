@@ -4,7 +4,7 @@
   <div class="container-fluid">
     <div class="row import-csv">
       <div class="col-xs-6">
-        <form action="{{ route( 'import_csv' )  }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
+        <form action="{{ route( 'import_locations' )  }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
           <input type="file" name="csv_file">
@@ -20,20 +20,23 @@
     </div>
     <hr>
     <div class="row">
-      @foreach ($keys as $value)
-        <div class="col-xs-3 py-2">
-          <h6>{{ucfirst($value)}}</h6>
-          <select class="form-control-sm pt-2">
-            @foreach ($values as $value)
-              <option>{{$value}}</option>
-            @endforeach
-          </select>
-        </div>
-      @endforeach
+      <form action="{{ route( 'import_retailers' )  }}" method="POST" accept-charset="UTF-8">
+        @foreach ($keys as $value)
+          <div class="col-xs-3 py-2">
+            <h6>{{ucfirst($value)}}</h6>
+            <select name="[]" class="form-control-sm pt-2">
+              @foreach ($values as $value)
+                <option value="{{$value}}">{{$value}}</option>
+              @endforeach
+            </select>
+          </div>
+        @endforeach
+        <button type="submit">Send it</button>
+      </form>
     </div>
     <hr>
     <div class="row">
-      
+
     </div>
   </div>
 @stop

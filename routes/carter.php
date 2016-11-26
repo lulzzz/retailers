@@ -3,27 +3,27 @@
 Route::group(['middleware' => 'web'], function () {
 
     Route::get(
-        'signup',
+        'shopify/signup',
         'InstalledAppController@index'
     )->name('carter.signup');
 
     Route::match(['get', 'post'],
-        'install',
+        'shopify/install',
         'InstalledAppController@create'
     )->name('carter.install');
 
     Route::get(
-        'register',
+        'shopify/register',
         'RegisteredUsersController@create'
     )->name('carter.register');
 
     Route::get(
-        'embedded/plans',
+        'shopify/embedded/plans',
         'RecurringChargesController@index'
     )->name('carter.plans');
 
     Route::match(['get', 'post'],
-        'embedded/plans/create',
+        'shopify/embedded/plans/create',
         'RecurringChargesController@create'
     )->name('carter.plan.create');
 
@@ -33,17 +33,12 @@ Route::group(['middleware' => 'web'], function () {
     )->name('carter.activate');
 
     Route::get(
-        'embedded/login',
+        'shopify/embedded/login',
         'AuthorizedUsersController@create'
     )->name('carter.login');
 
     Route::get(
-        'embedded/dashboard',
-        'DashboardController@index'
-    )->name('carter.dashboard');
-
-    Route::get(
-        'app/expired',
+        'shopify/app/expired',
         'ExpiredSessionsController@index'
     )->name('carter.expired');
 

@@ -4,7 +4,7 @@
   <div class="container-fluid">
     <div class="row import-csv">
       <div class="col-xs-6">
-        <form action="{{ route( 'import_csv' )  }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
+        <form action="{{ route( 'import_locations' )  }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
           <input type="file" name="csv_file">
@@ -19,7 +19,7 @@
       </div>
     </div>
     <hr>
-    <div class="text-xs-center pa-3">
+    <div class="text-xs-center">
       <h3>Add a .CSV file with column titles!</h3>
     </div>
   </div>
