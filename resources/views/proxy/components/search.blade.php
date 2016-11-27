@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="grid-middle">  
+<div class="grid-middle">
   <div id="retailers-list">
     <div class="grid">
       <div class="grid__item one-whole">
@@ -14,13 +14,13 @@
     <ul class="grid list">
       @foreach ($retailers as $key => $value)
       <li class="grid__item one-third">
-        <a href="{{ env('APP_URL') }}{{$value->country}}/{{$value->city}}/{{$value->slug}}">
+        <a href="{{ env('APP_URL') }}/{{$value->country}}/{{$value->city}}/{{$value->slug}}">
           <h4><span class="name">{{ $value->name}}</span></h4>
           <span class="city">{{ $value->city}}</span><br>
           <span class="country">{{ $value->country}}</span>
         </a>
       </li>
-      @endforeach   
+      @endforeach
     </ul>
   </div>
 </div>
@@ -30,8 +30,8 @@
 @section('js')
 <script>
   loadjs([
-    '{{ env('APP_URL') }}js/plugins/list.min.js'],
-    { success: function() {  
+    '{{ env('APP_URL') }}/assets/app/js/plugins/list.min.js'],
+    { success: function() {
       skriptz.search();
     }
   });

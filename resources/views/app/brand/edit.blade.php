@@ -19,7 +19,7 @@
         <div class="card">
           <h5 class="card-header">
             <span class="pull-xs-left">Brand / Company</span>
-            <span class="pull-xs-right lead">Step 1</span>
+            <span class="pull-xs-right lead">Setup</span>
           </h5>
           {{ Form::model($brand,
             array(
@@ -37,7 +37,7 @@
                 'placeholder' => 'Brand Name')) }}
               </div>
               <div class="text-xs-center p-y-2">
-                {{ Form::submit('Set Merchant Types',  array('class' => 'btn btn-primary')) }}
+                {{ Form::submit('Start Adding Retailers',  array('class' => 'btn btn-primary')) }}
               </div>
             </div>
             {{ Form::close() }}

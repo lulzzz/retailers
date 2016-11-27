@@ -14,7 +14,6 @@ use App\Http\Repositories\RetailerInterface;
 // Modals
 use App\Location;
 use App\Retailer;
-use App\Merchant;
 use App\Brand;
 use App\Export;
 
@@ -59,7 +58,6 @@ class ExportController extends Controller
       $csv->insertOne([
          'user_id',
          'name',
-         'type',
          'description',
          'phone',
          'website',
@@ -74,7 +72,6 @@ class ExportController extends Controller
          $csv->insertOne([
             'user_id' => Auth::user()->id,
             'name' => $value->name,
-            'type' => $value->type,
             'description' => $value->description,
             'phone' => $value->phone,
             'email' => $value->email,

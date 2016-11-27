@@ -47,7 +47,7 @@ class RetailerRepository implements RetailerInterface {
 
       $data = DB::table('users')
       ->join('brands',      'users.id',     '=', 'brands.user_id')
-      ->join('retailers',   'brands.id',    '=', 'retailers.brand_id')
+      ->join('retailers',   'users.id',    '=', 'retailers.user_id')
       ->join('locations',   'retailers.id', '=', 'locations.retailer_id')
       ->select(
          'users.domain',
@@ -70,7 +70,7 @@ class RetailerRepository implements RetailerInterface {
 
          $data = DB::table('users')
          ->join('brands',      'users.id',     '=', 'brands.user_id')
-         ->join('retailers',   'brands.id',    '=', 'retailers.brand_id')
+         ->join('retailers',   'users.id',    '=', 'retailers.user_id')
          ->join('locations',   'retailers.id', '=', 'locations.retailer_id')
          ->select('locations.country','locations.country_code','locations.country_slug')
          ->where('domain', $domain)
@@ -92,7 +92,7 @@ class RetailerRepository implements RetailerInterface {
 
          $data = DB::table('users')
          ->join('brands',      'users.id',     '=', 'brands.user_id')
-         ->join('retailers',   'brands.id',    '=', 'retailers.brand_id')
+         ->join('retailers',   'users.id',    '=', 'retailers.user_id')
          ->join('locations',   'retailers.id', '=', 'locations.retailer_id')
          ->select('retailers.*', 'locations.*')
          ->where('domain', $domain)

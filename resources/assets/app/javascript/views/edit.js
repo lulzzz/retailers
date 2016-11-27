@@ -43,8 +43,8 @@ skriptz.dropzone = function () {
 
 
 skriptz.logo = function () {
-  var logoDropzone = new Dropzone('#logo_upload', { 
-    url: "https://retailers.dev/upload/image/{{$id}}",
+  var logoDropzone = new Dropzone('#logo_upload', {
+    url: "{{env('APP_URL')}}/upload/image/{{$id}}",
     paramName: "logo",
     thumbnailWidth: 300,
     complete: function () {
