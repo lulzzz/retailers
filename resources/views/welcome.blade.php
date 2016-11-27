@@ -1,106 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="no-js" lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link href="//fonts.googleapis.com/css?family=Cormorant+Garamond" rel="stylesheet">
+  <link rel="stylesheet" href="https://panoply.github.io/portfolio/assets/stylesheet.min.css">
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-    <!-- Stylesheet :: Retailers -->
-    <link rel="stylesheet" type="text/css" href="/proxy/css/proxy.min.css">
-
-    <!-- jQuery – Framework (CDN) -->
-    <script src="/proxy/js/core.min.js"></script>
-
-    <!-- Styles -->
-    <style>
-        html, body {
-            background-color: #fff;
-            color: #111;
-            font-family: 'Raleway';
-            font-weight: 100;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .full-height {
-            height: 100vh;
-        }
-
-        .flex-center {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
-
-        .position-ref {
-            position: relative;
-        }
-
-        .top-right {
-            position: absolute;
-            right: 10px;
-            top: 18px;
-        }
-
-        .content {
-            text-align: center;
-            width:500px;
-
-        }
-
-        .title {
-            font-size: 94px;
-        }
-
-        .links > a {
-            color: #111;
-            padding: 0 25px;
-            font-size: 12px;
-            font-weight: 400;
-            letter-spacing: .2rem;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-        .m-b-md {
-            margin-bottom: 30px;
-        }
-    </style>
+  <script src="https://panoply.github.io/portfolio/assets/core.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://panoply.github.io/portfolio/assets/components.min.js"></script>
 </head>
 <body>
-    <div class="flex-center position-ref full-height">
-        @if (Route::has('login'))
-        <div class="top-right links">
-            <a href="{{ url('/login') }}">Login</a>
-            <a href="{{ url('/register') }}">Register</a>
+  <div class="content--loading"></div>
+
+  <div class="container">
+    <header class="px-sm-0">
+    </header>
+
+    <main id="container" class="is-moved-by-drawer" data-pjax="main">
+      <div class="vertical-align">
+        <div class="logo">
+          <h1><a href="#">RETAILERS</a></h1>
+          <div class="sub-header">
+            A Shopify application which enables users with an integrated platform to manage, maintain and showcase brick and mortor retail locations selling their products.
+          </div>
         </div>
-        @endif
+      </main>
+      <footer>
+      </footer>
+    </div>
 
-        <div class="content">
-            <div class="title m-b-md">
-                <img src="images/logo.png" width="200">
-            </div>
-
-            <div class="links">
-               <h1>RETAILERS</h1>
-           </div>
-
-           <div class="row">
-               <div class="col-sm-6">
-                   <h3><a href="#">Install Application</a></h3>
-               </div>
-               <div class="col-sm-6">
-                   <h3><a href="#">Documentation</a></h3>
-               </div> 
-           </div>
-       </div>
-
-   </div>
-</div>
+    <script>
+    loadjs(['https://panoply.github.io/portfolio/assets/pjax.min.js'],
+    { success: function() {
+      skriptz.pjaxMain();
+    }
+  });
+  </script>
+  <!--[if lt IE 8]>
+  <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
 </body>
 </html>
