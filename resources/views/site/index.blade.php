@@ -10,22 +10,24 @@
 @stop
 
 @section('content')
-   <div class="vertical-align">
-      <div class="logo">
-         <h1 class="pb-0"><a href="#" class="mb-0">RETAILERS</a></h1>
-         <div class="sub-header">
-            An integrated Shopify application that enables users to create, manage and showcase the brick and mortor retail locations selling their products.
-         </div>
-         <div class="mt-3">
-            <a href="/shopify/signup" class="btn btn-base mr-1">
-               Install Application
-            </a>
-            <a href="/shopify/signup" class="btn btn-base mr-1">
-               Shopify App Store
-            </a>
-            <a href="/shopify/signup" class="btn btn-base">
-               Documentation
-            </a>
+   <div class="page-index">
+      <div class="vertical-align">
+         <div class="logo">
+            <h1 class="pb-0"><a href="#" class="mb-0">RETAILERS</a></h1>
+            <div class="sub-header">
+               An integrated Shopify application that enables users to create, manage and showcase the brick and mortor retail locations selling their products.
+            </div>
+            <div class="mt-3">
+               <a href="/shopify/signup" class="btn btn-base mr-1">
+                  Install Application
+               </a>
+               <a href="/shopify/signup" class="btn btn-base mr-1">
+                  Shopify App Store
+               </a>
+               <a href="/shopify/signup" class="btn btn-base">
+                  Documentation
+               </a>
+            </div>
          </div>
       </div>
    @stop

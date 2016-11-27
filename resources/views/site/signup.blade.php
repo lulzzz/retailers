@@ -23,14 +23,12 @@
 
          @if (count($errors) > 0)
             @foreach ($errors->all() as $error)
-               <div class="notification is-danger">
-                  <p class="title">
+                  <p class="pt-2">
                      Oh, No!
                   </p>
                   <p class="subtitle">
                      {{ $error }}
                   </p>
-               </div>
             @endforeach
          @endif
 
