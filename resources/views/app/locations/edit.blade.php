@@ -1,16 +1,16 @@
-@extends('layouts.iframe')
+@extends('app.layout.iframe')
 
 @section('content')
-<div class="container-fluid"> 
-  @include('locations._partials.upload-storefront')
+<div class="container-fluid">
+  @include('app.locations._partials.upload-storefront')
 </div>
 @stop
 
 
 @section('js')
 <script>
- loadjs(['https://retailers.dev/js/plugins/dropzone.min.js'],
-  { success: function() {  
+ loadjs(['{{env('APP_URL')}}/assets/app/js/plugins/dropzone.min.js'],
+  { success: function() {
     $(skriptz.init);
   }
 });
@@ -36,7 +36,7 @@ skriptz.dropzone = function () {
 };
 
 skriptz.storefront = function () {
-  var storefrontDropzone = new Dropzone('#storefront_upload', { 
+  var storefrontDropzone = new Dropzone('#storefront_upload', {
     url: "https://retailers.dev/upload/image/{{$id}}",
     paramName: "storefront",
     thumbnailWidth: 600,

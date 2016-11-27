@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app.layout.skeleton')
 
 @section('content')
 <div class="container bg-transparent">
@@ -36,8 +36,8 @@
 
     <div class="col-sm-8">
       <div class="card-box">
-        @include('retailers._partials.retailer')
-        @include('retailers._partials.contact')
+        @include('app.retailers._partials.retailer')
+        @include('app.retailers._partials.contact')
       </div>
     </div>
 
@@ -95,11 +95,11 @@
   </div>
   <div class="left-card p-0">
     <div class="p-2">
-      @include('retailers._partials.feature')
+      @include('app.retailers._partials.feature')
     </div>
     <hr>
     <div class="p-2">
-      @include('retailers._partials.visibility')
+      @include('app.retailers._partials.visibility')
     </div>
   </div>
 
@@ -121,7 +121,7 @@
   )
 }}
 
-@include('retailers._partials.locations')
+@include('app.retailers._partials.locations')
 
 {{ Form::close() }}
 
@@ -228,9 +228,9 @@
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 <script>
   loadjs([
-    'https://retailers.dev/js/plugins/geocomplete.min.js',
-    'https://retailers.dev/js/plugins/dropzone.min.js',
-    'https://retailers.dev/js/plugins/areyousure.min.js'],
+    '{{env('APP_URL')}}/assets/app/js/plugins/geocomplete.min.js',
+    '{{env('APP_URL')}}/assets/app/js/plugins/dropzone.min.js',
+    '{{env('APP_URL')}}/assets/app/js/plugins/areyousure.min.js'],
     { success: function() {
       $(skriptz.init);
     }

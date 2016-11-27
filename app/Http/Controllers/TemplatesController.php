@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-// Illuminates 
+// Illuminates
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -54,7 +54,7 @@ class TemplatesController extends Controller
     ->where('brand_id', $brand->id)
     ->get();
 
-    return View::make('templates.index', compact('navigation'));
+    return View::make('app.templates.index', compact('navigation'));
   }
 
   /**
@@ -64,7 +64,7 @@ class TemplatesController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function show($type)
-  {   
+  {
 
 //
   }
@@ -118,8 +118,8 @@ class TemplatesController extends Controller
   public function update(Request $request, $id)
   {
 
-      // 
-    
+      //
+
   }
 
   /**
@@ -131,7 +131,7 @@ class TemplatesController extends Controller
   public function destroy($id)
   {
       //
-  
+
   }
 
 }

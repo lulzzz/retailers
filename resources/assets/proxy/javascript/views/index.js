@@ -1,5 +1,5 @@
 <script>
-loadjs(['{{ env('APP_URL') }}/js/plugins/map_styles.min.js',
+loadjs(['{{ env('APP_URL') }}/assets/app/js/plugins/map_styles.min.js',
 'https://cdnjs.cloudflare.com/ajax/libs/qwest/4.4.5/qwest.min.js'],
  { success: function() {
    skriptz.init();

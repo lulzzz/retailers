@@ -43,7 +43,7 @@
   </div>-->
   <!-- Main Content -->
   <header>
-   @include('layouts.header')
+   @include('app.layout.header')
  </header>
  <!-- Main Content -->
  <main>
@@ -51,14 +51,14 @@
  </main>
  <!-- Footer Content -->
  <footer>
-   @include('layouts.footer')
+   @include('app.layout.footer')
  </footer>
 
 <!-- jQuery – Framework (CDN) -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <!-- jQuery – Components -->
-<script src="/js/components.min.js"></script>
+<script src="{{env('APP_URL')}}/assets/app/js/components.min.js"></script>
 
 <!-- jQuery – Views -->
 @yield('js')

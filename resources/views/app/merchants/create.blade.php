@@ -1,7 +1,7 @@
-@extends('layouts.iframe')
+@extends('app.layout.iframe')
 
 @section('content')
-<div class="container-fluid p-a-2"> 
+<div class="container-fluid p-a-2">
   <div class="row">
 
     @foreach($merchant as $value)
@@ -17,7 +17,7 @@
       </div>
     </div>
     @endforeach
-    @endforeach  
+    @endforeach
   </div>
 </div>
 @stop

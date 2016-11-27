@@ -35,7 +35,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <!-- jQuery – Components -->
-<script src="/js/components.min.js"></script>
+<script src="{env('APP_URL')}}/assets/app/js/components.min.js"></script>
 
 <!-- jQuery – Views -->
 @yield('js')

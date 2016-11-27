@@ -1,9 +1,9 @@
-@extends('layouts.iframe')
+@extends('app.layout.iframe')
 
 @section('content')
-<div class="container-fluid"> 
+<div class="container-fluid">
   {{ Form::model($location, array(
-    'data-shopify-app-submit' => 'edit_address', 
+    'data-shopify-app-submit' => 'edit_address',
     'route' => array('address_save', $location->id))) }}
     <div class="row">
       <div class="col-sm-12">
@@ -57,7 +57,7 @@
             {{ Form::text('longitude', null, array('class' => 'form-control form-control-sm ',  'data-geo' => 'lng', 'placeholder' => 'Longitude')) }}
           </fieldset>
         </div>
-      </div>    
+      </div>
     </div>
   </div>
   {{ Form::close() }}

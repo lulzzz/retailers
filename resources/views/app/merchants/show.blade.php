@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app.layout.skeleton')
 
 @section('content')
 <div class="template-merchants">
@@ -83,7 +83,7 @@
                 </div>
               </li>
             </ul>
-            <div class="card-block"> 
+            <div class="card-block">
              <span class="pull-xs-left"><a class="btn btn-link" href="/brand/{{$brand->id}}/edit">Back</a></span>
              <span class="pull-xs-right">{{ Form::submit('Begin Adding Retailers',  array('class' => 'btn btn-primary')) }}</span>
            </div>

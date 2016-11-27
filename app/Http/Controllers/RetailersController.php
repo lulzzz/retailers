@@ -49,7 +49,7 @@ class RetailersController extends Controller
     ->get();
 
 
-    return View::make('retailers.index', compact('retailer', 'navigation'));
+    return View::make('app.retailers.index', compact('retailer', 'navigation'));
   }
 
   /**
@@ -72,7 +72,7 @@ class RetailersController extends Controller
     {
       return 'No Stores found! Start by adding some!';
     }
-    return View::make('retailers.show', compact('retailer','title'));
+    return View::make('app.retailers.show', compact('retailer','title'));
   }
 
 
@@ -173,7 +173,7 @@ class RetailersController extends Controller
       {
         return Redirect::route('retailers.index');
       } else {
-        return View::make('retailers.edit', compact(
+        return View::make('app.retailers.edit', compact(
           'navigation',
           'retailer',
           'location',
@@ -230,5 +230,5 @@ class RetailersController extends Controller
         }
 
 
-        
+
       }
