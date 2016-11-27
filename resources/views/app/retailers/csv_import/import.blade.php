@@ -1,4 +1,4 @@
-@extends('layouts.iframe')
+@extends('app.layout.iframe')
 
 @section('content')
   <div class="container-fluid">

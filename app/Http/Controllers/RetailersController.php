@@ -48,7 +48,6 @@ class RetailersController extends Controller
     ->with('locations')
     ->get();
 
-
     return View::make('app.retailers.index', compact('retailer', 'navigation'));
   }
 

@@ -54,7 +54,7 @@ class ImportController extends Controller
 
       //return $export;
 
-      return View::make('retailers.csv_import.index', compact('keys', 'values'));
+      return View::make('app.retailers.csv_import.index', compact('keys', 'values'));
 
    }
 

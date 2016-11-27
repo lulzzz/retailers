@@ -39,7 +39,7 @@ class LocationsController extends Controller
     $id = Retailer::where('user_id', Auth::user()->id)->first();
     $location = Location::where('retailer_id', $id->id)->get();
 
-    return View::make('retailers.locations', compact('location', 'navigation','id'));
+    return View::make('app.retailers.locations', compact('location', 'navigation','id'));
   }
 
   public function show($id)
@@ -55,7 +55,7 @@ class LocationsController extends Controller
     $id = Retailer::where('user_id', Auth::user()->id)->first();
 
     $location = Location::where('retailer_id', $id->id)->get();
-    return View::make('retailers.locations', compact('location', 'navigation', 'id'));
+    return View::make('app.retailers.locations', compact('location', 'navigation', 'id'));
   }
 
   public function addressView(Request $request, $id)
@@ -145,7 +145,7 @@ class LocationsController extends Controller
     $retailer = Retailer::where('user_id', Auth::user()->id)->first();
     $location = Location::where('id', $id)->first();
 
-    return View::make('locations.edit', compact('location', 'navigation', 'retailer', 'id'));
+    return View::make('app.locations.edit', compact('location', 'navigation', 'retailer', 'id'));
   }
 
 

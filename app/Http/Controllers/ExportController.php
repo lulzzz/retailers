@@ -48,7 +48,7 @@ class ExportController extends Controller
    */
 
    public function index() {
-      return View::make('retailers.csv_import.export');
+      return View::make('app.retailers.csv_import.export');
 
    }
 
@@ -88,7 +88,7 @@ class ExportController extends Controller
          ]);
       }
 
-      $csv->output('retailers_'.str_slug(Carbon::now()).'.csv');
+      $csv->output('app.retailers_'.str_slug(Carbon::now()).'.csv');
    }
 
    public function locations(Request $request) {
