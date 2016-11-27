@@ -10,7 +10,7 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link href="//fonts.googleapis.com/css?family=Cormorant+Garamond" rel="stylesheet">
   <link rel="stylesheet" href="https://panoply.github.io/portfolio/assets/stylesheet.min.css">
-  <link rel="stylesheet" href="{{env('APP_URL')}}/css/stylesheet.min.css">
+  <link rel="stylesheet" href="{{env('APP_URL')}}/site/css/site.min.css">
 
   <script src="https://panoply.github.io/portfolio/assets/core.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -30,13 +30,25 @@
           <div class="sub-header">
             An integrated Shopify application that enables users to create, manage and showcase brick and mortor retail locations selling their products.
           </div>
-          <div class="py-2">
-            <a href="/shopify/signup" class="btn b">
+          <div class="mt-3">
+            <a href="/shopify/signup" class="btn btn-base mr-1">
+              Install Application
+            </a>
+            <a href="/shopify/signup" class="btn btn-base mr-1">
+              Shopify App Store
+            </a>
+            <a href="/shopify/signup" class="btn btn-base">
+              Documentation
             </a>
           </div>
         </div>
       </main>
       <footer>
+        <div class="footer">
+          <a class="footer-badge" href="https://panoply.github/portfolio">
+            <small><b>PANOPLY</b><p>ENGINEERING E-COMMERCE</p></small>
+          </a>
+        </div>
       </footer>
     </div>
 
@@ -44,6 +56,7 @@
     loadjs(['https://panoply.github.io/portfolio/assets/pjax.min.js'],
     { success: function() {
       skriptz.pjaxMain();
+      $('.signup-form').addClass('animateIn');
     }
   });
   </script>

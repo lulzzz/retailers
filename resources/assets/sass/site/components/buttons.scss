@@ -1,0 +1,16 @@
+.btn-base {
+   text-transform: uppercase;
+   font-weight: 300;
+   letter-spacing: 0.6px;
+   font-size: 12px;
+   padding: 8px 17px;
+   border: 1.5px solid #111;
+   color:#111;
+   background-color: transparent;
+
+   &:hover,
+   &:focus {
+      background-color: #111;
+      color: #fff;
+   }
+}

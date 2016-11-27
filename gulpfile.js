@@ -1,15 +1,16 @@
 //=====================================================//
-//## PLUGINS 
+//## PLUGINS
 //=====================================================//
 
-var gulp = require('gulp');  
-var plugins = require('gulp-load-plugins')(); 
+var gulp = require('gulp');
+var plugins = require('gulp-load-plugins')();
 
 //=====================================================//
 // ## SASS / SCSS / Liquid
 //=====================================================//
 gulp.task('sass-admin', require('./gulp_tasks/sass-admin.js')(gulp, plugins));
 gulp.task('sass-proxy', require('./gulp_tasks/sass-proxy.js')(gulp, plugins));
+gulp.task('sass-site', require('./gulp_tasks/sass-site.js')(gulp, plugins));
 
 
 //=====================================================//
@@ -44,17 +45,21 @@ gulp.task('watch', function () {
 		'resources/assets/sass/**/**/*.scss',
 		'resources/assets/sass/stylesheet.scss'], ['sass-proxy']);
 
+		gulp.watch([
+			'resources/assets/sass/**/**/**/*.scss',
+			'resources/assets/sass/site.scss'], ['sass-site']);
+
 
 	// Watch JAVASCRIPT Files and Directories
 	gulp.watch([
-		'resources/assets/javascript/**/*.js', 
-		'!resources/assets/javascript/modules/*', 
+		'resources/assets/javascript/**/*.js',
+		'!resources/assets/javascript/modules/*',
 		'!resources/assets/javascript/templates/*'], ['js-core']);
 
 	gulp.watch([
 		'resources/assets/javascript/proxy/**/*.js',
 		'!resources/assets/javascript/proxy/blade/*.js'], ['js-proxy']);
-	
+
 	gulp.watch([
 		'resources/assets/javascript/proxy/blade/**/*.js',
 		'resources/assets/javascript/proxy/views/*.js',
@@ -72,13 +77,13 @@ gulp.task('watch', function () {
 
 
 //=====================================================//
-//## RUN GULP TASK 
+//## RUN GULP TASK
 //=====================================================//
 
 gulp.task('default', ['watch']);
 
 
 //--------- MIT License ----------//
-// Do what the fuck you want license. 
+// Do what the fuck you want license.
 //
 // Stream via @heynicos
