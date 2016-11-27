@@ -27,7 +27,7 @@
         <div class="logo">
           <h1><a href="#">RETAILERS</a></h1>
           <div class="sub-header">
-            A Shopify application which enables users with an integrated platform to manage, maintain and showcase brick and mortor retail locations selling their products.
+            A Shopify application the provides users an integrated platform to manage, maintain and showcase brick and mortor retail locations selling their products.
           </div>
         </div>
       </main>
