@@ -61,7 +61,7 @@ class LocationsController extends Controller
   public function addressView(Request $request, $id)
   {
     $location = Location::where('id', $id)->first();
-    return View::make('locations.address', compact('location'));
+    return View::make('app.locations.address', compact('location'));
   }
 
 

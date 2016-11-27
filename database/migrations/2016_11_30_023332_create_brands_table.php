@@ -1,9 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExportsTable extends Migration {
+class CreateBrandsTable extends Migration {
 
     /**
      * Run the migrations.
@@ -12,12 +13,12 @@ class CreateExportsTable extends Migration {
      */
     public function up()
     {
-        Schema::create('exports', function(Blueprint $table)
+        Schema::create('brands', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->integer('brand_id')->unsigned()->unique();
-            $table->foreign('brand_id')->references('id')->on('brands');
-            $table->json('csv_import');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('brand_name')->nullable();
             $table->timestamps();
         });
 
@@ -30,7 +31,7 @@ class CreateExportsTable extends Migration {
      */
     public function down()
     {
-        Schema::drop('exports');
+        Schema::drop('brands');
     }
 
 }

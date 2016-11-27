@@ -25,9 +25,7 @@ class DashboardController extends Controller
    public function __construct()
    {
       $this->middleware(['carter.login', 'carter.paying']);
-
    }
-
 
    /**
    * Display a listing of the resource.
@@ -43,7 +41,7 @@ class DashboardController extends Controller
       if (!$brand) {
          return Redirect::route('brand.index');
       } else {
-         return Redirect::route('merchants.index');
+         return Redirect::route('retailers.index');
       }
 
    }

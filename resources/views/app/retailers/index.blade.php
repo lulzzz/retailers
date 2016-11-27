@@ -24,18 +24,13 @@
       <div class="row">
         <div class="col-xs-12">
 
-          <div class="form-group p-y-2">
+          <div class="form-group p-t-2">
             <div class="input-group">
               <div class="input-group-btn">
                 <button type="button" class="btn btn-secondary dropdown-toggle p-x-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Filter Retailers
                 </button>
                 <div class="dropdown-menu">
-                  @foreach($navigation as $value)
-                    @foreach($value->merchants as $merchant)
-                      <li><a class="dropdown-item"  href="/retailers/{{$merchant}}">{{$merchant}}</a></li>
-                    @endforeach
-                  @endforeach
                   <div role="separator" class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#">Add Merchant</a>
                 </div>
@@ -74,10 +69,10 @@
               </th>
               <th></th>
               <th><span data-th-chkd>Retailer</span></th>
-              <th><span data-th-chkd>Merchant</span></th>
-              <th><span data-th-chkd>Country</span></th>
               <th><span data-th-chkd>City</span></th>
-              <th><span data-th-chkd>Last Modified</span></th>
+              <th><span data-th-chkd>Country</span></th>
+              <th><span data-th-chkd>Visible</span></th>
+              <th class="text-xs-right"><span data-th-chkd>Last Modified</span></th>
             </tr>
           </thead>
           <tbody class="list">
@@ -109,16 +104,15 @@
                   </span>
                 @endif
               </td>
-              <td>{{ ucfirst($value->type)}}</td>
+              <td>@foreach ($value->locations as $location)
+                <span class="city">{{$location->city}}</span>
+              @endforeach</td>
               <td>@foreach ($value->locations as $location)
                 <span class="country" style="display:none;">{{$location->country}}</span>
                 {{$location->country_code}}
               @endforeach</td>
-              <td>@foreach ($value->locations as $location)
-                <span class="city">{{$location->city}}</span>
-              @endforeach</td>
-              {{--<td>@if ($value->visibility == 'public') Public @else Hidden @endif&nbsp;</td>--}}
-              <td>{{ date('M d, g:i a', strtotime($value->updated_at)) }}&nbsp;</td>
+              <td>@if ($value->visibility == 'public') Public @else Hidden @endif&nbsp;</td>
+              <td class="text-xs-right">{{ date('M d, g:i a', strtotime($value->updated_at)) }}&nbsp;</td>
             </tr>
           @endforeach
         </tbody>
@@ -136,7 +130,7 @@
   <script>
 
   loadjs([
-    '/js/plugins/list.min.js'],
+    '{{env('APP_URL')}}/assets/app/js/plugins/list.min.js'],
     { success: function() {
       skriptz.search();
     }
@@ -211,9 +205,7 @@
         {
           label: "Create Retailer",
           loading: false,
-          callback: function(messege){
-            createModal("/merchants/create");
-          }
+          href: "/retailers/create"
         }
       ],
       secondary: [{

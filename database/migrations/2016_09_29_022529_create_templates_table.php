@@ -17,7 +17,6 @@ class CreateTemplatesTable extends Migration {
         {
             $table->increments('id');
             $table->integer('user_id');
-            $table->string('brand_id');
             $table->string('template_name')->nullable();
             $table->string('settings_schema')->nullable();
             //$table->string('scss')->nullable();

@@ -18,6 +18,14 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('password');
+
+            // Carter Additions
+            $table->string('domain')->unique();
+            $table->unsignedBigInteger('shopify_id')->unique();
+            $table->string('access_token');
+            $table->unsignedBigInteger('charge_id')->nullable();
+            $table->boolean('installed');
+
             $table->rememberToken();
             $table->timestamps();
         });

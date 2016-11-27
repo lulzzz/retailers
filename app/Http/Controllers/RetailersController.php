@@ -12,7 +12,6 @@ use League\Csv\Writer;
 // Modals
 use App\Location;
 use App\Retailer;
-use App\Merchant;
 use App\Brand;
 
 // Laravel
@@ -37,18 +36,11 @@ class RetailersController extends Controller
   public function index()
   {
 
-    $brand = Brand::where('user_id', Auth::user()->id)
-    ->first();
-
-    $navigation = Merchant::select('merchants')
-    ->where('brand_id', $brand->id)
-    ->get();
-
-    $retailer = Retailer::where('brand_id', $brand->id)
+    $retailer = Retailer::where('user_id', Auth::user()->id)
     ->with('locations')
     ->get();
 
-    return View::make('app.retailers.index', compact('retailer', 'navigation'));
+    return View::make('app.retailers.index', compact('retailer'));
   }
 
   /**
@@ -83,15 +75,10 @@ class RetailersController extends Controller
   public function create(Request $request)
   {
 
-    $type = Input::get('type');
-
-    $brand = Brand::where('user_id', Auth::user()->id)
-    ->first();
+    $brand = Brand::where('user_id', Auth::user()->id)->first();
 
     $create = new Retailer;
     $create->user_id  = Auth::user()->id;
-    $create->brand_id = $brand->id;
-    $create->type = $type;
     $create->featured = 'no';
     $create->save();
 
@@ -151,10 +138,6 @@ class RetailersController extends Controller
       $brand = Brand::where('user_id', Auth::user()->id)
       ->first();
 
-      $navigation = Merchant::select('merchants')
-      ->where('brand_id', $brand->id)
-      ->get();
-
       // Get Retailer Information
       $retailer = Retailer::where('id', $id)->first();
 
@@ -171,9 +154,10 @@ class RetailersController extends Controller
       if (is_null($retailer))
       {
         return Redirect::route('retailers.index');
+
       } else {
+
         return View::make('app.retailers.edit', compact(
-          'navigation',
           'retailer',
           'location',
           'storefront',

@@ -58,7 +58,6 @@ class ExportController extends Controller
       $csv = Writer::createFromFileObject(new \SplTempFileObject());
       $csv->insertOne([
          'user_id',
-         'brand_id',
          'name',
          'type',
          'description',
@@ -74,7 +73,6 @@ class ExportController extends Controller
       foreach ($retailer as $key => $value) {
          $csv->insertOne([
             'user_id' => Auth::user()->id,
-            'brand_id' => Auth::user()->id,
             'name' => $value->name,
             'type' => $value->type,
             'description' => $value->description,

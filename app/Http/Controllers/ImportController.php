@@ -14,7 +14,6 @@ use App\Http\Repositories\RetailerInterface;
 // Modals
 use App\Location;
 use App\Retailer;
-use App\Merchant;
 use App\Brand;
 use App\Export;
 
@@ -50,11 +49,9 @@ class ImportController extends Controller
    public function index() {
 
       $brand = Brand::where('user_id', Auth::user()->id)->first();
-      $values = Export::where('brand_id', $brand->id)->get();
-
       //return $export;
 
-      return View::make('app.retailers.csv_import.index', compact('keys', 'values'));
+      return View::make('app.retailers.csv_import.index', compact('keys'));
 
    }
 

@@ -26,9 +26,4 @@ class Brand extends Model
     return $this->belongsTo('App\User');
   }
 
-  public function merchant()
-  {
-    return $this->hasMany('App\Merchant');
-  }
-
 }

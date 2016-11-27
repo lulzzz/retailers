@@ -13,7 +13,6 @@ use Intervention\Image\ImageManager;
 use App\Retailer;
 use App\Location;
 use App\Brand;
-use App\Merchant;
 use App\User;
 
 use GeoIP;
@@ -48,7 +47,6 @@ class RetailerRepository implements RetailerInterface {
 
       $data = DB::table('users')
       ->join('brands',      'users.id',     '=', 'brands.user_id')
-      ->join('merchants',   'brands.id',    '=', 'merchants.brand_id')
       ->join('retailers',   'brands.id',    '=', 'retailers.brand_id')
       ->join('locations',   'retailers.id', '=', 'locations.retailer_id')
       ->select(
@@ -94,7 +92,6 @@ class RetailerRepository implements RetailerInterface {
 
          $data = DB::table('users')
          ->join('brands',      'users.id',     '=', 'brands.user_id')
-         ->join('merchants',   'brands.id',    '=', 'merchants.brand_id')
          ->join('retailers',   'brands.id',    '=', 'retailers.brand_id')
          ->join('locations',   'retailers.id', '=', 'locations.retailer_id')
          ->select('retailers.*', 'locations.*')

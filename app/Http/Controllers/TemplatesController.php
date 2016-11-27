@@ -46,15 +46,7 @@ class TemplatesController extends Controller
 
   public function index()
   {
-
-    $brand = Brand::where('user_id', Auth::user()->id)
-    ->first();
-
-    $navigation = Merchant::select('merchants')
-    ->where('brand_id', $brand->id)
-    ->get();
-
-    return View::make('app.templates.index', compact('navigation'));
+    return View::make('app.templates.index');
   }
 
   /**

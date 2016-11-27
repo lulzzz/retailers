@@ -17,8 +17,6 @@ class CreateRetailersTable extends Migration {
         {
             $table->increments('id');
             $table->integer('user_id');
-            $table->string('brand_id');
-            $table->string('type')->nullable();
             $table->string('name')->nullable();
             $table->string('featured')->default('hidden');
             $table->string('visibility')->default('hidden');;

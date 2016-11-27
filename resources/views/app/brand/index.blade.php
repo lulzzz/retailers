@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app.layout.skeleton')
 
 @section('content')
 <div class="template-merchants">
@@ -22,12 +22,12 @@
             <span class="pull-xs-right lead">Step 1</span>
           </h5>
           {{ Form::open(array('route' => 'brand.store')) }}
-          <div class="card-block"> 
+          <div class="card-block">
             <div class="form-group">
               <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
               <input type="text" name="brand_name" placeholder="{{ Auth::user()->name }}" class="form-control">
             </div>
-            <div class="text-xs-center p-y-2"> 
+            <div class="text-xs-center p-y-2">
               {{ Form::submit('Set Merchant Types',  array('class' => 'btn btn-primary')) }}
             </div>
           </div>
