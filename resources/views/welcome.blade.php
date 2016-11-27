@@ -10,6 +10,7 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link href="//fonts.googleapis.com/css?family=Cormorant+Garamond" rel="stylesheet">
   <link rel="stylesheet" href="https://panoply.github.io/portfolio/assets/stylesheet.min.css">
+  <link rel="stylesheet" href="{{env('APP_URL')}}/css/stylesheet.min.css">
 
   <script src="https://panoply.github.io/portfolio/assets/core.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -28,6 +29,10 @@
           <h1><a href="#">RETAILERS</a></h1>
           <div class="sub-header">
             An integrated Shopify application that enables users to create, manage and showcase brick and mortor retail locations selling their products.
+          </div>
+          <div class="py-2">
+            <a href="/shopify/signup" class="btn b">
+            </a>
           </div>
         </div>
       </main>
