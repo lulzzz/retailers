@@ -18,15 +18,23 @@
                An integrated Shopify application that enables users to create, manage and showcase the brick and mortor retail locations selling their products.
             </div>
             <div class="mt-3">
-               <a href="/shopify/signup" class="btn btn-base mr-1">
-                  Install Application
-               </a>
-               <a href="/shopify/signup" class="btn btn-base mr-1">
-                  Shopify App Store
-               </a>
-               <a href="/shopify/signup" class="btn btn-base">
-                  Documentation
-               </a>
+               <ul class="index-quicknav">
+                  <li>
+                     <a href="/shopify/signup" class="btn btn-base mr-1">
+                        Install Application
+                     </a>
+                  </li>
+                  <li>
+                     <a href="/shopify/signup" class="btn btn-base mr-1">
+                        Shopify App Store
+                     </a>
+                  </li>
+                  <li>
+                     <a href="/shopify/signup" class="btn btn-base">
+                        Documentation
+                     </a>
+                  </li>
+               </ul>
             </div>
          </div>
       </div>

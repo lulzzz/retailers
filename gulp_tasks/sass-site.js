@@ -26,13 +26,13 @@ module.exports = function (gulp, plugins) {
     'ExplorerMobile >= 9'
     ];
 
-    gulp.src('resources/assets/sass/site.scss')
+    gulp.src('resources/assets/site/sass/stylesheet.scss')
     .pipe(plugins.sass({outputStyle: 'uncompressed'}).on('error', plugins.sass.logError))
     .pipe(plugins.cssnano({
      autoprefixer: {browsers: supported, add: true}
     }))
-    .pipe(plugins.rename('site.min.css'))
+    .pipe(plugins.rename('stylesheet.min.css'))
     .pipe(plugins.filesize())
-    .pipe(gulp.dest('public/site/css/'));
+    .pipe(gulp.dest('public/assets/site/css/'));
   };
 };

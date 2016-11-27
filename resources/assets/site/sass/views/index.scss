@@ -1,0 +1,21 @@
+.page-index {
+   .vertical-align {
+      height: 79vh;
+   }
+}
+
+.index-quicknav {
+   li {
+      list-style-type: none;
+      display: inline;
+
+      @include media-breakpoint-down(sm) {
+         display: block;
+         margin-bottom: 10px;
+
+         .btn-base {
+            width: 100%;
+         }
+      }
+   }
+}

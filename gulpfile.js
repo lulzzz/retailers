@@ -8,19 +8,19 @@ var plugins = require('gulp-load-plugins')();
 //=====================================================//
 // ## SASS / SCSS / Liquid
 //=====================================================//
-gulp.task('sass-admin', require('./gulp_tasks/sass-admin.js')(gulp, plugins));
-gulp.task('sass-proxy', require('./gulp_tasks/sass-proxy.js')(gulp, plugins));
-gulp.task('sass-site', require('./gulp_tasks/sass-site.js')(gulp, plugins));
-
+gulp.task('sass:app', require('./gulp_tasks/sass-app.js')(gulp, plugins));
+gulp.task('sass:proxy', require('./gulp_tasks/sass-proxy.js')(gulp, plugins));
+gulp.task('sass:site', require('./gulp_tasks/sass-site.js')(gulp, plugins));
 
 //=====================================================//
 //## JAVASCRIPT / jQuery / JavaScript / Liquid
 //=====================================================//
-gulp.task('js-core', require('./gulp_tasks/js-core.js')(gulp, plugins));
-gulp.task('js-modules', require('./gulp_tasks/js-modules.js')(gulp, plugins));
-gulp.task('js-views', require('./gulp_tasks/js-views.js')(gulp, plugins));
-gulp.task('js-proxy', require('./gulp_tasks/js-proxy.js')(gulp, plugins));
-gulp.task('js-blade', require('./gulp_tasks/js-blade.js')(gulp, plugins));
+gulp.task('js:app-core', require('./gulp_tasks/js-app--core.js')(gulp, plugins));
+gulp.task('js:app-modules', require('./gulp_tasks/js-app--modules.js')(gulp, plugins));
+gulp.task('js:app-views', require('./gulp_tasks/js-app--views.js')(gulp, plugins));
+
+gulp.task('js:proxy-core', require('./gulp_tasks/js-proxy--core.js')(gulp, plugins));
+gulp.task('js:proxy-blade', require('./gulp_tasks/js-proxy--blade.js')(gulp, plugins));
 
 //=====================================================//
 //## BOWER / Import Bower Components / Minify / Vendors
@@ -39,41 +39,41 @@ gulp.task('watch', function () {
 
 	// Watch SASS and LIQUID SASS Files and Directories
 	gulp.watch([
-		'resources/assets/sass/**/**/*.scss',
-		'resources/assets/sass/proxy.scss'], ['sass-admin']);
-	gulp.watch([
-		'resources/assets/sass/**/**/*.scss',
-		'resources/assets/sass/stylesheet.scss'], ['sass-proxy']);
+		'resources/assets/app/sass/**/**/*.scss',
+		'resources/assets/app/sass/stylesheet.scss'], ['sass:app']
+	);
 
-		gulp.watch([
-			'resources/assets/sass/**/**/**/*.scss',
-			'resources/assets/sass/site.scss'], ['sass-site']);
+	gulp.watch([
+		'resources/assets/proxy/sass/**/**/*.scss',
+		'resources/assets/proxy/sass/stylesheet.scss'], ['sass:proxy']
+	);
+
+	gulp.watch([
+		'resources/assets/site/sass/**/**/**/*.scss',
+		'resources/assets/site/sass/stylesheet.scss'], ['sass:site']
+	);
 
 
 	// Watch JAVASCRIPT Files and Directories
 	gulp.watch([
-		'resources/assets/javascript/**/*.js',
-		'!resources/assets/javascript/modules/*',
-		'!resources/assets/javascript/templates/*'], ['js-core']);
+		'resources/assets/app/javascript/*.js',
+		'resources/assets/app/javascript/components/*.js'], ['js:app-core']
+	);
+	gulp.watch(['resources/assets/app/javascript/modules/*.js'], ['js:app-modules']);
+	gulp.watch(['resources/assets/app/javascript/views/*.js'], ['js:app-views']);
 
 	gulp.watch([
-		'resources/assets/javascript/proxy/**/*.js',
-		'!resources/assets/javascript/proxy/blade/*.js'], ['js-proxy']);
-
+		'resources/assets/proxy/javascript/**/*.js',
+		'!resources/assets/proxy/javascript/blade/*.js',
+		'!resources/assets/proxy/javascript/blade/*.js'], ['js:proxy-core']
+	);
 	gulp.watch([
 		'resources/assets/javascript/proxy/blade/**/*.js',
-		'resources/assets/javascript/proxy/views/*.js',
-		], ['js-blade']);
+		'resources/assets/javascript/proxy/views/*.js'], ['js:proxy-blade']
+	);
 
 
-
-	// Watch JAVASCRIPT Files and Directories
-	gulp.watch(['resources/assets/javascript/modules/*.js'], ['js-modules']);
-
-	// Watch JAVASCRIPT Files and Directories
-	gulp.watch(['resources/assets/javascript/views/*.js'], ['js-views']);
-
-	});
+});
 
 
 //=====================================================//
