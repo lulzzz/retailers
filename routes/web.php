@@ -28,7 +28,7 @@ Auth::routes();
 |--------------------------------------------------------------------------
 |
 */
-Route::get('/app/',[
+Route::get('app',[
   'as' => 'proxy_index',
   'uses' => 'ProxyController@index']);
 
@@ -42,7 +42,7 @@ Route::get('/app/',[
 
 
  // Geo-graphical Listings
- Route::get('app/{lat}/{lon}/', [
+ Route::get('app/{lat}/{lon}', [
    'as' => 'proxy_origin',
    'uses' => 'ProxyController@origin']);
 
