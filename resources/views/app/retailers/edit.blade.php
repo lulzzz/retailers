@@ -182,7 +182,7 @@
             message: 'edit_address',
             callback: function(message){
               ShopifyApp.Modal.close("ok");
-              $('#pjax-container').load('{{env('APP_URL')}}/retailers/{{$retailer->id}}/edit #pjax-container  > *');
+              $('#pjax-container').load('/retailers/{{$retailer->id}}/edit #pjax-container  > *');
             }
           },
           secondary: {
