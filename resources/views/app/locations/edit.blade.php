@@ -37,11 +37,11 @@ skriptz.dropzone = function () {
 
 skriptz.storefront = function () {
   var storefrontDropzone = new Dropzone('#storefront_upload', {
-    url: "https://retailers.dev/upload/image/{{$id}}",
+    url: "{{env('APP_URL')}}/upload/image/{{$id}}",
     paramName: "storefront",
     thumbnailWidth: 600,
     complete: function () {
-      skriptz.cache.$storefront_container.load('/locations/{{$location->id}}/edit #storefront_container  > *');
+      skriptz.cache.$storefront_container.load('{{env('APP_URL')}}/locations/{{$location->id}}/edit #storefront_container  > *');
     }
   });
   return storefrontDropzone;
@@ -49,7 +49,7 @@ skriptz.storefront = function () {
 
 skriptz.storefrontDelete = function () {
   $('.storefront_delete').on('ajax:success', function(event, xhr, status, error) {
-    skriptz.cache.$storefront_container.load('/locations/{{$location->id}}/edit #storefront_container > *');
+    skriptz.cache.$storefront_container.load('{{env('APP_URL')}}/locations/{{$location->id}}/edit #storefront_container > *');
     ShopifyApp.flashError("Deleted!");
   });
 };

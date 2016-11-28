@@ -21,18 +21,18 @@ skriptz.init = function () {
 
 skriptz.dirty = function () {
   $('form#retailer-data').areYouSure({
-      change: function() {
-            // Enable save button only if the form is dirty. i.e. something to save.
-            if ($(this).hasClass('dirty')) {
-    ShopifyApp.Modal.alert({
-      title: "Warning!",
-      message: "An alert message",
-      okButton: "I understand"
-    });
-                  } else {
-              $(this).find('input[type="submit"]').attr('disabled', 'disabled');
-            }
-          }
+    change: function() {
+      // Enable save button only if the form is dirty. i.e. something to save.
+      if ($(this).hasClass('dirty')) {
+        ShopifyApp.Modal.alert({
+          title: "Warning!",
+          message: "An alert message",
+          okButton: "I understand"
+        });
+      } else {
+        $(this).find('input[type="submit"]').attr('disabled', 'disabled');
+      }
+    }
   });
 };
 
@@ -48,7 +48,7 @@ skriptz.logo = function () {
     paramName: "logo",
     thumbnailWidth: 300,
     complete: function () {
-      skriptz.cache.$logo_container.load('/retailers/{{$retailer->id}}/edit #logo_container  > *');
+      skriptz.cache.$logo_container.load('{{env('APP_URL')}}/retailers/{{$retailer->id}}/edit #logo_container  > *');
     }
   });
 };
@@ -56,7 +56,7 @@ skriptz.logo = function () {
 
 skriptz.logoDelete = function () {
   $('.image-delete').on('ajax:success', function(event, xhr, status, error) {
-    skriptz.cache.$logo_container.load('/retailers/{{$retailer->id}}/edit #logo_container > *');
+    skriptz.cache.$logo_container.load('{{env('APP_URL')}}/retailers/{{$retailer->id}}/edit #logo_container > *');
     ShopifyApp.flashNotice("Deleted!");
   });
 };
@@ -66,12 +66,12 @@ skriptz.location = function () {
     ShopifyApp.flashError("Error: Missing Fields!");
   });
   $('.location_add').on('ajax:success', function(event, xhr, status, error) {
-    skriptz.cache.$location_container.load('/retailers/{{$retailer->id}}/edit #pjax-container > *');
+    skriptz.cache.$location_container.load('{{env('APP_URL')}}/retailers/{{$retailer->id}}/edit #pjax-container > *');
     $(this)[0].reset();
   });
 
   $('.location_delete').on('ajax:success', function(event, xhr, status, error) {
-    skriptz.cache.$location_container.load('/retailers/{{$retailer->id}}/edit #pjax-container > *');
+    skriptz.cache.$location_container.load('{{env('APP_URL')}}/retailers/{{$retailer->id}}/edit #pjax-container > *');
     ShopifyApp.flashError("Deleted!");
   });
 };
