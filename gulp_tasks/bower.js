@@ -19,14 +19,14 @@ module.exports = function (gulp, plugins) {
     .pipe(plugins.uglify())
     .pipe(plugins.plumber.stop())
     .on("error", console.log)
-    .pipe(gulp.dest('resources/assets/vendors/'));
+    .pipe(gulp.dest('resources/assets/vendor/'));
 
 
     // Custom Bower Imports
     //
    var bootstrap = gulp.src('bower_components/bootstrap/js/dist/*.js')
     .pipe(plugins.uglify())
-    .pipe(gulp.dest('resources/assets/vendors/bootstrap/'));
+    .pipe(gulp.dest('resources/assets/vendor/bootstrap/'));
 
    return merge(bower, bootstrap);
 
