@@ -230,7 +230,7 @@
   loadjs([
     '{{env('APP_URL')}}/assets/app/js/plugins/geocomplete.min.js',
     '{{env('APP_URL')}}/assets/app/js/plugins/dropzone.min.js',
-    '{{env('APP_URL')}}/assets/app/js/plugins/areyousure.min.js'],
+    '{{env('APP_URL')}}/assets/app/js/plugins/dirty.min.js'],
     { success: function() {
       $(skriptz.init);
     }
@@ -362,7 +362,7 @@ skriptz.dropzone = function () {
 
 skriptz.logo = function () {
   var logoDropzone = new Dropzone('#logo_upload', {
-    url: "https://retailers.dev/upload/image/{{$id}}",
+    url: "{{env('APP_URL')}}/upload/image/{{$id}}",
     paramName: "logo",
     thumbnailWidth: 300,
     complete: function () {
