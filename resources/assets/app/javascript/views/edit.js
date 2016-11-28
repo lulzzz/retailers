@@ -15,7 +15,7 @@ skriptz.init = function () {
   skriptz.logoDelete();
   skriptz.location();
   skriptz.dirty();
-  //skriptz.areyousure();
+  skriptz.areyousure();
 };
 
 
