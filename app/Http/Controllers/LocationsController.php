@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Validator;
 
 use App\Location;
 use App\Retailer;
-use App\Merchant;
 use App\Brand;
 
 use View;
@@ -32,14 +31,10 @@ class LocationsController extends Controller
   public function index()
   {
 
-    $navigation = Merchant::select('merchants')
-    ->where('user_id', Auth::user()->id)
-    ->get();
-
     $id = Retailer::where('user_id', Auth::user()->id)->first();
     $location = Location::where('retailer_id', $id->id)->get();
 
-    return View::make('app.retailers.locations', compact('location', 'navigation','id'));
+    return View::make('app.retailers.locations', compact('location','id'));
   }
 
   public function show($id)
@@ -48,14 +43,10 @@ class LocationsController extends Controller
     ->where('user_id', Auth::user()->id)
     ->first();
 
-    $navigation = Merchant::select('merchants')
-    ->where('brand_id', $brand->id)
-    ->get();
-
     $id = Retailer::where('user_id', Auth::user()->id)->first();
 
     $location = Location::where('retailer_id', $id->id)->get();
-    return View::make('app.retailers.locations', compact('location', 'navigation', 'id'));
+    return View::make('app.retailers.locations', compact('location', 'id'));
   }
 
   public function addressView(Request $request, $id)
@@ -134,18 +125,10 @@ class LocationsController extends Controller
   public function edit(Request $request, $id)
   {
 
-    $brand = Brand::select('brand_name')
-    ->where('user_id', Auth::user()->id)
-    ->first();
-
-    $navigation = Merchant::select('merchants')
-    ->where('brand_id', $brand->id)
-    ->get();
-
     $retailer = Retailer::where('user_id', Auth::user()->id)->first();
     $location = Location::where('id', $id)->first();
 
-    return View::make('app.locations.edit', compact('location', 'navigation', 'retailer', 'id'));
+    return View::make('app.locations.edit', compact('location','retailer', 'id'));
   }
 
 
@@ -162,6 +145,7 @@ class LocationsController extends Controller
     if ($locations) {
       $locations->delete();
     }
+    
     $retailer = Retailer::where('user_id', Auth::user()->id)->first();
 
     return response()->json();
