@@ -63,19 +63,45 @@ class ImportController extends Controller
       $data = $this->retailer->processCsv($file);
 
       $retailers = [];
+      $locations = [];
+
 
       foreach ($data as $value) {
+
          $retailers[] = array(
             'user_id' => Auth::user()->id,
-            'brand_id' => Auth::user()->id,
             'name' => $value['name'],
             'description' => $value['description'],
+            'phone' => $value['phone'],
             'email' => $value['email'],
-            'phone' => $value['phone']
+            'website' => $value['website'],
+            'instagram' => $value['instagram'],
+            'facebook' => $value['facebook'],
+            'featured' => $value['featured'],
+            'visibility' => $value['visibility'],
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+         );
+
+         $locations[] = array(
+            'retailer_id' => $value['retailer_id'],
+            'street_number' => $value['street_number'],
+            'street_address' => $value['street_address'],
+            'city' => $value['city'],
+            'state' => $value['state'],
+            'country' => $value['country'],
+            'country_code' => $value['country_code'],
+            'postcode' => $value['postcode'],
+            'latitude' => $value['latitude'],
+            'longitude' => $value['longitude'],
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
          );
       }
 
       Retailer::insert($retailers);
+      Location::insert($locations);
+
 
       return Redirect::route('import_locations');
       //Location::insert($locations);
