@@ -34,7 +34,8 @@
     "jquery-ujs": "^1.2.2",
     "geocomplete": "^1.7.0",
     "list.js": "^1.2.0",
-    "qwest": "^2.1.2"
+    "qwest": "^2.1.2",
+    "jquery.are-you-sure": "^1.9.0"
   },
   "overrides": {
     "jquery": {

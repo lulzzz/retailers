@@ -44,11 +44,11 @@ skriptz.dropzone = function () {
 
 skriptz.logo = function () {
   var logoDropzone = new Dropzone('#logo_upload', {
-    url: "{{env('APP_URL')}}/upload/image/{{$id}}",
+    url: "/upload/image/{{$id}}",
     paramName: "logo",
     thumbnailWidth: 300,
     complete: function () {
-      skriptz.cache.$logo_container.load('{{env('APP_URL')}}/retailers/{{$retailer->id}}/edit #logo_container  > *');
+      skriptz.cache.$logo_container.load("/retailers/{{$retailer->id}}/edit #logo_container  > *");
     }
   });
 };
@@ -56,7 +56,7 @@ skriptz.logo = function () {
 
 skriptz.logoDelete = function () {
   $('.image-delete').on('ajax:success', function(event, xhr, status, error) {
-    skriptz.cache.$logo_container.load('{{env('APP_URL')}}/retailers/{{$retailer->id}}/edit #logo_container > *');
+    skriptz.cache.$logo_container.load("/retailers/{{$retailer->id}}/edit #logo_container > *");
     ShopifyApp.flashNotice("Deleted!");
   });
 };
@@ -66,12 +66,12 @@ skriptz.location = function () {
     ShopifyApp.flashError("Error: Missing Fields!");
   });
   $('.location_add').on('ajax:success', function(event, xhr, status, error) {
-    skriptz.cache.$location_container.load('{{env('APP_URL')}}/retailers/{{$retailer->id}}/edit #pjax-container > *');
+    skriptz.cache.$location_container.load("/retailers/{{$retailer->id}}/edit #pjax-container > *");
     $(this)[0].reset();
   });
 
   $('.location_delete').on('ajax:success', function(event, xhr, status, error) {
-    skriptz.cache.$location_container.load('{{env('APP_URL')}}/retailers/{{$retailer->id}}/edit #pjax-container > *');
+    skriptz.cache.$location_container.load("/retailers/{{$retailer->id}}/edit #pjax-container > *");
     ShopifyApp.flashError("Deleted!");
   });
 };

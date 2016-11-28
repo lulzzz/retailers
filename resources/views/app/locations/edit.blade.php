@@ -9,7 +9,7 @@
 
 @section('js')
 <script>
- loadjs(['{{env('APP_URL')}}/assets/app/js/plugins/dropzone.min.js'],
+ loadjs(["{{env('APP_URL')}}/assets/app/js/plugins/dropzone.min.js"],
   { success: function() {
     $(skriptz.init);
   }
