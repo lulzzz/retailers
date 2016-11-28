@@ -1,7 +1,7 @@
 if(store.get('latitude')) {
 
   // Returning visitor.
-  retailers.json('/a/retailers/'+store.get('latitude')+'/'+store.get('longitude')+'?shop={{$domain}}');
+  retailers.json("{{env('APP_URL')}}/'+store.get('latitude')+'/'+store.get('longitude')+'?shop={{$domain}}");
 
 } else {
   // check if user browser has geolocation
@@ -15,13 +15,13 @@ if(store.get('latitude')) {
       store.set('longitude', position.coords.longitude);
 
       // New visitor
-      retailers.json('/a/retailers/'+position.coords.latitude+'/'+position.coords.longitude+'?shop={{$domain}}');
+      retailers.json("{{env('APP_URL')}}/'+position.coords.latitude+'/'+position.coords.longitude+'?shop={{$domain}}");
 
     }, function() {
-      retailers.json('/a/retailers/{{$geo['lat']}}/{{$geo['lon']}}?shop={{$domain}}');
+      retailers.json("{{env('APP_URL')}}/{{$geo['lat']}}/{{$geo['lon']}}?shop={{$domain}}");
     });
   } else {
     // Browser doesn't support Geolocation
-    retailers.json('/a/retailers/{{$geo['lat']}}/{{$geo['lon']}}?shop={{$domain}}');
+    retailers.json("{{env('APP_URL')}}/{{$geo['lat']}}/{{$geo['lon']}}?shop={{$domain}}");
   }
 }
