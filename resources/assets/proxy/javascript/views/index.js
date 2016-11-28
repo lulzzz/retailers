@@ -10,7 +10,7 @@ window.skriptz = window.skriptz || {};
 
 skriptz.init = function () {
  skriptz.maps();
-};
+}; 
 
 skriptz.maps = function () {
   if (document.getElementById('map-container')){
