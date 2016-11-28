@@ -229,8 +229,7 @@
 <script>
   loadjs([
     '{{env('APP_URL')}}/assets/app/js/plugins/geocomplete.min.js',
-    '{{env('APP_URL')}}/assets/app/js/plugins/dropzone.min.js',
-    '{{env('APP_URL')}}/assets/app/js/plugins/dirty.min.js'],
+    '{{env('APP_URL')}}/assets/app/js/plugins/dropzone.min.js'],
     { success: function() {
       $(skriptz.init);
     }
