@@ -241,7 +241,7 @@ skriptz.maps = function () {
     if(store.get('latitude')) {
 
       // Returning visitor.
-      retailers.json('/app/'+store.get('latitude')+'/'+store.get('longitude')+'?shop={{$domain}}');
+      retailers.json('/'+store.get('latitude')+'/'+store.get('longitude')+'?shop={{$domain}}');
 
     } else {
       // check if user browser has geolocation
@@ -255,14 +255,14 @@ skriptz.maps = function () {
           store.set('longitude', position.coords.longitude);
 
           // New visitor
-          retailers.json('/app/'+position.coords.latitude+'/'+position.coords.longitude+'?shop={{$domain}}');
+          retailers.json('/'+position.coords.latitude+'/'+position.coords.longitude+'?shop={{$domain}}');
 
         }, function() {
-          retailers.json('/app/{{$geo['lat']}}/{{$geo['lon']}}?shop={{$domain}}');
+          retailers.json('/{{$geo['lat']}}/{{$geo['lon']}}?shop={{$domain}}');
         });
       } else {
         // Browser doesn't support Geolocation
-        retailers.json('/app/{{$geo['lat']}}/{{$geo['lon']}}?shop={{$domain}}');
+        retailers.json('/{{$geo['lat']}}/{{$geo['lon']}}?shop={{$domain}}');
       }
     }
 
