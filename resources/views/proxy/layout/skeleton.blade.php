@@ -1,5 +1,5 @@
 <!-- Stylesheet :: Retailers -->
-<link rel="stylesheet" type="text/css" href="{{ env('APP_URL') }}/proxy/css/stylesheet.min.css">
+<link rel="stylesheet" type="text/css" href="{{ env('APP_URL') }}/assets/proxy/css/stylesheet.min.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyCTlnXnQV55QOGl22nw627SDxo6yXynJYs"></script>
