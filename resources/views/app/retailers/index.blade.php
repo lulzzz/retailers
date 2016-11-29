@@ -48,7 +48,6 @@
         </div>
       </div>
 
-
       <div class="table-responsive retailers-list" >
         <table class="table table-hover tablesorter" id="table-list">
           <thead>

@@ -63,11 +63,8 @@ class ImportController extends Controller
       $data = $this->retailer->processCsv($file);
 
       $retailers = [];
-      $locations = [];
-
 
       foreach ($data as $value) {
-
          $retailers[] = array(
             'user_id' => Auth::user()->id,
             'name' => $value['name'],
@@ -77,34 +74,30 @@ class ImportController extends Controller
             'website' => $value['website'],
             'instagram' => $value['instagram'],
             'facebook' => $value['facebook'],
+            'twitter' => $value['twitter'],
             'featured' => $value['featured'],
             'visibility' => $value['visibility'],
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-         );
-
-         $locations[] = array(
-            'retailer_id' => $value['retailer_id'],
-            'street_number' => $value['street_number'],
-            'street_address' => $value['street_address'],
-            'city' => $value['city'],
-            'state' => $value['state'],
-            'country' => $value['country'],
-            'country_code' => $value['country_code'],
-            'postcode' => $value['postcode'],
-            'latitude' => $value['latitude'],
-            'longitude' => $value['longitude'],
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
          );
       }
 
       Retailer::insert($retailers);
-      Location::insert($locations);
 
+      $date = new Carbon;
+      $date->modify('-2 minutes');
+      $formatted_date = $date->format('Y-m-d H:i:s');
 
-      return Redirect::route('import_locations');
+      $retailer = Retailer::select('id','name')->where('user_id', Auth::user()->id)
+      ->where('updated_at','>=',$formatted_date)->get();
+
+      return View::make('app.retailers.csv_import.transit', compact('retailer'));
       //Location::insert($locations);
+   }
+
+   public function transit(Request $request)
+   {
+      $this->retailer->retailers(Auth::user()->domain);
    }
 
 
@@ -116,24 +109,9 @@ class ImportController extends Controller
 
       $locations = [];
 
-      foreach ($data as $key => $value) {
-         $locations[] = array(
-            'retailer_id' =>  $value['retailer_id'],
-            'street_number' => $value['street_number'],
-            'street_address' => $value['street_address'],
-            'city' => $value['city'],
-            'state' => $value['state'],
-            'country' => $value['country'],
-            'country_code' => $value['country'],
-            'postcode' => $value['postcode'],
-            'latitude' => $value['latitude'],
-            'longitude' => $value['longitude']
-         );
-      }
+      Location::insert($data);
 
-      Location::insert($locations);
-      //Location::insert($locations);
-      return $locations;
+      return 'done';
    }
 
 }

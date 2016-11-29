@@ -8,9 +8,9 @@
         <div class="col-md-12 p-b-0">
           <div class="iframe-wrapper">
             <div class="macbook">
-              <iframe class="iframe" id="live_iframe_preview" src="https://brixtol.com/a/retailers" scrolling="no"></iframe>
+              <iframe class="iframe" id="live_iframe_preview" src="https://{{Auth::user()->domain}}/a/retailers" scrolling="no"></iframe>
               <div class="iphone">
-                <iframe class="iframe" src="https://brixtol.com/a/retailers" scrolling="no"></iframe>
+                <iframe class="iframe" src="https://{{Auth::user()->domain}}/a/retailers" scrolling="no"></iframe>
               </div>
             </div>
           </div>

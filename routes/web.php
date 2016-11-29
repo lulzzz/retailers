@@ -122,6 +122,15 @@ Route::resource('templates', 'TemplatesController');
 
 
 /*
+| Settings / Resources
+|--------------------------------------------------------------------------
+|
+*/
+Route::resource('settings', 'SettingsController');
+
+
+
+/*
 | CSV Import
 |--------------------------------------------------------------------------
 |
@@ -129,11 +138,16 @@ Route::resource('templates', 'TemplatesController');
 Route::get('/import',[
   'as' => 'import',
   'uses' => 'ImportController@index']);
-Route::post('/import-retailers',[
+
+Route::any('/import-retailers',[
   'as' => 'import_retailers',
   'uses' => 'ImportController@retailers']);
 
-Route::post('/import-locations',[
+Route::get('/import-transit',[
+  'as' => 'import_transit',
+  'uses' => 'ImportController@transit']);
+
+Route::any('/import-locations',[
   'as' => 'import_locations',
   'uses' => 'ImportController@locations']);
 

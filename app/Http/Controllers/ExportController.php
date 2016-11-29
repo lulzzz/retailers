@@ -56,6 +56,7 @@ class ExportController extends Controller
       $retailer = $this->retailer->retailers(Auth::user()->domain);
       $csv = Writer::createFromFileObject(new \SplTempFileObject());
       $csv->insertOne([
+         'retailer_id',
          'name',
          'description',
          'phone',
@@ -63,6 +64,9 @@ class ExportController extends Controller
          'email',
          'instagram',
          'facebook',
+         'twitter',
+         'featured',
+         'visibility',
          'street_number',
          'street_address',
          'city',
@@ -71,13 +75,12 @@ class ExportController extends Controller
          'country_code',
          'postcode',
          'latitude',
-         'longitude',
-         'created_at',
-         'updated_at'
+         'longitude'
       ]);
 
       foreach ($retailer as $key => $value) {
          $csv->insertOne([
+            'retailer_id' => $value->retailer_id,
             'name' => $value->name,
             'description' => $value->description,
             'phone' => $value->phone,
@@ -85,8 +88,9 @@ class ExportController extends Controller
             'website' => $value->website,
             'instagram' => $value->instagram,
             'facebook' => $value->facebook,
-            'featured' => 'no',
-            'visibility' => 'public',
+            'twitter' => $value->twitter,
+            'featured' => $value->featured,
+            'visibility' => $value->visibility,
             'street_number' => $value->street_number,
             'street_address' => $value->street_address,
             'city' => $value->city,
@@ -95,9 +99,7 @@ class ExportController extends Controller
             'country_code' => $value->country_code,
             'postcode' => $value->postcode,
             'latitude' => $value->latitude,
-            'longitude' => $value->longitude,
-            'created_at' => $value->created_at,
-            'updated_at' => $value->updated_at
+            'longitude' => $value->longitude
          ]);
       }
 
