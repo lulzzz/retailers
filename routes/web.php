@@ -80,6 +80,7 @@ Route::get(
 */
 Route::resource('retailers', 'RetailersController');
 
+
 /*
 | Locations / LocationsController
 |--------------------------------------------------------------------------
@@ -138,6 +139,11 @@ Route::resource('settings', 'SettingsController');
 Route::get('/import',[
   'as' => 'import',
   'uses' => 'ImportController@index']);
+
+Route::get('/import-readme',[
+    'as' => 'import_readme',
+    'uses' => 'ImportController@readme']);
+
 
 Route::any('/import-retailers',[
   'as' => 'import_retailers',

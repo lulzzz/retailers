@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app.layout.skeleton')
 
 @section('content')
 <div class="row p-a-1">
@@ -50,4 +50,3 @@
 	</div>
 </div>
 @stop
-

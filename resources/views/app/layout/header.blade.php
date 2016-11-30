@@ -2,6 +2,4 @@
   @include('app.layout.menu')
 @elseif(Request::is('templates'))
   @include('app.layout.menu')
-@elseif(Request::is('dashboard/*'))
-  @include('app.layout.menu')
 @endif

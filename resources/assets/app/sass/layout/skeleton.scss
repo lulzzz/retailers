@@ -19,6 +19,17 @@ body {
   margin: 20px;
 }
 
+
+
+.upload-file-wrap {
+    width:100%;
+    border: 2px dashed #eee;
+    padding: 20px 20px 0 20px;
+    cursor: pointer;
+    text-align:center;
+}
+
+
 .container {
   padding:15px;
   background-color:#fff;
@@ -71,4 +82,3 @@ body {
     color:#fff;
   }
 }
-

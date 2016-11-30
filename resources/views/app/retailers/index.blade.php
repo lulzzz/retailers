@@ -59,7 +59,7 @@
                       <input class="form-control-input" type="checkbox" id="checkAll"/>
                     </label>
                   </span>
-                  <span class="input-group-btn" data-bulk-settings style="display:none;">
+                  <span class="input-group-btn" data-bulk-settings >
                     <button class="btn btn-secondary btn-sm delete_all" type="button">
                       Remove Retailers
                     </button>
@@ -111,14 +111,14 @@
                 {{$location->country_code}}
               @endforeach</td>
               <td>@if ($value->visibility == 'public') Public @else Hidden @endif&nbsp;</td>
-              <td class="text-xs-right">{{ date('M d, g:i a', strtotime($value->updated_at)) }}&nbsp;</td>
-            </tr>
-          @endforeach
-        </tbody>
-      </table>
+                <td class="text-xs-right">{{ date('M d, g:i a', strtotime($value->updated_at)) }}&nbsp;</td>
+              </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
 </div>
 @endif
 
@@ -178,8 +178,8 @@
 
         $.ajax({
 
-          type: "POST",
-          url: '/dashboard/delete?ids='+join_selected_values,
+          type: "DELETE",
+          url: 'https://retailers.dev/retailers/delete/'+join_selected_values,
           cache:false,
           success: function(response)
           {
@@ -213,7 +213,7 @@
         links: [
           { label: "Import Retailers",
           callback: function(messege){
-            importModal('Import Retailers from CSV', "/import", 540);
+            importModal('CSV Import', "/import", 540);
           }
         },
         { label: "Export Retailers",
@@ -236,7 +236,15 @@ window.importModal = function(header, path, height){
     src: path,
     title: header,
     height: height,
-    width: 'small'
+    width: 'small',
+    buttons: {
+      primary: {
+        label: "Cancel",
+        callback: function(message){
+          ShopifyApp.Modal.close("cancel");
+        }
+      }
+    },
   });
 }
 

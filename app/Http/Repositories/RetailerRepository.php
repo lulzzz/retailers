@@ -102,6 +102,26 @@ class RetailerRepository implements RetailerInterface {
       }
 
 
+      /**
+      * Retailers
+      *
+      * Get Retailers of Specific Shopify Store
+      *
+      */
+      public function recentImports($time) {
+
+         $data = DB::table('users')
+         ->join('brands',      'users.id',     '=', 'brands.user_id')
+         ->join('retailers',   'users.id',    '=', 'retailers.user_id')
+         ->join('locations',   'retailers.id', '=', 'locations.retailer_id')
+         ->select('retailers.*', 'locations.*')
+         ->where('updated_at', '>=', $time)
+         ->get();
+
+         return $data;
+      }
+
+
 
 
       /**

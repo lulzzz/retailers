@@ -4,9 +4,8 @@
     <div class="col-xs">
      <nav class="navbar">
        <ul class="navtab pull-xs-left text-xs-left">
-         <li class="nav-item"> <a class="nav-link active" href="/retailers">Retailers</a></li>
-         <li class="nav-item"> <a class="nav-link" href="/templates">Templates</a></li>
-         <li class="nav-item"> <a class="nav-link" href="/settings">Settings</a></li>
+         <li class="nav-item"> <a class="nav-link {{ Request::is('retailers*') ? 'active' : '' }}" href="/retailers">Retailers</a></li>
+         <li class="nav-item"> <a class="nav-link {{ Request::is('templates*') ? 'active' : '' }}" href="/templates">Templates</a></li>
        </ul>
      </nav>
    </div>

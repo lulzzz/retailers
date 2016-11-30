@@ -52,10 +52,8 @@ class RetailersController extends Controller
   public function show($type)
   {
 
-    $brand = Brand::where('user_id', Auth::user()->id)
-    ->first();
 
-    $retailer = Retailer::where('brand_id', $brand->id)->get();
+    $retailer = Retailer::where('user_id', Auth::user()->id)->get();
 
     $title = $type;
 
@@ -204,12 +202,12 @@ class RetailersController extends Controller
         */
         public function destroy($id)
         {
-          //
-          $retailer = Retailer::find($id);
-          $retailer->delete();
+
+          Retailer::destroy($id);
+
 
           // redirect
-          return Redirect::route('retailers.index');
+          return'removed';
         }
 
 

@@ -10,10 +10,10 @@
  <title>{{ config('app.name', 'Retailers') }}</title>
 
  <!-- CSS – Application Stylesheet -->
- <link href="/css/stylesheet.min.css" rel="stylesheet">
+ <link href="/assets/app/css/stylesheet.min.css" rel="stylesheet">
 
  <!-- Javascript – Core Scripts -->
- <script src="/js/core.min.js"></script>
+ <script src="/assets/app/js/core.min.js"></script>
 
  <!-- Javascript – Shopify Scripts -->
  <script src="https://cdn.shopify.com/s/assets/external/app.js"></script>

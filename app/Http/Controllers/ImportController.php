@@ -85,7 +85,7 @@ class ImportController extends Controller
       Retailer::insert($retailers);
 
       $date = new Carbon;
-      $date->modify('-2 minutes');
+      $date->modify('-30 seconds');
       $formatted_date = $date->format('Y-m-d H:i:s');
 
       $retailer = Retailer::select('id','name')->where('user_id', Auth::user()->id)
@@ -94,6 +94,12 @@ class ImportController extends Controller
       return View::make('app.retailers.csv_import.transit', compact('retailer'));
       //Location::insert($locations);
    }
+
+   public function readme(Request $request)
+   {
+      return View::make('app.retailers.csv_import.readme');
+   }
+
 
    public function transit(Request $request)
    {
@@ -107,11 +113,9 @@ class ImportController extends Controller
       $file = Input::file('csv_file');
       $data = $this->retailer->processCsv($file);
 
-      $locations = [];
-
       Location::insert($data);
 
-      return 'done';
+      return 'CSV Import complete, Please close and reload page!';
    }
 
 }

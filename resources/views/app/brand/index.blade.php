@@ -9,7 +9,7 @@
         @if ($errors->any())
         <div class="alert alert-danger" role="alert">
         <strong>Submission Error!</strong>
-          <ul class="p-t-2">
+          <ul class="pt-2">
             <li class="error">
               {{ implode('', $errors->all(':message')) }}
             </li>
@@ -18,8 +18,7 @@
         @endif
         <div class="card">
           <h5 class="card-header">
-            <span class="pull-xs-left">Brand / Company</span>
-            <span class="pull-xs-right lead">Step 1</span>
+            <span class="float-xs-left">Brand / Company</span>
           </h5>
           {{ Form::open(array('route' => 'brand.store')) }}
           <div class="card-block">
@@ -27,8 +26,8 @@
               <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
               <input type="text" name="brand_name" placeholder="{{ Auth::user()->name }}" class="form-control">
             </div>
-            <div class="text-xs-center p-y-2">
-              {{ Form::submit('Set Merchant Types',  array('class' => 'btn btn-primary')) }}
+            <div class="text-xs-center py-2">
+              {{ Form::submit('Begin Adding Retailers',  array('class' => 'btn btn-primary')) }}
             </div>
           </div>
           {{ Form::close() }}

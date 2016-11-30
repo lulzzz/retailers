@@ -26,5 +26,6 @@ interface RetailerInterface {
   public function exists($resource, $query);
   public function image($type, $id, $input, $file, $width);
   public function processCsv($file);
+  public function recentImports($time);
 
 }

@@ -29,41 +29,18 @@
     color:$brand-primary !important;
   }
 }
-
-.upload-csv-file {
-  position: relative;
-  display: inline-block;
-
-  label {
-    color: #ccc;
-    cursor: pointer;
-    width: 400px;
-    height: 60px;
-    position: relative;
-    display: block;
-    border: 3px dashed #ccc;
-    border-radius: 3px;
-    overflow: hidden;
-    pointer-events: none; /*This for FF*/
-  }
+.bg-canvas {
+  margin:0;
 }
 
-.input-file {
-  opacity: 0; /*This*/
-  position: absolute;
+.instructions {
   width: 100%;
-  height: 100%;
-  cursor: pointer;
-  display: none;
+  height:100%;
+  position:absolute;
+  bottom:0;
+  width: 100%;
 }
 
-.upload-file-text {
-  display: block;
-  width: 100%;
-  margin: 25px auto;
-  text-align: center;
-  font-size: 12px;
-}
 /*
 tables
 */
