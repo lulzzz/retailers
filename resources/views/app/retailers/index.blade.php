@@ -155,79 +155,62 @@
     }
   });
 
-  jQuery('.delete_all').on('click', function(e) {
-    var allVals = [];
-    $(".id:checked").each(function() {
-      allVals.push($(this).attr('data-id'));
-    });
-    //alert(allVals.length); return false;
-    if(allVals.length <=0)
-    {
-      alert("Please select row.");
-    }
-    else {
-      //$("#loading").show();
-      WRN_PROFILE_DELETE = "Are you sure you want to delete this row?";
-      var check = confirm(WRN_PROFILE_DELETE);
-      if(check == true){
-        //for server side
+  $(".delete_all").click(function () {
 
-        var join_selected_values = allVals.join(",");
-
-        //alert(join_selected_values); return false;
-
-        $.ajax({
-
-          type: "DELETE",
-          url: 'https://retailers.dev/retailers/delete/'+join_selected_values,
-          cache:false,
-          success: function(response)
-          {
-            alert(response);
-            // $("#retailers-list").html(response);
-            //referesh table
-          }
-        });
-
-        $.each(allVals, function( index, value ) {
-          $('table tr').filter("[data-row-id='" + value + "']").remove();
-        });
+    var arr = new Array();
 
 
+    $("input:checked").each(function () {
+
+      arr.push($(this).attr("id"));
+
+    }); //each
+
+    $.ajax({
+      type: "POST",
+      url: "/retailer/",
+      data: arr ,//pass the array to the ajax call
+      cache: false,
+
+      success: function()
+      {   }
+    });//ajax
+
+  }); //each
+
+
+}); //click
+
+ShopifyApp.Bar.initialize({
+  buttons: {
+    primary: [
+      {
+        label: "Create Retailer",
+        loading: false,
+        href: "/retailers/create"
       }
-    }
-  });
-
-  ShopifyApp.Bar.initialize({
-    buttons: {
-      primary: [
-        {
-          label: "Create Retailer",
-          loading: false,
-          href: "/retailers/create"
-        }
-      ],
-      secondary: [{
-        label: "Import / Export",
-        type: "dropdown",
-        links: [
-          { label: "Import Retailers",
-          callback: function(messege){
-            importModal('CSV Import', "/import", 540);
-          }
-        },
-        { label: "Export Retailers",
+    ],
+    secondary: [{
+      label: "Import / Export",
+      type: "dropdown",
+      links: [
+        { label: "Import Retailers",
         callback: function(messege){
-          importModal('CSV Exports', "/export", 140);
+          importModal('CSV Import', "/import", 540);
         }
+      },
+      { label: "Export Retailers",
+      callback: function(messege){
+        importModal('CSV Exports', "/export", 140);
       }
+    }
 
-    ]
-  },{
-    label: "Preview",
-    target: "new",
-    href: "//{{Auth::user()->domain}}/a/retailers"
-  }]
+  ]
+},{
+  label: "Preview",
+  target: "new",
+  href: "//{{Auth::user()->domain}}/a/retailers"
+}]
 }
 });
 

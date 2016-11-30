@@ -65,7 +65,32 @@ class ImportController extends Controller
       $retailers = [];
 
       foreach ($data as $value) {
-         $retailers[] = array(
+         // Try to find an existing Retailer
+         $retailer = Retailer::where("name", $value["name"])->first();
+
+         // If the Retailer is not found
+         if !$retailer {
+            // Insert a new Retailer and bind it
+            $retailer = Retailer::insert(array(
+               'user_id' => Auth::user()->id,
+               'name' => $value['name'],
+               'description' => $value['description'],
+               'phone' => $value['phone'],
+               'email' => $value['email'],
+               'website' => $value['website'],
+               'instagram' => $value['instagram'],
+               'facebook' => $value['facebook'],
+               'twitter' => $value['twitter'],
+               'featured' => $value['featured'],
+               'visibility' => $value['visibility'],
+               'created_at' => Carbon::now(),
+               'updated_at' => Carbon::now()
+            ));
+         }
+
+
+         // Here we either have an existing Retailer or the one we just created
+         Location::insert(array(
             'user_id' => Auth::user()->id,
             'name' => $value['name'],
             'description' => $value['description'],
@@ -79,19 +104,12 @@ class ImportController extends Controller
             'visibility' => $value['visibility'],
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
-         );
+         ));
       }
 
-      Retailer::insert($retailers);
+      $r = Retailer::insert($retailers);
 
-      $date = new Carbon;
-      $date->modify('-30 seconds');
-      $formatted_date = $date->format('Y-m-d H:i:s');
-
-      $retailer = Retailer::select('id','name')->where('user_id', Auth::user()->id)
-      ->where('updated_at','>=',$formatted_date)->get();
-
-      return View::make('app.retailers.csv_import.transit', compact('retailer'));
+      return $r;
       //Location::insert($locations);
    }
 
@@ -113,9 +131,20 @@ class ImportController extends Controller
       $file = Input::file('csv_file');
       $data = $this->retailer->processCsv($file);
 
+      $locations = [];
+
       Location::insert($data);
 
-      return 'CSV Import complete, Please close and reload page!';
+      $date = new Carbon;
+      $date->modify('-30 seconds');
+      $formatted_date = $date->format('Y-m-d H:i:s');
+
+      $retailer = Retailer::select('id','name')->where('user_id', Auth::user()->id)
+      ->where('updated_at','>=',$formatted_date)->get();
+
+      Location::insert($data);
+
+      return 'done';
    }
 
 }
