@@ -154,63 +154,38 @@
       $(".id").prop('checked',false);
     }
   });
+  
 
-  $(".delete_all").click(function () {
-
-    var arr = new Array();
-
-
-    $("input:checked").each(function () {
-
-      arr.push($(this).attr("id"));
-
-    }); //each
-
-    $.ajax({
-      type: "POST",
-      url: "/retailer/",
-      data: arr ,//pass the array to the ajax call
-      cache: false,
-
-      success: function()
-      {   }
-    });//ajax
-
-  }); //each
-
-
-}); //click
-
-ShopifyApp.Bar.initialize({
-  buttons: {
-    primary: [
-      {
-        label: "Create Retailer",
-        loading: false,
-        href: "/retailers/create"
-      }
-    ],
-    secondary: [{
-      label: "Import / Export",
-      type: "dropdown",
-      links: [
-        { label: "Import Retailers",
-        callback: function(messege){
-          importModal('CSV Import', "/import", 540);
+  ShopifyApp.Bar.initialize({
+    buttons: {
+      primary: [
+        {
+          label: "Create Retailer",
+          loading: false,
+          href: "/retailers/create"
         }
-      },
-      { label: "Export Retailers",
-      callback: function(messege){
-        importModal('CSV Exports', "/export", 140);
+      ],
+      secondary: [{
+        label: "Import / Export",
+        type: "dropdown",
+        links: [
+          { label: "Import Retailers",
+          callback: function(messege){
+            importModal('CSV Import', "/import", 540);
+          }
+        },
+        { label: "Export Retailers",
+        callback: function(messege){
+          importModal('CSV Exports', "/export", 140);
+        }
       }
-    }
 
-  ]
-},{
-  label: "Preview",
-  target: "new",
-  href: "//{{Auth::user()->domain}}/a/retailers"
-}]
+    ]
+  },{
+    label: "Preview",
+    target: "new",
+    href: "//{{Auth::user()->domain}}/a/retailers"
+  }]
 }
 });
 

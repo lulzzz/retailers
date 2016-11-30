@@ -62,16 +62,14 @@ class ImportController extends Controller
       $file = Input::file('csv_file');
       $data = $this->retailer->processCsv($file);
 
-      $retailers = [];
-
       foreach ($data as $value) {
-         // Try to find an existing Retailer
-         $retailer = Retailer::where("name", $value["name"])->first();
+
+         $retailer = Retailer::where('name', '=', $value['name'])->first();
 
          // If the Retailer is not found
-         if !$retailer {
+         if (!$retailer) {
             // Insert a new Retailer and bind it
-            $retailer = Retailer::insert(array(
+            Retailer::insert(array(
                'user_id' => Auth::user()->id,
                'name' => $value['name'],
                'description' => $value['description'],
@@ -87,29 +85,25 @@ class ImportController extends Controller
                'updated_at' => Carbon::now()
             ));
          }
-
-
+         //return $retailer->id;
          // Here we either have an existing Retailer or the one we just created
          Location::insert(array(
-            'user_id' => Auth::user()->id,
-            'name' => $value['name'],
-            'description' => $value['description'],
-            'phone' => $value['phone'],
-            'email' => $value['email'],
-            'website' => $value['website'],
-            'instagram' => $value['instagram'],
-            'facebook' => $value['facebook'],
-            'twitter' => $value['twitter'],
-            'featured' => $value['featured'],
-            'visibility' => $value['visibility'],
+            'retailer_id' => $retailer->id,
+            'street_number' => $value['street_number'],
+            'street_address' => $value['street_address'],
+            'city' => $value['city'],
+            'state' => $value['state'],
+            'country' => $value['country'],
+            'country_code' => $value['country_code'],
+            'postcode' => $value['postcode'],
+            'latitude' => $value['latitude'],
+            'longitude' => $value['longitude'],
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
          ));
       }
 
-      $r = Retailer::insert($retailers);
-
-      return $r;
+      return 'done';
       //Location::insert($locations);
    }
 
