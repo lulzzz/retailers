@@ -196,4 +196,22 @@ class RetailerRepository implements RetailerInterface {
          }
          return $rowsWithKeys;
       }
+
+
+      public function getGroupedArray($array, $keyFieldsToGroup) {
+          $newArray = array();
+
+          foreach ($array as $record)
+              $newArray = getRecursiveArray($record, $keyFieldsToGroup, $newArray);
+          return $newArray;
+      }
+
+      public function getRecursiveArray($itemArray, $keys, $newArray) {
+         if (count($keys) > 1)
+             $newArray[$itemArray[$keys[0]]] = getRecursiveArray($itemArray, array_splice($keys, 1), $newArray[$itemArray[$keys[0]]]);
+         else
+             $newArray[$itemArray[$keys[0]]][] = $itemArray;
+
+         return $newArray;
+     }
    }

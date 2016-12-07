@@ -31,8 +31,9 @@
                   Filter Retailers
                 </button>
                 <div class="dropdown-menu">
-                  <div role="separator" class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Add Merchant</a>
+                  <a class="dropdown-item delete-retailers" href="/retailers/delete-all" data-remote="true" data-method="delete">
+                    Delete Retailers
+                  </a>
                 </div>
               </div>
               <input type="search" name="search" class="form-control search" placeholder="Start typing to find Retailer...">
@@ -48,38 +49,21 @@
         </div>
       </div>
 
-      <div class="table-responsive retailers-list" >
+      <div id="list-container" class="table-responsive retailers-list" >
         <table class="table table-hover tablesorter" id="table-list">
           <thead>
             <tr>
-              <th data-th-mstr>
-                <div class="input-group">
-                  <span class="input-group-btn">
-                    <label class="btn btn-secondary btn-sm dropdown-toggle">
-                      <input class="form-control-input" type="checkbox" id="checkAll"/>
-                    </label>
-                  </span>
-                  <span class="input-group-btn" data-bulk-settings >
-                    <button class="btn btn-secondary btn-sm delete_all" type="button">
-                      Remove Retailers
-                    </button>
-                  </span>
-                </div>
-              </th>
               <th></th>
-              <th><span data-th-chkd>Retailer</span></th>
-              <th><span data-th-chkd>City</span></th>
-              <th><span data-th-chkd>Country</span></th>
-              <th><span data-th-chkd>Visible</span></th>
-              <th class="text-xs-right"><span data-th-chkd>Last Modified</span></th>
+              <th><a href="#"  class="sort" data-sort="name"> Retailer</a></th>
+              <th><a href="#"  class="sort" data-sort="city"> City</a></th>
+              <th><a href="#"  class="sort" data-sort="country"> Country</a></th>
+              <th><a href="#"  class="sort" data-sort="visibility"> Visible</a></th>
+              <th class="text-xs-right"><a href="#"  class="sort" data-sort="modified"> Last Modified</a></th>
             </tr>
           </thead>
           <tbody class="list">
             @foreach ($retailer as $key => $value)
               <tr>
-                <td class="check-td">
-                  <input type="checkbox" data-id="{{$value->id}}" class="id" />
-                </td>
                 <td>
                   @if(is_null($value->logo_lg))
 
@@ -108,10 +92,10 @@
               @endforeach</td>
               <td>@foreach ($value->locations as $location)
                 <span class="country" style="display:none;">{{$location->country}}</span>
-                {{$location->country_code}}
+                {{$location->country}}
               @endforeach</td>
-              <td>@if ($value->visibility == 'public') Public @else Hidden @endif&nbsp;</td>
-                <td class="text-xs-right">{{ date('M d, g:i a', strtotime($value->updated_at)) }}&nbsp;</td>
+              <td><span class="visibility">@if ($value->visibility == 'public') Public @else Hidden @endif&nbsp;</span></td>
+                <td class="text-xs-right"><span class="modified">{{ date('M d, g:i a', strtotime($value->updated_at)) }}&nbsp;</span></td>
               </tr>
             @endforeach
           </tbody>
@@ -154,7 +138,14 @@
       $(".id").prop('checked',false);
     }
   });
-  
+
+  function checkAll() {
+    var checks = document.getElementsByName("checks[]");
+    for (var i=0; i < checks.length; i++) {
+      checks[i].checked = true;
+    }
+  }
+
 
   ShopifyApp.Bar.initialize({
     buttons: {
@@ -171,13 +162,11 @@
         links: [
           { label: "Import Retailers",
           callback: function(messege){
-            importModal('CSV Import', "/import", 540);
+            importModal('CSV Import', "/import", 440);
           }
         },
         { label: "Export Retailers",
-        callback: function(messege){
-          importModal('CSV Exports', "/export", 140);
-        }
+        href: "{{ route( 'export_retailers' )  }}"
       }
 
     ]
@@ -197,14 +186,40 @@ window.importModal = function(header, path, height){
     width: 'small',
     buttons: {
       primary: {
-        label: "Cancel",
+        label: "Close",
+        message: 'edit_address',
         callback: function(message){
-          ShopifyApp.Modal.close("cancel");
+          ShopifyApp.Modal.close("ok");
+          $('body').load('/retailers');
         }
       }
     },
+  }, function(result){
+    if (result == "ok")
+    ShopifyApp.flashNotice("Import Closed")
   });
 }
+
+
+
+$('.delete-retailers').on('ajax:beforeSend', function(e) {
+  ShopifyApp.Modal.confirm({
+    title: "Are you sure?",
+    message: "Are you sure you want to Delete all your Retailers and their Locations?",
+    okButton: "Delete",
+    cancelButton: "Cancel",
+    style: "danger"
+  }, function(result){
+    if (result){
+        ShopifyApp.redirect("https://{{Auth::user()->domain}}/admin/apps/{{env('SHOPIFY_KEY')}}/retailers");
+    } else {
+      return console.log('Return');
+    }
+  });
+});
+
+
+
 
 window.createModal = function(path){
   ShopifyApp.Modal.open({

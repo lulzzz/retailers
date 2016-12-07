@@ -34,6 +34,7 @@ class ImagesController extends Controller
     $logo = Input::file('logo');
     $storefront = Input::file('storefront');
 
+
     if ($logo) {
 
       $lg = $this->retailer->image('logo', $id, $logo, '.png', 600);
@@ -72,15 +73,8 @@ class ImagesController extends Controller
       // Find Logo
       $image = Retailer::find($id);
 
-      // Images path to delete from Storage
-      $logos = array(
-        'logo_sm' => $image->logo_sm,
-        'logo_md' => $image->logo_md,
-        'logo_lg' => $image->logo_lg
-      );
-
       // Delete
-      Storage::delete($logos);
+      Storage::deleteDirectory($id);
 
       // Make record in database NULL
       $nullable = array(
@@ -104,7 +98,7 @@ class ImagesController extends Controller
       );
 
       // Delete
-      Storage::delete($storefronts);
+      Storage::deleteDirectory($id);
 
       // Make record in database NULL
       $nullable = array(

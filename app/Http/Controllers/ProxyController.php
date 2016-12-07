@@ -12,6 +12,7 @@ use Illuminate\Support\Collection;
 
 use App\Http\Repositories\RetailerInterface;
 
+use App\User;
 use App\Retailer;
 use App\Location;
 
@@ -88,12 +89,15 @@ class ProxyController extends Controller
     );
   }
 
-  public function retailer(Request $request, $r) {
+  public function retailer(Request $request, $store) {
 
-    $stores   = $this->retailer->retailers($this->domain);
-    $retailer = collect($stores)->where('slug', $r)->first();
+    $user = User::where('domain', $this->domain)->first();
+    $retailer = Retailer::where('user_id', $user->id)->where('slug', $store)->first();
+    $locations = Location::where('retailer_id', $retailer->id)->get();
+    $domain     = $this->domain;
 
-    return response()->view('proxy.retailer', compact('retailer'))
+
+    return response()->view('proxy.retailer', compact('retailer', 'locations','domain'))
       ->header('Content-Type', env('PROXY_HEADER')
     );
   }

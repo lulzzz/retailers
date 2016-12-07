@@ -10,7 +10,10 @@ var merge = require('merge-stream');
 
 module.exports = function (gulp, plugins) {
   return function () {
-   var Blade =  gulp.src('resources/assets/proxy/javascript/blade/*.js')
+   var Blade =  gulp.src([
+     'resources/assets/proxy/javascript/blade/**/*.js',
+     '!resources/assets/proxy/javascript/blade/_min/*.js'
+    ])
    .pipe(plugins.plumber())
    .pipe(plugins.uglify())
    .pipe(plugins.plumber.stop())

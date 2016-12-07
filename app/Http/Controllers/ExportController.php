@@ -56,14 +56,11 @@ class ExportController extends Controller
       $retailer = $this->retailer->retailers(Auth::user()->domain);
       $csv = Writer::createFromFileObject(new \SplTempFileObject());
       $csv->insertOne([
-         'retailer_id',
          'name',
          'description',
-         'phone',
          'website',
          'email',
          'instagram',
-         'facebook',
          'twitter',
          'featured',
          'visibility',
@@ -80,14 +77,11 @@ class ExportController extends Controller
 
       foreach ($retailer as $key => $value) {
          $csv->insertOne([
-            'retailer_id' => $value->retailer_id,
             'name' => $value->name,
             'description' => $value->description,
-            'phone' => $value->phone,
             'email' => $value->email,
             'website' => $value->website,
             'instagram' => $value->instagram,
-            'facebook' => $value->facebook,
             'twitter' => $value->twitter,
             'featured' => $value->featured,
             'visibility' => $value->visibility,

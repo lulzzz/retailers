@@ -117,7 +117,7 @@ retailers.json = function(url) {
 
       store.set('retailer_latitude', $(this).data('latitude'));
       store.set('retailer_longitude', $(this).data('longitude'));
-
+ 
       retailers.shop(
         $(this).data('latitude'),
         $(this).data('longitude'),

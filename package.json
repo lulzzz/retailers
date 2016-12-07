@@ -26,6 +26,7 @@
     "handlebars-helpers": "^0.6.1",
     "main-bower-files": "^2.11.1",
     "merge-stream": "^1.0.0",
+    "phoenix_ujs": "^0.3.0",
     "uglify-save-license": "^0.4.1"
   },
   "scripts": {

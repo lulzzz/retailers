@@ -32,14 +32,9 @@ Route::get('app',[
   'as' => 'proxy_index',
   'uses' => 'ProxyController@index']);
 
-  // Geo-graphical Listings
-
-
-    // Geo-graphical Listings
-
-
-// Geo-graphical Listings
-
+  Route::get('app/{retailer}',[
+    'as' => 'proxy_retailer',
+    'uses' => 'ProxyController@retailer']);
 
  // Geo-graphical Listings
  Route::get('app/{lat}/{lon}', [
@@ -69,18 +64,22 @@ Route::get(
 )->name('carter.dashboard');
 
 
-//Route::post('dashboard/delete','DashboardController@delete');
-
-
 
 /*
 | Retailers / RetailersController
 |--------------------------------------------------------------------------
 |
 */
-Route::resource('retailers', 'RetailersController');
 
+Route::resource('retailers', 'RetailersController',['except' => ['destroy','destroyAll']]);
 
+Route::any('retailers/delete/{id}',[
+  'as' => 'retailer_delete',
+  'uses' => 'RetailersController@destroy']);
+
+Route::any('retailers/delete-all',[
+  'as' => 'retailer_all_delete',
+  'uses' => 'RetailersController@destroyAll']);
 /*
 | Locations / LocationsController
 |--------------------------------------------------------------------------
@@ -111,8 +110,8 @@ Route::post('upload/image/{id}',[
   'uses' => 'ImagesController@upload']);
 
 Route::delete('upload/{type}/delete/{id}',[
-  'as' => 'delete-logo',
-  'uses' => 'ImagesController@deleteLogo']);
+  'as' => 'delete_image',
+  'uses' => 'ImagesController@delete']);
 
 /*
 | Template Selection / Resources
@@ -140,22 +139,11 @@ Route::get('/import',[
   'as' => 'import',
   'uses' => 'ImportController@index']);
 
-Route::get('/import-readme',[
-    'as' => 'import_readme',
-    'uses' => 'ImportController@readme']);
-
 
 Route::any('/import-retailers',[
   'as' => 'import_retailers',
   'uses' => 'ImportController@retailers']);
 
-Route::get('/import-transit',[
-  'as' => 'import_transit',
-  'uses' => 'ImportController@transit']);
-
-Route::any('/import-locations',[
-  'as' => 'import_locations',
-  'uses' => 'ImportController@locations']);
 
 
 

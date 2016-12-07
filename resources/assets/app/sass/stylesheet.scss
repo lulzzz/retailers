@@ -8,13 +8,14 @@
 
 
 @import "components/theme";
+@import "components/tables";
 
 // Layout
 @import "layout/skeleton";
 @import "layout/header";
 @import "layout/navs";
 @import "layout/main";
-@import "layout/footer"; 
+@import "layout/footer";
 
 // Views
 @import "views/setup";

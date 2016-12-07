@@ -54,7 +54,7 @@
                    <h3>Logo</h3>
                  </div>
                  <div class="col-xs text-xs-right">
-                   <span class="upload-href">Add Logo</span>
+                 <small><i>300px by 300px</i></small>
                  </div>
                </div>
                <img class="img-fluid" data-dz-thumbnail>
@@ -85,7 +85,7 @@
            </div>
          </div>
          <div class="logo-delete">
-          <a href="{{ route('delete-logo',array('id' => $retailer->id, 'type' => 'logo')) }}" class="btn image-delete" data-remote="true" data-method="delete">Remove
+          <a href="{{ route('delete_image',array('id' => $retailer->id, 'type' => 'logo')) }}" class="btn image-delete" data-remote="true" data-method="delete">Remove
           </a>
         </div>
         @endif
@@ -124,8 +124,18 @@
 @include('app.retailers._partials.locations')
 
 {{ Form::close() }}
-
 </div>
+<hr>
+
+          <div class="row">
+          <div class="col-xs-12 text-xs-right">
+          <div class="card p-2">
+          <a href="/retailers/delete/{{$id}}" class="btn btn-danger">
+          Delete Retailer
+          </a>
+          </div>
+          </div>
+          </div>
 @stop
 
 

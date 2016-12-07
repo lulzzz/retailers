@@ -21,6 +21,7 @@ gulp.task('js:app-views', require('./gulp_tasks/js-app--views.js')(gulp, plugins
 
 gulp.task('js:proxy-core', require('./gulp_tasks/js-proxy--core.js')(gulp, plugins));
 gulp.task('js:proxy-blade', require('./gulp_tasks/js-proxy--blade.js')(gulp, plugins));
+gulp.task('js:proxy-map', require('./gulp_tasks/js-proxy--map.js')(gulp, plugins));
 
 //=====================================================//
 //## BOWER / Import Bower Components / Minify / Vendors
@@ -71,7 +72,9 @@ gulp.task('watch', function () {
 		'resources/assets/javascript/proxy/blade/**/*.js',
 		'resources/assets/javascript/proxy/views/*.js'], ['js:proxy-blade']
 	);
-
+	gulp.watch([
+		'resources/assets/proxy/javascript/map/**/*.js'], ['js:proxy-map']
+	);
 
 });
 

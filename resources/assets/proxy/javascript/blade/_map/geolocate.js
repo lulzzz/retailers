@@ -12,7 +12,7 @@ if(store.get('latitude')) {
 
       // Stores latitude and longitude of visitor address
       store.set('latitude', position.coords.latitude);
-      store.set('longitude', position.coords.longitude);
+      store.set('longitude', position.coords.longitude); 
 
       // New visitor
       retailers.json("{{env('APP_URL')}}/'+position.coords.latitude+'/'+position.coords.longitude+'?shop={{$domain}}");

@@ -1,4 +1,7 @@
  <div id="storefront_container">
+   <p class="text-xs-center pt-1">
+  <i> <small>Dimensions: 1024px by 700px</small></i>
+</p>
    @if(is_null($location->storefront_lg))
      <div class="dropzone dz-clickable" id="storefront_upload">
        <div class="dz-default dz-message">
@@ -25,7 +28,7 @@
     </div>
     <div class="col-xs-3">
       <div class="logo-delete">
-        <a href="{{ route('delete-logo',array('id' => $location->id, 'type' => 'storefront')) }}" class="btn storefront_delete" data-remote="true" data-method="delete">Remove
+        <a href="{{ route('delete_image', array('id' => $location->id, 'type' => 'storefront')) }}" class="btn storefront_delete" data-remote="true" data-method="delete">Remove
         </a>
       </div>
     </div>

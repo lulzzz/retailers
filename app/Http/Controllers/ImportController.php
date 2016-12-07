@@ -62,22 +62,23 @@ class ImportController extends Controller
       $file = Input::file('csv_file');
       $data = $this->retailer->processCsv($file);
 
-      foreach ($data as $value) {
 
-         $retailer = Retailer::where('name', '=', $value['name'])->first();
+      foreach ($data as $value) {
+         // Try to find an existing Retailer
+         $retailer = Retailer::where("name", $value["name"])->first();
 
          // If the Retailer is not found
          if (!$retailer) {
             // Insert a new Retailer and bind it
-            Retailer::insert(array(
+            $retailer = Retailer::insert(array(
                'user_id' => Auth::user()->id,
                'name' => $value['name'],
                'description' => $value['description'],
-               'phone' => $value['phone'],
+               //'phone' => $value['phone'],
                'email' => $value['email'],
                'website' => $value['website'],
                'instagram' => $value['instagram'],
-               'facebook' => $value['facebook'],
+               //'facebook' => $value['facebook'],
                'twitter' => $value['twitter'],
                'featured' => $value['featured'],
                'visibility' => $value['visibility'],
@@ -85,10 +86,13 @@ class ImportController extends Controller
                'updated_at' => Carbon::now()
             ));
          }
-         //return $retailer->id;
+
+          $n = Retailer::where("name", $value["name"])->first();
+          $n->id;
+
          // Here we either have an existing Retailer or the one we just created
          Location::insert(array(
-            'retailer_id' => $retailer->id,
+            'retailer_id' =>  $n->id, //HERE IS THE ERROR
             'street_number' => $value['street_number'],
             'street_address' => $value['street_address'],
             'city' => $value['city'],
@@ -102,8 +106,10 @@ class ImportController extends Controller
             'updated_at' => Carbon::now()
          ));
       }
+      //return dd($data);
 
-      return 'done';
+
+      return View::make('app.retailers.csv_import.success');
       //Location::insert($locations);
    }
 

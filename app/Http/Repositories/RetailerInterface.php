@@ -28,4 +28,5 @@ interface RetailerInterface {
   public function processCsv($file);
   public function recentImports($time);
 
+  public function getGroupedArray($array, $keyFieldsToGroup);
 }

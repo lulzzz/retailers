@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use League\Csv\Writer;
 
+use App\Http\Repositories\RetailerInterface;
+
+
 // Modals
 use App\Location;
 use App\Retailer;
@@ -22,9 +25,10 @@ use Auth;
 class RetailersController extends Controller
 {
 
+  private $retailer;
 
-  public function __construct()
-  {
+  public function __construct(RetailerInterface $retailer) {
+    $this->retailer = $retailer;
     $this->middleware('auth');
   }
 
@@ -33,6 +37,9 @@ class RetailersController extends Controller
   *
   * @return \Illuminate\Http\Response
   */
+
+
+
   public function index()
   {
 
@@ -40,7 +47,26 @@ class RetailersController extends Controller
     ->with('locations')
     ->get();
 
-    return View::make('app.retailers.index', compact('retailer'));
+    foreach ($retailer as $key => $value) {
+
+      $retailers[] = array(
+        'id' => $value->id,
+        'logo_sm' => $value->logo_sm,
+        'name' => $value->name,
+        'city' => $value->city,
+        'visibility' => $value->visibility,
+        'updated_at' => $value->updated_at
+      );
+    }
+
+
+    $indentifiers = collect($retailer)->pluck('id');
+
+    $ids = str_replace(array('[', ']'), '', htmlspecialchars(
+      json_encode($indentifiers), ENT_NOQUOTES)
+    );
+
+    return View::make('app.retailers.index', compact('retailer','ids'));
   }
 
   /**
@@ -49,19 +75,20 @@ class RetailersController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function show($type)
+  public function show()
   {
 
+    $retailer = Retailer::where('user_id', Auth::user()->id)
+    ->with('locations')
+    ->get();
 
-    $retailer = Retailer::where('user_id', Auth::user()->id)->get();
+    $indentifiers = collect($retailer)->pluck('id');
 
-    $title = $type;
+    $ids = str_replace(array('[', ']'), '', htmlspecialchars(
+      json_encode($indentifiers), ENT_NOQUOTES)
+    );
 
-    if (is_null($retailer))
-    {
-      return 'No Stores found! Start by adding some!';
-    }
-    return View::make('app.retailers.show', compact('retailer','title'));
+    return View::make('app.retailers.index', compact('retailer','ids'));
   }
 
 
@@ -202,12 +229,24 @@ class RetailersController extends Controller
         */
         public function destroy($id)
         {
+          $retailer = Retailer::find($id);
+          $retailer->delete();
 
-          Retailer::destroy($id);
-
-
+          $location = location::where('retailer_id', $id)->get();
+          $location->delete();
           // redirect
-          return'removed';
+          return Redirect::route('retailers.index');
+        }
+
+        public function destroyAll()
+        {
+          DB::table('locations')->delete();
+          DB::table('retailers')->delete();
+
+
+          return Redirect::route('retailers.index')
+          ->with('message', 'Retailer removed!');
+
         }
 
 

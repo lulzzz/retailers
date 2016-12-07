@@ -1,0 +1,13 @@
+name,description,email,website,instagram,twitter,featured,visibility,street_number,street_address,city,state,country,postcode,country_code,latitude,longitude
+Blue,The Blue store description.,info@blue.com,www.blue.com,@blue,@blue,no,public,487,Monument,Oslo,,Norway,,NO,59.9241,10.6549
+Blue,The Blue store description.,info@blue.com,www.blue.com,@blue,@blue,no,public,981,Troy,Puerto Aisén,,Chile,,CL,-45.40303,-72.69184
+Blue,The Blue store description.,info@blue.com,www.blue.com,@blue,@blue,no,public,370,Green Ridge,Spånga,,Sweden,,SE,59.3833,17.9167
+Red,The Red store description.,info@red.com,www.red.com,@red,@red,no,public,183,Mesta,Gezan,,China,,CN,28.20389,99.80944
+Red,The Red store description.,info@red.com,www.red.com,@red,@red,no,public,744,David,Vacaria,,Brazil,,BR,-28.51222,-50.93389
+White,The White store description.,info@white.com,www.white.com,@white,@white,no,public,487,Monument,Oslo,,Norway,,NO,59.9241,10.6549
+White,The White store description.,info@white.com,www.white.com,@white,@white,no,public,981,Troy,Puerto Aisén,,Chile,,CL,-45.40303,-72.69184
+White,The White store description.,info@white.com,www.white.com,@white,@white,no,public,370,Green Ridge,Spånga,,Sweden,,SE,59.3833,17.9167
+Pink,The White store description.,info@pink.com,www.pink.com,@pink,@pink,no,public,499,Northwestern,Talin Hiag,,China,,CN,46.15897,124.14154
+Purple,The Purple store description.,info@purple.com,www.purple.com,@purple,@purple,no,public,347,Sunbrook,Oemanu,,Indonesia,,ID,-9.925,124.2836
+Orange,The Orange store description.,info@orange.com,www.orange.com,@orange,@orange,no,public,281,Mccormick,Wangjiaping,,China,,CN,29.04439,110.81516
+Yellow,The Yellow store description.,info@yellow.com,www.yellow.com,@yellow,@yellow,no,public,943,Jenna,Lasusua,,Indonesia,,ID,-3.5105,120.8844

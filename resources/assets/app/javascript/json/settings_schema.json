@@ -1,0 +1,31 @@
+{
+  "name": "Retailers",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Retailers"
+    },
+    {
+      "type": "paragraph",
+      "content": "Customize the look and feel of your Retailers Map."
+    },
+    {
+      "type": "radio",
+      "id":  "geolocate",
+      "label": "How would you like to Geographically Locate visitors?",
+      "options": [
+        { "value": "geoip", "label": "GeoIP" },
+        { "value": "geolocate", "label": "GeoLocate" },
+      ]
+    },
+    {
+      "type": "select",
+      "id": "map_style",
+      "options": [
+        { "value": "default", "label": "Default"},
+        { "value": "gangster_grey", "label": "Gangster Grey"}
+      ],
+      "label": "Select Map style"
+    }
+  ]
+},
