@@ -202,14 +202,14 @@
               store.set('longitude', position.coords.longitude);
 
               // New visitor
-              retailers.json('/app/'+position.coords.latitude+'/'+position.coords.longitude+'?shop='+domain+'');
+              retailers.json('/a/retailers/'+position.coords.latitude+'/'+position.coords.longitude+'?shop='+domain+'');
 
             }, function() {
-              retailers.json('/app/'+geoLat+'/'+geoLng+'?shop='+domain+'');
+              retailers.json('/a/retailers/'+geoLat+'/'+geoLng+'?shop='+domain+'');
             });
           } else {
             // Browser doesn't support Geolocation
-            retailers.json('/app/'+geoLat+'/'+geoLng+'?shop='+domain+'');
+            retailers.json('/a/retailers/'+geoLat+'/'+geoLng+'?shop='+domain+'');
           }
         }
 
