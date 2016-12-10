@@ -117,6 +117,10 @@
       pointer-events: none;
    }
 
+   .active {
+      background-color: #f8f8f8;
+   }
+
    .name {
       font-weight:bold;
    }
