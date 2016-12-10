@@ -3,11 +3,12 @@
 <head>
 <!-- Stylesheet :: Retailers -->
 <link rel="stylesheet" type="text/css" href="{{ env('APP_URL') }}/assets/proxy/css/stylesheet.min.css">
-</head>
-<body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do"></script>
 <script src="{{env('APP_URL')}}/assets/proxy/js/core.min.js"></script>
+</head>
+<body>
+
 <div class="container-fluid"  data-pjax="container">
 
   @yield('content')
