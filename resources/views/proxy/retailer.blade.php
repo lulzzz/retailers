@@ -103,7 +103,7 @@
                      </div>
 
                      <div class="col-xs-12 col-sm-12  col-md-6 col-lg-8 pl-0">
-                        <div class="map" id="map" data-map></div>
+                        <div class="map" id="locate-retailer-map" data-map></div>
                      </div>
                   </div>
                </div>
