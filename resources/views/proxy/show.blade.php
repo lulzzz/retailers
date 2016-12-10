@@ -15,5 +15,5 @@
 @section('js')
 var markers = [@foreach($retailers as $key => $value)[{{$value['latitude']}},{{$value['longitude']}},'{{$value['country_code']}}','{{$value['storefront_md']}}','{{$value['logo_md']}}'],@endforeach];
 
- retailers.map('map', {{$geo['lat']}}, {{$geo['lon']}}, '{{$domain}}', markers, 'index');
+ retailers.map('locate-retailer-map', {{$geo['lat']}}, {{$geo['lon']}}, '{{$domain}}', markers, 'index');
 @stop
