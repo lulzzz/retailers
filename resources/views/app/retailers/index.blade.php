@@ -90,9 +90,9 @@
               <td>@foreach ($value->locations->unique("city") as $location)
                 <span class="city">{{$location->city}}</span>
               @endforeach</td>
-              <td>@foreach ($value->locations->unique("country") as $location)
-                {{$location->country}}
-              @endforeach</td>
+              <td>
+                {{$value->locations->unique("country")->implode("country", ", ")}}
+              </td>
               <td><span class="visibility">@if ($value->visibility == 'public') Public @else Hidden @endif&nbsp;</span></td>
                 <td class="text-xs-right"><span class="modified">{{ date('M d, g:i a', strtotime($value->updated_at)) }}&nbsp;</span></td>
               </tr>
