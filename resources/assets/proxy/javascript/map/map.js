@@ -85,7 +85,7 @@
 
             var gm_url = 'http://maps.google.com/maps?q='+latitude+','+longitude+'';
             // you can also hard code the URL
-            var sticker = $('<div class="storefront-sticker" style="max-width:'+feature_width+';"><a href="/app/'+slug+'?shop='+domain+'"><div class="sticker" data-sticker>'+logo_url+'<div class="store"><img src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location='+latitude+','+longitude+'&pitch=-0.76&key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do"></div></a></div><a class="btn btn-secondary btn-sm mt-1 float-xs-right" href="'+gm_url+'" target="_blank"><i class="icon icon-gmap"></i> &nbsp;View in Google Maps</a>');
+            var sticker = $('<div class="storefront-sticker" style="max-width:'+feature_width+';"><a href="/a/retailers/'+slug+'?shop='+domain+'"><div class="sticker" data-sticker>'+logo_url+'<div class="store"><img src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location='+latitude+','+longitude+'&pitch=-0.76&key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do"></div></a></div><a class="btn btn-secondary btn-sm mt-1 float-xs-right" href="'+gm_url+'" target="_blank"><i class="icon icon-gmap"></i> &nbsp;View in Google Maps</a>');
 
             $('div[data-sticker]').remove();
             sticker.appendTo('div[data-map]');
