@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 pr-0">
       <div class="retailer-header">
                <h1>Retailers</h1>
-               <h3 class="sub-header">Stores selling near {{$geo['city']}}</h3>
+               <span class="sub-header">Stores selling near {{$geo['city']}}</span>
             </div>
       <div id="retailers-list" class="retailers--search">
         <div class="retailers-locator">
