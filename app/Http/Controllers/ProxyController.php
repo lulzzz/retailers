@@ -58,12 +58,13 @@ class ProxyController extends Controller
     $stores     = $this->retailer->retailers($this->domain);
     $countries  = $this->retailer->countries($this->domain);
     $domain     = $this->domain;
-    $brand      = collect($retailers)->pluck(['brand_name'])->first();
     $listings = $this->retailer->matrix([(float) $geo['lat'], (float) $geo['lon']], $stores);
 
     $collection = collect($listings);
     $retailers = $collection->where('visibility', 'public')->sortBy('distance');
     $retailers->values()->all();
+
+    $brand      = collect($retailers)->pluck(['brand_name'])->first();
 
     if ($exists) {
       $error = false;
