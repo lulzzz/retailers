@@ -113,25 +113,26 @@
         </a>
       </div>
       <div class="py-3 px-2">
-        <a href="#pjax-container" onclick="addressModal('{{ route('address_edit',array($value->id)) }}')" >
           <small>
             {{ $value->street_number }} {{ $value->street_address }}<br>
             {{ $value->city }}, {{ $value->state }}, {{ $value->postcode }}<br>
             {{ $value->country }}, {{ $value->country_code }}
           </small>
-        </a>
       </div>
-      @if(is_null($value->storefront_lg))
-      <div class="px-2 pb-2 text-xs-center">
-        <a href="#pjax-container" onclick="storefrontModal('{{ route('locations.edit',array($value->id)) }}')" class="btn btn-block btn-secondary">
-         Upload Storefront
+      <img src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location={{$value->latitude}},{{$value->longitude}}&pitch=-0.76&key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do" class="img-fluid">
+      {{--
+         @if(is_null($value->storefront_lg))
+         <div class="px-2 pb-2 text-xs-center">
+           <a href="#pjax-container" onclick="storefrontModal('{{ route('locations.edit',array($value->id)) }}')" class="btn btn-block btn-secondary">
+            Upload Storefront
+          </a>
+        </div>
+        @else
+        <a href="#pjax-container" onclick="storefrontModal('{{ route('locations.edit',array($value->id)) }}')">
+         <img src="{{ $value->storefront_lg }}" class="img-fluid">
        </a>
-     </div>
-     @else
-     <a href="#pjax-container" onclick="storefrontModal('{{ route('locations.edit',array($value->id)) }}')">
-      <img src="{{ $value->storefront_lg }}" class="img-fluid">
-    </a>
-    @endif
+       @endif
+       --}}
   </div>
 </div>
 @endforeach

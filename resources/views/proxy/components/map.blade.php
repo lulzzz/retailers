@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 pr-0">
       <div id="retailers-list" class="retailers-search">
-        
         <div class="retailers-locator">
           <input type="search" name="search" class="search search--map" placeholder="Enter your City, State or Country">
         </div>
@@ -16,7 +15,6 @@
           <div class="double-bounce2"></div>
         </div>
       </div>
-      <button class="btn btn-secondary btn-sm route" type="button">Show Route</button>
       <div class="map" id="map" data-map></div>
     </div>
   </div>

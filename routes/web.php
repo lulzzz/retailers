@@ -32,15 +32,16 @@ Route::get('app',[
   'as' => 'proxy_index',
   'uses' => 'ProxyController@index']);
 
-  Route::get('app/{retailer}',[
-    'as' => 'proxy_retailer',
-    'uses' => 'ProxyController@retailer']);
 
  // Geo-graphical Listings
  Route::get('app/{lat}/{lon}', [
    'as' => 'proxy_origin',
    'uses' => 'ProxyController@origin']);
 
+
+   Route::get('app/{retailer}',[
+     'as' => 'proxy_retailer',
+     'uses' => 'ProxyController@retailer']);
 
 //Route::get('dashboard', 'DashboardController@index')->name('carter.dashboard');
 

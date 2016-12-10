@@ -1,0 +1,129 @@
+.list-retailers {
+   position: relative;
+   width: 100%;
+   overflow-x: hidden;
+   overflow-y: scroll;
+
+   .list {
+      position: relative;
+      margin: 0;
+      padding:0;
+      white-space: nowrap;
+
+      li {
+         list-style: none;
+         color:#111;
+         //background-color:transparent;
+         border:none;
+         margin:0;
+         margin:0 -6px 0 0;
+         width:100%;
+         border-bottom:1px solid #cdcdcd;
+         text-align:left;
+         position: relative;
+         overflow: hidden;
+
+         a,
+         &:focus,
+         &:hover {
+            //background-color:#f9f9f9;
+            cursor: pointer;
+         }
+      }
+
+      .li-list--index {
+         padding:15px;
+         margin:0 -6px 0 0;
+         //border-bottom:1px solid #cdcdcd;
+         height: 120px;
+         overflow: hidden;
+      }
+
+      .li-list--1-retailer {
+         list-style: none;
+         padding:0;
+         margin:0;
+         height: auto;
+         overflow: hidden;
+         height: 350px;
+
+         .storefront {
+            max-width: 180px;
+            overflow: hidden;
+         }
+
+         .sticker {
+            position: absolute;
+            bottom: 0;
+         }
+
+         img {
+            width: 100%;
+            height:auto;
+         }
+      }
+
+      .li-list--2-retailers {
+         list-style: none;
+         padding:0;
+         margin:0;
+         height: 120px;
+
+         .retailer-address {
+            float:left;
+         }
+
+
+         .storefront {
+            max-width: 240px;
+            float: right;
+            overflow: hidden;
+         }
+         img {
+            width: 100%;
+            height:auto;
+         }
+      }
+
+      .li-list--3-retailers {
+         list-style: none;
+         padding:0;
+         margin:0;
+         height: 110px;
+
+         .retailer-address {
+            float:left;
+
+         }
+
+
+         .storefront {
+            max-width: 220px;
+            float: right;
+            overflow: hidden;
+         }
+
+         img {
+            width: 100%;
+            height:auto;
+         }
+      }
+
+   }
+
+
+   .disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      pointer-events: none;
+   }
+
+   .name {
+      font-weight:bold;
+   }
+
+}
+
+.disable-overflow {
+   overflow: hidden !important;
+}

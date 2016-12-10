@@ -1,0 +1,52 @@
+.retailer-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 9999;
+  height: 600px;
+  max-height: 600px;
+  background-color: rgba(255,255,255,0.9);
+}
+
+.retailer-wrapper {
+  height: 250px;
+  border-bottom: 1px solid #ddd;
+}
+
+.retailer-address {
+  padding: 10px;
+}
+.retailer-header {
+//height: 50px;
+padding: 10px;
+
+
+  h1 {
+
+  }
+
+  ul {
+    margin:10px 0 0 0;
+    padding:0;
+
+    li {
+      display: inline;
+      margin-left: 7px;
+      font-size: 15px;
+
+      a,
+      &:hover,
+      &:focus {
+        color: #111;
+      }
+    }
+  }
+}
+
+.retailer-description {
+  //height: 100px;
+  float: left;
+  padding: 10px;
+
+}

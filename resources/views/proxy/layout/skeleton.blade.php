@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="{{ env('APP_URL') }}/assets/proxy/css/stylesheet.min.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://maps.google.com/maps/api/js?key=AIzaSyCTlnXnQV55QOGl22nw627SDxo6yXynJYs"></script>
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do"></script>
 <script src="{{env('APP_URL')}}/assets/proxy/js/core.min.js"></script>
 <div class="container-fluid"  data-pjax="container">
 
@@ -20,6 +20,22 @@
     };
   });
   </script>
+  @yield('script')
 
   @yield('js')
+
+  <script>
+  loadjs([
+     '/assets/proxy/js/qwest.min.js',
+     '/assets/proxy/js/map_styles.min.js',
+     '/assets/proxy/js/map.min.js'],
+     {
+        success: function() {
+
+          @yield('js')
+
+        }
+     }
+  );
+  </script>
 </div>

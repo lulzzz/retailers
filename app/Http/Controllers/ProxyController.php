@@ -93,11 +93,11 @@ class ProxyController extends Controller
 
     $user = User::where('domain', $this->domain)->first();
     $retailer = Retailer::where('user_id', $user->id)->where('slug', $store)->first();
+    $geo = Location::where('retailer_id', $retailer->id)->first();
     $locations = Location::where('retailer_id', $retailer->id)->get();
     $domain     = $this->domain;
 
-
-    return response()->view('proxy.retailer', compact('retailer', 'locations','domain'))
+    return response()->view('proxy.retailer', compact('retailer', 'locations','domain','geo'))
       ->header('Content-Type', env('PROXY_HEADER')
     );
   }

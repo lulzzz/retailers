@@ -1,3 +1,5 @@
+$component-height:  600px !default;
+
 
 body {
   margin: 0;
@@ -16,4 +18,27 @@ a {
   &:focus {
     @include tab-focus();
   }
+}
+
+
+::-webkit-scrollbar {
+  background: transparent;
+  width:6px;
+
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.9);
+  border: solid #cecece 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+.container-fluid {
+  height:600px;
+  max-height: 600px;
+  overflow: hidden;
+  padding: 0;
+  border-bottom: 1px solid #ddd;
 }

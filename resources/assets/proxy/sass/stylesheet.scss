@@ -3,12 +3,17 @@
 @import "layout/theme";
 @import "layout/skeleton";
 
+@import "components/icons";
 @import "components/dropdown";
 @import "components/search";
+@import "components/list";
+@import "components/map";
+@import "components/sticker";
+@import "components/retailer";
 @import "components/alerts";
 
 
-
+@import "vendors/wallop";
 
 * {
   outline:none !important;
@@ -127,42 +132,6 @@ body {
   margin-bottom: -1px;
 }
 
-
-.search--map {
-  font-size:$font-size-sm;
-  padding:7px;
-  line-height:25px;
-  width: 100%;
-  border-left:0;
-  border-right:0;
-  border-top:0;
-  border-bottom:1px solid #cdcdcd;
-}
-
-.retailers-search {
-  height:  $component-height;
-  max-height: $component-height;
-  border:1px solid #cdcdcd;
-  background-color:rgba(255,255,255,0.8);
-    -webkit-overflow-scrolling: touch;
-
-
-  h2 {
-    text-transform:uppercase;
-  }
-
-  /* scrollbar-base-color: #C0C0C0;
-  scrollbar-base-color: #C0C0C0;
-  scrollbar-3dlight-color: #C0C0C0;
-  scrollbar-highlight-color: #C0C0C0;
-  scrollbar-track-color: #EBEBEB;
-  scrollbar-arrow-color: black;
-  scrollbar-shadow-color: #C0C0C0;
-  scrollbar-dark-shadow-color: #C0C0C0;
-  */
-
-}
-
 .filter-locations {
   padding:0;
   width:100%;
@@ -222,190 +191,4 @@ body {
       width:30px;
     }
   }
-}
-
-
-.map {
-  border:1px solid #cdcdcd;
-  height:$component-height;
-  width:100%;
-}
-
-.retailers-menu--map {
-  position: relative;
-  width: 100%;
-  max-height: 535px;
-  overflow-x: hidden;
-  overflow-y: scroll;
-
-
-
-
-  .list {
-    position: relative;
-    margin: 0;
-    padding:0;
-    //padding-right:8px;
-    height:100%;
-    white-space: nowrap;
-
-
-    li{
-      list-style: none;
-      padding:15px;
-      margin:0 -6px 0 0;
-      border-bottom:1px solid #cdcdcd;
-    }
-  }
-
-  .list-disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-
-  .list-btn {
-    color:#111;
-    background-color:transparent;
-    border:none;
-    margin:0;
-    padding:15px;
-    width:100%;
-    text-align:left;
-    position: relative;
-
-    &:hover {
-      background-color:#f9f9f9;
-      cursor: pointer;
-    }
-
-    .logo{
-      display:flex;
-      align-items: center;
-      display: flex;
-      justify-content: center;
-
-      img {
-        max-width:50px;
-        height: auto;
-        width:100%;
-      }
-    }
-  }
-
-  .name {
-    font-weight:bold;
-  }
-
-}
-
-.active {
-  background-color:#efefef !important;
-}
-
-
-
-
-::-webkit-scrollbar {
-  background: transparent;
-  width:6px;
-
-}
-::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.9);
-  border: solid #cecece 6px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-
-
-.storefront {
-  background-color: rgba(255, 255, 255, 0.90);
-  position:absolute;
-  right:0;
-  top:0;
-  bottom:0;
-  width:180px;
-}
-.storefront-sticker {
-  position:absolute;
-  right:10px;
-  top:10px;
-
-  .btn-sm {
-    font-size:11px;
-    font-family:inherit;
-    line-height:17px;
-  }
-
-  .storefront-feature {
-    position: relative;
-    width: 100%;
-    z-index: 8888;
-
-    .flag-icon {
-      display:none;
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: 9999;
-      font-size: 20px;
-    }
-    .bg {
-      width: 100%;
-      height: auto;
-    }
-    .inner {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      text-align: center;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      width: -100%;
-      @include prefixer(box-align, center, webkit moz ms spec);
-      -ms-flex-align: center;
-      @include prefixer(align-items, center, webkit spec);
-      @include prefixer(box-pack, center, webkit moz);
-      -ms-flex-pack: center;
-      @include prefixer(justify-content, center, webkit spec);
-    }
-  }
-
-  .logo {
-    z-index: 9999;
-    margin: 0;
-    img {
-      max-width: 125px;
-      filter: invert(100%);
-      -webkit-filter: invert(100%);
-    }
-  }
-
-  .tint {
-    position: relative;
-    padding: 0;
-    margin: 0;
-    &:before {
-      overflow: hidden;
-      content: "";
-      display: block;
-      position: absolute;
-      top: 0;
-      bottom: 5px;
-      left: 0;
-      right: 0;
-      background: rgba(0, 0, 0, 0.375);
-      box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
-
-    }
-  }
-
 }
