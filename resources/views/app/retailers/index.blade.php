@@ -90,8 +90,7 @@
               <td>@foreach ($value->locations->unique("city") as $location)
                 <span class="city">{{$location->city}}</span>
               @endforeach</td>
-              <td>@foreach ($value->locations as $location)
-                <span class="country" style="display:none;">{{$location->country}}</span>
+              <td>@foreach ($value->locations->unique("country") as $location)
                 {{$location->country}}
               @endforeach</td>
               <td><span class="visibility">@if ($value->visibility == 'public') Public @else Hidden @endif&nbsp;</span></td>
