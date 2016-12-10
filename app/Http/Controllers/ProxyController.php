@@ -62,7 +62,7 @@ class ProxyController extends Controller
     $listings = $this->retailer->matrix([(float) $geo['lat'], (float) $geo['lon']], $stores);
 
     $collection = collect($listings);
-    $retailers = $collection->sortBy('distance');
+    $retailers = $collection->where('visibility', 'public')->sortBy('distance');
     $retailers->values()->all();
 
     if ($exists) {
