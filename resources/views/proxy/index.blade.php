@@ -15,9 +15,9 @@
 @section('js')
    <script>
    loadjs([
-      '/assets/proxy/js/qwest.min.js',
-      '/assets/proxy/js/map_styles.min.js',
-      '/assets/proxy/js/map.min.js'],
+      '{{env('APP_URL')}}/assets/proxy/js/qwest.min.js',
+      '{{env('APP_URL')}}/assets/proxy/js/map_styles.min.js',
+      '{{env('APP_URL')}}/assets/proxy/js/map.min.js'],
       {
          success: function() {
 
