@@ -16,7 +16,6 @@
          //background-color:transparent;
          border:none;
          margin:0;
-         margin:0 -6px 0 0;
          width:100%;
          border-bottom:1px solid #cdcdcd;
          text-align:left;
@@ -32,8 +31,8 @@
       }
 
       .li-list--index {
-         padding:15px;
-         margin:0 -6px 0 0;
+         padding:15px 15px 15px 0;
+         margin:0;
          //border-bottom:1px solid #cdcdcd;
          height: 120px;
          overflow: hidden;
