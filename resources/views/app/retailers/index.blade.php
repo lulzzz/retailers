@@ -87,7 +87,7 @@
                   </span>
                 @endif
               </td>
-              <td>@foreach ($value->locations as $location)
+              <td>@foreach (array_unique($value->locations) as $location)
                 <span class="city">{{$location->city}}</span>
               @endforeach</td>
               <td>@foreach ($value->locations as $location)
