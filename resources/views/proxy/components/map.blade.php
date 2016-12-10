@@ -15,7 +15,7 @@
           <div class="double-bounce2"></div>
         </div>
       </div>
-      <div class="map" id="map" data-map></div>
+      <div class="map" id="locate-retailer-map" data-map></div>
     </div>
   </div>
 </div>
