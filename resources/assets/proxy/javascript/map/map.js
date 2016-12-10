@@ -188,7 +188,7 @@
 
         if(store.get('latitude')) {
           // Returning visitor.
-          retailers.json('/a/retailers/'+geoLat+'/'+geoLng+'?shop='+domain+'');
+          retailers.json('/a/retailers-1/'+geoLat+'/'+geoLng+'?shop='+domain+'');
 
         } else {
           // check if user browser has geolocation
