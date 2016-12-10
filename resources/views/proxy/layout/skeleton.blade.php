@@ -22,8 +22,6 @@
   </script>
   @yield('script')
 
-  @yield('js')
-
   <script>
   loadjs([
      '{{env('APP_URL')}}/assets/proxy/js/qwest.min.js',
