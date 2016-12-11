@@ -50,12 +50,7 @@
             });
 
             var l = $('#hook').parent().parent().parent().siblings();
-               for (var i = 0; i < l.length; i++) {
-                   if($(l[i]).css('z-index') == 'auto') {
-                       $(l[i]).css('border-radius', '16px 16px 16px 16px');
-                       $(l[i]).css('border', '2px solid red');
-                   }
-               }
+            l.parent().parent().parent().siblings().addClass("hidden");
 
             infowindow.setContent('<div id="hook" class="info-window"><div class="sticker"><div class="logo"><img src="'+logo+'"></div><div class="storefront"><img src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location='+latitude+','+longitude+'&heading=151.78&pitch=-0.76&key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do""></div></div></div>');
 
