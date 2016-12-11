@@ -49,7 +49,7 @@
               map: map
             });
 
-            infowindow.setContent('<div class="info-window"><img src="'+logo+'" class="infowindow-logo"><address><b>'+ results[0].address_components[0].long_name+'&nbsp;' + results[0].address_components[1].long_name +'<br>'+results[0].address_components[5].long_name+'<br>'+ results[0].address_components[6].long_name +',&nbsp;'+ results[0].address_components[4].long_name +'</b></address></div>');
+            infowindow.setContent('<div class="info-window"><div class="sticker"><div class="logo"><img src="'+logo+'"></div><div class="storefront"><img src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location='+latitude+','+longitude+'&heading=151.78&pitch=-0.76&key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do""></div></div><address><b>'+ results[0].address_components[0].long_name+'&nbsp;' + results[0].address_components[1].long_name +'<br>'+results[0].address_components[5].long_name+'<br>'+ results[0].address_components[6].long_name +',&nbsp;'+ results[0].address_components[4].long_name +'</b></address></div>');
 
             //map.panBy(-33.3333,-100)
 
