@@ -49,7 +49,7 @@
               map: map
             });
 
-            infowindow.setContent('<img src="'+logo+'" class="img-fluid"><address><b>'+ results[0].address_components[0].long_name+'&nbsp;' + results[0].address_components[1].long_name +'<br>'+results[0].address_components[5].long_name+'<br>'+ results[0].address_components[6].long_name +',&nbsp;'+ results[0].address_components[4].long_name +'</b></address>');
+            infowindow.setContent('<img src="'+logo+'" class="infowindow-logo"><address><b>'+ results[0].address_components[0].long_name+'&nbsp;' + results[0].address_components[1].long_name +'<br>'+results[0].address_components[5].long_name+'<br>'+ results[0].address_components[6].long_name +',&nbsp;'+ results[0].address_components[4].long_name +'</b></address>');
 
             //map.panBy(-33.3333,-100)
 
