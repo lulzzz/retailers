@@ -66,7 +66,7 @@
         if(page == 'index') {
           if ($('.container-fluid').width() < 1000) {
 
-            map.panBy(200,0)
+            //map.panBy(200,0)
 
             var  feature_width = '200px';
             var  logo_width    = '80px';
@@ -188,7 +188,7 @@
 
         if(store.get('latitude')) {
           // Returning visitor.
-          retailers.json('/a/retailers-1/'+geoLat+'/'+geoLng+'?shop='+domain+'');
+          retailers.json('/a/retailers/'+geoLat+'/'+geoLng+'?shop='+domain+'');
 
         } else {
           // check if user browser has geolocation
@@ -202,14 +202,14 @@
               store.set('longitude', position.coords.longitude);
 
               // New visitor
-              retailers.json('/a/retailers-1/'+position.coords.latitude+'/'+position.coords.longitude+'?shop='+domain+'');
+              retailers.json('/a/retailers/'+position.coords.latitude+'/'+position.coords.longitude+'?shop='+domain+'');
 
             }, function() {
-              retailers.json('/a/retailers-1/'+geoLat+'/'+geoLng+'?shop='+domain+'');
+              retailers.json('/a/retailers/'+geoLat+'/'+geoLng+'?shop='+domain+'');
             });
           } else {
             // Browser doesn't support Geolocation
-            retailers.json('/a/retailers-1/'+geoLat+'/'+geoLng+'?shop='+domain+'');
+            retailers.json('/a/retailers/'+geoLat+'/'+geoLng+'?shop='+domain+'');
           }
         }
 
