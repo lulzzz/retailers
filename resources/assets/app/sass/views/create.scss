@@ -1,155 +1,183 @@
 .import-csv {
-  margin: 0 auto;
+   margin: 0 auto;
    .image-placeholder {
       margin-top: 0;
    }
 
    .info-box {
-     padding-top: 30px;
-     //text-align: center;
-     color: #bbb;
-     font-size: ($font-size-xs + 0.03);
+      padding-top: 30px;
+      //text-align: center;
+      color: #bbb;
+      font-size: ($font-size-xs + 0.03);
    }
 }
 
+.meta-site {
+   border-bottom: 0;
+   border-radius: 0 !important;
+   background-color: #f8f8f8;
+
+   &:focus {
+      border-color:rgba(0,0,0,.15) !important;
+      background-color: #f8f8f8;
+
+   }
+}
+
+.meta-btn {
+   background-color: #f8f8f8;
+   color: #555 !important;
+   text-align: center;
+}
+
+.meta-btn-wrap {
+   height: 24px;
+   width: 170px;
+}
+
+.des {
+   border-radius: 0 !important;
+   padding: .50rem .5rem;
+}
+
 .image-placeholder {
-  color: #c3cfd8;
-  margin-top:60px;
-  font-size: 15px;
-  font-weight:600;
-  p {
-    padding-top:5px;
-  }
+   color: #c3cfd8;
+   margin-top:60px;
+   font-size: 15px;
+   font-weight:600;
+   p {
+      padding-top:5px;
+   }
 
 }
 .noLogo {
-  text-align:center;
+   text-align:center;
 
-  a {
-    color:#e4e4e4;
-    &:hover {
-      color:#111;
-    }
-  }
+   a {
+      color:#e4e4e4;
+      &:hover {
+         color:#111;
+      }
+   }
 }
 .logo-upload {
-  height:150px;
+   height:150px;
 }
 
 .logo-header {
-  height:40px;
+   height:40px;
 }
 
 .logo-delete {
-  margin-top:20px;
-  width:100%;
-  text-align:center;
-  .btn {
-    font-size:13px;
-    background-color:transparent;
-    border:none;
-    color:$brand-primary;
-    margin: 0 auto;
+   margin-top:20px;
+   width:100%;
+   text-align:center;
+   .btn {
+      font-size:13px;
+      background-color:transparent;
+      border:none;
+      color:$brand-primary;
+      margin: 0 auto;
 
 
-    &:hover {
-      color:#111;
-    }
-  }
+      &:hover {
+         color:#111;
+      }
+   }
 }
 
 .logo-preview {
-  position: relative;
-  width: 175px;
-  margin-top: 40px;
-  margin: 0 auto;
+   position: relative;
+   width: 175px;
+   margin-top: 40px;
+   margin: 0 auto;
 
-  img {
-    padding-top:20px;
-    max-height:50px;
-  }
+   img {
+      padding-top:20px;
+      max-height:50px;
+   }
 }
 
 .bg-icons {
-  padding: 20px 0;
-  max-width:200px;
-  opacity: 0.1;
-  margin:0 auto;
+   padding: 20px 0;
+   max-width:200px;
+   opacity: 0.1;
+   margin:0 auto;
 }
 
 .map_canvas {
-  width:100%;
-  height:400px;
+   width:100%;
+   height:400px;
 }
 
 .location-card {
-  height:400px;
+   height:400px;
 }
 .left-card {
-  background-color: #F5F6F7;
-  padding: 20px;
-  border-radius: 3px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  color: #31373d;
-  margin-top: 20px;
+   background-color: #F5F6F7;
+   padding: 20px;
+   border-radius: 3px;
+   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+   color: #31373d;
+   margin-top: 20px;
 
-  label {
-    font-size:$font-size-sm;
-  }
+   label {
+      font-size:$font-size-sm;
+   }
 
-  h3 {
-    font-size:20px;
-  }
+   h3 {
+      font-size:20px;
+   }
 }
 
 .retailer-logo {
-  position: relative;
-  width:100%;
-  height:100%;
+   position: relative;
+   width:100%;
+   height:100%;
 
-  .delete {
-    position:absolute;
-    top:5px;
-    right:5px;
+   .delete {
+      position:absolute;
+      top:5px;
+      right:5px;
 
-    a {
-      font-size:$font-size-lg;
-      color:red;
-    }
-  }
+      a {
+         font-size:$font-size-lg;
+         color:red;
+      }
+   }
 }
 
 
 .card-box {
-  position: relative;
-  background-color: #FFF;
-  padding: 20px;
-  border-radius: 3px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  color: #31373d;
-  margin-top: 20px;
+   position: relative;
+   background-color: #FFF;
+   padding: 20px;
+   border-radius: 3px;
+   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+   color: #31373d;
+   margin-top: 20px;
 
-  label {
-    font-size:$font-size-sm;
-  }
+   label {
+      font-size:$font-size-sm;
+   }
 
-  h3 {
-    font-size:20px;
-  }
+   h3 {
+      font-size:20px;
+   }
 }
 
 .delete-location {
-  position: absolute;
-  top:7px;
-  right:7px;
-  width:15px;
-  height:15px;
+   position: absolute;
+   top:7px;
+   right:7px;
+   width:15px;
+   height:15px;
 
-  a {
-    color:$gray-dark;
+   a {
+      color:$gray-dark;
 
-    &:hover {
-      color:$brand-danger;
-    }
-  }
+      &:hover {
+         color:$brand-danger;
+      }
+   }
 }

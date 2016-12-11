@@ -72,7 +72,7 @@ Route::get(
 |
 */
 
-Route::resource('retailers', 'RetailersController',['except' => ['destroy','destroyAll']]);
+Route::resource('retailers', 'RetailersController',['except' => ['destroy','destroyAll','getMeta']]);
 
 Route::any('retailers/delete/{id}',[
   'as' => 'retailer_delete',
@@ -81,6 +81,10 @@ Route::any('retailers/delete/{id}',[
 Route::any('retailers/delete-all',[
   'as' => 'retailer_all_delete',
   'uses' => 'RetailersController@destroyAll']);
+
+  Route::any('retailers/get-meta',[
+    'as' => 'get_meta',
+    'uses' => 'RetailersController@getMeta']);
 /*
 | Locations / LocationsController
 |--------------------------------------------------------------------------

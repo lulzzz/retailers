@@ -79,13 +79,9 @@
                 </div>
               </td>
               <td>
-                @if(is_null($value->name))
-                  {{ link_to_route('retailers.edit', 'Example Retailer', array($value->id)) }}
-                @else
-                  <span class="name">
-                    {{ link_to_route('retailers.edit', $value->name, array($value->id)) }}
-                  </span>
-                @endif
+                <span class="name">
+                  {{ link_to_route('retailers.edit', $value->name ?: 'Example Retailer', array($value->id)) }}
+                </span>
               </td>
               <td>
                 <span class="city">{{$value->locations->unique("city")->implode("city", ", ")}}</span>
@@ -93,7 +89,9 @@
               <td>
                 <span class="country">{{$value->locations->unique("country")->implode("country", ", ")}}</span>
               </td>
-              <td><span class="visibility">@if ($value->visibility == 'public') Public @else Hidden @endif&nbsp;</span></td>
+              <td>
+                <span class="visibility">{{$value->visibility == 'public' ? 'Public' : 'Hidden'}}</span>
+              </td>
                 <td class="text-xs-right"><span class="modified">{{ date('M d, g:i a', strtotime($value->updated_at)) }}&nbsp;</span></td>
               </tr>
             @endforeach

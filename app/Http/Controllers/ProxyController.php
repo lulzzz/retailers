@@ -58,7 +58,7 @@ class ProxyController extends Controller
     $stores     = $this->retailer->retailers($this->domain);
     $countries  = $this->retailer->countries($this->domain);
     $domain     = $this->domain;
-    $listings = $this->retailer->matrix([(float) $geo['lat'], (float) $geo['lon']], $stores);
+    $listings   = $this->retailer->matrix([(float) $geo['lat'], (float) $geo['lon']], $stores);
 
     $collection = collect($listings);
     $retailers = $collection->where('visibility', 'public')->sortBy('distance');
