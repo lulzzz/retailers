@@ -9,6 +9,11 @@
       height:160px;
       max-height:160px;
       overflow-y: scroll !important;
+      min-height: 160px;
+      position: relative;
+      overflow-y: scroll!important;
+      display: block;
+      z-index: 9999;
 
    }
 
