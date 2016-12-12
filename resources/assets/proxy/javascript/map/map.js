@@ -68,8 +68,8 @@
             */
 
             retailers.shop = function (latitude, longitude, iso, retailer_name, logo, slug) {
-              infowindow.close();
 
+              console.log(retailer_name);
 
               var newlatlng  = new google.maps.LatLng(latitude, longitude);
 
