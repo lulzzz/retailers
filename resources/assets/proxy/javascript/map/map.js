@@ -119,16 +119,6 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
             };
 
 
-            google.maps.event.addListener(infowindow, 'domready', function() {
-
-                // Reference to the DIV that wraps the bottom of infowindow
-                //var iwOuter = $('.gm-style-iw');
-
-                $('.info-window').parent().parent().parent().addClass("giw");
-
-
-              });
-
             /**
             * Retailers Json
             *
