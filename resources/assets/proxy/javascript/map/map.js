@@ -190,7 +190,7 @@
                     locItem.closest('li').first().data('latitude'),
                     locItem.closest('li').first().data('longitude'),
                     locItem.closest('li').first().data('country_code'),
-                    locItem.closest('li').first().data('name'),
+                    locItem.closest('li').first().data('retailer-name'),
                     locItem.closest('li').first().data('logo_md'),
                     locItem.closest('li').first().data('slug')
                   );
@@ -212,7 +212,7 @@
                       $(this).data('latitude'),
                       $(this).data('longitude'),
                       $(this).data('country_code'),
-                      $(this).data('name'),
+                      $(this).data('retailer-name'),
                       $(this).data('logo_md'),
                       $(this).data('slug')
                     );
