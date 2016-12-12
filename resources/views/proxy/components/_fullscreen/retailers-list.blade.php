@@ -6,9 +6,9 @@
   @endif
   <ul class="list disabled">
     @foreach ($retailers as $key => $value)
-      <li class="li-list--index ref-location" data-iso data-logo data-name data-location data-slug>
+      <li class="li-list--index ref-location" data-iso data-logo data-location data-slug>
         <div class="float-xs-left">
-        <span class="name" data-retailer-name="{{$value['name']}}">{{$value['name']}}</span><br>
+        <span class="name">{{$value['name']}}</span><br>
         <span class="street_number">{{ $value['street_number']}}</span>
         <span class="street_address">{{ $value['street_address']}}</span><br>
         <span class="city">{{ $value['city']}}</span>,

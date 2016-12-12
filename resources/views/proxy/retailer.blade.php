@@ -112,5 +112,5 @@
             @section('js')
                var markers = [@foreach($locations as $key => $value)[{{$value['latitude']}},{{$value['longitude']}},'{{$value['country_code']}}','{{$retailer->name}}','{{$retailer->logo_md}}'],@endforeach];
 
-                  retailers.map('locate-retailer-map', {{$geo->latitude}}, {{$geo->longitude}}, '{{$domain}}', markers, 'retailer');
+                  retailers.map('{{env('PROXY_URL')}}','locate-retailer-map', {{$geo->latitude}}, {{$geo->longitude}}, '{{$domain}}', markers, 'retailer');
                @stop

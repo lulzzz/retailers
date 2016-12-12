@@ -18,7 +18,7 @@ var markers = [@foreach($retailers as $key => $value)[{{$value['latitude']}},{{$
 if(store.get('latitude')) {
    retailers.map('locate-retailer-map', store.get('latitude'), store.get('longitude'), '{{$domain}}', markers, 'index');
 } else {
-   retailers.map('locate-retailer-map', {{$geo['lat']}}, {{$geo['lon']}}, '{{$domain}}', markers, 'index');
+   retailers.map('{{env('PROXY_URL')}}','locate-retailer-map', {{$geo['lat']}}, {{$geo['lon']}}, '{{$domain}}', markers, 'index');
 }
 
 @stop

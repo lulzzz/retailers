@@ -49,7 +49,7 @@
         *
         */
 
-        retailers.map = function (mapElement, geoLat, geoLng, domain, locations, page) {
+        retailers.map = function (env, mapElement, geoLat, geoLng, domain, locations, page) {
 
           if (document.getElementById(mapElement)){
 
@@ -190,7 +190,7 @@
                     locItem.closest('li').first().data('latitude'),
                     locItem.closest('li').first().data('longitude'),
                     locItem.closest('li').first().data('country_code'),
-                    locItem.closest('li').first().data('name'),
+                    locItem.closest('li').first().list.get('name'),
                     locItem.closest('li').first().data('logo_md'),
                     locItem.closest('li').first().data('slug')
                   );
@@ -251,7 +251,7 @@
 
               if(store.get('latitude')) {
                 // Returning visitor.
-                retailers.json('/a/retailers/'+geoLat+'/'+geoLng+'?shop='+domain+'');
+                retailers.json(env+geoLat+'/'+geoLng+'?shop='+domain+'');
 
               } else {
                 // check if user browser has geolocation
@@ -265,14 +265,14 @@
                     store.set('longitude', position.coords.longitude);
 
                     // New visitor
-                    retailers.json('/a/retailers/'+position.coords.latitude+'/'+position.coords.longitude+'?shop='+domain+'');
+                    retailers.json(env+position.coords.latitude+'/'+position.coords.longitude+'?shop='+domain+'');
 
                   }, function() {
-                    retailers.json('/a/retailers/'+geoLat+'/'+geoLng+'?shop='+domain+'');
+                    retailers.json(env+geoLat+'/'+geoLng+'?shop='+domain+'');
                   });
                 } else {
                   // Browser doesn't support Geolocation
-                  retailers.json('/a/retailers/'+geoLat+'/'+geoLng+'?shop='+domain+'');
+                  retailers.json(env+geoLat+'/'+geoLng+'?shop='+domain+'');
                 }
               }
 
@@ -310,7 +310,6 @@
                   'postcode',
                   'street_number',
                   'distance',
-                  { name: 'name', data:['name']},
                   { name: 'location', data: ['latitude','longitude']},
                   { name: 'country_code', data: ['country_code'] },
                   { name: 'logo_md', data: ['logo_md']},
