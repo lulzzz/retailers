@@ -20,7 +20,7 @@
       '{{env('APP_URL')}}/assets/proxy/js/map.min.js'],
       {
          success: function() {
-            var markers = [@foreach($retailers as $key => $value)[{{$value['latitude']}},{{$value['longitude']}},'{{$value['country_code']}}','{{$value['storefront_md']}}','{{$value['logo_md']}}'],@endforeach];
+            var markers = [@foreach($retailers as $key => $value)[{{$value['latitude']}},{{$value['longitude']}},'{{$value['country_code']}}','{{$value['name']}}','{{$value['logo_md']}}'],@endforeach];
 
             retailers.map('{{env('PROXY_URL')}}','map', {{$geo['lat']}}, {{$geo['lon']}}, '{{$domain}}', markers, 'index');
 
