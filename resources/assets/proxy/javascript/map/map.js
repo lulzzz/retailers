@@ -68,6 +68,7 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
       */
 
       retailers.shop = function (latitude, longitude, iso, retailer_name, logo, slug) {
+        infowindow.close();
 
 
         var newlatlng  = new google.maps.LatLng(latitude, longitude);
@@ -194,8 +195,6 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
 
           .complete(function() {
             $('.ref-location').on('click', function() {
-
-              infowindow.close(map, marker);
 
               $('.list > li').removeClass('active');
               $(this).toggleClass('active');
