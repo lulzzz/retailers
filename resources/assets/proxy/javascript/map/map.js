@@ -190,7 +190,7 @@
                     locItem.closest('li').first().data('latitude'),
                     locItem.closest('li').first().data('longitude'),
                     locItem.closest('li').first().data('country_code'),
-                    locItem.closest('li').first().data('retailer-name'),
+                    locItem.closest('li').first().data('name'),
                     locItem.closest('li').first().data('logo_md'),
                     locItem.closest('li').first().data('slug')
                   );
@@ -212,7 +212,7 @@
                       $(this).data('latitude'),
                       $(this).data('longitude'),
                       $(this).data('country_code'),
-                      $(this).data('retailer-name'),
+                      $(this).data('name'),
                       $(this).data('logo_md'),
                       $(this).data('slug')
                     );
@@ -302,7 +302,6 @@
 
               var listings = new List('retailers-list', {
                 valueNames: [
-                  'name',
                   'street_number',
                   'street_address',
                   'city',
@@ -310,6 +309,7 @@
                   'postcode',
                   'street_number',
                   'distance',
+                  { name: 'name', data:['name']},
                   { name: 'location', data: ['latitude','longitude']},
                   { name: 'country_code', data: ['country_code'] },
                   { name: 'logo_md', data: ['logo_md']},
