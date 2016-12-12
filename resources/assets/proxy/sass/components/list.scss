@@ -6,7 +6,10 @@
    overflow-y: scroll;
 
    @include media-breakpoint-down(sm) {
+      height:160px;
       max-height:160px;
+      overflow-y: scroll !important;
+
    }
 
    .list {
