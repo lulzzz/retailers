@@ -102,9 +102,9 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
                       borderColor: '#ddd',
                       disableAutoPan: false,
                       hideCloseButton: true,
-                      arrowPosition: 30,
+                      //arrowPosition: 30,
                       backgroundClassName: 'info-window',
-                      arrowStyle: 2,
+                      //arrowStyle: 2,
                       maxWidth: 400
               });
             //map.panBy(-33.3333,-100)
