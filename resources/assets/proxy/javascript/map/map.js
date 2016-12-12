@@ -4,7 +4,6 @@
   // the creation of the infowindow HTML structure 'domready'
   // and before the opening of the infowindow, defined styles are applied.
   // *
-  google.maps.event.addListener(infowindow, 'domready', function() {
 
     // Reference to the DIV that wraps the bottom of infowindow
     var iwOuter = $('.gm-style-iw');
