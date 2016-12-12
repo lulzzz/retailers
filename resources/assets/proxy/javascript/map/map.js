@@ -95,17 +95,17 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
                       content: '<div class="info-window"><div class="sticker"><div class="logo"><img src="'+logo+'"></div><div class="storefront"><img src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location='+latitude+','+longitude+'&heading=151.78&pitch=-0.76&key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do""></div></div></div>',
                       shadowStyle: 1,
                       padding: 0,
-                      backgroundColor: 'lightblue',
-                      borderRadius: 4,
+                      backgroundColor: '#fff',
+                      borderRadius: 0,
                       arrowSize: 10,
                       borderWidth: 1,
-                      borderColor: '#2c2c2c',
+                      borderColor: '#ddd',
                       disableAutoPan: false,
                       hideCloseButton: true,
                       arrowPosition: 30,
                       backgroundClassName: 'phoney',
                       arrowStyle: 2,
-                      maxWidth: 300
+                      maxWidth: 400
               });
             //map.panBy(-33.3333,-100)
 
