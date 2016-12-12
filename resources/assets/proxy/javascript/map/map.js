@@ -194,7 +194,7 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
 
           .complete(function() {
             $('.ref-location').on('click', function() {
-
+              infowindow.close(); 
               $('.list > li').removeClass('active');
               $(this).toggleClass('active');
 
