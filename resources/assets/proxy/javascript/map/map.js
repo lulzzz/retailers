@@ -103,7 +103,7 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
                       disableAutoPan: false,
                       hideCloseButton: true,
                       arrowPosition: 30,
-                      backgroundClassName: 'phoney',
+                      backgroundClassName: 'info-window',
                       arrowStyle: 2,
                       maxWidth: 400
               });
