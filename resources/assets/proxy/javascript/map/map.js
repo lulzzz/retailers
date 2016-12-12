@@ -302,6 +302,7 @@
 
               var listings = new List('retailers-list', {
                 valueNames: [
+                  'name',
                   'street_number',
                   'street_address',
                   'city',
