@@ -1,4 +1,4 @@
-<div class="list-retailers" style="max-height:560px;">
+<div class="list-retailers">
   @if($error)
     <div class="alert">
       <h3>No Retailers located in {{$geo['country']}}! </h3>
