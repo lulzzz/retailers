@@ -100,7 +100,7 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
                       arrowSize: 10,
                       borderWidth: 0,
                       //borderColor: '#ddd',
-                      disableAutoPan: true,
+                      disableAutoPan: false,
                       hideCloseButton: true,
                       //arrowPosition: 30,
                       backgroundClassName: 'info-window',
@@ -194,7 +194,9 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
 
           .complete(function() {
             $('.ref-location').on('click', function() {
-              infowindow.close();
+
+              infowindow.close(map, marker);
+
               $('.list > li').removeClass('active');
               $(this).toggleClass('active');
 
