@@ -2,9 +2,7 @@
   border:1px solid #cdcdcd;
   height:$component-height;
   width:100%;
-  @include media-breakpoint-down(sm) {
-    margin-top: 160px;
-  }
+
 }
 
 .info-window {
