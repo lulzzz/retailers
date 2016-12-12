@@ -45,11 +45,15 @@
       }
 
       .li-list--index {
-         padding:0;
+         padding:10px;
          margin:0;
          //border-bottom:1px solid #cdcdcd;
          height: 80px;
          overflow: hidden;
+
+         @include media-breakpoint-down(sm) {
+            font-size: 85%;
+         }
       }
 
       .li-list--1-retailer {
