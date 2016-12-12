@@ -99,7 +99,7 @@
                   var infowindow = new InfoBubble(
                     {
                       map: map,
-                      content: '<div class="info-window"><div class="sticker"><div class="logo"><img src="'+logo_item+'"></div><div class="storefront"><img src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location='+latitude+','+longitude+'&heading=151.78&pitch=-0.76&key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do""></div></div></div>',
+                      content: '<div class="info-window"><div class="sticker">'+logo_item+'</div><div class="storefront"><img src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location='+latitude+','+longitude+'&heading=151.78&pitch=-0.76&key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do""></div></div></div>',
                       shadowStyle: 0,
                       padding: 0,
                       backgroundColor: '#fff',
