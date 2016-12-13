@@ -148,8 +148,6 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
                 qwest.get(url)
                 .then(function(xhr, response) {
 
-                    $('#locating').hide();
-                    $('.list').removeClass('disabled');
 
                     // Re-structure the listed retailers
                     if (page == 'index') {
@@ -159,19 +157,8 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
                     }
 
 
-                    // Select first result based on distance.
-                    var locItem = $('.ref-location');
+                    retailers.getFirst();
 
-                    retailers.shop(
-                        locItem.closest('li').first().data('latitude'),
-                        locItem.closest('li').first().data('longitude'),
-                        locItem.closest('li').first().data('country_code'),
-                        locItem.closest('li').first().data('name'),
-                        locItem.closest('li').first().data('logo_md'),
-                        locItem.closest('li').first().data('slug')
-                    );
-
-                    locItem.closest('li').first().addClass('active');
 
                 })
 
@@ -194,6 +181,26 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
                         );
                     });
                 });
+            };
+
+            retailers.getFirst = function() {
+
+                $('#locating').hide();
+                $('.list').removeClass('disabled');
+
+                var locItem = $('.ref-location');
+
+                retailers.shop(
+                    locItem.closest('li').first().data('latitude'),
+                    locItem.closest('li').first().data('longitude'),
+                    locItem.closest('li').first().data('country_code'),
+                    locItem.closest('li').first().data('name'),
+                    locItem.closest('li').first().data('logo_md'),
+                    locItem.closest('li').first().data('slug')
+                );
+
+                locItem.closest('li').first().addClass('active');
+
             };
 
 
@@ -231,24 +238,7 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
                     var err = $('<div class="alert text-xs-center">We were not able to Geographically triangulate your exact location. Below is a list of the nearest Retailers based on your I.P location:</div>');
                     err.prependTo('.retailers-container');
 
-                    $('.list > li').removeClass('active');
-                    $(this).toggleClass('active');
-
-                    store.set('retailer_latitude', $(this).data('latitude'));
-                    store.set('retailer_longitude', $(this).data('longitude'));
-
-                    var locItem = $('.ref-location');
-
-                    retailers.shop(
-                        locItem.closest('li').first().data('latitude'),
-                        locItem.closest('li').first().data('longitude'),
-                        locItem.closest('li').first().data('country_code'),
-                        locItem.closest('li').first().data('name'),
-                        locItem.closest('li').first().data('logo_md'),
-                        locItem.closest('li').first().data('slug')
-                    );
-
-                    locItem.closest('li').first().addClass('active');
+                    retailers.getFirst();
                 }
 
             } else {
