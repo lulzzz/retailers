@@ -256,14 +256,22 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
                         retailers.json(env+position.coords.latitude+'/'+position.coords.longitude+'?shop='+domain);
 
                     }, function() {
-                        retailers.json(env+geoLat+'/'+geoLng+'?shop='+domain);
+                        if(!get_data){
+
+                            var err = $('<div class="alert text-xs-center">We were not able to Geographically triangulate your exact location. Below is a list of the nearest Retailers based on your I.P location:</div>');
+                            err.prependTo('.retailers-container');
+
+                            retailers.getFirst();
+                        }
                     });
                 } else {
                     // Browser doesn't support Geolocation
-                    var get_data = retailers.json(env+geoLat+'/'+geoLng+'?shop='+domain+'');
-
                     if(!get_data){
-                        console.log('fail');
+
+                        var err = $('<div class="alert text-xs-center">We were not able to Geographically triangulate your exact location. Below is a list of the nearest Retailers based on your I.P location:</div>');
+                        err.prependTo('.retailers-container');
+
+                        retailers.getFirst();
                     }
 
 
