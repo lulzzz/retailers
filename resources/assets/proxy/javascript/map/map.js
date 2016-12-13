@@ -85,8 +85,6 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
 
             retailers.shop = function (latitude, longitude, iso, retailer_name, logo, slug) {
 
-                console.log(retailer_name);
-
 
                 var newlatlng  = new google.maps.LatLng(latitude, longitude);
 
@@ -120,8 +118,6 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
 
 
                    var sticker = $('<div class="oigm"><a class="btn btn-secondary" href="https://maps.google.com/?saddr='+store.get('latitude')+','+store.get('longitude')+'&daddr='+latitude+','+longitude+'">Open In Google Maps</a></div>');
-
-                   console.log(sticker);
 
                    $('div[data-sticker]').remove();
                    sticker.appendTo('div[data-map]');
@@ -299,6 +295,5 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
             });
 
         };
-        console.log('Retailers Initialized')
     };
 }());
