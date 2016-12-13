@@ -11,7 +11,7 @@
 
 <div class="container-fluid"  data-pjax="container">
 
-@if (count($retailers) < 0)
+@if (is_null($retailers))
 <h1>Currently no Retailers</h1>
 @else
   @yield('content')
