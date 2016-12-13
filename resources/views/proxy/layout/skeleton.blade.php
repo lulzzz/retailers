@@ -12,8 +12,8 @@
   @if($retailers->isEmpty())
   <div class="row">
      <div class="col-xs-12 text-xs-center pa-3">
-        <h1 class="top-header">No Retailers!</h1>
-        <h2 class="sub-header">We currently have no active retailers at this time, check back later!</h2>
+        <h1 class="top-header">No Retailers Found</h1>
+        <h2 class="sub-header">Sorry! We couldn't find any Retailers. Please Check back later.</h2>
      </div>
   </div>
   @else
