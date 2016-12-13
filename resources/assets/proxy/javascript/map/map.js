@@ -98,7 +98,7 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
                    map.panTo(newlatlng);
                    map.setCenter(newlatlng);
                    map.setZoom(15);
-                   map.panBy(200,0)
+                   map.panBy(0,200)
 
 
                    marker = new google.maps.Marker({
