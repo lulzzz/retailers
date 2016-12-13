@@ -243,10 +243,8 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
                     // Browser doesn't support Geolocation
                     var get_data = retailers.json(env+geoLat+'/'+geoLng+'?shop='+domain+'');
 
-                    if(!get_data){
-                        console.log('fail');
-                    }
-
+                    $('#locating').hide();
+                    $('.list').removeClass('disabled');
 
                 }
             }
