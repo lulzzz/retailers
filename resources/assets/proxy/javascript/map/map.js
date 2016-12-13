@@ -85,6 +85,8 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
 
             retailers.shop = function (latitude, longitude, iso, retailer_name, logo, slug) {
 
+                console.log(retailer_name);
+
 
                 var newlatlng  = new google.maps.LatLng(latitude, longitude);
 
@@ -107,7 +109,7 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
                    if(logo) {
                        var logo_link = '<img src="'+logo+'">';
                    } else {
-                       var logo_link = '<h2>'+retailer_name+'/h2>';
+                       var logo_link = '<h2>'+retailer_name+'</h2>';
                    }
 
 
