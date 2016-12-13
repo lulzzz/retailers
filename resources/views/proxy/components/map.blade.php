@@ -1,6 +1,6 @@
 <div class="retailers-container">
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 p-left">
       <div class="retailer-header">
         <h1>Retailers</h1>
       </div>
@@ -11,7 +11,7 @@
         @include('proxy.components._fullscreen.retailers-list')
       </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8 p-right">
       <div id="locating">
         <div class="spinner">
           <div class="double-bounce1"></div>

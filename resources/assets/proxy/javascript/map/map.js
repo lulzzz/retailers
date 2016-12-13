@@ -111,7 +111,9 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
                    $('.list').show();
 
 
-                   var sticker = $('<a class="btn btn-secondary btn-sm" href="https://maps.google.com/?saddr='+store.get('latitude')+','+store.get('longitude')+'&daddr='+latitude+','+longitude+'">Open In Google Maps</a>');
+                   var sticker = $('<div class="oigm"><a class="btn btn-secondary btn-sm" href="https://maps.google.com/?saddr='+store.get('latitude')+','+store.get('longitude')+'&daddr='+latitude+','+longitude+'">Open In Google Maps</a></div>');
+
+                   console.log(sticker);
 
                    $('div[data-sticker]').remove();
                    sticker.appendTo('div[data-map]');
