@@ -104,8 +104,14 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
                      map: map
                    });
 
+                   if(logo) {
+                       var logo_link = '<img src="'+logo+'">';
+                   } else {
+                       var logo_link = '<h2>'+retailer_name+'/h2>';
+                   }
 
-                   infoBubble.setContent('<div class="info-window"><div class="sticker" data-sticker><div class="logo"><img src="'+logo+'"></div><div class="store"><img src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location='+latitude+','+longitude+'&heading=151.78&pitch=-0.76&key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do"></div></div></div>');
+
+                   infoBubble.setContent('<div class="info-window"><div class="sticker" data-sticker><div class="logo">'+logo_link+'</div><div class="store"><img src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location='+latitude+','+longitude+'&heading=151.78&pitch=-0.76&key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do"></div></div></div>');
 
                    infoBubble.open(map, marker);
                    $('.list').show();
