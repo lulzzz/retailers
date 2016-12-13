@@ -9,19 +9,19 @@
 </head>
 <body>
 
+  @if($retailers->isEmpty())
+  <div class="row">
+     <div class="col-xs-12 text-xs-center pa-3">
+        <h1 class="top-header">No Retailers!</h1>
+        <h2 class="sub-header">We currently have no active retailers at this time, check back later!</h2>
+     </div>
+  </div>
+  @else
   <div class="container-fluid"  data-pjax="container">
 
 
-    @if($retailers->isEmpty())
-    <div class="row">
-       <div class="col-xs-12 text-xs-center pa-3">
-          <h1 class="top-header">No Retailers!</h1>
-          <h2 class="sub-header">We currently have no active retailers at this time, check back later!</h2>
-       </div>
-    </div>
-    @else
-      @yield('content')
-    @endif
+    @yield('content')
+
 
     <script>
     $(function($) {
@@ -52,5 +52,7 @@
     );
     </script>
   </div>
+@endif
+
 </body>
 </html>
