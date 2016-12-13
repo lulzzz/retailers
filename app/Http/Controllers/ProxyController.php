@@ -55,9 +55,15 @@ class ProxyController extends Controller
 
     $geo        = $this->retailer->geoip('HTTP_X_FORWARDED_FOR');
     $exists     = $this->retailer->exists('country_slug', str_slug($geo['country']));
-    $stores     = $this->retailer->retailers($this->domain);
-    $countries  = $this->retailer->countries($this->domain);
-    $domain     = $this->domain;
+
+    if($this->domain == 'se-brixtol.myshopify.com') {
+      $domain == 'brixtol.myshopify.com';
+    } else {
+      $domain == $this->domain;
+    }
+
+    $stores     = $this->retailer->retailers($domain);
+    $countries  = $this->retailer->countries($domain);
     $listings   = $this->retailer->matrix([(float) $geo['lat'], (float) $geo['lon']], $stores);
 
     $collection = collect($listings);
@@ -100,8 +106,8 @@ class ProxyController extends Controller
     $domain     = $this->domain;
 
     return response()->view('proxy.retailer', compact('retailer', 'locations','domain','geo'))
-      ->header('Content-Type', env('PROXY_HEADER')
-    );
-  }
+    ->header('Content-Type', env('PROXY_HEADER')
+  );
+}
 
 }
