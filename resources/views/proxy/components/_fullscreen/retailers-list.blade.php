@@ -1,7 +1,7 @@
 <div class="list-retailers">
   @if($error)
     <div class="alert">
-      <b>Sorry!</b>, We have no Retailers located in <b>{{$geo['country']}}</b>.
+      <b>No Retailers Found!</b>, We have no Retailers located in <b>{{$geo['country']}}</b>.
     </div>
   @endif
   <ul class="list disabled">
