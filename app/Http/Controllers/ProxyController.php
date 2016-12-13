@@ -34,7 +34,13 @@ class ProxyController extends Controller
 
   public function origin(Request $request, $lat, $lng) {
 
-    $collection = collect($this->retailer->retailers($this->domain));
+    if($this->domain == 'brixtol.myshopify.com') {
+      $domain = 'brixtol-se.myshopify.com';
+    } else {
+      $domain = $this->domain;
+    }
+
+    $collection = collect($this->retailer->retailers($domain));
     $matrix = $this->retailer->matrix([(float) $lat, (float) $lng], $collection);
 
     return $matrix;
