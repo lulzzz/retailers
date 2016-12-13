@@ -1,4 +1,9 @@
 <div class="list-retailers">
+  @if($error)
+    <div class="alert">
+      Sorry, we have no Retailers located in {{$geo['country']}}, the nearest Retailer is {{$retailers[0][6]}} away.
+    </div>
+  @endif
   <ul class="list disabled">
     @foreach ($retailers as $key => $value)
       <li class="li-list--index ref-location">

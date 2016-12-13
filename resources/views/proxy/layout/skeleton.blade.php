@@ -17,11 +17,6 @@
       </div>
     </div>
   @else
-    @if($error)
-      <div class="alert text-xs-center">
-        Sorry, we have no Retailers located in {{$geo['country']}}.
-      </div>
-    @endif
     <div class="container-fluid"  data-pjax="container">
 
 
