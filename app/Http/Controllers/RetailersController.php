@@ -238,8 +238,11 @@ class RetailersController extends Controller
 
             public function destroyAll()
             {
-               DB::table('locations')->delete();
-               DB::table('retailers')->delete();
+
+               $retailer = Retailer::where('user_id', Auth::user()->id)->first();
+
+               DB::table('locations')->where('retailer_id', $retailer->id)->delete();
+               DB::table('retailers')->where('user_id', Auth::user()->id)->delete();
 
 
                return Redirect::route('retailers.index')
