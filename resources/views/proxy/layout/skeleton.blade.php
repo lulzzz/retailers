@@ -10,49 +10,54 @@
 <body>
 
   @if($retailers->isEmpty())
-  <div class="row">
-     <div class="col-xs-12 text-xs-center pa-3">
+    <div class="row">
+      <div class="col-xs-12 text-xs-center pa-3">
         <h1 class="top-header">No Retailers Found</h1>
         <h2 class="sub-header">Sorry! We couldn't find any Retailers at this time. Please check back later.</h2>
-     </div>
-  </div>
+      </div>
+    </div>
   @else
-  <div class="container-fluid"  data-pjax="container">
+    @if($error)
+      <div class="alert text-xs-center">
+        Sorry, we have no Retailers located in {{$geo['country']}}.
+      </div>
+    @endif
+    <div class="container-fluid"  data-pjax="container">
 
 
-    @yield('content')
+      @yield('content')
 
 
-    <script>
-    $(function($) {
-      if ($.support.pjax) {
-        var pjaxOptions = {
-          timeout: 1200,
-          fragment: 'div[data-pjax="container"]',
-          scrollTo: false
+      <script>
+      $(function($) {
+        if ($.support.pjax) {
+          var pjaxOptions = {
+            timeout: 1200,
+            fragment: 'div[data-pjax="container"]',
+            scrollTo: false
+          };
+          $(document).pjax('a', 'div[data-pjax="container"]', pjaxOptions);
         };
-        $(document).pjax('a', 'div[data-pjax="container"]', pjaxOptions);
-      };
-    });
-    </script>
-    @yield('script')
+      });
+      </script>
+      @yield('script')
 
-    <script>
-    loadjs([
-      '{{env('APP_URL')}}/assets/proxy/js/qwest.min.js',
-      '{{env('APP_URL')}}/assets/proxy/js/map_styles.min.js',
-      '{{env('APP_URL')}}/assets/proxy/js/map.min.js'],
-      {
-        success: function() {
+      <script>
+      loadjs([
+        '{{env('APP_URL')}}/assets/proxy/js/qwest.min.js',
+        '{{env('APP_URL')}}/assets/proxy/js/map_styles.min.js',
+        '{{env('APP_URL')}}/assets/proxy/js/map.min.js'],
+        {
+          success: function() {
 
-          @yield('js')
+            @yield('js')
 
+          }
         }
-      }
-    );
-    </script>
-  </div>
-@endif
+      );
+      </script>
+    </div>
+  @endif
 
 </body>
 </html>

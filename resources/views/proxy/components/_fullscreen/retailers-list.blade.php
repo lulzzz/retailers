@@ -1,9 +1,4 @@
 <div class="list-retailers">
-  @if($error)
-    <div class="alert">
-      <h3>No Retailers located in {{$geo['country']}}! </h3>
-    </div>
-  @endif
   <ul class="list disabled">
     @foreach ($retailers as $key => $value)
       <li class="li-list--index ref-location">
