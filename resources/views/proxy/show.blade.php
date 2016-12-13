@@ -3,7 +3,12 @@
 @section('content')
 
    @if($retailers->isEmpty())
-   <h1>Currently no Retailers</h1>
+   <div class="row">
+      <div class="col-xs-12">
+         <i class="re-icon re-icon-location_strike"></i>
+         <h1>Currently no Retailers</h1>
+      </div>
+   </div>
    @else
       @include('proxy.components.map')
    @endif
