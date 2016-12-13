@@ -27,8 +27,10 @@ body {
   max-height: 600px;
   overflow: hidden;
   padding: 0;
-  border: 1px solid #ddd;
   margin-top: 20px;
+  @include media-breakpoint-up(md) {
+    border: 1px solid #ddd;
+  }
 }
 .top-header {
   margin-top: 50px;
