@@ -232,8 +232,8 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
 
                 if(!get_data){
 
-                    var err = $('<div class="error">Unable to Geographically triangulate your location. Below is a list of the nearest Retailers based on your I.P location:</div>');
-                    err.appendTo('.retailers-container');
+                    var err = $('<div class="alert">Unable to Geographically triangulate your location. Below is a list of the nearest Retailers based on your I.P location:</div>');
+                    err.prependTo('.retailers-container');
                 }
 
             } else {
