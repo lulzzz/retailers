@@ -232,8 +232,7 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
                     err.prependTo('.retailers-container');
 
                     $('#locating').hide();
-                    $('.list').removeClass('disabled');
-
+                    $('map').hide();
                 }
 
             } else {
