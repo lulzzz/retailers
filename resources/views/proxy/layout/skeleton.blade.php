@@ -11,7 +11,12 @@
 
 <div class="container-fluid"  data-pjax="container">
 
+@if (count($retailers) < 0)
+<h1>Currently no Retailers</h1>
+@else
   @yield('content')
+
+@endif
 
   <script>
   $(function($) {

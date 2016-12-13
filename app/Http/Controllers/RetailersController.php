@@ -232,8 +232,6 @@ class RetailersController extends Controller
                $retailer = Retailer::find($id);
                $retailer->delete();
 
-               $location = location::where('retailer_id', $id)->get();
-               $location->delete();
                // redirect
                return Redirect::route('retailers.index');
             }
