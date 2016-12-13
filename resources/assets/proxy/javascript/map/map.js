@@ -232,8 +232,26 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
 
                 if(!get_data){
 
-                    var err = $('<div class="alert">Unable to Geographically triangulate your location. Below is a list of the nearest Retailers based on your I.P location:</div>');
+                    var err = $('<div class="alert text-xs-center">We were not able to Geographically triangulate your exact location. Below is a list of the nearest Retailers based on your I.P location:</div>');
                     err.prependTo('.retailers-container');
+
+                    $('.list > li').removeClass('active');
+                    $(this).toggleClass('active');
+
+                    store.set('retailer_latitude', $(this).data('latitude'));
+                    store.set('retailer_longitude', $(this).data('longitude'));
+
+
+                    retailers.shop(
+                        locItem.closest('li').first().data('latitude'),
+                        locItem.closest('li').first().data('longitude'),
+                        locItem.closest('li').first().data('country_code'),
+                        locItem.closest('li').first().data('name'),
+                        locItem.closest('li').first().data('logo_md'),
+                        locItem.closest('li').first().data('slug')
+                    );
+
+                    locItem.closest('li').first().addClass('active');
                 }
 
             } else {
