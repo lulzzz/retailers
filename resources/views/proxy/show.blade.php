@@ -4,9 +4,9 @@
 
    @if($retailers->isEmpty())
    <div class="row">
-      <div class="col-xs-12">
-         <i class="re-icon re-icon-location_strike"></i>
-         <h1>Currently no Retailers</h1>
+      <div class="col-xs-12 text-xs-center">
+         <h1>No Retailers!</h1>
+         <h2 class="sub-header">We currently have no active retailers at this time, check back later!</h2>
       </div>
    </div>
    @else
@@ -23,5 +23,4 @@ if(store.get('latitude')) {
 } else {
    retailers.map('{{env('PROXY_URL')}}','locate-retailer-map', {{$geo['lat']}}, {{$geo['lon']}}, '{{$domain}}', markers, 'index');
 }
-
 @stop
