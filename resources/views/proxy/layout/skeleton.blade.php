@@ -23,18 +23,6 @@
       @yield('content')
 
 
-      <script>
-      $(function($) {
-        if ($.support.pjax) {
-          var pjaxOptions = {
-            timeout: 1200,
-            fragment: 'div[data-pjax="container"]',
-            scrollTo: false
-          };
-          $(document).pjax('a', 'div[data-pjax="container"]', pjaxOptions);
-        };
-      });
-      </script>
       @yield('script')
 
       <script>
