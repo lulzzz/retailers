@@ -2,7 +2,7 @@
 
 @section('content')
 
-   @if(is_null($retailers))
+   @if($retailer->isEmpty())
    <h1>Currently no Retailers</h1>
    @else
       @include('proxy.components.map')
