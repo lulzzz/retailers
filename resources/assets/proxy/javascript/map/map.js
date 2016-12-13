@@ -162,7 +162,7 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
                         locItem.closest('li').first().data('latitude'),
                         locItem.closest('li').first().data('longitude'),
                         locItem.closest('li').first().data('country_code'),
-                        locItem.find('.name').text(),
+                        locations[0][3],
                         locItem.closest('li').first().data('logo_md'),
                         locItem.closest('li').first().data('slug')
                     );
