@@ -13,7 +13,7 @@
   <div class="row">
      <div class="col-xs-12 text-xs-center pa-3">
         <h1 class="top-header">No Retailers Found</h1>
-        <h2 class="sub-header">Sorry! We couldn't find any Retailers. Please Check back later.</h2>
+        <h2 class="sub-header">Sorry! We couldn't find any Retailers at this time. Please check back later.</h2>
      </div>
   </div>
   @else
