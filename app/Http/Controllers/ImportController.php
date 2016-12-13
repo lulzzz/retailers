@@ -65,10 +65,9 @@ class ImportController extends Controller
 
       foreach ($data as $value) {
          // Try to find an existing Retailer
-         $retailer = Retailer::where("name", $value["name"])->get();
+         //$retailer = Retailer::where("name", $value["name"])->get();
 
          // If the Retailer is not found
-         if (!$retailer) {
             // Insert a new Retailer and bind it
             $retailer = Retailer::insert(array(
                'user_id' => Auth::user()->id,
@@ -85,7 +84,7 @@ class ImportController extends Controller
                'created_at' => Carbon::now(),
                'updated_at' => Carbon::now()
             ));
-         }
+         
 
           $n = Retailer::where("name", $value["name"])->first();
           $n->id;
