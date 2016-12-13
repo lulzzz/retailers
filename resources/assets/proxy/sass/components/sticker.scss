@@ -3,10 +3,12 @@
    position: absolute;
    top: 15px;
    right:15px;
-   z-index: 9999; 
+   z-index: 9999;
 
-   @include media-breakpoint-up(md) {
-     bottom: 15px;
+   @include media-breakpoint-down(md) {
+     top: auto;
+     bottom: 120px;
+     text-align: center;
      right:0;
      left: 0;
      width: 100%;
