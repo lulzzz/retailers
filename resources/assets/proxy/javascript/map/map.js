@@ -110,6 +110,11 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
                    infoBubble.open(map, marker);
                    $('.list').show();
 
+                   var sticker = $('<div class="storefront-sticker" style="max-width:'+feature_width+';"><a href="'+latitude+','+longitude+'">open map</a></div>');
+
+                   $('div[data-sticker]').remove();
+                   sticker.appendTo('div[data-map]');
+
                  } else {
                    window.alert('Geocoder failed due to: ' + status);
                  }
