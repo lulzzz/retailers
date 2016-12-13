@@ -231,7 +231,9 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
                 var get_data = retailers.json(env+geoLat+'/'+geoLng+'?shop='+domain+'');
 
                 if(!get_data){
-                    console.log('fail');
+
+                    var err = '<div class="error">Unable to Geographically triangulate your location. Below is a list of the nearest Retailers based on your I.P location:</div>';
+                    err.appendTo('.retailers-container');
                 }
 
             } else {
