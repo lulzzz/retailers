@@ -12,8 +12,17 @@
   <div class="container-fluid"  data-pjax="container">
 
 
-    @yield('content')
-    
+    @if($retailers->isEmpty())
+    <div class="row">
+       <div class="col-xs-12 text-xs-center pa-3">
+          <h1>No Retailers!</h1>
+          <h2 class="sub-header">We currently have no active retailers at this time, check back later!</h2>
+       </div>
+    </div>
+    @else
+      @yield('content')
+    @endif
+
     <script>
     $(function($) {
       if ($.support.pjax) {

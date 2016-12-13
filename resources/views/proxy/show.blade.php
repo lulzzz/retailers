@@ -2,16 +2,8 @@
 
 @section('content')
 
-   @if($retailers->isEmpty())
-   <div class="row">
-      <div class="col-xs-12 text-xs-center">
-         <h1>No Retailers!</h1>
-         <h2 class="sub-header">We currently have no active retailers at this time, check back later!</h2>
-      </div>
-   </div>
-   @else
+
       @include('proxy.components.map')
-   @endif
 
 @stop
 

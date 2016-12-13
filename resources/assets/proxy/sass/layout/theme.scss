@@ -30,6 +30,11 @@ body {
   border: 1px solid #ddd;
 }
 
+.sub-header {
+   font-weight: 200;
+   color:#ddd;
+}
+
 .p-left {
   @include media-breakpoint-up(md) {
     padding-right: 0 !important;
