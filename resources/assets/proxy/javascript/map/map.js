@@ -105,15 +105,11 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
                    });
 
 
-                   infoBubble.setContent('<div class="info-window"><div class="sticker"><div class="logo"><img src="'+logo+'"></div><div class="store"><img src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location='+latitude+','+longitude+'&heading=151.78&pitch=-0.76&key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do"></div></div></div>');
+                   infoBubble.setContent('<div class="info-window"><div class="sticker"><div class="logo"><img src="'+logo+'"><a href="geo:'+latitude+','+longitude+'">open map</a></div><div class="store"><img src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location='+latitude+','+longitude+'&heading=151.78&pitch=-0.76&key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do"></div></div></div>');
 
                    infoBubble.open(map, marker);
                    $('.list').show();
 
-                   var sticker = $('<div class="storefront-sticker" style="max-width:'+feature_width+';"><a href="'+latitude+','+longitude+'">open map</a></div>');
-
-                   $('div[data-sticker]').remove();
-                   sticker.appendTo('div[data-map]');
 
                  } else {
                    window.alert('Geocoder failed due to: ' + status);
