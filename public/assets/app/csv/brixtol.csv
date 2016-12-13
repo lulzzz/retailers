@@ -1,0 +1,70 @@
+name;description;email;website;instagram;twitter;featured;visibility;street_number;street_address;city;state;country;postcode;country_code;latitude;longitude
+Aplace;;;;;;no;public;11;Norrlandsgatan;Stockholm;;Sweden;111 43;SE;59.3339479;18.0711277
+Aplace;;;;;;no;public;36;Götgatan;Stockholm;Stockholms län;Sweden;NULL;SE;59.3170911;18.0716539
+Aplace;;;;;;no;public;14;Davidshallsgatan;Malmö;Skåne län;Sweden;NULL;SE;55.5988451;12.999923999999965
+ETC;;;;;;no;public;89;Odengatan ;Stockholm;;Sweden;113 22;SE;59.3416319;18.0465438
+ETC;;;;;;no;public;64;Hornsgatan;Stockholm;Stockholms län;Sweden;118 21;SE;59.3188396;18.06055820000006
+ETC;;;;;;no;public;76;Götgatan;Stockholm;Stockholms län;Sweden;118 26;SE;59.31244350000001;18.073891300000014
+Grandpa;;;;;;no;public;21;Södermannagatan;Stockholm;;Sweden;116 40;SE;59.3127229;18.0810328
+Grandpa;;;;;;no;public;43;Fridhemsgatan;Stockholm;Stockholms län;Sweden;NULL;SE;59.33529;18.031095800000003
+Grandpa;;;;;;no;public;32;Gamla Brogatan;Stockholm;Stockholms län;Sweden;111 20;SE;59.3337296;18.058864500000027
+Grandpa;;;;;;no;public;3;Vallgatan;Gothenburg;Västra Götalands län;Sweden;411 16;SE;57.70317980000001;11.962171799999965
+Six and Sons;;;;;;no;public;31;Haarlemmerdijk;Amsterdam;;Netherlands;1013 KA;NL;52.3819788;4.8881956
+Velour;;;;;;no;public;14;Huidenstraat;Amsterdam;Noord-Holland;Netherlands;NULL;NL;52.3688839;4.885768399999961
+Gorilli;;;;;;no;public;296-298;Oppert;Rotterdam;Zuid-Holland;Netherlands;NULL;NL;51.9218649;4.484547499999962
+Gorilli;;;;;;no;public;20;Korte Lijnbaan;Rotterdam;Zuid-Holland;Netherlands;NULL;NL;51.9216691;4.4747760999999855
+Vallgatan 12;;;;;;no;public;12;Vallgatan;Gothenburg;Västra Götalands län;Sweden;411 16;SE;57.703614;11.964379000000008
+Lyyk;;;;;;no;public;74;Griboyedov Canal,;Sankt-Peterburg;Saint Petersburg;Russia;190068;RU;59.92589369999999;30.310324600000058
+Superconscious;;;;;;no;public;22;Weinbergsweg;Berlin;Berlin;Germany;D-10119;DE;52.5309637;13.402064999999993
+Project 4;;;;;;no;public;19;Larsbjørnsstræde;København;;Denmark;1454;DK;55.6786885;12.568931199999952
+Spares;;;;;;no;public;3-27-29;Noke Sawara-ku;Fukuoka;Fukuoka Prefecture;Japan;814-0171;JP;33.5432533;130.34538750000002
+Chewing Gum;;;;;;no;public;61;Königsplatz;Kassel;Hessen;Germany;34117;DE;51.316653;9.498750200000018
+Coutie;;;;;;no;public;10;Stammheimer Straße;Kornwestheim;Baden-Württemberg;Germany;70806;DE;48.8598671;9.177767399999993
+Dreist;;;;;;no;public;12;Wirichsbongardstraße;Aachen;Nordrhein-Westfalen;Germany;52062;DE;50.7732851;6.087733599999979
+Stereoki;;;;;;no;public;18;Gabriel-Max-Straße;Berlin;Berlin;Germany;10245;DE;52.510253;13.458100999999942
+No. 30;;;;;;no;public;30;Östra Långgatan;Varberg;Hallands län;Sweden;432 41;SE;57.10659709999999;12.252950800000008
+Nummer Nine;;;;;;no;public;9;Kleine Houtstraat;Haarlem;Noord-Holland;Netherlands;2011 DD;NL;52.3793507;4.637071800000058
+Nummer Nine;;;;;;no;public;34;Elandsgracht;Amsterdam;Noord-Holland;Netherlands;1016;NL;52.3701319;4.881579800000054
+Nummer Nine;;;;;;no;public;34;Kruisstraat;Haarlem;Noord-Holland;Netherlands;2011 PZ;NL;52.3835561;4.635472499999992
+Indiana Store;;;;;;no;public;30;Gamla Brogatan;Stockholm;Stockholms län;Sweden;111 20;SE;59.3338876;18.059232399999928
+Eigen;;;;;;no;public;112;Korenstraat;Apeldoorn;Gelderland;Netherlands;7311 LP;NL;52.21484890000001;5.9604914000000235
+Fräulein Wunder;;;;;;no;public;13;Susannenstraße;Hamburg;Hamburg;Germany;20357;DE;53.56224089999999;9.96352520000005
+Fräulein Wunder;;;;;;no;public;13;Susannenstraße;Hamburg;Hamburg;Germany;20357;DE;53.56224089999999;9.96352520000005
+Fred;;;;;;no;public;68;Eppendorfer Weg;Hamburg;Hamburg;Germany;20259;DE;53.57319;9.960669999999936
+Yum Yum;;;;;;no;public;12;Löwenstraße;Freiburg im Breisgau;Baden-Württemberg;Germany;79098;DE;47.9941262;7.848030999999992
+UVR Connected;;;;;;no;public;36;Oranienstraße;Berlin;Berlin;Germany;10999;DE;52.5019021;13.417806000000041
+Turek;;;;;;no;public;42;Hernalser Hauptstraße;Wien;Wien;Austria;1170;AT;48.2170931;16.336626199999955
+Homage;;;;;;no;public;15;Dieffenbachstraße;Berlin;Berlin;Germany;10967;DE;52.49261;13.415470000000028
+Walka;;;;;;no;public;31;Ottenser Hauptstraße;Hamburg;Hamburg;Germany;22765;DE;53.55192389999999;9.929735400000027
+Geschwisterliebe;;;;;;no;public;4;Breite Straße;Stuttgart;Baden-Württemberg;Germany;70173;DE;48.7742669;9.175445599999989
+Mensroom;;;;;;no;public;39;Kleine Berg;Eindhoven;Noord-Brabant;Netherlands;5611 JS;NL;51.4369413;5.475219299999935
+Ted & Teresa;;;;;;no;public;8;Järntorgsgatan;Gothenburg;Västra Götalands län;Sweden;413 01;SE;57.7008812;11.95465050000007
+Design Only;;;;;;no;public;9;Marknadsvägen;Ödåkra;Skåne County;Sweden;260 36;SE;56.09130039999999;12.757615499999929
+Design Only;;;;;;no;public;12;Varuvägen;;Örebro län;Sweden;702 36;SE;59.2165741;15.135912800000028
+Design Only;;;;;;no;public;;Frölunda torg;Gothenburg;Västra Götalands län;Sweden;421 42;SE;57.6520541;11.911992199999986
+Design Only;;;;;;no;public;10;Götgatan;Lidköping;Västra Götalands län;Sweden;531 31;SE;58.5023527;13.155406599999992
+Design Only;;;;;;no;public;6;Fredsgatan;Gothenburg;Västra Götalands län;Sweden;411 07;SE;57.706049;11.970372699999984
+Erik och Alexander;;;;;;no;public;7;Larmgatan;Kalmar;Kalmar län;Sweden;392 32;SE;56.66327140000001;16.360854700000004
+Papa;;;;;;no;public;5;Smörhålevägen;Kungsbacka;Hallands län;Sweden;434 42;SE;57.4764529;12.085013200000049
+Sue B;;;;;;no;public;3;Stora Gråbrödersgatan;Lund;Skåne län;Sweden;222 22;SE;55.70351119999999;13.191031899999984
+Bobbys;;;;;;no;public;3;Borgmästargränd;Jönköping;Jönköpings län;Sweden;553 20;SE;57.7820883;14.172757199999978
+Karltex;;;;;;no;public;13D;Tredje Långgatan;Gothenburg;Västra Götalands län;Sweden;413 03;SE;57.6989332;11.950154300000008
+Dude;;;;;;no;public;3;Tanneforsgatan;Linköping;Östergötlands län;Sweden;582 24;SE;58.4102145;15.623511399999984
+Suit Amsterdam;;;;;;no;public;41;Raadhuisstraat;Amsterdam;Noord-Holland;Netherlands;1016 DD;NL;52.37357429999999;4.885902699999974
+Patti;;;;;;no;public;20;Broederenstraat;Deventer;Overijssel;Netherlands;7411 LB;NL;52.2542804;6.156931999999983
+Moose In The City;;;;;;no;public;10;IJzerenwaag;Antwerpen;Vlaanderen;Belgium;2000;BE;51.2168125;4.400553400000035
+Klijs en Boon;;;;;;no;public;44;Voorstraat;Utrecht;Utrecht;Netherlands;3512 AP;NL;52.09491380000001;5.120078700000022
+HUD Amsterdam;;;;;;no;public;8;Huidenstraat;Amsterdam;Noord-Holland;Netherlands;1016;NL;52.36881450000001;4.885972700000025
+Funkie House;;;;;;no;public;15A;Korte Hoogstraat;Rotterdam;Zuid-Holland;Netherlands;3011 GJ;NL;51.9194533;4.482023499999968
+Funkie House;;;;;;no;public;35;Schoolstraat;Den Haag;Zuid-Holland;Netherlands;2511 AW;NL;52.0762902;4.30837930000007
+Awesome Rags;;;;;;no;public;;;;Stockholms län;Sweden;131 53;SE;59.3104315;18.16438590000007
+Herrafataverzlun Kormaks & Skjaldar;;;;;;no;public;59;Laugavegur;Reykjavík;Capital Region;Iceland;101;IS;64.14463049999999;-21.922577700000033
+Fr Larsens Klaedeskab;;;;;;no;public;5;Gravensgade;Aalborg;;Denmark;9000;DK;57.048906;9.917541000000028
+Rådhuset;;;;;;no;public;8;Påvel Snickares gränd;Uppsala;Uppsala län;Sweden;753 20;SE;59.85903779999998;17.639409
+NK;;;;;;no;public;42;Östra Hamngatan;Gothenburg;Västra Götalands län;Sweden;411 09;SE;57.7057774;11.969655200000034
+NK;;;;;;no;public;18;Hamngatan;Stockholm;Stockholms län;Sweden;111 47;SE;59.33312059999999;18.06945959999996
+Åhléns;;;;;;no;public;50;Klarabergsgatan;Stockholm;Stockholms län;Sweden;111 21;SE;59.3321893;18.061639900000046
+Åhléns;;;;;;no;public;2;Stjärntorget;Solna;Stockholms län;Sweden;169 56;SE;59.3693286;18.005495800000062
+Åhléns;;;;;;no;public;41;Dragarbrunnsgatan;Uppsala;Uppsala län;Sweden;753 20;SE;59.85837299999999;17.640075900000056
+Åhléns;;;;;;no;public;18;Östra Hamngatan;Gothenburg;Västra Götalands län;Sweden;411 09;SE;57.7092284;11.968712900000014
+Från Ö till A;;;;;;no;public;105;Götgatan;Stockholm;Stockholms län;Sweden;116 62;SE;59.3069547;18.077260600000045
