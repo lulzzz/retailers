@@ -2,14 +2,12 @@
 
 @section('content')
 
-   @if (is_null($geo['country']))
-      <h1>Listing All Retailers</h1>
-      @foreach ($retailers as $key => $value)
-         //
-      @endforeach
+   @if(is_null($retailers))
+   <h1>Currently no Retailers</h1>
    @else
       @include('proxy.components.map')
    @endif
+
 @stop
 
 @section('js')
