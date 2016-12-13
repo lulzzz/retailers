@@ -56,10 +56,10 @@ class ProxyController extends Controller
     $geo        = $this->retailer->geoip('HTTP_X_FORWARDED_FOR');
     $exists     = $this->retailer->exists('country_slug', str_slug($geo['country']));
 
-    if($this->domain == 'se-brixtol.myshopify.com') {
-      $domain == 'brixtol.myshopify.com';
+    if($this->domain == 'brixtol.myshopify.com') {
+      $domain = 'se-brixtol.myshopify.com';
     } else {
-      $domain == $this->domain;
+      $domain = $this->domain;
     }
 
     $stores     = $this->retailer->retailers($domain);
