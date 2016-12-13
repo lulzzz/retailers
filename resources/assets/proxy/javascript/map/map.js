@@ -228,7 +228,11 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
 
             if(store.get('latitude')) {
                 // Returning visitor.
-                retailers.json(env+geoLat+'/'+geoLng+'?shop='+domain+'');
+                var get_Data = retailers.json(env+geoLat+'/'+geoLng+'?shop='+domain+'');
+
+                if(!get_data){
+                    console.log('fail');
+                }
 
             } else {
                 // check if user browser has geolocation
@@ -249,8 +253,11 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
                     });
                 } else {
                     // Browser doesn't support Geolocation
-                    retailers.json(env+geoLat+'/'+geoLng+'?shop='+domain);
-                }
+                    var get_Data = retailers.json(env+geoLat+'/'+geoLng+'?shop='+domain+'');
+
+                    if(!get_data){
+                        console.log('fail');
+                    }                }
             }
 
             var marker, i;
