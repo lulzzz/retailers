@@ -30,9 +30,10 @@
       });
       </script>
       @yield('script')
-      <script src="https://maps.google.com/maps/api/js?key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do"></script>
+
       <script>
       loadjs([
+        'https://maps.google.com/maps/api/js?key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do',
         '{{env('APP_URL')}}/assets/proxy/js/qwest.min.js',
         '{{env('APP_URL')}}/assets/proxy/js/map_styles.min.js',
         '{{env('APP_URL')}}/assets/proxy/js/map.min.js'],
