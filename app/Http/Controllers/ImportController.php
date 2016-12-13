@@ -65,7 +65,7 @@ class ImportController extends Controller
 
       foreach ($data as $value) {
          // Try to find an existing Retailer
-         $retailer = Retailer::where('name', $value['name'])->first();
+         $retailer = Retailer::where("name", $value["name"])->get();
 
          // If the Retailer is not found
          if (!$retailer) {
