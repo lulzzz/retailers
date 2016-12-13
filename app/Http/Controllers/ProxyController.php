@@ -57,7 +57,7 @@ class ProxyController extends Controller
     $exists     = $this->retailer->exists('country_slug', str_slug($geo['country']));
 
     if($this->domain == 'brixtol.myshopify.com') {
-      $domain = 'se-brixtol.myshopify.com';
+      $domain = 'brixtol-se.myshopify.com';
     } else {
       $domain = $this->domain;
     }
