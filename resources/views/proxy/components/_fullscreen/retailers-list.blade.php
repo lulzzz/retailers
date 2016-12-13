@@ -6,7 +6,7 @@
   @endif
   <ul class="list disabled">
     @foreach ($retailers as $key => $value)
-      <li class="li-list--index ref-location" data-name="{{$value['name']}}" data-iso data-logo data-location data-slug>
+      <li class="li-list--index ref-location">
         <div class="retailer-list--left">
           <span class="name">{{$value['name']}}</span><br>
           <span class="street_number">{{ $value['street_number']}}</span>

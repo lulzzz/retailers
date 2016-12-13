@@ -162,6 +162,10 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
                     // Select first result based on distance.
                     var locItem = $('.ref-location');
 
+                    console.log(locItem.closest('li').first().data('name'))
+
+
+
                     retailers.shop(
                         locItem.closest('li').first().data('latitude'),
                         locItem.closest('li').first().data('longitude'),
@@ -188,7 +192,7 @@ h.prototype.K=function(){this.draw()};h.prototype.anchorPoint_changed=h.prototyp
                             $(this).data('latitude'),
                             $(this).data('longitude'),
                             $(this).data('country_code'),
-                            $(this).data('name'),
+                            $(this).find('.name').text(),
                             $(this).data('logo_md'),
                             $(this).data('slug')
                         );
