@@ -37,7 +37,7 @@
          <div class="col-sm-8">
             <div class="card-box">
                @include('app.retailers._partials.retailer')
-               @include('app.retailers._partials.contact')
+               {{--@include('app.retailers._partials.contact')--}}
             </div>
          </div>
 
