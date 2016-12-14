@@ -21,41 +21,43 @@
 
 @section('content')
    <div class="page-signup">
-   <div class="vertical-align">
+      <div class="vertical-align">
 
-      <div class="signup-form">
-         <i class="icon icon-shopify"></i>
+         <div class="signup-form">
+            <i class="icon icon-shopify"></i>
 
-         @if (count($errors) > 0)
-            @foreach ($errors->all() as $error)
+            @if (count($errors) > 0)
+               @foreach ($errors->all() as $error)
                   <p class="pt-2">
                      Oh, No!
                   </p>
                   <p class="subtitle">
                      {{ $error }}
                   </p>
-            @endforeach
-         @endif
+               @endforeach
+            @endif
 
-         <form action="{{ route('carter.install') }}" method="post">
-            {{ csrf_field() }}
-            @if ($plans)
-               <p class="mt-3">
+            <form action="{{ route('carter.install') }}" method="post">
+               {{ csrf_field() }}
+               @if ($plans)
+                  <p class="mt-3">
                      <select name="plan">
                         @foreach ($plans as $key => $plan)
                            <option value="{{ $key }}">{{ trim(sprintf('%s: $%.02f %s', $plan['name'], $plan['price'], $plan['test'] ? '(TEST)' : '')) }}</option>
                         @endforeach
                      </select>
+                  </p>
+               @endif
+               <div class="input-group">            
+                  <input type="text" class="input-signup" name="shop" placeholder="*.myshopify.com"/>
+                  <span class="input-group-addon">.00</span>
+               </div>
+               <p class="pt-2 text-xs-right">
+                  <button class="btn btn-base">Install Application </button>
                </p>
-            @endif
-               <input type="text" class="input-signup" name="shop" placeholder="*.myshopify.com"/>
 
-            <p class="pt-2 text-xs-right">
-               <button class="btn btn-base">Install Application </button>
-            </p>
-
-         </form>
+            </form>
+         </div>
       </div>
    </div>
-</div>
 @stop
