@@ -94,9 +94,9 @@
                   <!-- End Dropzone Preview Template -->
                   </div>
                   <div class="left-card p-0">
-                  <div class="p-2">
+                  {{--<div class="p-2">
                   @include('app.retailers._partials.feature')
-                  </div>
+                  </div>--}}
                   <hr>
                   <div class="p-2">
                   @include('app.retailers._partials.visibility')
