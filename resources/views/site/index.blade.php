@@ -25,13 +25,8 @@
                      </a>
                   </li>
                   <li>
-                     <a href="/shopify/signup" class="btn btn-base mr-1">
+                     <a href="http://apps.shopify.com/locate-retailers" class="btn btn-base">
                         Shopify App Store
-                     </a>
-                  </li>
-                  <li>
-                     <a href="/shopify/signup" class="btn btn-base">
-                        Documentation
                      </a>
                   </li>
                </ul>
