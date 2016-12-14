@@ -26,7 +26,7 @@
 
           <div class="form-group p-t-2">
             <div class="input-group">
-              <div class="input-group-btn">
+             {{--} <div class="input-group-btn">
                 <button type="button" class="btn btn-secondary dropdown-toggle p-x-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Filter Retailers
                 </button>
@@ -35,7 +35,7 @@
                     Delete Retailers
                   </a>
                 </div>
-              </div>
+             </div>--}}
               <input type="search" name="search" class="form-control search" placeholder="Start typing to find Retailer...">
               <span class="input-group-btn">
                 <button class="btn btn-secondary m-b-0" type="button">Go!</button>
