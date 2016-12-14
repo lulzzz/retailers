@@ -1,5 +1,11 @@
 @extends('site.layout.skeleton')
 
+@section('title')
+   Retailers | Shopify Application
+@stop
+@section('description')
+   An integrated Shopify application that enables users to create, manage and showcase the brick and mortor retail locations selling their products.
+@stop
 @section('header')
    <div class="row">
       <div class="col-xs-12 px-sm-0">

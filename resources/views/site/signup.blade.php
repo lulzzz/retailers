@@ -1,5 +1,10 @@
 @extends('site.layout.skeleton')
-
+@section('title')
+   Retailers | Shopify Application | Install Application
+@stop
+@section('description')
+   Install Retailers to your Shopify Store. Enter your *.myshopify.com domain and enable consumer availability in minutes!
+@stop
 @section('header')
    <div class="row">
       <div class="col-xs-12 px-sm-0 text-xs-right">
