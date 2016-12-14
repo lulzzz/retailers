@@ -32,18 +32,18 @@ return [
         'plans' => [
 
             'test' => [
-                'name' => 'Test Plan',
+                'name' => 'Beta Release (Free 14 Days)',
                 'price' => 0.99,
                 'return_url' => env('APP_URL', 'http://localhost').'/activate',
-                'trial_day' => 0,
+                'trial_day' => 14,
                 'test' => true,
             ],
 
             'basic' => [
-                'name' => 'Basic Plan',
-                'price' => 9.00,
+                'name' => 'Application Cost (Free 7 Days)',
+                'price' => 37.00,
                 'return_url' => env('APP_URL', 'http://localhost').'/activate',
-                'trial_day' => 21,
+                'trial_day' => 7,
                 'test' => false,
             ],
 
