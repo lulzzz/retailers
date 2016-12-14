@@ -24,6 +24,7 @@
             </button>
           </span>
         </div>
+        <span class="mute p-1"><i>Please note that the description will be used for SEO and future releases!</i></span>
     </fieldset>
 
 
