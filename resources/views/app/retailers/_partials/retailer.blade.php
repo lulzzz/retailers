@@ -24,7 +24,6 @@
             </button>
           </span>
         </div>
-        <span class="mute p-1"><i>Please note that the description will be used for SEO and future releases!</i></span>
     </fieldset>
 
 
@@ -35,4 +34,5 @@
         'data-crawl' => 'description',
         'id' => 'description',
         'placeholder' => 'Pssst! Enter your retailers website and generate their google description.')) }}
+          <span class="muted p-1"><i><small>Please note that the description will be used for SEO and future releases!</small></i></span>
       </fieldset>
