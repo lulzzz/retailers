@@ -48,9 +48,9 @@
                      </select>
                   </p>
                @endif
-               <div class="input-group">            
-                  <input type="text" class="input-signup" name="shop" placeholder="*.myshopify.com"/>
-                  <span class="input-group-addon">.00</span>
+               <div class="input-group">
+                  <input type="text" class="input-signup" name="shop" placeholder="Store Name"/>
+                  <span class="input-group-addon">.myshopify.com</span>
                </div>
                <p class="pt-2 text-xs-right">
                   <button class="btn btn-base">Install Application </button>
