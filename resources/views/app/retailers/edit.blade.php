@@ -284,10 +284,10 @@
                      e.preventDefault();
                      if (skriptz.cache.$retailer_data.hasClass('dirty')) {
                         ShopifyApp.Modal.confirm({
-                           title: "Delete your account?",
-                           message: "Do you want to delete your account? This can't be undone.",
-                           okButton: "Yes, delete my account",
-                           cancelButton: "No, keep my account",
+                           title: "You have unsaved Changes",
+                           message: "You have unsaved fields, do you want to save before proceeding?.",
+                           okButton: "Go, Back and Save",
+                           cancelButton: "No, Cancel",
                            style: "danger"
                         });
                      }
