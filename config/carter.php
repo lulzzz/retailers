@@ -42,7 +42,7 @@ return [
             */
 
             'basic' => [
-                'name' => 'Application Cost (Free 14 Days)',
+                'name' => 'Free 14 Days',
                 'price' => 47.00,
                 'return_url' => env('APP_URL', 'http://localhost').'/activate',
                 'trial_day' => 14,
