@@ -13,6 +13,6 @@ class DashboardController extends Controller
 
     public function index()
     {
-        return view('carter::app.dashboard', ['user' => auth()->login()]);
+        return view('carter::app.dashboard', ['user' => auth()->user()]);
     }
 }
