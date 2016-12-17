@@ -3,12 +3,11 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model as Eloquent;
-use Illuminate\Contracts\Auth\Authenticable;
 use \NickyWoolf\Carter\OwnsShopifyStore;
-use Illuminate\Auth\Authenticable as AuthenticableTrait;
 
-class User extends Eloquent implements UserInterface, RemindableInterface{
+class User extends Authenticatable {
 
  use Notifiable, OwnsShopifyStore;
 
