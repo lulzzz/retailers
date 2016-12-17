@@ -36,7 +36,6 @@ class ProxyController extends Controller
 
     $geo  = $this->retailer->geoip('HTTP_X_FORWARDED_FOR');
 
-
     if($this->domain == 'brixtol.myshopify.com') {
       $domain = 'brixtol-se.myshopify.com';
     } else {

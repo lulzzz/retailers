@@ -130,7 +130,25 @@
               }
             };
 
+            retailers.trace = function(button, lat, lng) {
 
+              var latlng = new google.maps.LatLng(lat, lng);
+
+              geocoding.geocode({'location': latlng}, function(results, status) {
+                if (status === 'OK') {
+                  if(results[1]) {
+                    store.set('user_city', results[0].address_components[2].long_name);
+                    store.set('geolocate', 'true');
+
+                    button.attr('data-balloon', results[0].address_components[2].long_name);
+                  } else {
+                    alert("No results found");
+                  }
+                } else {
+                  alert("Geocoder failed due to: " + status);
+                }
+              });
+            };
             /**
             * Retailers Json
             *
@@ -176,17 +194,20 @@
                 };
 
                 var notify = {
-                  nearest : $('<div>Your nearest Retailer is <b>'+element.distance+' km</b> away!</div>'),
-                  located : $('<div>Use Geolocate for an accurate distance!</div>'),
-                  country : $('<div>No Retailers in located in your country.</div>')
+                  nearest  : $('<div>Your nearest Retailer is <b>'+element.distance+' km</b> away!</div>'),
+                  located  : $('<div>Use Geolocate for an accurate distance!</div>'),
+                  locating : $('<div>Acquiring Location. Please wait.</div>'),
+                  country  : $('<div>No Retailers in located in your country.</div>')
                 };
 
+                element.alert.children().remove();
                 retailers.loading('hide');
 
                 element.locate.on('click', function() {
-
+                  element.alert.children().remove();
+                  notify.locating.appendTo(element.alert);
                   retailers.locator(element.icon);
-
+                  retailers.trace(element.locate, store.get('latitude'), store.get('longitude'));
                 });
 
                 element.retailer.on('click', function() {
@@ -202,10 +223,10 @@
                   );
                 });
 
-                element.alert.children().remove();
 
                 if(store.get('geolocate')) {
                   notify.nearest.appendTo(element.alert);
+                  retailers.trace(element.locate, store.get('latitude'), store.get('longitude'));
                 } else {
                   notify.located.appendTo(element.alert);
                 }
@@ -254,7 +275,7 @@
                   map.panTo(element.latlng);
                   map.setCenter(element.latlng);
                   map.setZoom(15);
-                  map.panBy(0,-100)
+                  map.panBy(0,-100);
 
                   marker = new google.maps.Marker({
                     position: element.latlng,
@@ -294,7 +315,6 @@
 
                   store.set('latitude',  pos.coords.latitude);
                   store.set('longitude', pos.coords.longitude);
-                  store.set('geolocate', 'true');
 
                   retailers.json(settings.environment+pos.coords.latitude+'/'+pos.coords.longitude+'?shop='+settings.domain+'');
                 });
