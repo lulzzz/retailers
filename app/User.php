@@ -2,6 +2,8 @@
 
 namespace App;
 
+use \NickyWoolf\Carter\OwnsShopifyStore;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
