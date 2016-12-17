@@ -171,7 +171,7 @@
                 // Clicking Retailer
                 //
                 element.retailer.on('click', function() {
-                  $(this).removeClass('active');
+                  
                   element.li.toggleClass('active');
 
                   retailers.shop(
