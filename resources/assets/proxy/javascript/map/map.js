@@ -200,12 +200,13 @@
                   );
                 });
 
+                element.alert.children().remove();
+
                 if(store.get('geolocate')) {
-                  element.alert.children().remove();
                   notify.nearest.appendTo(element.alert);
                 } else {
                   element.alert.children().remove();
-                  notify.geolocate.appendTo(element.alert);
+                  notify.located.appendTo(element.alert);
                 }
 
               });
