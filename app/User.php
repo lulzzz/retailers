@@ -2,19 +2,14 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use \NickyWoolf\Carter\OwnsShopifyStore;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-/**
-* The attributes that are mass assignable.
-*
-* @var array
-*/
-
-class User extends Authenticatable
+class User implements AuthenticatableContract, CanResetPasswordContract
 {
-    use Notifiable, OwnsShopifyStore;
+    use Authenticatable, CanResetPassword,  Notifiable, OwnsShopifyStore;
 
     protected $fillable = [
         'name', 'email', 'password',
