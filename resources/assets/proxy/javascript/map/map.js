@@ -80,7 +80,7 @@
 
             var map = new google.maps.Map(document.getElementById(settings.element), {
               styles: styles,
-              zoom: 9,
+              zoom: settings.zoom,
               mapTypeControl: false,
               streetViewControl: true,
               center: new google.maps.LatLng(settings.latitude, settings.longitude),
@@ -170,8 +170,8 @@
                 //
                 element.retailer.on('click', function() {
 
-                  element.li.removeClass('active');
-                  element.retailer.toggleClass('active');
+                  //element.li.removeClass('active');
+                  element.li.toggleClass('active');
 
                   retailers.shop(
                     $(this).data('latitude'),
