@@ -19,7 +19,7 @@ Route::get('/documentation', function () {
   return view('site.documentation');
 });
 
-Auth::routes();
+//Auth::routes();
 //Route::get('/home', 'HomeController@index');
 
 
