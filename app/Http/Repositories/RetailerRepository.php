@@ -140,9 +140,9 @@ class RetailerRepository implements RetailerInterface {
 
 
          if ($unit == "metric") {
-            return $miles * 1.609344 . 'Km';
+            return  $miles * 1.609344;
          } elseif ($unit == "imperial") {
-            return $miles . 'Miles';
+            return $miles;
          } else {
             throw new \ArgumentError("Unknown unit system given $unit");
          }
