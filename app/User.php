@@ -11,7 +11,7 @@ class User extends Eloquent implements Authenticatable
 {
     use AuthenticableTrait;
     use Notifiable;
-    use NickyWoolf\Carter\OwnsShopifyStore;
+    use \NickyWoolf\Carter\OwnsShopifyStore;
 
 
     /**
