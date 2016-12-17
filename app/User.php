@@ -4,13 +4,12 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 
-class User implements AuthenticatableContract
+class User extends Authenticatable
 {
-    use Authenticatable, CanResetPassword, OwnsShopifyStore;
+    use Notifiable;
+    use \NickyWoolf\Carter\OwnsShopifyStore;
+
 
     /**
      * The attributes that are mass assignable.
