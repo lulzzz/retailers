@@ -12,7 +12,13 @@
     line-height:21px;
     width: 100%;
     border:0;
-    box-shadow:0 !important;
+    box-shadow:none !important;
+
+    &:focus {
+      border: none!important;
+      box-shadow: none !important;
+
+    }
   }
 
   h2 {
