@@ -4,7 +4,6 @@ namespace App;
 
 use Eloquent;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 
