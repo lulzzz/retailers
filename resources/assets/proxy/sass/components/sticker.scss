@@ -16,7 +16,8 @@
   }
 
   .btn {
-    text-decoration: none;
+    text-decoration: none !important;
+    font-size: $font-size-sm;
   }
 }
 

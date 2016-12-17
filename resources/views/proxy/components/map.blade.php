@@ -4,7 +4,7 @@
       <div id="retailers-list" class="retailers--search">
         <div class="retailers-locator">
           <div class="input-group">
-            <input type="text" class="search form-control" placeholder="Find Locations">
+            <input type="text" class="search form-control" placeholder="Enter your City or Country">
             <span class="input-group-btn">
               <button data-locator="button" class="btn-locator" type="button" data-balloon-visible data-balloon="Geolocate" data-balloon-pos="left">
                 <i data-locator="icon"  class="re-icon re-icon-locator"></i>
