@@ -11,7 +11,6 @@ class AuthorizedUsersController extends Controller
     public function __construct()
     {
         $this->middleware(['carter.guest', 'carter.shopify_domain', 'carter.signed']);
-        $this->middleware('auth');
     }
 
     public function create(Request $request)
