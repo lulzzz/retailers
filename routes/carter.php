@@ -28,7 +28,7 @@ Route::group(['middleware' => 'web'], function () {
     )->name('carter.plan.create');
 
     Route::get(
-        'activate',
+        'shopify/activate',
         'RecurringChargesController@update'
     )->name('carter.activate');
 

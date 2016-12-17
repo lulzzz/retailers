@@ -4,7 +4,7 @@ return [
 
     'shopify' => [
 
-        'use_package_routes' => true,
+        'use_package_routes' => false,
 
         /**
          *  https://docs.shopify.com/api/authentication/oauth#get-the-client-redentials
