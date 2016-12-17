@@ -3,14 +3,17 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Eloquent;
 
 // use Illuminate\Foundation\Auth\User as Authenticatable;
 use \NickyWoolf\Carter\OwnsShopifyStore;
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Auth\Authenticatable as AuthenticableTrait;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class User extends Eloquent implements Authenticatable {
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
  use Notifiable, OwnsShopifyStore;
 
