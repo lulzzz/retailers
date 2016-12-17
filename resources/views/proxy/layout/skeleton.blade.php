@@ -24,7 +24,7 @@
     loadjs([
       '{{env('APP_URL')}}/assets/proxy/js/core.min.js',
       '{{env('APP_URL')}}/assets/proxy/js/qwest.min.js',
-      '{{env('APP_URL')}}/assets/proxy/js/map_themes/greylight.min.js',
+      '{{env('APP_URL')}}/assets/proxy/js/map_themes/mapbox.min.js',
       '{{env('APP_URL')}}/assets/proxy/js/map.min.js'],
       {
         success: function() {
