@@ -206,8 +206,7 @@
                 element.locate.on('click', function() {
                   element.alert.children().remove();
                   notify.locating.appendTo(element.alert);
-                  retailers.locator(element.icon);
-                  retailers.trace(element.locate, store.get('latitude'), store.get('longitude'));
+                  retailers.locator(element.locate, element.icon);
                 });
 
                 element.retailer.on('click', function() {
@@ -224,9 +223,9 @@
                 });
 
 
-                if(store.get('geolocate')) {
+                if(store.get('geolocate') && store.get('user_city')) {
                   notify.nearest.appendTo(element.alert);
-                  retailers.trace(element.locate, store.get('latitude'), store.get('longitude'));
+                  element.locate.attr('data-balloon', store.get('user_city'));
                 } else {
                   notify.located.appendTo(element.alert);
                 }
@@ -306,7 +305,7 @@
             retailers.json(settings.environment+settings.latitude+'/'+settings.longitude+'?shop='+settings.domain+'');
 
 
-            retailers.locator = function (icon) {
+            retailers.locator = function (button, icon) {
               if (navigator.geolocation) {
 
                 icon.addClass('blink');
@@ -315,6 +314,9 @@
 
                   store.set('latitude',  pos.coords.latitude);
                   store.set('longitude', pos.coords.longitude);
+
+                  retailers.trace(button, pos.coords.latitude, pos.coords.longitude);
+
 
                   retailers.json(settings.environment+pos.coords.latitude+'/'+pos.coords.longitude+'?shop='+settings.domain+'');
                 });
