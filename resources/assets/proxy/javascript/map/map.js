@@ -170,7 +170,7 @@
                 //
                 element.retailer.on('click', function() {
 
-                  //element.li.removeClass('active');
+                  element.li.removeClass('active');
                   element.li.toggleClass('active');
 
                   retailers.shop(
