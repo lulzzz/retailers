@@ -28,11 +28,11 @@ button[data-balloon] {
 }
 [data-balloon]:after {
   background: rgba(17, 17, 17, 0.9);
-  border-radius: 4px;
+  border-radius: 2px;
   color: #fff;
   content: attr(data-balloon);
   font-size: 11px;
-  padding: .3em 1em;
+  padding: .25em 0.75em;
   white-space: nowrap;
   margin-bottom: 11px;
 }
