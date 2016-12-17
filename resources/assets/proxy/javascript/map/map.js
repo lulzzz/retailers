@@ -164,7 +164,10 @@
                   element.alert.children().remove();
                   notify.locating.appendTo(element.alert);
                   retailers.locator(element.locate, element.icon);
+                  Pace.start();
                 });
+
+
 
                 // Clicking Retailer
                 //
