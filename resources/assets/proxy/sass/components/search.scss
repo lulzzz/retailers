@@ -12,7 +12,7 @@
     line-height:21px;
     width: 100%;
     border:0;
-    box-shadow:none;
+    box-shadow:0 !important;
   }
 
   h2 {
@@ -30,7 +30,6 @@
   border:0;
   color: #000 !important;
   border-bottom:1px solid #cdcdcd;
-  box
   cursor: pointer;
 
   .re-icon-locator {
