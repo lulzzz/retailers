@@ -3,14 +3,13 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model as Eloquent;
 use \NickyWoolf\Carter\OwnsShopifyStore;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
 class User extends Authenticatable {
 
- use Notifiable, OwnsShopifyStore;
+ use Authenticatable, Notifiable, OwnsShopifyStore;
 
     /**
      * The attributes that are mass assignable.
