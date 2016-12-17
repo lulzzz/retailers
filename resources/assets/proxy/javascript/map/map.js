@@ -80,7 +80,7 @@
 
             var map = new google.maps.Map(document.getElementById(settings.element), {
               styles: styles,
-              zoom: 7,
+              zoom: 9,
               mapTypeControl: false,
               streetViewControl: true,
               center: new google.maps.LatLng(settings.latitude, settings.longitude),
