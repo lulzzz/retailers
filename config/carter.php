@@ -4,7 +4,7 @@ return [
 
     'shopify' => [
 
-        'use_package_routes' => false,
+        'use_package_routes' => true,
 
         /**
          *  https://docs.shopify.com/api/authentication/oauth#get-the-client-redentials
@@ -31,21 +31,19 @@ return [
          */
         'plans' => [
 
-            /*
             'test' => [
-                'name' => 'Beta',
+                'name' => 'Test Plan',
                 'price' => 0.99,
                 'return_url' => env('APP_URL', 'http://localhost').'/activate',
-                'trial_day' => 14,
+                'trial_day' => 0,
                 'test' => true,
             ],
-            */
 
             'basic' => [
-                'name' => 'Monthly Cost',
-                'price' => 47.00,
+                'name' => 'Basic Plan',
+                'price' => 9.00,
                 'return_url' => env('APP_URL', 'http://localhost').'/activate',
-                'trial_day' => 14,
+                'trial_day' => 21,
                 'test' => false,
             ],
 

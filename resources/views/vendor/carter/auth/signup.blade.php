@@ -1,63 +1,65 @@
-@extends('site.layout.skeleton')
-@section('title')
-   Retailers | Shopify Application | Install Application
-@stop
-@section('description')
-   Install Retailers to your Shopify Store. Enter your *.myshopify.com domain and enable consumer availability in minutes!
-@stop
-@section('header')
-   <div class="row">
-      <div class="col-xs-12 px-sm-0 text-xs-right">
-         <div class="pt-2 pr-2">
-            <a href="{{env('APP_URL')}}/">
-               <svg id="i-close" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.25%">
-                  <path d="M2 30 L30 2 M30 30 L2 2" />
-               </svg>
-            </a>
-         </a>
-      </div>
-   </div>
-@stop
+@extends('carter::stand_alone')
 
 @section('content')
-   <div class="page-signup">
-      <div class="vertical-align">
+    <section class="hero is-primary is-bold is-fullheight">
+        <div class="hero-body">
+            <div class="container">
 
-         <div class="signup-form">
-            <i class="icon icon-shopify"></i>
+                <div class="columns">
+                    <div class="column is-4 is-offset-4">
 
-            @if (count($errors) > 0)
-               @foreach ($errors->all() as $error)
-                  <p class="pt-2">
-                     Oh, No!
-                  </p>
-                  <p class="subtitle">
-                     {{ $error }}
-                  </p>
-               @endforeach
-            @endif
+                        <div class="panel">
+                            <div class="panel-heading">
 
-            <form action="{{ route('carter.install') }}" method="post">
-               {{ csrf_field() }}
-               @if ($plans)
-                  <p class="mt-3">
-                     <select name="plan">
-                        @foreach ($plans as $key => $plan)
-                           <option value="{{ $key }}">{{ trim(sprintf('%s: $%.02f %s', $plan['name'], $plan['price'], $plan['test'] ? '(TEST)' : '')) }}</option>
-                        @endforeach
-                     </select>
-                  </p>
-               @endif
-               <div class="input-group">
-                  <input type="text" class="input-signup" name="shop" placeholder="Store Name"/>
-                  <span class="input-group-addon">.myshopify.com</span>
-               </div>
-               <p class="pt-2 text-xs-right">
-                  <button class="btn btn-base">Install Application </button>
-               </p>
+                                @if (count($errors) > 0)
+                                    @foreach ($errors->all() as $error)
+                                        <div class="notification is-danger">
+                                            <p class="title">
+                                                Oh, No!
+                                            </p>
+                                            <p class="subtitle">
+                                                {{ $error }}
+                                            </p>
+                                        </div>
+                                    @endforeach
+                                @endif
 
-            </form>
-         </div>
-      </div>
-   </div>
+                                <form action="{{ route('carter.install') }}" method="post">
+
+                                    {{ csrf_field() }}
+
+                                    @if ($plans)
+                                    <p class="control">
+                                        <span class="select is-fullwidth">
+                                            <select name="plan">
+                                                @foreach ($plans as $key => $plan)
+                                                    <option value="{{ $key }}">{{ trim(sprintf('%s: $%.02f %s', $plan['name'], $plan['price'], $plan['test'] ? '(TEST)' : '')) }}</option>
+                                                @endforeach
+                                            </select>
+                                        </span>
+                                    </p>
+                                    @endif
+
+                                    <p class="control has-addons">
+                                        <input type="text" class="input is-expanded" name="shop" placeholder="Shop Domain"/>
+                                        <input type="text" class="input" value=".myshopify.com" disabled/>
+                                    </p>
+
+                                    <p class="control">
+                                        <input type="password" class="input" name="password" placeholder="Password"/>
+                                    </p>
+
+                                    <p class="control">
+                                        <button class="button is-primary is-fullwidth">Sign Up</button>
+                                    </p>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 @stop

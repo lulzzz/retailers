@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a560d41b591147c343c33ece432b63e5",
-    "content-hash": "1c4a00213d139c8efd9e3f3c3ee9cda6",
+    "hash": "9c2fb7f00882025111b26df1f250317e",
+    "content-hash": "8670b4b92da2f673d6c053899253c389",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1657,6 +1657,52 @@
                 "time"
             ],
             "time": "2015-11-04 20:07:17"
+        },
+        {
+            "name": "nickywoolf/carter",
+            "version": "3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nickywoolf/carter.git",
+                "reference": "313f13ae753ac2bbdf652acca4a53331f4880e84"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nickywoolf/carter/zipball/313f13ae753ac2bbdf652acca4a53331f4880e84",
+                "reference": "313f13ae753ac2bbdf652acca4a53331f4880e84",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.2",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "laravel/framework": "^5.3",
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NickyWoolf\\Carter\\": "./src/"
+                },
+                "classmap": [
+                    "tests/TestCase.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicky Woolf",
+                    "email": "woolfnicky@gmail.com"
+                }
+            ],
+            "description": "Shopify Embedded App Jumpstart for Laravel",
+            "homepage": "https://github.com/nickywoolf/carter",
+            "time": "2016-11-19 21:50:30"
         },
         {
             "name": "nikic/php-parser",
@@ -3445,52 +3491,6 @@
                 "object graph"
             ],
             "time": "2016-10-31 17:19:45"
-        },
-        {
-            "name": "nickywoolf/carter",
-            "version": "3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nickywoolf/carter.git",
-                "reference": "313f13ae753ac2bbdf652acca4a53331f4880e84"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nickywoolf/carter/zipball/313f13ae753ac2bbdf652acca4a53331f4880e84",
-                "reference": "313f13ae753ac2bbdf652acca4a53331f4880e84",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.2",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "laravel/framework": "^5.3",
-                "mockery/mockery": "^0.9.4",
-                "phpunit/phpunit": "4.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "NickyWoolf\\Carter\\": "./src/"
-                },
-                "classmap": [
-                    "tests/TestCase.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicky Woolf",
-                    "email": "woolfnicky@gmail.com"
-                }
-            ],
-            "description": "Shopify Embedded App Jumpstart for Laravel",
-            "homepage": "https://github.com/nickywoolf/carter",
-            "time": "2016-11-19 21:50:30"
         },
         {
             "name": "phpdocumentor/reflection-common",
