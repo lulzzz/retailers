@@ -18,7 +18,7 @@ class AuthorizedUsersController extends Controller
 
 
         if(!auth()->login($user) {
-            return redirect()->route('carter.signup', compact('user'));
+            return redirect()->route('carter.signup');
         } else {
             return redirect()->route('carter.dashboard');
         }
