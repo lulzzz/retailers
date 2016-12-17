@@ -20,7 +20,6 @@ var settings = {
    longitude: latlng.longitude,
    domain: '{{$domain}}',
    api_key: 'AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do',
-   locations: [@foreach($retailers as $key => $value)[{{$value['latitude']}},{{$value['longitude']}},'{{$value['country_code']}}','{{$value['name']}}','{{$value['logo_md']}}'],@endforeach]
 };
 
 retailers.map(settings);

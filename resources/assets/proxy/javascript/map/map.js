@@ -104,30 +104,31 @@
             });
 
 
+            retailers.markers = function (response) {
+              for (i = 0; i < response.length; i++) {
 
-            for (i = 0; i < settings.locations.length; i++) {
 
-              marker = new google.maps.Marker({
-                position: new google.maps.LatLng(settings.locations[i][0], settings.locations[i][1]),
-                map: map
-              });
+                marker = new google.maps.Marker({
+                  position: new google.maps.LatLng(response[i]['latitude'], response[i]['longitude']),
+                  map: map
+                });
 
-              markers.push(marker);
+                markers.push(marker);
 
-              google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                return function() {
-                  retailers.shop(
-                    settings.locations[i][0], //latitude
-                    settings.locations[i][1], //longitude
-                    settings.locations[i][2], //iso
-                    settings.locations[i][3], //name
-                    settings.locations[i][4]  //logo_md
-                  );
-                }
-              })(marker, i));
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                  return function() {
+                    retailers.shop(
+                      response[i]['latitude'], //latitude
+                      response[i]['longitude'], //longitude
+                      response[i]['country_code'], //iso
+                      response[i]['name'], //name
+                      response[i]['logo_md']  //logo_md
+                    );
+                  }
+                })(marker, i));
 
-            }
-
+              }
+            };
 
 
             /**
@@ -145,6 +146,8 @@
                 listings.clear();
                 listings.add(response);
                 listings.sort('distance');
+
+                retailers.markers(response);
 
                 var element = {
                   retailer    : $('li[data-map="retailer"]'),
