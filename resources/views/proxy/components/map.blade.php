@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="alert" data-map="alert">
-          <div></div>
+          <div>Retailers Found within <b>50km</b> of your location!</div>
         </div>
         @include('proxy.components._fullscreen.retailers-list')
       </div>
