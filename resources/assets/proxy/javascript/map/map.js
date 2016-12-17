@@ -190,7 +190,6 @@
                 });
 
                 element.retailer.on('click', function() {
-
                   element.li.removeClass('active');
                   element.retailer.toggleClass('active');
 
@@ -208,7 +207,6 @@
                 if(store.get('geolocate')) {
                   notify.nearest.appendTo(element.alert);
                 } else {
-                  element.alert.children().remove();
                   notify.located.appendTo(element.alert);
                 }
 
