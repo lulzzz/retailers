@@ -3,15 +3,14 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Contracts\Auth\Authenticable;
+use \NickyWoolf\Carter\OwnsShopifyStore;
 use Illuminate\Auth\Authenticable as AuthenticableTrait;
 
 class User extends Eloquent implements UserInterface, RemindableInterface{
 
-    use Notifiable;
-    use \NickyWoolf\Carter\OwnsShopifyStore;
-
+ use Notifiable, OwnsShopifyStore;
 
     /**
      * The attributes that are mass assignable.
