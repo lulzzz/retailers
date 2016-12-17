@@ -133,9 +133,7 @@
                   element.name.first().text(),
                   element.retailer.closest('li').first().data('logo_md')
                 );
-
                 element.retailer.closest('li').first().addClass('active');
-
               })
 
               .complete(function() {
@@ -171,8 +169,9 @@
                 // Clicking Retailer
                 //
                 element.retailer.on('click', function() {
-                  
-                  element.li.toggleClass('active');
+
+                  element.li.removeClass('active');
+                  $(this).toggleClass('active');
 
                   retailers.shop(
                     $(this).data('latitude'),
