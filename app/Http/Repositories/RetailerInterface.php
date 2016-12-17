@@ -21,7 +21,7 @@ interface RetailerInterface {
 
   public function geoip($header);
   public function countries($domain);
-  public function matrix($origin, $retailers, $unit);
+  public function matrix($origin, $retailers, $geo);
   public function retailers($domain);
   public function exists($resource, $query);
   public function image($type, $id, $input, $file, $width);

@@ -130,30 +130,27 @@ class RetailerRepository implements RetailerInterface {
       * Get Distance Matrix from Google Maps API
       *
       */
-      static function distance(array $origin, array $destination, $unit) {
+      static function distance(array $origin, array $destination, $geo) {
          $theta = $origin[1] - $destination[1];
          $dist = sin(deg2rad($origin[0])) * sin(deg2rad($destination[0])) + cos(deg2rad($origin[0])) * cos(deg2rad($destination[0])) * cos(deg2rad($theta));
          $dist = acos($dist);
          $dist = rad2deg($dist);
          $miles = $dist * 60 * 1.1515;
-         $unit = strtolower($unit);
+         //$unit = strtolower($unit);
 
-
-         if ($unit == "metric") {
-            return  $miles * 1.609344;
-         } elseif ($unit == "imperial") {
-            return $miles;
+         if ($geo == "US") {
+            return  $miles;
          } else {
-            throw new \ArgumentError("Unknown unit system given $unit");
+            return  $miles * 1.609344;
          }
       }
 
 
-      public function matrix($origin, $retailers, $unit) {
+      public function matrix($origin, $retailers, $geo) {
 
-         return $retailers->map(function ($retailer) use ($origin, $unit) {
+         return $retailers->map(function ($retailer) use ($origin, $geo) {
             $retailer = (array) $retailer;
-            $retailer["distance"] = round(self::distance([(float) $retailer["latitude"], (float) $retailer["longitude"]], $origin, $unit), 2);
+            $retailer["distance"] = round(self::distance([(float) $retailer["latitude"], (float) $retailer["longitude"]], $origin, $geo), 2);
             return $retailer;
          });
       }

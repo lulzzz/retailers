@@ -34,6 +34,9 @@ class ProxyController extends Controller
 
   public function origin(Request $request, $lat, $lng) {
 
+    $geo  = $this->retailer->geoip('HTTP_X_FORWARDED_FOR');
+
+
     if($this->domain == 'brixtol.myshopify.com') {
       $domain = 'brixtol-se.myshopify.com';
     } else {
@@ -41,7 +44,7 @@ class ProxyController extends Controller
     }
 
     $collection = collect($this->retailer->retailers($domain));
-    $matrix = $this->retailer->matrix([(float) $lat, (float) $lng], $collection);
+    $matrix = $this->retailer->matrix([(float) $lat, (float) $lng], $collection, $geo['isoCode']);
 
     return $matrix;
   }
@@ -68,15 +71,10 @@ class ProxyController extends Controller
       $domain = $this->domain;
     }
 
-    if($geo['isoCode'] == 'US') {
-      $unit = 'imperial';
-    } else {
-      $unit = 'metric';
-    }
 
     $stores     = $this->retailer->retailers($domain);
     $countries  = $this->retailer->countries($domain);
-    $listings   = $this->retailer->matrix([(float) $geo['lat'], (float) $geo['lon']], $stores, $unit);
+    $listings   = $this->retailer->matrix([(float) $geo['lat'], (float) $geo['lon']], $stores, $geo);
 
     $collection = collect($listings);
     $retailers = $collection->where('visibility', 'public')->sortBy('distance');

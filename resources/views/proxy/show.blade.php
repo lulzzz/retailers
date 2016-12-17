@@ -19,7 +19,7 @@ var settings = {
    latitude: latlng.latitude,
    longitude: latlng.longitude,
    domain: '{{$domain}}',
-   api_key: 'AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do',
+   api_key: 'AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do'
 };
 
 retailers.map(settings);

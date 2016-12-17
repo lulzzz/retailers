@@ -6,7 +6,7 @@
           <div class="input-group">
             <input type="text" class="search form-control" placeholder="Enter your City, State or Country">
             <span class="input-group-btn">
-              <button data-locator="button" class="btn-locator" type="button">
+              <button data-locator="button" class="btn-locator" type="button" data-balloon-visible data-balloon="Geolocate" data-balloon-pos="left">
                 <i data-locator="icon"  class="re-icon re-icon-locator"></i>
               </button>
             </span>
