@@ -13,7 +13,7 @@ class LoginShop
         }
 
         if ($request->get('shop')) {
-            return redirect()->route('carter.register', $request->all());
+            return redirect()->route('carter.login', $request->all());
         }
 
         return redirect()->route('carter.expired');
