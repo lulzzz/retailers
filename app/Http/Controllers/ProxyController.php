@@ -68,24 +68,26 @@ class ProxyController extends Controller
       $domain = $this->domain;
     }
 
+    if($geo['isoCode'] == 'US') {
+      $unit = 'imperial';
+    } else {
+      $unit = 'metric';
+    }
+
     $stores     = $this->retailer->retailers($domain);
     $countries  = $this->retailer->countries($domain);
-    $listings   = $this->retailer->matrix([(float) $geo['lat'], (float) $geo['lon']], $stores);
+    $listings   = $this->retailer->matrix([(float) $geo['lat'], (float) $geo['lon']], $stores, $unit);
 
     $collection = collect($listings);
     $retailers = $collection->where('visibility', 'public')->sortBy('distance');
     $retailers->values()->all();
 
-    $brand      = collect($retailers)->pluck(['brand_name'])->first();
+    $brand  = collect($retailers)->pluck(['brand_name'])->first();
 
     if ($exists) {
       $error = false;
-      $iso = collect($retailers)->pluck(['country_code'])->first();
-      $nation = collect($retailers)->where('country', $geo['country'])->pluck(['country'])->first();
     } else {
       $error = true;
-      $iso = $geo['isoCode'];
-      $nation = "Select Country";
     }
 
     return response()->view('proxy.show', compact(

@@ -10,7 +10,8 @@
           <span class="country"> {{ $value['country']}}</span>
         </div>
         <div class="retailer-list--right">
-          <span class="distance">{{$value['distance']}}</span><small>km away </small><br>
+          <span class="distance">{{$geo['isoCode'] == 'US' ? $value['distance'] * 1.609344 : $value['distance']}}
+</span><small>km away </small><br>
         </div>
       </li>
     @endforeach

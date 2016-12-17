@@ -130,7 +130,7 @@ class RetailerRepository implements RetailerInterface {
       * Get Distance Matrix from Google Maps API
       *
       */
-      static function distance(array $origin, array $destination, $unit = "metric") {
+      static function distance(array $origin, array $destination, $unit) {
          $theta = $origin[1] - $destination[1];
          $dist = sin(deg2rad($origin[0])) * sin(deg2rad($destination[0])) + cos(deg2rad($origin[0])) * cos(deg2rad($destination[0])) * cos(deg2rad($theta));
          $dist = acos($dist);
@@ -138,22 +138,26 @@ class RetailerRepository implements RetailerInterface {
          $miles = $dist * 60 * 1.1515;
          $unit = strtolower($unit);
 
+
          if ($unit == "metric") {
-            return $miles * 1.609344;
+            return $miles * 1.609344 . 'Km';
          } elseif ($unit == "imperial") {
-            return $miles;
+            return $miles . 'Miles';
          } else {
             throw new \ArgumentError("Unknown unit system given $unit");
          }
       }
 
-      public function matrix($origin, $retailers) {
-         return $retailers->map(function ($retailer) use ($origin) {
+
+      public function matrix($origin, $retailers, $unit) {
+
+         return $retailers->map(function ($retailer) use ($origin, $unit) {
             $retailer = (array) $retailer;
-            $retailer["distance"] = round(self::distance([(float) $retailer["latitude"], (float) $retailer["longitude"]], $origin), 2);
+            $retailer["distance"] = round(self::distance([(float) $retailer["latitude"], (float) $retailer["longitude"]], $origin, $unit), 2);
             return $retailer;
          });
       }
+
 
 
       /**
@@ -199,19 +203,19 @@ class RetailerRepository implements RetailerInterface {
 
 
       public function getGroupedArray($array, $keyFieldsToGroup) {
-          $newArray = array();
+         $newArray = array();
 
-          foreach ($array as $record)
-              $newArray = getRecursiveArray($record, $keyFieldsToGroup, $newArray);
-          return $newArray;
+         foreach ($array as $record)
+         $newArray = getRecursiveArray($record, $keyFieldsToGroup, $newArray);
+         return $newArray;
       }
 
       public function getRecursiveArray($itemArray, $keys, $newArray) {
          if (count($keys) > 1)
-             $newArray[$itemArray[$keys[0]]] = getRecursiveArray($itemArray, array_splice($keys, 1), $newArray[$itemArray[$keys[0]]]);
+         $newArray[$itemArray[$keys[0]]] = getRecursiveArray($itemArray, array_splice($keys, 1), $newArray[$itemArray[$keys[0]]]);
          else
-             $newArray[$itemArray[$keys[0]]][] = $itemArray;
+         $newArray[$itemArray[$keys[0]]][] = $itemArray;
 
          return $newArray;
-     }
+      }
    }
