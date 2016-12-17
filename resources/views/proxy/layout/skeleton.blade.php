@@ -20,9 +20,6 @@
 
     @yield('content')
 
-
-    @yield('script')
-
     <script>
     loadjs([
       '{{env('APP_URL')}}/assets/proxy/js/core.min.js',

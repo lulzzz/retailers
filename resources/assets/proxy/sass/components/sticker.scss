@@ -14,6 +14,10 @@
     width: 100%;
     margin: 0 auto;
   }
+
+  .btn {
+    text-decoration: none;
+  }
 }
 
 .sticker {
@@ -73,19 +77,19 @@
   }
 
   /*  &:hover {
-    .logo {
-      opacity: 0;
-      transition:all 0.1s ease-in-out;
+  .logo {
+  opacity: 0;
+  transition:all 0.1s ease-in-out;
 
-    }
+}
 
-    &:after {
-      opacity: 0;
-      transition:all 0.1s ease-in-out;
+&:after {
+opacity: 0;
+transition:all 0.1s ease-in-out;
 
 
-    }
+}
 
-  } */
+} */
 
 }

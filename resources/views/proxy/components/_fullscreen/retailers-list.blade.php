@@ -1,7 +1,7 @@
 <div class="list-retailers">
   <ul class="list disabled">
     @foreach ($retailers as $key => $value)
-      <li class="li-list--index ref-location">
+      <li class="li-list--index" data-map="retailer">
         <div class="retailer-list--left">
           <span class="name">{{$value['name']}}</span><br>
           <span class="street_number">{{ $value['street_number']}}</span>

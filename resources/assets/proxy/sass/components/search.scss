@@ -2,17 +2,16 @@
   border-top: none !important;
   height: 40px;
   margin: 0 !important;
+  border-bottom:1px solid #cdcdcd;
+
   //background-color:rgba(255,255,255,0.8);
 
   input {
     font-size:$font-size-sm;
     padding:7px;
-    line-height:25px;
+    line-height:21px;
     width: 100%;
-    border-left:0;
-    border-right:0;
-    border-top:0;
-    border-bottom:1px solid #cdcdcd;
+    border:0;
   }
 
   h2 {
@@ -20,4 +19,36 @@
     text-transform:uppercase;
   }
 
+}
+
+.btn-locator {
+  background-color: transparent;
+  font-size: 20px;
+//  padding:5px 10px 5px 0;
+  height: 40px;
+  border:0;
+  border-bottom:1px solid #cdcdcd;
+  cursor: pointer;
+
+  .re-icon-locator {
+    &:before {
+      content: "\ed942";
+    }
+    &:hover {
+      &:before {
+        content: "\e7d00";
+      }
+    }
+  }
+}
+
+.blink {
+  &:before {
+    content: "\ed942";
+    animation: blinker 1s linear infinite;
+  }
+}
+
+@keyframes blinker {
+  50% { content: "\e7d00"; }
 }
