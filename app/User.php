@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\Authenticable;
 use Illuminate\Auth\Authenticable as AuthenticableTrait;
 
-class User extends \Eloquent implements Authenticable {
+class User extends Eloquent implements UserInterface, RemindableInterface{
 
     use Notifiable;
     use \NickyWoolf\Carter\OwnsShopifyStore;
