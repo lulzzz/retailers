@@ -9,7 +9,7 @@ class AuthorizedUsersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['carter.user','carter.guest', 'carter.shopify_domain', 'carter.signed']);
+        $this->middleware(['carter.guest', 'carter.shopify_domain', 'carter.signed']);
     }
 
     public function create(Request $request)
