@@ -9,7 +9,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 class User implements AuthenticatableContract, CanResetPasswordContract
 {
-    use Authenticatable, CanResetPassword,  Notifiable, OwnsShopifyStore;
+    use Authenticatable, CanResetPassword, OwnsShopifyStore;
 
     protected $fillable = [
         'name', 'email', 'password',
