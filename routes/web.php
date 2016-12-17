@@ -22,13 +22,6 @@ Route::get('/documentation', function () {
 //Auth::routes();
 //Route::get('/home', 'HomeController@index');
 
-Route::get('/shopify/install', [
-  'as' => 'shopify_install',
-  'uses' => 'ShopifyController@install']);
-
-Route::get('/shopify/dashboard',[
-  'as' => 'shopify_dahboard',
-  'uses' => 'ShopifyController@dashboard']);
 
 
 
