@@ -185,7 +185,7 @@
 
                 if(store.get('geolocate') && store.get('visitor_street') && store.get('visitor_city')) {
                   notify.nearest.appendTo(element.alert);
-                  element.locate.attr('data-balloon', ''+store.get('visitor_city')+', '+ store.get('visitor_city')+'');
+                  element.locate.attr('data-balloon', ''+store.get('visitor_street')+', '+ store.get('visitor_city')+'');
                 } else {
                   notify.located.appendTo(element.alert);
                 }
