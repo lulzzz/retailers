@@ -226,7 +226,7 @@
 
               var template = {
 
-                bubble : '<div class="info-window"><div class="sticker" data-map="sticker"><div class="logo">'+shop_logo+'</div><div class="store"><img src="https://maps.googleapis.com/maps/api/streetview?size=250x100&location='+latitude+','+longitude+'&heading=151.78&pitch=-0.76&key='+settings.api_key+'"></div></div></div>',
+                bubble : '<div class="info-window"><div class="sticker" data-map="sticker"><div class="logo">'+shop_logo+'</div><div class="store"><img src="https://maps.googleapis.com/maps/api/streetview?size=250x125&location='+latitude+','+longitude+'&heading=151.78&pitch=-0.76&key='+settings.api_key+'"></div></div></div>',
 
                 oigm  : '<div class="oigm"><a class="btn btn-secondary btn-sm" href="https://maps.google.com/?saddr='+store.get('latitude')+','+store.get('longitude')+'&daddr='+latitude+','+longitude+'"><i class="re-icon re-icon-g-maps"></i>&nbsp; Open in Google Maps</a></div>'
               };
