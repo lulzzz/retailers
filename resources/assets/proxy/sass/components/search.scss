@@ -31,11 +31,11 @@
   cursor: pointer;
 
   .re-icon-locator {
-    &:before {
+    &:after {
       content: "\ed942";
     }
     &:hover {
-      &:before {
+      &:after {
         content: "\e7d00";
       }
     }
