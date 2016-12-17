@@ -156,6 +156,13 @@
                   country  : $('<div>No Retailers in located in your country.</div>')
                 };
 
+                if(store.get('geolocate') && store.get('visitor_street') && store.get('visitor_city')) {
+                  notify.nearest.appendTo(element.alert);
+                  element.locate.attr('data-balloon', ''+store.get('visitor_street')+', '+ store.get('visitor_city')+'');
+                } else {
+                  notify.located.appendTo(element.alert);
+                }
+
                 element.alert.children().remove();
 
                 // Clicking GeoLocate
@@ -171,7 +178,7 @@
                 element.retailer.on('click', function() {
 
                   element.li.removeClass('active');
-                  $(this).toggleClass('active');
+                  element.retailer.toggleClass('active');
 
                   retailers.shop(
                     $(this).data('latitude'),
@@ -181,15 +188,6 @@
                     $(this).data('logo_md')
                   );
                 });
-
-
-                if(store.get('geolocate') && store.get('visitor_street') && store.get('visitor_city')) {
-                  notify.nearest.appendTo(element.alert);
-                  element.locate.attr('data-balloon', ''+store.get('visitor_street')+', '+ store.get('visitor_city')+'');
-                } else {
-                  notify.located.appendTo(element.alert);
-                }
-
               });
             };
 
