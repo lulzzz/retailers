@@ -6,10 +6,12 @@ use Illuminate\Notifications\Notifiable;
 use Eloquent;
 
 // use Illuminate\Foundation\Auth\User as Authenticatable;
+use \NickyWoolf\Carter\OwnsShopifyStore;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 
 class User extends Eloquent implements Authenticatable {
+
  use Notifiable, OwnsShopifyStore;
 
     /**
