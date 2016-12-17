@@ -4,8 +4,8 @@ namespace NickyWoolf\Carter\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Closure;
 
-use Auth;
 
 class AuthorizedUsersController extends Controller
 {
@@ -14,7 +14,7 @@ class AuthorizedUsersController extends Controller
         $this->middleware(['carter.guest', 'carter.shopify_domain', 'carter.signed']);
     }
 
-    public function create(Request $request)
+    public function create(Request $request, Closure $next)
     {
         $user = app('carter.user')->forShop($request->shop);
 
