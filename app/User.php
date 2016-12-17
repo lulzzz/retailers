@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use \NickyWoolf\Carter\OwnsShopifyStore;
+use Illuminate\Contracts\Auth\Authenticatable as AuthContracts;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
@@ -12,7 +13,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 * @var array
 */
 
-class User extends Authenticatable
+class User extends Authenticatable implements AuthContracts
 {
     use Notifiable, OwnsShopifyStore;
 
