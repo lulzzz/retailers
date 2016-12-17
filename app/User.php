@@ -2,31 +2,46 @@
 
 namespace App;
 
-use \NickyWoolf\Carter\OwnsShopifyStore;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-class User implements AuthenticatableContract, CanResetPasswordContract
+class User implements AuthenticatableContract
 {
     use Authenticatable, CanResetPassword, OwnsShopifyStore;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
-        'name', 'email', 'password',
-        'shopify_id', 'domain', 'access_token', 'charge_id', 'installed',
-    ];
+    'name', 'email', 'password',
 
-    protected $hidden = [
-        'password', 'remember_token', 'access_token'
+    // Carter Additions
+    'domain', 'shopify_id', 'access_token', 'charge_id', 'installed'
     ];
 
     /**
-    * Every "User" has 1 Brand.
-    *
-    * @var array
-    */
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+    'password', 'remember_token',
+
+    // Carter Additions
+    'access_token'
+    ];
+
+
+    /**
+     * Every "User" has 1 Brand.
+     *
+     * @var array
+     */
     public function brand()
     {
         return $this->hasOne('App\Brand');
