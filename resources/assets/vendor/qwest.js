@@ -1,5 +1,7 @@
 /*! qwest 4.4.5 (https://github.com/pyrsmk/qwest) */
 
+module.exports = function() {
+
 	var global = typeof window != 'undefined' ? window : self,
 		pinkyswear = require('pinkyswear'),
 		jparam = require('jquery-param'),
@@ -495,3 +497,5 @@
 		};
 
 	return q;
+
+}();
