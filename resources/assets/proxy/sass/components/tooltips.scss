@@ -28,7 +28,7 @@ button[data-balloon] {
 }
 [data-balloon]:after {
   background: rgba(17, 17, 17, 0.9);
-  border-radius: 2px;
+  border-radius: 4px;
   color: #fff;
   content: attr(data-balloon);
   font-size: 11px;
