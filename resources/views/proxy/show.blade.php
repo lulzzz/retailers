@@ -8,11 +8,12 @@
 @stop
 
 @section('js')
-if(store.get('latitude') && store.get('longitude')) {
+if(store.get('geolocate')) {
    var latlng = {latitude: store.get('latitude'), longitude: store.get('longitude') };
 } else {
    var latlng = { latitude: {{$geo['lat']}}, longitude: {{$geo['lon']}} };
 }
+
 var settings = {
    environment: '{{env('PROXY_URL')}}',
    element:  'locate-retailer-map',
