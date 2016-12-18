@@ -2,7 +2,7 @@
 
 namespace App;
 
-use NickyWoolf\Carter\Laravel\OwnsShopifyStore;
+use NickyWoolf\Carter\OwnsShopifyStore;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
