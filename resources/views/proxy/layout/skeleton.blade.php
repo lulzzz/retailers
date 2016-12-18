@@ -1,14 +1,9 @@
 <!-- Loadjs :: Async Asset Loading -->
 <script src="{{env('APP_URL')}}/assets/proxy/js/loadjs.min.js"></script>
+<script src="//maps.google.com/maps/api/js?key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do"></script>
 
 <!-- Stylesheet :: Locator Styling -->
 <link rel="stylesheet" type="text/css" href="{{ env('APP_URL') }}/assets/proxy/css/stylesheet.min.css">
-
-<!-- Libaries :: jQuery / Google Maps -->
-<script>
-if(!window.jQuery){loadjs('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js');}
-loadjs(['//maps.google.com/maps/api/js?key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do']);
-</script>
 
 
 @if($retailers->isEmpty())
@@ -23,6 +18,12 @@ loadjs(['//maps.google.com/maps/api/js?key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3
 
     @yield('content')
 
+    <!-- jQuery Library  -->
+    <script>
+    if(!window.jQuery){loadjs('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js');}
+    </script>
+
+    <!-- Dependencies -->
     <script>
       loadjs([
         '{{env('APP_URL')}}/assets/proxy/js/core.min.js',
