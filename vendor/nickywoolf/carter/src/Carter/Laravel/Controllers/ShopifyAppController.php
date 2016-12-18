@@ -50,6 +50,8 @@ class ShopifyAppController extends Controller
             ->state(Str::random(40))
             ->authUrl();
 
+            dd($url);
+
         return redirect($url)->route('carter.register');
 
     }
