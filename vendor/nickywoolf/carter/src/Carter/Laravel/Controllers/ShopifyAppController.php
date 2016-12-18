@@ -42,7 +42,7 @@ class ShopifyAppController extends Controller
     {
         $this->validate($request, $this->rules, $this->messages);
 
-        $authUrl = $installApp->shopifyDomain($request->shop)
+        $url = $installApp->shopifyDomain($request->shop)
             ->scopes(implode(',', config('carter.shopify.scopes')))
             ->clientId(config('carter.shopify.client_id'))
             ->returnUrl(route('carter.register'))
@@ -50,6 +50,6 @@ class ShopifyAppController extends Controller
             ->state(Str::random(40))
             ->authUrl();
 
-        return redirect($authUrl);
+        return redirect($url);
     }
 }
