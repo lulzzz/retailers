@@ -17,8 +17,8 @@
                             <p class="control">
                                 <span class="select is-fullwidth">
                                     <select name="plan">
-                                        @foreach($plans as $plan)
-                                        <option value="{{ $plan['name'] }}">{{ $plan['name'] }}</option>
+                                        @foreach ($plans as $key => $plan)
+                                            <option value="{{ $key }}">{{ trim(sprintf('%s: $%.02f %s', $plan['name'], $plan['price'], $plan['test'] ? '(TEST)' : '')) }}</option>
                                         @endforeach
                                     </select>
                                 </span>
