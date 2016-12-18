@@ -40,7 +40,13 @@ class RegisteredUsersController extends Controller
 
         $this->resourceFactory->setDomain($request->get('shop'))->setAccessToken($this->accessToken());
 
-        auth()->login($this->user($request));
+        $login = auth()->login($this->user($request));
+
+        if ($login) {
+            auth()->login($this->user($request));
+        } else {
+            return redirect()->route('carter.install', $request->get('shop'));
+        }
 
         foreach (config('carter.shopify.webhooks') as $webhook) {
             $this->resourceFactory->resource('Webhook')->create($webhook);
