@@ -9,7 +9,7 @@ class Authenticate
     public function handle($request, Closure $next)
     {
         if (auth()->guest()) {
-            if (! $request->get('shop')) {
+            if (!$request->get('shop')) {
                 return redirect()->route('carter.expired');
             }
 
