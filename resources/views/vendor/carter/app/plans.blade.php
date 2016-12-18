@@ -18,7 +18,7 @@
                                 <span class="select is-fullwidth">
                                     <select name="plan">
                                         @foreach($plans as $plan)
-                                        <option value="{{ $plan }}">{{ $plan['name'] }}</option>
+                                        <option value="{{ $plan['name'] }}">{{ $plan['name'] }}</option>
                                         @endforeach
                                     </select>
                                 </span>
