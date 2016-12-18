@@ -11,6 +11,10 @@ class HasShopifyDomain
         if ($request->has('shop')) {
             return $next($request);
         }
+        
+        if (auth()->check()) {
+             return redirect()->route('carter.login', $request->all());
+        }
 
         return redirect()->route('carter.signup')
             ->withErrors('Shopify store domain required');
