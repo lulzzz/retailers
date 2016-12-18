@@ -47,8 +47,9 @@ class ShopifyAppController extends Controller
             ->clientId(config('carter.shopify.client_id'))
             ->returnUrl(route('carter.register'))
             ->plan($this->request->get('plan'))
-            ->state(Str::random(40));
+            ->state(Str::random(40))
+            ->authUrl($authUrl);
 
-        return redirect()->authUrl($authUrl);
+        return redirect($authUrl);
     }
 }
