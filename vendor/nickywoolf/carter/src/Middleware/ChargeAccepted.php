@@ -24,7 +24,7 @@ class ChargeAccepted
             return $next($request);
         }
 
-        return redirect()->route('carter.plans');
+        return redirect()->route('carter.plan.create');
     }
 
 }
