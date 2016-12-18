@@ -62,7 +62,7 @@ Route::resource('merchants', 'MerchantsController');
 |
 */
 Route::get(
-    '/dashboard',
+    'embedded/dashboard',
     'DashboardController@index'
 )->name('carter.dashboard');
 
