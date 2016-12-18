@@ -12,8 +12,7 @@ class Authenticate
             if (!$request->get('shop')) {
                 return redirect()->route('carter.expired');
             }
-
-            return redirect()->route('carter.login', $request->all());
+            return redirect()->route('carter.install', $request->all());
         }
 
         return $next($request);
