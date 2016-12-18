@@ -6,7 +6,7 @@
 
 <!-- Libaries :: jQuery / Google Maps -->
 <script>
-if(!window.jQuery){loadjs('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js');}
+if(!window.jQuery){loadjs(['//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js']);}
 </script>
 
 @if($retailers->isEmpty())
