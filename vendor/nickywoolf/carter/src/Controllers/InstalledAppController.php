@@ -42,7 +42,7 @@ class InstalledAppController extends Controller
 
         session(['plan' => $request->get('plan')]);
 
-        return redirect($this->resourceFactory->oauth()->accessToken(
+        return redirect($this->resourceFactory->oauth()->authorize(
             config('carter.shopify.client_id'),
             config('carter.shopify.scope'),
             route('carter.register'),

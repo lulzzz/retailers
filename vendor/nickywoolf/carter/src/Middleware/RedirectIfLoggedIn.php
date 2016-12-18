@@ -12,6 +12,11 @@ class RedirectIfLoggedIn
             return $next($request);
         }
 
+
+        if (auth()->check()) {
+            return redirect()->route('carter.login', $request->all());
+        }
+
         return redirect()->route('carter.dashboard');
     }
 }
