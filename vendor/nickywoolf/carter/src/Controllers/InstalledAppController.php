@@ -36,8 +36,6 @@ class InstalledAppController extends Controller
 
     public function create(Request $request)
     {
-        dd('fuck');
-        
         $this->validate($request, $this->rules, $this->messages);
 
         $this->resourceFactory->setDomain($request->get('shop'));

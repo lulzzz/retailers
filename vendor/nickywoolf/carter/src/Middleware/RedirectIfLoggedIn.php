@@ -11,7 +11,6 @@ class RedirectIfLoggedIn
         if (auth()->guest()) {
             return $next($request);
         }
-
         return redirect()->route('carter.dashboard');
     }
 }

@@ -16,6 +16,10 @@ class AuthorizedUsersController extends Controller
     {
         $user = app('carter.user')->forShop($request->shop);
 
+        if(!forShop($request->shop)) {
+            return redirect()->route('carter.install', $request->shop);
+        }
+
         auth()->login($user);
 
         return redirect()->route('carter.dashboard');
