@@ -12,7 +12,7 @@ class LoginShop
             return $next($request);
         }
 
-        if (auth()->check() && $request->get('shop')) {
+        if ($request->get('shop')) {
             return redirect()->route('carter.login', $request->all());
         }
 
