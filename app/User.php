@@ -2,13 +2,14 @@
 
 namespace App;
 
+use NickyWoolf\Carter\Laravel\OwnsShopifyStore;
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-    use \NickyWoolf\Carter\OwnsShopifyStore;
+    use Notifiable, OwnsShopifyStore;
 
 
     /**
