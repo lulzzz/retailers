@@ -17,8 +17,8 @@
                             <p class="control">
                                 <span class="select is-fullwidth">
                                     <select name="plan">
-                                        @foreach ($plans as $key => $plan)
-                                        <option value="{{ $key }}">{{ $plan->name }}</option>
+                                        @foreach ($plans as $plan)
+                                        <option value="{{ $plan }}">{{ $plan[1] }}</option>
                                         @endforeach
                                     </select>
                                 </span>

@@ -21,8 +21,6 @@ class RecurringChargesController extends Controller
 
     public function index()
     {
-      dd(config('carter.shopify.plans'));
-
         return view('carter::app.plans', ['plans' => config('carter.shopify.plans')]);
     }
 
