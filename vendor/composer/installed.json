@@ -4874,17 +4874,17 @@
     },
     {
         "name": "nickywoolf/carter",
-        "version": "2.2.6",
-        "version_normalized": "2.2.6.0",
+        "version": "3.0",
+        "version_normalized": "3.0.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/nickywoolf/carter.git",
-            "reference": "668fd7325424cb329c325c3c4b18bc87c485c211"
+            "reference": "313f13ae753ac2bbdf652acca4a53331f4880e84"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/nickywoolf/carter/zipball/668fd7325424cb329c325c3c4b18bc87c485c211",
-            "reference": "668fd7325424cb329c325c3c4b18bc87c485c211",
+            "url": "https://api.github.com/repos/nickywoolf/carter/zipball/313f13ae753ac2bbdf652acca4a53331f4880e84",
+            "reference": "313f13ae753ac2bbdf652acca4a53331f4880e84",
             "shasum": ""
         },
         "require": {
@@ -4896,18 +4896,15 @@
             "mockery/mockery": "^0.9.4",
             "phpunit/phpunit": "4.*"
         },
-        "time": "2016-11-11 15:38:26",
+        "time": "2016-11-19 21:50:30",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "NickyWoolf\\Carter\\": "src/Carter"
+                "NickyWoolf\\Carter\\": "./src/"
             },
             "classmap": [
                 "tests/TestCase.php"
-            ],
-            "files": [
-                "src/Carter/Laravel/helpers.php"
             ]
         },
         "notification-url": "https://packagist.org/downloads/",

@@ -11,13 +11,10 @@
   "homepage": "https://github.com/nickywoolf/carter",
   "autoload": {
     "psr-4": {
-      "NickyWoolf\\Carter\\": "src/Carter"
+      "NickyWoolf\\Carter\\": "./src/"
     },
     "classmap": [
       "tests/TestCase.php"
-    ],
-    "files": [
-      "src/Carter/Laravel/helpers.php"
     ]
   },
   "require": {

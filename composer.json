@@ -17,7 +17,7 @@
         "maatwebsite/excel": "~2.1.0",
         "league/csv": "^8.1",
         "nesbot/carbon": "^1.21",
-        "nickywoolf/carter": "^2.2"
+        "nickywoolf/carter": "^3.0"
     },
     "require-dev": {
         "donutdan4114/shopify":"dev-master",
