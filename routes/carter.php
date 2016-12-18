@@ -34,7 +34,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get(
         'embedded/login',
-        'AuthorizedUsersController@create'
+        'ShopifyUserController@login'
     )->name('carter.login');
 
     Route::get(
