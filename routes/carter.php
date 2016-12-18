@@ -37,7 +37,10 @@ Route::group(['middleware' => 'web'], function () {
         'AuthorizedUsersController@create'
     )->name('carter.login');
 
-
+    Route::get(
+        'embedded/dashboard',
+        'DashboardController@index'
+    )->name('carter.dashboard');
 
     Route::get(
         'app/expired',
