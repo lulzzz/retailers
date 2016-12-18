@@ -7,7 +7,6 @@
 <!-- Libaries :: jQuery / Google Maps -->
 <script>
 if(!window.jQuery){loadjs('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js');}
-loadjs('//maps.google.com/maps/api/js?key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do','Maps');
 </script>
 
 @if($retailers->isEmpty())
@@ -23,17 +22,18 @@ loadjs('//maps.google.com/maps/api/js?key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3d
     @yield('content')
 
     <script>
-    loadjs.ready('Maps', function() {
-      loadjs([
-        '{{env('APP_URL')}}/assets/proxy/js/core.min.js',
-        '{{env('APP_URL')}}/assets/proxy/js/qwest.min.js',
-        '{{env('APP_URL')}}/assets/proxy/js/map_themes/greywash.min.js',
-        '{{env('APP_URL')}}/assets/proxy/js/map.min.js'], {
-          success: function() {
-            @yield('js')
-          }
-        }
-      );
+    loadjs('//maps.google.com/maps/api/js?key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do', 'GoogleAPI');
+
+    loadjs([
+      '{{env('APP_URL')}}/assets/proxy/js/core.min.js',
+      '{{env('APP_URL')}}/assets/proxy/js/qwest.min.js'], 'Dependencies');
+
+    loadjs([
+      '{{env('APP_URL')}}/assets/proxy/js/map_themes/greywash.min.js',
+      '{{env('APP_URL')}}/assets/proxy/js/map.min.js'], 'Component');
+
+    loadjs.ready(['GoogleAPI', 'Dependencies', 'Component'], function() {
+      @yield('js')
     });
     </script>
   </div>
