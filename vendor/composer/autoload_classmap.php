@@ -2062,6 +2062,7 @@ return array(
     'NickyWoolf\\Carter\\Middleware\\ChargeAccepted' => $vendorDir . '/nickywoolf/carter/src/Middleware/ChargeAccepted.php',
     'NickyWoolf\\Carter\\Middleware\\HasChargeId' => $vendorDir . '/nickywoolf/carter/src/Middleware/HasChargeId.php',
     'NickyWoolf\\Carter\\Middleware\\HasShopifyDomain' => $vendorDir . '/nickywoolf/carter/src/Middleware/HasShopifyDomain.php',
+    'NickyWoolf\\Carter\\Middleware\\InstallShop' => $vendorDir . '/nickywoolf/carter/src/Middleware/InstallShop.php',
     'NickyWoolf\\Carter\\Middleware\\LoginShop' => $vendorDir . '/nickywoolf/carter/src/Middleware/LoginShop.php',
     'NickyWoolf\\Carter\\Middleware\\RedirectIfLoggedIn' => $vendorDir . '/nickywoolf/carter/src/Middleware/RedirectIfLoggedIn.php',
     'NickyWoolf\\Carter\\Middleware\\SignedByShopify' => $vendorDir . '/nickywoolf/carter/src/Middleware/SignedByShopify.php',

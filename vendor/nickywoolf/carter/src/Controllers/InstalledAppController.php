@@ -25,6 +25,7 @@ class InstalledAppController extends Controller
     public function __construct(ShopifyResourceFactory $resourceFactory)
     {
         $this->resourceFactory = $resourceFactory;
+        $this->middleware('carter.install');
         $this->middleware('carter.guest');
         $this->middleware('carter.shopify_domain')->only('create');
     }

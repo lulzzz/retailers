@@ -2472,6 +2472,7 @@ class ComposerStaticInitf49ea0e855a8411b3e8f15566dbc464c
         'NickyWoolf\\Carter\\Middleware\\ChargeAccepted' => __DIR__ . '/..' . '/nickywoolf/carter/src/Middleware/ChargeAccepted.php',
         'NickyWoolf\\Carter\\Middleware\\HasChargeId' => __DIR__ . '/..' . '/nickywoolf/carter/src/Middleware/HasChargeId.php',
         'NickyWoolf\\Carter\\Middleware\\HasShopifyDomain' => __DIR__ . '/..' . '/nickywoolf/carter/src/Middleware/HasShopifyDomain.php',
+        'NickyWoolf\\Carter\\Middleware\\InstallShop' => __DIR__ . '/..' . '/nickywoolf/carter/src/Middleware/InstallShop.php',
         'NickyWoolf\\Carter\\Middleware\\LoginShop' => __DIR__ . '/..' . '/nickywoolf/carter/src/Middleware/LoginShop.php',
         'NickyWoolf\\Carter\\Middleware\\RedirectIfLoggedIn' => __DIR__ . '/..' . '/nickywoolf/carter/src/Middleware/RedirectIfLoggedIn.php',
         'NickyWoolf\\Carter\\Middleware\\SignedByShopify' => __DIR__ . '/..' . '/nickywoolf/carter/src/Middleware/SignedByShopify.php',
