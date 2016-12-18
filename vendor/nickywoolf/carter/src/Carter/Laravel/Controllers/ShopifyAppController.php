@@ -38,14 +38,20 @@ class ShopifyAppController extends Controller
         return view('carter::auth.register', ['plans' => config('carter.shopify.plans')]);
     }
 
-    public function install(Request $request)
+    public function install(Request $request, InstallApp $installApp)
     {
         $this->validate($request, $this->rules, $this->messages);
 
-        $oauth = new Oauth(new ApiRequest($this->domain));
+        $authUrl = $installApp->shopifyDomain($request->shop)
+            ->scopes(implode(',', config('carter.shopify.scopes')))
+            ->clientId(config('carter.shopify.client_id'))
+            ->returnUrl(route('carter.register'))
+            ->plan($this->request->get('plan'))
+            ->state(Str::random(40))
+            ->authUrl();
 
-    return $oauth->authorizationUrl(config('carter.shopify.client_id'), implode(',', config('carter.shopify.scopes')), route('carter.register'), Str::random(40));
+            dd($authUrl);
 
-    
+        return redirect($authUrl);
     }
 }
