@@ -23,8 +23,7 @@ class ChargeAccepted
         if ($user->charge_id && $charge->isAccepted($user->charge_id)) {
             return $next($request);
         }
-
-        return redirect()->route('carter.plan.create');
+        return redirect()->route('carter.plans');
     }
 
 }
