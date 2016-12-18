@@ -12,6 +12,10 @@ class LoginShop
             return $next($request);
         }
 
+        if ($request->get('api_key')) {
+            return redirect()->route('carter.login', $request->all());
+        }
+
         if ($request->get('shop')) {
             return redirect()->route('carter.login', $request->all());
         }
