@@ -6,7 +6,7 @@
 
 <!-- Libaries :: jQuery / Google Maps -->
 <script>
-if(!window.jQuery){loadjs('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js','jQuery');}
+if(!window.jQuery){loadjs('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js');}
 loadjs('//maps.google.com/maps/api/js?key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do','Maps');
 </script>
 
@@ -27,14 +27,13 @@ loadjs('//maps.google.com/maps/api/js?key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3d
       loadjs([
         '{{env('APP_URL')}}/assets/proxy/js/core.min.js',
         '{{env('APP_URL')}}/assets/proxy/js/qwest.min.js',
-        '{{env('APP_URL')}}/assets/proxy/js/map_themes/greywash.min.js'
-      ]);
-    });
-    loadjs.ready('jQuery', function() {
-      loadjs('{{env('APP_URL')}}/assets/proxy/js/map.min.js', {
-        success: function()
-        { @yield('js') }
-      });
+        '{{env('APP_URL')}}/assets/proxy/js/map_themes/greywash.min.js',
+        '{{env('APP_URL')}}/assets/proxy/js/map.min.js'], {
+          success: function() {
+            @yield('js')
+          }
+        }
+      );
     });
     </script>
   </div>
