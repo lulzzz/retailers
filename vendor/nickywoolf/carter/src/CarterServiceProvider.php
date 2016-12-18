@@ -93,6 +93,7 @@ class CarterServiceProvider extends ServiceProvider
             'carter.paying' => \NickyWoolf\Carter\Middleware\ChargeAccepted::class,
             'carter.charged' => \NickyWoolf\Carter\Middleware\HasChargeId::class,
             'carter.shopify_domain' => \NickyWoolf\Carter\Middleware\HasShopifyDomain::class,
+            'carter.install' => \NickyWoolf\Carter\Middleware\InstallShop::class,
             'carter.login' => \NickyWoolf\Carter\Middleware\LoginShop::class,
             'carter.guest' => \NickyWoolf\Carter\Middleware\RedirectIfLoggedIn::class,
             'carter.signed' => \NickyWoolf\Carter\Middleware\SignedByShopify::class,
