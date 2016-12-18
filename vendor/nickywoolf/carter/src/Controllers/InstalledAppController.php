@@ -38,7 +38,7 @@ class InstalledAppController extends Controller
     {
         $this->validate($request, $this->rules, $this->messages);
 
-        $this->resourceFactory->setDomain($request->get('shop').'.myshopify.com');
+        $this->resourceFactory->setDomain($request->get('shop'));
 
         session(['plan' => $request->get('plan')]);
 
