@@ -166,7 +166,8 @@ return [
         /*
         * Shopify Jumpstart by Nicky Woolf...
         */
-        \NickyWoolf\Carter\CarterServiceProvider::class,
+        //\NickyWoolf\Carter\CarterServiceProvider::class,
+        \NickyWoolf\Carter\Laravel\CarterServiceProvider::class,
 
         /*
         * Image Intervention...

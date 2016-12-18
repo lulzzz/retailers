@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9c2fb7f00882025111b26df1f250317e",
-    "content-hash": "8670b4b92da2f673d6c053899253c389",
+    "hash": "12e5b2c47a6cf9de6ba13e5ac87d274a",
+    "content-hash": "cf9d20f58f40a53e6d685d5ec1408d78",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1660,16 +1660,16 @@
         },
         {
             "name": "nickywoolf/carter",
-            "version": "3.0",
+            "version": "2.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nickywoolf/carter.git",
-                "reference": "313f13ae753ac2bbdf652acca4a53331f4880e84"
+                "reference": "668fd7325424cb329c325c3c4b18bc87c485c211"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nickywoolf/carter/zipball/313f13ae753ac2bbdf652acca4a53331f4880e84",
-                "reference": "313f13ae753ac2bbdf652acca4a53331f4880e84",
+                "url": "https://api.github.com/repos/nickywoolf/carter/zipball/668fd7325424cb329c325c3c4b18bc87c485c211",
+                "reference": "668fd7325424cb329c325c3c4b18bc87c485c211",
                 "shasum": ""
             },
             "require": {
@@ -1684,10 +1684,13 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "NickyWoolf\\Carter\\": "./src/"
+                    "NickyWoolf\\Carter\\": "src/Carter"
                 },
                 "classmap": [
                     "tests/TestCase.php"
+                ],
+                "files": [
+                    "src/Carter/Laravel/helpers.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1702,7 +1705,7 @@
             ],
             "description": "Shopify Embedded App Jumpstart for Laravel",
             "homepage": "https://github.com/nickywoolf/carter",
-            "time": "2016-11-19 21:50:30"
+            "time": "2016-11-11 15:38:26"
         },
         {
             "name": "nikic/php-parser",
