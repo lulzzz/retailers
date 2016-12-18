@@ -2,58 +2,28 @@
 
 Route::group(['middleware' => 'web'], function () {
 
-    Route::get(
-        'signup',
-        'InstalledAppController@index'
-    )->name('carter.signup');
+    Route::get('signup', 'ShopifyAppController@showSignupForm')->name('carter.signup');
 
-    Route::match(['get', 'post'],
-        'install',
-        'InstalledAppController@create'
-    )->name('carter.install');
+    Route::match(['get', 'post'], 'install', 'ShopifyAppController@install')->name('carter.install');
 
-    Route::get(
-        'register',
-        'RegisteredUsersController@create'
-    )->name('carter.register');
+    Route::get('register', 'ShopifyUserController@register')->name('carter.register');
 
-    Route::get(
-        'embedded/plans',
-        'RecurringChargesController@index'
-    )->name('carter.plans');
+    Route::get('embedded/plans', 'RecurringChargeController@index')->name('carter.plans');
 
-    Route::match(['get', 'post'],
-        'embedded/plans/create',
-        'RecurringChargesController@create'
-    )->name('carter.plan.create');
+    Route::match(['get', 'post'], 'embedded/plans/create', 'RecurringChargeController@create')->name('carter.plan.create');
 
-    Route::get(
-        'activate',
-        'RecurringChargesController@update'
-    )->name('carter.activate');
+    Route::get('activate', 'RecurringChargeController@update')->name('carter.activate');
 
-    Route::get(
-        'embedded/login',
-        'ShopifyUserController@login'
-    )->name('carter.login');
+    Route::get('embedded/login', 'ShopifyUserController@login')->name('carter.login');
 
-    Route::get(
-        'embedded/dashboard',
-        'DashboardController@index'
-    )->name('carter.dashboard');
+    Route::get('embedded/dashboard', 'DashboardController@index')->name('carter.dashboard');
 
-    Route::get(
-        'app/expired',
-        'ExpiredSessionsController@index'
-    )->name('carter.expired');
+    Route::get('embedded/expired', 'ShopifyUserController@expired')->name('carter.expired');
 
 });
 
-Route::group(['prefix' => 'webhooks'], function () {
+Route::group(['prefix' => 'webhook/shopify'], function () {
 
-    Route::post(
-        'app/uninstalled',
-        'WebhooksController@uninstall'
-    )->name('carter.uninstall');
+    Route::post('uninstall', 'WebhookController@uninstall')->name('carter.uninstall');
 
 });
