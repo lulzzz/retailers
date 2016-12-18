@@ -39,6 +39,10 @@ class ShopifyUserController extends Controller
 
         auth()->login($user);
 
+        if(is_null(auth()->login($user)) {
+           return redirect()->route('carter.register');
+        }
+
         return redirect()->route('carter.dashboard');
     }
 
