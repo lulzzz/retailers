@@ -8,6 +8,9 @@ class InstallShop
 {
     public function handle($request, Closure $next)
     {
+        if (auth()->check()) {
+            return $next($request);
+        }
 
         if ($request->get('shop')) {
             return redirect()->route('carter.install', $request->all());
