@@ -42,17 +42,13 @@ class ShopifyAppController extends Controller
     {
         $this->validate($request, $this->rules, $this->messages);
 
-        $url = $installApp->shopifyDomain($request->shop)
-            ->scopes(implode(',', config('carter.shopify.scopes')))
-            ->clientId(config('carter.shopify.client_id'))
-            ->returnUrl(route('carter.register'))
-            ->plan($this->request->get('plan'))
-            ->state(Str::random(40))
-            ->authUrl();
+        $clientId = config('carter.shopify.client_id');
+        $scopes = implode(',', config('carter.shopify.scopes'));
+        $state = session('state');
 
-            dd($url);
+        $oauth = app(NickyWoolf\Carter\Shopify\Oauth::class);
 
-        return redirect($url)->route('carter.register');
+        return $oauth->authorizationUrl($clientId, $scopes, $returnUrl, $state);
 
     }
 }
