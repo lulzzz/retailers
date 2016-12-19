@@ -11,6 +11,8 @@ return [
          */
         'client_id' => env('SHOPIFY_KEY'),
         'client_secret' => env('SHOPIFY_SECRET'),
+        'app_store_url' => 'https://apps.shopify.com/locate-retailers',
+
 
         /**
          *  https://docs.shopify.com/api/authentication/oauth#scopes
