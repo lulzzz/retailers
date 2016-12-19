@@ -20,9 +20,9 @@ class AuthorizedUsersController extends Controller
         $login = auth()->login($user);
 
         if(is_null($login)){
-            return redirect()->route('carter.dashboard', $request->shop);
+            return redirect()->route('carter.install', $request->shop);
+        } else {
+            return redirect()->route('carter.dashboard');
         }
-
-        return redirect()->route('carter.dashboard');
     }
 }
