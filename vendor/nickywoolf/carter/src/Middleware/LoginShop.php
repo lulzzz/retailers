@@ -8,7 +8,7 @@ class LoginShop
 {
     public function handle($request, Closure $next)
     {
-        dd($request->previous());
+        dd($request->headers->get('referer'));
         if (auth()->check()) {
             return $next($request);
         }
