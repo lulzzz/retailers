@@ -7,7 +7,7 @@ $component-height:  600px !default;
   overflow: hidden;
   padding: 0;
   margin-top: 20px;
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-down(sm) {
     border: 1px solid #ddd;
     height:1250px;
     max-height:1250px;
