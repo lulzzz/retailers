@@ -11,7 +11,7 @@
         </div>
         <div class="retailer-list--right pr-1">
           <span class="distance">{{ $value['distance']}}</span>
-          <small>@if($geo['isoCode'] == 'US')miles @else km @endif away</small><br>
+          <small>@if('US' == 'US')miles @else km @endif away</small><br>
         </div>
       </li>
     @endforeach
