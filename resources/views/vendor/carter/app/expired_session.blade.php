@@ -10,8 +10,8 @@
             <div class="container">
                 <div class="columns">
                     <div class="column is-8 is-offset-1">
-                        <p class="title">Your Carter App session has expired</p>
-                        <p class="subtitle">refresh your browser to log back in</p>
+                        <p class="title">Retailers Application Session Expired</p>
+                        <p class="subtitle">Refresh your browser to log back in</p>
                     </div>
                 </div>
             </div>
