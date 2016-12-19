@@ -3,6 +3,7 @@
 namespace NickyWoolf\Carter\Middleware;
 
 use Closure;
+use Url;
 
 class LoginShop
 {
