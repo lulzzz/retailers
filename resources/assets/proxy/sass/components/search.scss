@@ -1,5 +1,6 @@
 .retailers--search {
-  border-top: none !important;
+  border-top: 1px solid #cdcdcd;
+  min-height: 40px;
   height: 40px;
   margin: 0 !important;
   border-bottom:1px solid #cdcdcd;
@@ -17,9 +18,6 @@
     &:focus {
       border: none!important;
       box-shadow: none !important;
-      button[data-balloon] {
-        display: none;
-      }
     }
   }
 
