@@ -12,7 +12,7 @@ class HasShopifyDomain
             return $next($request);
         }
 
-        return redirect()->route('carter.install', $request->all())
+        return redirect()->route('carter.signup')
             ->withErrors('Shopify store domain required');
     }
 }

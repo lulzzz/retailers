@@ -26,7 +26,6 @@ class InstalledAppController extends Controller
     {
         $this->resourceFactory = $resourceFactory;
         $this->middleware('carter.guest');
-        $this->middleware('carter.shopify_domain')->only('create');
     }
 
     public function index()
