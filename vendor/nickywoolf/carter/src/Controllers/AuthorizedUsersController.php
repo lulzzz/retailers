@@ -14,7 +14,10 @@ class AuthorizedUsersController extends Controller
 
     public function create(Request $request)
     {
+
+        dd('fuck');
         $user = app('carter.user')->forShop($request->shop);
+
 
         auth()->login($user);
 
