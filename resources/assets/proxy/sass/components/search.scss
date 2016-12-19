@@ -16,7 +16,7 @@
     box-shadow:none !important;
 
     &:focus {
-    //  border: none!important;
+      //  border: none!important;
       box-shadow: none !important;
     }
   }
@@ -26,6 +26,12 @@
     text-transform:uppercase;
   }
 
+}
+
+.retailers-locator {
+  height: 40px;
+  border-bottom: 1px solid #cdcdcd;
+  overflow: hidden;
 }
 
 .btn-locator {
