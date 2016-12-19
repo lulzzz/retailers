@@ -8,9 +8,6 @@ class LoginShop
 {
     public function handle($request, Closure $next)
     {
-        if ($request->headers->get('referer') == 'https://apps.shopify.com/locate-retailers') {
-            return redirect()->route('carter.install', $request->all());
-        }
 
         if (auth()->check()) {
             return $next($request);
