@@ -6,16 +6,15 @@
    overflow-y: scroll;
 
    @include media-breakpoint-down(sm) {
-      height:250px;
-      max-height:250px;
+      height:200px;
+      max-height:200px;
       overflow-y: scroll !important;
-      min-height: 160px;
+      min-height: 200px;
       position: relative;
       overflow-y: scroll!important;
       display: block;
       z-index: 9999;
       -webkit-overflow-scrolling: touch;
-
    }
 
    .list {
@@ -27,7 +26,6 @@
       li {
          list-style: none;
          color:#111;
-         //background-color:transparent;
          border:none;
          margin:0;
          width:100%;
@@ -39,15 +37,15 @@
          a,
          &:focus,
          &:hover {
-            //background-color:#f9f9f9;
             cursor: pointer;
          }
       }
 
       .li-list--index {
          padding:0;
+         display: flex;
+         align-items: center;
          margin:0;
-         //border-bottom:1px solid #cdcdcd;
          height: 100px;
          overflow: hidden;
 
