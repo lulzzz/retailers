@@ -17,6 +17,20 @@
       -webkit-overflow-scrolling: touch;
    }
 
+   ::-webkit-scrollbar {
+     background: rgba(205, 205, 205, 0.37);
+     width:6px;
+
+   }
+   ::-webkit-scrollbar-thumb {
+     background-color: rgba(0, 0, 0, 0.9);
+     border: solid #cecece 6px;
+   }
+   ::-webkit-scrollbar-thumb:hover {
+     background-color: rgba(0, 0, 0, 0.3);
+   }
+
+
    .list {
       position: relative;
       margin: 0;

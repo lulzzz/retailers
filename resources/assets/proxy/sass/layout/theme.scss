@@ -1,27 +1,6 @@
 $component-height:  600px !default;
 
 
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-
-::-webkit-scrollbar {
-  background: rgba(205, 205, 205, 0.37);
-  width:6px;
-
-}
-::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.9);
-  border: solid #cecece 6px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-
 .container-fluid {
   height:600px;
   max-height: 600px;
