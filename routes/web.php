@@ -67,7 +67,6 @@ Route::get(
 )->name('carter.dashboard');
 
 
-
 /*
 | Retailers / RetailersController
 |--------------------------------------------------------------------------

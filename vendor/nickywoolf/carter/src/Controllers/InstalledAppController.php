@@ -31,7 +31,7 @@ class InstalledAppController extends Controller
 
     public function index()
     {
-        return view('carter::auth.signup', ['plans' => config('carter.shopify.plans')]);
+        return view('site.signup', ['plans' => config('carter.shopify.plans')]);
     }
 
     public function create(Request $request)
