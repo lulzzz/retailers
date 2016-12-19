@@ -1,6 +1,5 @@
 .retailers--search {
   border-top: 1px solid #cdcdcd;
-  border-left: 1px solid #cdcdcd;
   min-height: 40px;
   height: 40px;
   margin: 0 !important;
@@ -32,12 +31,14 @@
 .btn-locator {
   background-color: transparent;
   font-size: 22px;
-  padding:4px 10px 4px 0;
+  padding:0px 10px;
   height: 40px;
   border:0;
   color: #000 !important;
-  border-bottom:1px solid #cdcdcd;
+  //border-bottom:1px solid #cdcdcd;
   cursor: pointer;
+  line-height:40px;
+
 
   .re-icon-locator {
     &:before{
