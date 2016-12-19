@@ -49,10 +49,10 @@
                   </p>
                @endif
                <div class="input-group">
-                  <input type="text" class="input-signup" name="shop" placeholder="Store Name"/>
+                  <input type="text" class="input-signup" name="shop" placeholder="*.myshopify.com"/>
                </div>
                <p class="pt-2 text-xs-right">
-                  <button class="btn btn-base">Install Retailers </button>
+                  <button class="btn btn-base">Install Retailers</button>
                </p>
 
             </form>
