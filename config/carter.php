@@ -35,19 +35,19 @@ return [
 
             'test' => [
                 'name' => 'Beta v0.9.7',
-                'price' => 37.00,
-                'return_url' => env('APP_URL', 'http://localhost').'/activate',
-                'trial_day' => 14,
-                'test' => true,
-            ],
-
-            'basic' => [
-                'name' => 'Version 1.0',
-                'price' => 37.00,
+                'price' => 47.00,
                 'return_url' => env('APP_URL', 'http://localhost').'/activate',
                 'trial_day' => 14,
                 'test' => false,
             ],
+
+            /*'basic' => [
+                'name' => 'Version 1.0',
+                'price' => 47.00,
+                'return_url' => env('APP_URL', 'http://localhost').'/activate',
+                'trial_day' => 14,
+                'test' => false,
+            ],*/
 
         ],
 
