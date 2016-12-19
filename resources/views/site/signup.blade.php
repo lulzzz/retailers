@@ -54,7 +54,6 @@
                <p class="pt-2 text-xs-right">
                   <button class="btn btn-base">Install Retailers</button>
                </p>
-
             </form>
          </div>
       </div>
