@@ -34,7 +34,6 @@ class RegisteredUsersController extends Controller
 
     public function create(Request $request)
     {
-        dd('fuck');
         if ($redirect = $this->verifySignature($request)) {
             return $redirect;
         }
