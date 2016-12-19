@@ -8,6 +8,7 @@ class LoginShop
 {
     public function handle($request, Closure $next)
     {
+        dd(URL::previous());
         if (auth()->check()) {
             return $next($request);
         }
