@@ -9,7 +9,6 @@
 
    <link rel="apple-touch-icon" href="apple-touch-icon.png">
    <link href="//fonts.googleapis.com/css?family=Cormorant+Garamond" rel="stylesheet">
-   <link rel="stylesheet" href="https://panoply.github.io/portfolio/assets/stylesheet.min.css">
    <link rel="stylesheet" href="{{env('APP_URL')}}/site/css/site.min.css">
 
    <script src="https://panoply.github.io/portfolio/assets/core.min.js"></script>
