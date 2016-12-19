@@ -22,10 +22,6 @@ use Redirect;
 class DashboardController extends Controller
 {
 
-   public function __construct()
-   {
-      $this->middleware(['carter.login', 'carter.paying']);
-   }
 
    /**
    * Display a listing of the resource.
