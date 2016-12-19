@@ -273,6 +273,8 @@
                 sticker          :  $('div[data-map="sticker"]'),
                 map              :  $('div[data-map="map"]'),
                 locator_icon     :  $('i[data-locator="icon"]'),
+                search_input     :  $('input[data-map="search"]'),
+                container_fluid  :  $('.container-fluid'),
                 list             :  $('.list'),
                 oigm             :  $(template.oigm)
               };
@@ -291,9 +293,13 @@
                   map.setCenter(element.latlng);
                   map.setZoom(15);
 
-                  if ($('.container-fluid').width() > 768) {
+                  if (element.container_fluid.width() > 768) {
                      map.panBy(0,-100);
+                     element.search_input.attr('placeholder', 'Enter your City or Country');
+                  } else {
+                    element.search_input.attr('placeholder', 'Search');
                   }
+
                   marker = new google.maps.Marker({
                     position: element.latlng,
                     map: map
