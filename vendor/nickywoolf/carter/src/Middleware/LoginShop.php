@@ -13,10 +13,10 @@ class LoginShop
             return $next($request);
         }
 
-        if ($request->headers->get('referer') == app('carter.app_store_url')) {
+        if ($request->headers->get('referer') == app(config('carter.app_store_url'))) {
 
             return redirect()->route('carter.install', $request->all());
-            
+
         } else {
 
             if ($request->get('shop')) {
