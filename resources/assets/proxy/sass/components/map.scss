@@ -3,8 +3,9 @@
   height:$component-height;
   width:100%;
   @include media-breakpoint-down(sm) {
-    margin-top: 300px;
-    height: 500px;
+    border-top: none;
+    margin-top: 240px;
+    height: 560px;
   }
 }
 
