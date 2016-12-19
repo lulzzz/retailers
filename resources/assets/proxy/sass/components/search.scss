@@ -1,5 +1,6 @@
 .retailers--search {
   border-top: 1px solid #cdcdcd;
+  border-left: 1px solid #cdcdcd;
   min-height: 40px;
   height: 40px;
   margin: 0 !important;
@@ -9,8 +10,8 @@
 
   input {
     font-size:$font-size-sm;
-    padding:7px;
-    line-height:21px;
+    padding:0 10px;
+    line-height:40px;
     width: 100%;
     border:0;
     box-shadow:none !important;
