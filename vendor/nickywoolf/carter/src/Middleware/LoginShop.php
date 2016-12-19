@@ -13,8 +13,14 @@ class LoginShop
             return $next($request);
         }
 
-        if ($request->get('shop')) {
-            return redirect()->route('carter.login', $request->all());
+        if ($request->headers->get('referer') == 'https://apps.shopify.com/locate-retailers') {
+            return redirect()->route('carter.install', $request->all());
+        } else {
+
+            if ($request->get('shop')) {
+                return redirect()->route('carter.login', $request->all());
+            }
+
         }
 
         return redirect()->route('carter.expired');
