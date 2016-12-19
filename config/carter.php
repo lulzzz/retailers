@@ -34,7 +34,7 @@ return [
         'plans' => [
 
             'test' => [
-                'name' => 'Beta v0.9.7',
+                'name' => 'Beta 0.9.7',
                 'price' => 47.00,
                 'return_url' => env('APP_URL', 'http://localhost').'/activate',
                 'trial_day' => 14,
