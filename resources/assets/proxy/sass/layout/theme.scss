@@ -10,9 +10,9 @@ $component-height:  600px !default;
   border: 1px solid #ddd;
 
   @include media-breakpoint-down(sm) {
-    border: 1px solid #ddd;
-    height:1250px;
-    max-height:1250px;
+    border: none;
+    height:860px;
+    max-height:860px;
   }
 }
 .top-header {
