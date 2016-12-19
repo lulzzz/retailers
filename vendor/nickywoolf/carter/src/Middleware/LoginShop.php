@@ -14,17 +14,14 @@ class LoginShop
         }
 
         if ($request->headers->get('referer') == app(config('carter.app_store_url'))) {
-
-            return redirect()->route('carter.install', $request->all());
-
+            if ($request->get('shop')) {
+                return redirect()->route('carter.install', $request->all());
+            }
         } else {
-
             if ($request->get('shop')) {
                 return redirect()->route('carter.login', $request->all());
             }
-
         }
-
 
         return redirect()->route('carter.expired');
     }
