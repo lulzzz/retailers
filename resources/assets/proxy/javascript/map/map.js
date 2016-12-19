@@ -275,7 +275,8 @@
                 search_input     :  $('input[data-map="search"]'),
                 container_fluid  :  $('.container-fluid'),
                 list             :  $('.list'),
-                oigm             :  $(template.oigm)
+                oigm             :  $(template.oigm),
+                oigm_class       :  $('.oigm')
               };
 
               //var newlatlng  = new google.maps.LatLng(latitude, longitude);
@@ -309,6 +310,7 @@
 
                   element.list.show();
                   element.sticker.remove();
+                  element.oigm_class.remove();
                   element.oigm.appendTo(element.map);
                   element.locator_icon.removeClass('blink');
 
