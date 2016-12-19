@@ -290,8 +290,10 @@
                   map.panTo(element.latlng);
                   map.setCenter(element.latlng);
                   map.setZoom(15);
-                  map.panBy(0,-100);
 
+                  if ($('.container-fluid').width() > 768) {
+                     map.panBy(0,-100);
+                  }
                   marker = new google.maps.Marker({
                     position: element.latlng,
                     map: map
