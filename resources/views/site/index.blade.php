@@ -26,7 +26,7 @@
             <div class="mt-3">
                <ul class="index-quicknav">
                   <li>
-                     <a href="/shopify/signup" class="btn btn-base mr-1">
+                     <a href="/signup" class="btn btn-base mr-1">
                         Install Application
                      </a>
                   </li>
