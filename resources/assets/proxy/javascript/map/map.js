@@ -187,7 +187,7 @@
 
                 if(store.get('geolocate') && store.get('visitor_street') && store.get('visitor_city')) {
                   notify.nearest.appendTo(element.alert);
-                  element.locate.attr('data-balloon', ''+store.get('visitor_street')+', '+ store.get('visitor_city')+'');
+                  element.locate.attr('data-balloon', ''+store.get('visitor_location')+'');
                 } else {
                   notify.located.appendTo(element.alert);
                 }
@@ -236,8 +236,8 @@
               geocoding.geocode({'location': latlng}, function(results, status) {
                 if (status === 'OK') {
                   if(results[1]) {
-                    store.set('visitor_street', results[0].address_components[1].long_name);
-                    store.set('visitor_city', results[0].address_components[2].long_name);
+
+                    store.set('visitor_location', ''+results[0].address_components[1].long_name+','+results[0].address_components[2].long_name+'');
                     store.set('geolocate', 'true');
                     button.attr('data-balloon', results[0].address_components[2].long_name);
                   } else {
