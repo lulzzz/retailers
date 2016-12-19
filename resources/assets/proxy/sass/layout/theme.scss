@@ -30,8 +30,8 @@ body {
   margin-top: 20px;
   @include media-breakpoint-up(md) {
     border: 1px solid #ddd;
-    height:850px;
-    max-height: 850px;
+    height:auto;
+    max-height:auto;
   }
 }
 .top-header {
