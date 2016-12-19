@@ -237,7 +237,7 @@
                 if (status === 'OK') {
                   if(results[1]) {
 
-                    store.set('visitor_location', ''+results[0].address_components[1].long_name+','+results[0].address_components[2].long_name+'');
+                    store.set('visitor_location', ''+results[0].address_components[1].long_name +', '+results[0].address_components[2].long_name+'');
                     store.set('geolocate', 'true');
                     button.attr('data-balloon', results[0].address_components[2].long_name);
                   } else {
