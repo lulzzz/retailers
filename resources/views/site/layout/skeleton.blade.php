@@ -31,7 +31,7 @@
    </main>
    <footer>
       <div class="footer">
-         <a class="footer-badge" href="https://panoply.github/portfolio">
+         <a class="footer-badge" href="https://panoply.github.io/portfolio">
             <small><b>BY PANOPLY</b><p>ENGINEERING E-COMMERCE</p></small>
          </a>
       </div>
