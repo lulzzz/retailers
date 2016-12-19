@@ -8,6 +8,12 @@
    color:#111;
    background-color: transparent;
 
+   &:hover,
+   &:focus {
+      background-color: #111;
+      color: #fff;
+   }
+
    a {
       &:hover,
       &:focus {

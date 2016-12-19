@@ -238,6 +238,7 @@ $zindexDrawer: 9999;
     outline:none !important;
   }
 
+
   span {
     border-radius: none;
     display: block;
@@ -245,7 +246,11 @@ $zindexDrawer: 9999;
     width: 40px;
     margin: 8px;
     background-color: black;
-    transition: all ease 300ms
+    transition: all ease 300ms;
+
+    &:hover {
+      color:#fff;
+    }
   }
 
   &.open {
