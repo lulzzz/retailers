@@ -22,7 +22,6 @@ loadjs([
   }
 });
 </script>
-
 @if($retailers->isEmpty())
   <div class="row">
     <div class="col-xs-12 text-xs-center pa-3">
@@ -32,19 +31,16 @@ loadjs([
   </div>
 @else
   <div class="container-fluid">
-
     @yield('content')
-
-    <!-- Dependencies -->
-    <script>
-    loadjs([
-      '//maps.google.com/maps/api/js?key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do',
-      '{{env('APP_URL')}}/assets/proxy/js/map_themes/greywash.min.js',
-      '{{env('APP_URL')}}/assets/proxy/js/map.min.js'], {
-        async: false,
-        success: function()
-        { retailers.map(settings); }
-      });
-      </script>
-    </div>
-  @endif
+  </div>
+  <script>
+  loadjs([
+    '//maps.google.com/maps/api/js?key=AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do',
+    '{{env('APP_URL')}}/assets/proxy/js/map_themes/greywash.min.js',
+    '{{env('APP_URL')}}/assets/proxy/js/map.min.js'], {
+      async: false,
+      success: function()
+      { retailers.map(settings); }
+    });
+    </script>
+@endif
