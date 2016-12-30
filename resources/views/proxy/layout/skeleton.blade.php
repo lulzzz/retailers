@@ -12,11 +12,9 @@
     </div>
   </div>
 @else
-  <div class="container-fluid">
+  <div class="retailers-fluid">
 
     @yield('content')
-
-    <!-- jQuery Library  -->
 
     <!-- Dependencies -->
     <script>
