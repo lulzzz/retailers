@@ -12,11 +12,11 @@ $enable-rounded:            false !default;
 @import "../../../../../bower_components/bootstrap/scss/images";
 
 @import "bootstrap/grid";
-//@import "../../../../../bower_components/bootstrap/scss/forms";
-//@import "../../../../../bower_components/bootstrap/scss/buttons";
+@import "../../../../../bower_components/bootstrap/scss/forms";
+@import "../../../../../bower_components/bootstrap/scss/buttons";
 //@import "../../../../../bower_components/bootstrap/scss/dropdown";
-//@import "../../../../../bower_components/bootstrap/scss/button-group";
-//@import "../../../../../bower_components/bootstrap/scss/input-group";
+@import "../../../../../bower_components/bootstrap/scss/button-group";
+@import "../../../../../bower_components/bootstrap/scss/input-group";
 //@import "../../../../../bower_components/bootstrap/scss/card";
 
 @import "../../../../../bower_components/bootstrap/scss/utilities";
