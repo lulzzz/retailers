@@ -7,16 +7,16 @@ $enable-rounded:            false !default;
 @import "../../../../../bower_components/bootstrap/scss/variables";
 @import "../../../../../bower_components/bootstrap/scss/mixins";
 
-@import "bootstrap/reboot";
+//@import "bootstrap/reboot";
 
 @import "../../../../../bower_components/bootstrap/scss/images";
 
-@import "../../../../../bower_components/bootstrap/scss/grid";
-@import "../../../../../bower_components/bootstrap/scss/forms";
-@import "../../../../../bower_components/bootstrap/scss/buttons";
-@import "../../../../../bower_components/bootstrap/scss/dropdown";
-@import "../../../../../bower_components/bootstrap/scss/button-group";
-@import "../../../../../bower_components/bootstrap/scss/input-group";
-@import "../../../../../bower_components/bootstrap/scss/card";
+@import "bootstrap/grid";
+//@import "../../../../../bower_components/bootstrap/scss/forms";
+//@import "../../../../../bower_components/bootstrap/scss/buttons";
+//@import "../../../../../bower_components/bootstrap/scss/dropdown";
+//@import "../../../../../bower_components/bootstrap/scss/button-group";
+//@import "../../../../../bower_components/bootstrap/scss/input-group";
+//@import "../../../../../bower_components/bootstrap/scss/card";
 
 @import "../../../../../bower_components/bootstrap/scss/utilities";
