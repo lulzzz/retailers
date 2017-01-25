@@ -12,7 +12,7 @@
               <h2>Add your first Retailer!</h2>
               <h4 class="lead">There is currently no Retailers in your database.</h4>
               <img src="/images/website-icon.png" class="img-fluid bg-icons">
-              <p><button type="button" onclick="createModal('/merchants/create')" class="btn btn-lg btn-primary">Create Retailer</button></p>
+              <p><button type="button" onclick="createModal('/retailers/create')" class="btn btn-lg btn-primary">Create Retailer</button></p>
             </div>
           </div>
         </div>

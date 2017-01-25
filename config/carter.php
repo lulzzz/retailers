@@ -20,12 +20,6 @@ return [
         'scope' => implode(',', [
             'read_content',
             'read_themes',
-            'read_products',
-            'read_customers',
-            'read_orders',
-            'read_script_tags',
-            'read_fulfillments',
-            'read_shipping',
         ]),
 
         /**
