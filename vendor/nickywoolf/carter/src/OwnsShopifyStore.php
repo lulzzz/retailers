@@ -21,7 +21,7 @@ trait OwnsShopifyStore
 
     public function uninstall()
     {
-        return $this->update(['installed' => false]);
+        return $this->update(['installed' => true]);
     }
 
     public function setAccessTokenAttribute($value)

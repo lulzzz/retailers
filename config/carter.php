@@ -32,7 +32,7 @@ return [
                 'price' => 47.00,
                 'return_url' => env('APP_URL', 'http://localhost').'/activate',
                 'trial_day' => 14,
-                'test' => true,
+                'test' => false,
             ],
 
             /*'basic' => [
