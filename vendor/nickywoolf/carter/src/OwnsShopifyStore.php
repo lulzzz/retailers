@@ -21,14 +21,7 @@ trait OwnsShopifyStore
 
     public function uninstall()
     {
-        return $this->update([
-            'name' => null,
-            'email' => null,
-            'password' => null,
-            'shopify_id' => null,
-            'access_token' => null,
-            'installed' => false
-        ]);
+        return $this->update(['installed' => false]);
     }
 
     public function setAccessTokenAttribute($value)
