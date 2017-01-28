@@ -12,7 +12,7 @@
               <h2>Add your first Retailer!</h2>
               <h4 class="lead">There is currently no Retailers in your database.</h4>
               <img src="/images/website-icon.png" class="img-fluid bg-icons">
-              <p><a href="/retailers/create" class="btn btn-lg btn-primary">Create Retailer</a></p>
+              <p><a href="/retailers/create" class="btn btn-lg btn-primary" style="color:#fff !important;">Create Retailer</a></p>
             </div>
           </div>
         </div>
