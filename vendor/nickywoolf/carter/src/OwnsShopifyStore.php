@@ -22,12 +22,12 @@ trait OwnsShopifyStore
     public function uninstall()
     {
         return $this->update([
-            'name' => null,
-            'shopify_id' => null,
-            'access_token' => null,
-            'charge_id' => null,
-            'email' => null,
-            'domain' => null,
+            'name' => '',
+            'shopify_id' => '',
+            'access_token' =>'',
+            'charge_id' => '',
+            'email' => '',
+            'domain' => '',
             'installed' => false]);
     }
 
