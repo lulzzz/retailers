@@ -22,7 +22,7 @@ trait OwnsShopifyStore
     public function uninstall()
     {
         return $this->update([
-           'installed' => false,
+           'installed' => null,
            'charge_id' => null
         ]);
     }
