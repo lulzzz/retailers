@@ -3,7 +3,7 @@ button[data-balloon] {
 }
 [data-balloon] {
   position: relative;
-}  
+}
 [data-balloon]:before,
 [data-balloon]:after {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -30,8 +30,8 @@ button[data-balloon] {
   border-radius: 4px;
   color: #fff;
   content: attr(data-balloon);
-  font-size: 12px;
-  padding: .5em 1em;
+  font-size: 11px;
+  padding: .25em 1em;
   white-space: nowrap;
   margin-bottom: 11px;
 }
