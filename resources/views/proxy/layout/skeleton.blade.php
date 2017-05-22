@@ -24,7 +24,7 @@ if(store.get('geolocate')) {
 } else {
   var latlng = { latitude: {{$geo['lat']}}, longitude: {{$geo['lon']}} };
 }
-var settings = {
+retailers.map({
   environment: '{{env('PROXY_URL')}}',
   element:  'locate-retailer-map',
   latitude: latlng.latitude,
@@ -32,7 +32,6 @@ var settings = {
   domain: '{{$domain}}',
   api_key: 'AIzaSyAMElu9QAKi3qU68wXQ5yJSCG_YNWVU3do',
   zoom: 9
-};
-retailers.map(settings);
+});
 </script>
 <!-- Stylesheet :: Locator Styling -->
